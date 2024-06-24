@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>世界の気候</title>
+	<link rel="stylesheet" href="moriuchi.css">
+</head>
+
+<style>
+.qa { display:flex; align-items: center;}
+.map_image { width:100%; }
+span { margin-right:7px; color:red; }
+</style>
+
+<body>
+
+<main>
+<h1 class="title">世界の気候</h1>
+<h2>気候区分</h2>
+<div class="blocka">
+  <img class="map_image" src="img/koppenmap2.png">
+  <div align="right"><small>
+  （出典）Adpated from Peel et al (2007)
+  <a href="https://hess.copernicus.org/articles/11/1633/2007/hess-11-1633-2007.html">Hydrology and Earth Systems Sciences</a><br>
+  学習目的で10分類に簡略化して色を塗りなおしている（元画像は下に掲載）
+  </small></div>
+</div>
+<p>
+上の気候区分図を見て、各色の正しい気候を選びなさい。<br>
+<div class="qa"><img src="img/kop_ef.png"><span id="sel9"></span><span id="ans9"></span></div>
+<div class="qa"><img src="img/kop_cwa.png"><span id="sel5"></span><span id="ans5"></span></div>
+<div class="qa"><img src="img/kop_et.png"><span id="sel8"></span><span id="ans8"></span></div>
+<div class="qa"><img src="img/kop_bwh.png"><span id="sel2"></span><span id="ans2"></span></div>
+<div class="qa"><img src="img/kop_csa.png"><span id="sel4"></span><span id="ans4"></span></div>
+<div class="qa"><img src="img/kop_bsh.png"><span id="sel3"></span><span id="ans3"></span></div>
+<div class="qa"><img src="img/kop_af.png"><span id="sel0"></span><span id="ans0"></span></div>
+<div class="qa"><img src="img/kop_dsa.png"><span id="sel7"></span><span id="ans7"></span></div>
+<div class="qa"><img src="img/kop_aw.png"><span id="sel1"></span><span id="ans1"></span></div>
+<div class="qa"><img src="img/kop_cfb.png"><span id="sel6"></span><span id="ans6"></span></div>
+</p>
+
+<hr>
+
+<h2>元画像</h2>
+<img class="map_image" src="img/koppenmap0.png">
+<div align="right"><small>
+（出典）Peel et al (2007)
+<a href="https://hess.copernicus.org/articles/11/1633/2007/hess-11-1633-2007.html">Hydrology and Earth Systems Sciences</a>
+<!-- 解説  https://people.eng.unimelb.edu.au/mpeel/koppen.html  -->
+</small></div>
+
+</main>
+
+<script>
+const answer = [1,2,3,4,5,6,7,8,9,10,11];
+function select(id) {
+    const animals = [
+      { value: 1, name: '熱帯: 熱帯雨林気候'},
+      { value: 2, name: '熱帯: サバナ気候'},
+      { value: 3, name: '乾燥帯: さばく気候'},
+      { value: 4, name: '乾燥帯: ステップ気候'},
+      { value: 5, name: '温帯: 地中海性気候'},
+      { value: 6, name: '温帯: 温帯（温暖）湿潤気候'},
+      { value: 7, name: '温帯: 西岸海洋性気候'},
+      { value: 8, name: '冷帯/亜寒帯: 冷帯（亜寒帯）気候'},
+      { value: 9, name: '寒帯: ツンドラ気候'},
+      { value: 10, name: '寒帯: 氷雪気候'},
+    ]
+    const jsSelectBox = document.getElementById('sel'+id);
+    const selectWrap = document.createElement('div');
+    selectWrap.classList.add('selectwrap');
+    const select = document.createElement('select');
+    select.classList.add('select');
+    const option1 = document.createElement('option');
+    option1.disabled = true;
+    option1.selected = true;
+    select.appendChild(option1);
+    animals.forEach((v) => {
+      const option = document.createElement('option');
+      option.value = v.value;
+      option.textContent = v.name;
+      select.appendChild(option);
+    });
+    selectWrap.appendChild(select);
+    jsSelectBox.appendChild(selectWrap);
+    select.addEventListener('change', (e) => {
+        const ans = document.getElementById('ans'+id);
+        if (e.target.value == answer[id]) ans.textContent ='〇'; // 選択値が答えと一致
+        else ans.textContent ='×';
+        });
+}
+for (i = 0; i < 11; i++) {
+    select(i); 
+}
+</script>
+
+</body>
+</html>
