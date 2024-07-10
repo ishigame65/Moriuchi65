@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>日本（と中国）の歴史</title>
+	<link rel="stylesheet" href="moriuchi.css">
+</head>
+
+<!--
+Palegreen		background-color: rgba(152,251,152,0.5)
+Lemonchiffon	background-color: rgba(255,250,205,0.5)
+Pink			background-color: rgba(255,192,203,0.5)
+Paleturquoise	background-color: rgba(175,238,238,0.5)
+orange			background-color: rgba(255,165,0,0.5)
+-->
+
+<style>
+main { height: 500px; }
+#history { position: relative; font-size: 12px; }
+
+#kYears { position: absolute; top: 11px; }
+#kJidaikubun { position: absolute; top: 30px; }
+#kEvents { position: absolute; top: 50px; }
+#kChina { position: absolute; top: 115px; }
+
+#hYears { position: absolute; top: 161px; }
+#hJidaikubun { position: absolute; top: 180px; }
+#hChina { position: absolute; top: 245px; }
+
+#aYears { position: absolute; top: 311px; }
+#aJapan { position: absolute; top: 330px; }
+#aChina { position: absolute; top: 355px; }
+
+.aYear { height: 105px; width: 60px; position: absolute; top: 0px; box-shadow: 1px 0px 0px rgba(0,0,0,0.2) inset;}
+.aJidai1 { height: 20px; background-color: rgba(152,251,152,0.5); position: absolute; top: 0px; }
+.aJidai2 { height: 20px; background-color: rgba(255,250,205,0.5); position: absolute; top: 0px; }
+.aChKubun1 { height: 60px; background-color: rgba(255,192,203,0.5); position: absolute; top: 0px; }
+.aChKubun2 { height: 60px; background-color: rgba(175,238,238,0.5); position: absolute; top: 0px; }
+.aChKubun1st { height: 40px; position: absolute; top: 0px; }
+.aChKubun2nd { height: 20px; position: absolute; top: 20px; }
+.aChKubun3rd { height: 20px; position: absolute; top: 40px; }
+.aChKubun2box { height: 39px; border: dashed 1px Mediumblue; position: absolute; top: 19px; }
+.aChKubun3box { height: 19px; border: dashed 1px Mediumblue; position: absolute; top: 39px; }
+#aY1 { left: 0px; }
+#aY2 { left: 100px; }
+#aY3 { left: 200px; }
+#aY4 { left: 300px; }
+#aY5 { left: 400px; }
+#aY6 { left: 500px; }
+#aY7 { left: 600px; }
+#aY8 { left: 700px; }
+#aY9 { left: 800px; }
+#aSekki { width: 100px; left: 0px;}
+#aJomon { width: 650px; left: 100px;}
+#aYayoi { width: 50px; left: 750px;}
+#aChKa { width: 23.5px; left: 696.5px;}
+#aChIn { width: 27.7px; left: 720px;}
+#aChShu { width: 41.25px; left: 747.7px;}
+#aChShin { width: 0.75px; left: 788.95px;}
+#aChShin2 { width: 40px; left: 788.95px;}
+#aChKan { width: 10.3px; left: 789.7px;}
+#aChKan2 { width: 20px; left: 789.7px;}
+#aChShunju { width: 14.7px; left: 761.5px;}
+#aChShunju2 { width: 30px; left: 761.5px; font-size: 11px; color:Mediumblue;}
+#aChSengoku { width: 12.75px; left: 776.2px;}
+#aChSengoku2 { width: 30px; left: 776.2px; font-size: 11px; color:Mediumblue;}
+#aKouga { width: 60px; left: 550.0px;}
+#aChoukou { width: 60px; left: 100.0px;}
+.hYear { height: 125px; width: 25px; position: absolute; top: 0px; box-shadow: 1px 0px 0px rgba(0,0,0,0.2) inset;}
+.hYear2 { height: 125px; width: 25px; position: absolute; top: 0px; box-shadow: 1px 0px 0px rgba(0,0,255,0.6) inset;}
+#hY1 { left: 0px; }
+#hY2 { left: 40px; }
+#hY3 { left: 80px; }
+#hY4 { left: 120px; }
+#hY5 { left: 160px; }
+#hY6 { left: 200px; }
+#hY7 { left: 240px; }
+#hY8 { left: 280px; }
+#hY9 { left: 320px; }
+#hY10 { left: 360px; }
+#hY11 { left: 400px; }
+#hY12 { left: 440px; }
+#hY13 { left: 480px; }
+#hY14 { left: 520px; }
+#hY15 { left: 560px; }
+#hY16 { left: 600px; }
+#hY17 { left: 640px; }
+#hY18 { left: 680px; }
+#hY19 { left: 720px; }
+#hY20 { left: 760px; }
+#hY21 { left: 800px; }
+.hJidai1 { height: 60px; background-color: rgba(152,251,152,0.5); position: absolute; top: 0px; }
+.hJidai2 { height: 60px; background-color: rgba(255,250,205,0.5); position: absolute; top: 0px; }
+.hJidai3 { height: 60px; background-color: rgba(255,165,0,0.5); position: absolute; top: 0px; }
+.hJidai1st { height: 20px; position: absolute; top: 0px; }
+.hJidai2nd { height: 20px; position: absolute; top: 20px; }
+.hJidai3rd { height: 20px; position: absolute; top: 40px; }
+.hJidai2box { height: 19px; border: dashed 1px Mediumblue; position: absolute; top: 19px; }
+.hJidai3box { height: 19px; border: dashed 1px Mediumblue; position: absolute; top: 39px; }
+#hYayoi { width: 100px; left: 0px;}
+#hKofun { width: 184px; left: 100px;}
+#hNara { width: 33.6px; left: 284px;}
+#hHeian { width: 156.4px; left: 317.6px;}
+#hKamakura { width: 59.2px; left: 474px;}
+#hMuromachi { width: 94.8px; left: 534.4px;}
+#hAzuchi { width: 12px; left: 629.2px; }
+#hAzuchi2 { width: 60px; left: 629.2px;}
+#hEdo { width: 106px; left: 641.2px;}
+#hMeiji { width: 17.6px; left: 747.2px;}
+#hMeiji2 { width: 40px; left: 747.2px;}
+#hTaisho { width: 5.6px; left: 764.8px;}
+#hTaisho2 { width: 40px; left: 764.8px;}
+#hShouwa { width: 25.2px; left: 770.4px;}
+#hShouwa2 { width: 40px; left: 770.4px;}
+#hHeisei { width: 12px; left: 795.6px;}
+#hHeisei2 { width: 40px; left: 795.6px;}
+#hReiwa { width: 2.4px; left: 807.6px;}
+#hReiwa2 { width: 40px; left: 807.6px;}
+#hAsuka { width: 46.2px; left: 236.8px; color:Mediumblue;}
+#hNanboku { width: 51px; left: 534.8px; color:Mediumblue;}
+#hSengoku { width: 41.4px; left: 586.8px; color:Mediumblue;}
+#hKenmu { width: 1.2px; left: 533.2px;}
+#hKenmu2 { width: 80px; left: 533.2px;}
+.hChKubun1 { height: 40px; background-color: rgba(255,192,203,0.5); position: absolute; top: 0px; }
+.hChKubun2 { height: 40px; background-color: rgba(175,238,238,0.5); position: absolute; top: 0px; }
+.hCh1st { height: 20px; position: absolute; top: 0px; }
+.hCh2nd { height: 20px; position: absolute; top: 20px; }
+#hChKan { width: 88px; left: 0px; }
+#hChSangoku { width: 18px; left: 88px; }
+#hChSangoku2 { width: 60px; left: 88px; }
+#hChShinA { width: 69.6px; left: 106px; }
+#hChNanboku { width: 56.8px; left: 175.6px; }
+#hChZui { width: 14.8px; left: 232.4px; }
+#hChTou { width: 136.8px; left: 247.2px; }
+#hChSou { width: 124.4px; left: 384px; }
+#hChGen { width: 38.8px; left: 508.4px; }
+#hChMin { width: 110.4px; left: 547.2px; }
+#hChShin { width: 107.2px; left: 657.6px; }
+#hChMinkoku { width: 14.8px; left: 764.8px; }
+#hChJinmin { width: 30.4px; left: 779.6px; }
+#hChMinkoku2 { width: 60px; left: 764.8px; }
+#hChJinmin2 { width: 90px; left: 779.6px; }
+<!--
+-->
+.kYear { height: 125px; width: 25px; position: absolute; top: 0px; box-shadow: 1px 0px 0px rgba(0,0,0,0.2) inset;}
+.kYear2 { height: 125px; width: 25px; position: absolute; top: 0px; box-shadow: 1px 0px 0px rgba(0,0,255,0.6) inset;}
+#kY1 { left: 0px;}
+#kY2 { left: 37.5px;}
+#kY3 { left: 75px;}
+#kY4 { left: 112.5px;}
+#kY5 { left: 150px;}
+#kY6 { left: 187.5px;}
+#kY7 { left: 225px;}
+#kY8 { left: 262.5px;}
+#kY9 { left: 300px;}
+#kY10 { left: 337.5px;}
+#kY11 { left: 375px;}
+#kY12 { left: 412.5px;}
+#kY13 { left: 450px;}
+#kY14 { left: 487.5px;}
+.kJidai1 { height: 20px; background-color: rgba(152,251,152,0.5); position: absolute; top: 0px; }
+.kJidai2 { height: 20px; background-color: rgba(255,250,205,0.5); position: absolute; top: 0px; }
+.kJidai3 { height: 20px; position: absolute; top: 0px; }
+#kMeiji { width: 82.5px; left: 0px;}
+#kTaisho { width: 52.5px; left: 82.5px;}
+#kShowa { width: 236.25px; left: 135px;}
+#kHeisei { width: 112.5px; left: 371.25px;}
+#kReiwa { width: 22.5px; left: 483.75px;}
+#kReiwa2 { width: 40px; left: 483.75px;}
+.kEvent1 { height: 20px; position: absolute; top: 0px; }
+.kEvent2 { height: 20px; position: absolute; top: 15px; }
+.kEvent3 { height: 20px; position: absolute; top: 30px; }
+.kEvent4 { height: 20px; position: absolute; top: 45px; }
+#kNisshin { width: 140px; left: 15px;}
+#kNichiro { width: 140px; left: 52.5px;}
+#kDai1ji { width: 140px; left: 90px;}
+#kKanto { width: 140px; left: 123.75px;}
+#kManshu { width: 140px; left: 153.75px;}
+#kNicchu { width: 140px; left: 176.25px;}
+#kDai2ji { width: 140px; left: 183.75px;}
+#kTaiheiyo { width: 140px; left: 191.25px;}
+#kOlympic { width: 140px; left: 277.5px;}
+#kHanshinawaji { width: 140px; left: 393.75px;}
+#kHigashinihon { width: 140px; left: 453.75px;}
+.kChKubun1 { height: 20px; background-color: rgba(255,192,203,0.5); position: absolute; top: 0px; }
+.kChKubun2 { height: 20px; background-color: rgba(175,238,238,0.5); position: absolute; top: 0px; }
+#kChShin { width: 82.5px; left: 0px; }
+#kChMinkoku { width: 138.75px; left: 82.5px; }
+#kChJinmin { width: 284px; left: 221.25px; }
+<!--
+-->
+#start { padding-right: 100px; }
+#star { color:red; }
+</style>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+		<li><a href="index.html">Top</a></li>
+		<li>日本（と中国）の歴史</li>
+	</ul>
+<h1 class="title">日本（と中国）の歴史</h1>
+<p>
+<div id="history">
+  <div id="kYears">
+	<div id="kY1" class="kYear">1890</div><div id="kY2" class="kYear2">1900</div>
+	<div id="kY3" class="kYear">1910</div><div id="kY4" class="kYear">1920</div>
+	<div id="kY5" class="kYear">1930</div><div id="kY6" class="kYear">1940</div>
+	<div id="kY7" class="kYear">1950</div><div id="kY8" class="kYear">1960</div>
+	<div id="kY9" class="kYear">1970</div><div id="kY10" class="kYear">1980</div>
+	<div id="kY11" class="kYear">1990</div><div id="kY12" class="kYear2">2000</div>
+	<div id="kY13" class="kYear">2010</div><div id="kY14" class="kYear">2020</div>
+  </div>
+  <div id="kJidaikubun">
+	<div id="kMeiji" class="kJidai1">明治</div><div id="kTaisho" class="kJidai2">大正</div>
+	<div id="kShowa" class="kJidai1">昭和</div><div id="kHeisei" class="kJidai2">平成</div>
+	<div id="kReiwa" class="kJidai1"></div><div id="kReiwa2" class="kJidai3">令和</div>
+  </div>
+  <div id="kEvents">
+    <div id="kNisshin" class="kEvent1">日清戦争</div><div id="kNichiro" class="kEvent2">日露戦争</div>
+    <div id="kDai1ji" class="kEvent3">第1次世界大戦</div><div id="kKanto" class="kEvent4">関東大震災</div>
+    <div id="kManshu" class="kEvent1">満州事変</div><div id="kNicchu" class="kEvent2">日中戦争</div>
+    <div id="kDai2ji" class="kEvent3">第2次世界大戦</div><div id="kTaiheiyo" class="kEvent4">太平洋戦争</div>
+    <div id="kOlympic" class="kEvent1">東京オリンピック</div>
+    <div id="kHanshinawaji" class="kEvent1">阪神淡路大震災</div><div id="kHigashinihon" class="kEvent2">東日本大震災</div>
+  </div>
+  <div id="kChina">
+    <div id="kChShin" class="kChKubun1">清</div>
+    <div id="kChMinkoku" class="kChKubun2">中華民国</div>
+    <div id="kChJinmin" class="kChKubun1">中華人民共和国</div>
+  </div>
+  <!--
+  -->
+  <div id="hYears">
+	<div id="hY1" class="hYear">0</div><div id="hY2" class="hYear">100</div>
+	<div id="hY3" class="hYear">200</div><div id="hY4" class="hYear">300</div>
+	<div id="hY5" class="hYear">400</div><div id="hY6" class="hYear">500</div>
+	<div id="hY7" class="hYear">600</div><div id="hY8" class="hYear">700</div>
+	<div id="hY9" class="hYear">800</div><div id="hY10" class="hYear">900</div>
+	<div id="hY11" class="hYear">1000</div><div id="hY12" class="hYear">1100</div>
+	<div id="hY13" class="hYear">1200</div><div id="hY14" class="hYear">1300</div>
+	<div id="hY15" class="hYear">1400</div><div id="hY16" class="hYear">1500</div>
+	<div id="hY17" class="hYear">1600</div><div id="hY18" class="hYear">1700</div>
+	<div id="hY19" class="hYear">1800</div><div id="hY20" class="hYear2">1900</div>
+	<div id="hY21" class="hYear2">2000</div>
+  </div>
+  <div id="hJidaikubun">
+	<div id="hYayoi" class="hJidai1">弥生</div>
+	<div id="hKofun" class="hJidai2">古墳</div>
+	<div id="hNara" class="hJidai1">奈良</div>
+	<div id="hHeian" class="hJidai2">平安</div>
+	<div id="hKamakura" class="hJidai1">鎌倉</div>
+	<div id="hMuromachi" class="hJidai2">室町</div>
+	<div id="hAzuchi" class="hJidai1"></div>
+	<div id="hEdo" class="hJidai2">江戸</div>
+	<div id="hMeiji" class="hJidai1"></div>
+	<div id="hTaisho" class="hJidai2"></div>
+	<div id="hShouwa" class="hJidai1"></div>
+	<div id="hHeisei" class="hJidai2"></div>
+	<div id="hReiwa" class="hJidai1"></div>
+	<div id="hAzuchi2" class="hJidai2nd">安土桃山</div>
+	<div id="hMeiji2" class="hJidai1st">明治</div>
+	<div id="hTaisho2" class="hJidai2nd">大正</div>
+	<div id="hShouwa2" class="hJidai3rd">昭和</div>
+	<div id="hHeisei2" class="hJidai1st">平成</div>
+	<div id="hReiwa2" class="hJidai2nd">令和</div>
+	<div id="hAsuka" class="hJidai2box">飛鳥</div>
+	<div id="hNanboku" class="hJidai3box">南北朝</div>
+	<div id="hSengoku" class="hJidai3box">戦国</div>
+	<div id="hKenmu" class="hJidai3"></div>
+	<div id="hKenmu2" class="hJidai2nd">←建武の新政</div>
+  </div>
+  <div id="hChina">
+    <div id="hChKan" class="hChKubun2">漢</div>
+    <div id="hChSangoku" class="hChKubun1"></div>
+    <div id="hChShinA" class="hChKubun2">晋</div>
+    <div id="hChNanboku" class="hChKubun1">南北朝</div>
+    <div id="hChZui" class="hChKubun2">隋</div>
+    <div id="hChTou" class="hChKubun1">唐</div>
+    <div id="hChSou" class="hChKubun2">宋</div>
+    <div id="hChGen" class="hChKubun1">元</div>
+    <div id="hChMin" class="hChKubun2">明</div>
+    <div id="hChShin" class="hChKubun1">清</div>
+    <div id="hChMinkoku" class="hChKubun2"></div>
+    <div id="hChJinmin" class="hChKubun1"></div>
+    <div id="hChSangoku2" class="hCh2nd">三国時代</div>
+    <div id="hChMinkoku2" class="hCh1st">中華民国</div>
+    <div id="hChJinmin2" class="hCh2nd">中華人民共和国</div>
+  </div>
+  <!--
+  -->
+  <div id="aYears">
+	<div id="aY1" class="aYear">前16000</div>
+	<div id="aY2" class="aYear">前14000</div>
+	<div id="aY3" class="aYear">前12000</div>
+	<div id="aY4" class="aYear">前10000</div>
+	<div id="aY5" class="aYear">前8000</div>
+	<div id="aY6" class="aYear">前6000</div>
+	<div id="aY7" class="aYear">前4000</div>
+	<div id="aY8" class="aYear">前2000</div>
+	<div id="aY9" class="aYear">0</div>
+  </div>
+  <div id="aJapan">
+	<div id="aSekki" class="aJidai1">旧石器</div>
+	<div id="aJomon" class="aJidai2">縄文</div>
+	<div id="aYayoi" class="aJidai1">弥生</div>
+  </div>
+  <div id="aChina">
+    <div id="aChKa" class="aChKubun2">夏</div>
+    <div id="aChIn" class="aChKubun1">殷<br>（商）</div>
+    <div id="aChShu" class="aChKubun2">周</div>
+    <div id="aChShin" class="aChKubun1"></div>
+    <div id="aChKan" class="aChKubun2"></div>
+    <div id="aChShin2" class="aChKubun1st">←秦</div>
+    <div id="aChKan2" class="aChKubun2nd">漢</div>
+    <div id="aChShunju" class="aChKubun2box"></div>
+    <div id="aChSengoku" class="aChKubun2box"></div>
+    <div id="aChShunju2" class="aChKubun2nd">春秋</div>
+    <div id="aChSengoku2" class="aChKubun3rd">戦国</div>
+	<div id="aKouga" class="aChKubun2nd">黄河文明</div>
+	<div id="aChoukou" class="aChKubun2nd">長江文明</div>
+  </div>
+</div>
+</p>
+
+<p align="right">
+<br>
+<a id="start" href="javascript:start()">Game Start</a><br>
+<br>
+★印が何かを当てましょう。
+</p>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script>
+var targets = new Array("aChShin2","aChKan2","aSekki","aJomon","aYayoi",
+	"hChKan","hChZui","hChTou","hChSou","hChGen","hChMin","hChShin","hChJinmin",
+	"hYayoi","hKofun","hNara","hHeian","hKamakura","hMuromachi","hEdo","hAzuchi2",
+	"hMeiji2","hTaisho2","hShouwa2","hHeisei2","hReiwa2","hAsuka","hNanboku","hSengoku","hKenmu2",
+	"kChShin","kChJinmin","kMeiji","kTaisho","kShowa","kHeisei","kReiwa2",
+	"kNisshin","kNichiro","kDai1ji","kKanto","kManshu","kNicchu","kDai2ji","kTaiheiyo",
+	"kOlympic","kHanshinawaji","kHigashinihon");
+var tags = new Array("t0","t1");
+var values = new Array("s0","s1");
+var pre_id = new Array(-1,-1);
+function restore(no){
+	tag = document.getElementById(tags[no]);
+	tag.textContent = values[no];
+	hidden(no);
+}
+function hidden(no){
+	do {
+		rnd_id = Math.floor(Math.random() * targets.length);
+	} while (rnd_id == pre_id[no] || rnd_id == pre_id[1-no]);
+	pre_id[no] = rnd_id;
+	tags[no] = targets[rnd_id];
+	tag = document.getElementById(tags[no]);
+	values[no] = tag.textContent;
+	tag.innerHTML = '<a id="star" href="javascript:restore(' + no + ')">★</a>';
+}
+var running = 0;
+function start(){
+	if (running == 0) {
+		hidden(0);
+		hidden(1);
+		document.getElementById("start").textContent = "Game Reset";
+		running = 1;
+	} else {
+		window.location.reload();
+		document.getElementById("start").textContent = "Game Start";
+		running = 0;
+	}
+}
+//window.onload = function() {
+//	hidden();
+//}
+</script>
+
+</body>
+</html>
