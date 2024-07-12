@@ -103,9 +103,11 @@ footer img {
 }
 h2 {
 	margin-top: 15px;
+	font-size: 22px;
 }
 h3 {
 	margin-top: 12px;
+	font-size: 18px;
 }
 .text {
 	margin-bottom: 10px;
@@ -255,6 +257,12 @@ img.icon {
 	}
 	main .title {
 		font-size: 18px;
+	}
+	h2 {
+		font-size: 15px;
+	}
+	h3 {
+		font-size: 12px;
 	}
     .text {
         margin-left: 11px;
