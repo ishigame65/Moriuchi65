@@ -252,12 +252,6 @@ img.icon {
 		padding: 53px 10px 8px;
 		font-size: 14px;
 	}
-	.text textarea {
-		font-size: 9px;
-		/*
-		font-size: 14px;
-		*/
-	}
 	main img {
 		max-width: 100%;
 	}
@@ -277,6 +271,11 @@ img.icon {
 		color: red;
 		*/
     }
+	/*
+	.text textarea {
+		font-size: 11px;
+	}
+	*/
 	footer {
 		padding: 3px 6px;	/* 3px 8px */
 		height: 55px;	/* 67px */
