@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>埼玉県の市</title>
+	<link rel="stylesheet" href="moriuchi.css">
+</head>
+
+<style>
+.qa { display:flex; align-items: center;}
+.map_image { width:100%; }
+span { margin-right:7px; color:red; }
+</style>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+		<li><a href="index.html">Top</a></li>
+		<li>埼玉県の市</li>
+	</ul>
+<h1 class="title">埼玉県の市</h1>
+
+<div class="blocka">
+  <img class="map_image" src="img/smapq1.png">
+</div>
+<p>
+正しい市を選びなさい。<br>
+<div class="qa">①<span id="sel5"></span><span id="ans5"></span>日本で最も暑い市の一つ</div>
+<div class="qa">②<span id="sel6"></span><span id="ans6"></span>深谷ねぎの産地、渋沢栄一の生誕地</div>
+<div class="qa">③<span id="sel7"></span><span id="ans7"></span>埼玉県で一番大きい市、秩父山地に囲まれた秩父盆地に市街地がある</div>
+<div class="qa">④<span id="sel1"></span><span id="ans1"></span>江戸時代の城下町として栄え、古い町並みが観光地になっている</div>
+<div class="qa">⑤<span id="sel0"></span><span id="ans0"></span>埼玉県の県庁所在地、埼玉県で最も人口が多い市</div>
+<div class="qa">⑥<span id="sel9"></span><span id="ans9"></span>アニメ（クレヨンしんちゃん）で有名</div>
+<div class="qa">⑦<span id="sel2"></span><span id="ans2"></span>巨大がショッピングモール（レイクタウン）がある</div>
+<div class="qa">⑧<span id="sel4"></span><span id="ans4"></span>埼玉県で2番目に人口が多い市、鋳物（いもの）や植木が有名だった</div>
+<div class="qa">⑨<span id="sel3"></span><span id="ans3"></span>日本で初めて飛行場が作られた</div>
+<div class="qa">⑩<span id="sel8"></span><span id="ans8"></span>古墳（こふん）がある</div>
+</p>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script>
+const answer = [1,2,3,4,5,6,7,8,9,10];
+function select(id) {
+    const animals = [
+      { value: 1, name: 'さいたま市'},
+      { value: 2, name: '川越市'},
+      { value: 3, name: '越谷市'},
+      { value: 4, name: '所沢市'},
+      { value: 5, name: '川口市'},
+      { value: 6, name: '熊谷市'},
+      { value: 7, name: '深谷市'},
+      { value: 8, name: '秩父市'},
+      { value: 9, name: '行田市'},
+      { value: 10, name: '春日部市'},
+    ]
+    const jsSelectBox = document.getElementById('sel'+id);
+    const selectWrap = document.createElement('div');
+    selectWrap.classList.add('selectwrap');
+    const select = document.createElement('select');
+    select.classList.add('select');
+    const option1 = document.createElement('option');
+    option1.disabled = true;
+    option1.selected = true;
+    select.appendChild(option1);
+    animals.forEach((v) => {
+      const option = document.createElement('option');
+      option.value = v.value;
+      option.textContent = v.name;
+      select.appendChild(option);
+    });
+    selectWrap.appendChild(select);
+    jsSelectBox.appendChild(selectWrap);
+    select.addEventListener('change', (e) => {
+        const ans = document.getElementById('ans'+id);
+        if (e.target.value == answer[id]) ans.textContent ='〇'; // 選択値が答えと一致
+        else ans.textContent ='×';
+        });
+}
+for (i = 0; i < 10; i++) {
+    select(i); 
+}
+</script>
+
+</body>
+</html>
