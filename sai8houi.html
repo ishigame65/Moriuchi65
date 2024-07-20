@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>さいたま市から見た八方位</title>
+	<link rel="stylesheet" href="moriuchi.css">
+</head>
+
+<style>
+.qa { display:flex; align-items: }
+.map_image { width:100%; }
+span { margin-right:7px; color:red; }
+</style>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+		<li><a href="index.html">Top</a></li>
+		<li>さいたま市から見た八方位</li>
+	</ul>
+<h1 class="title">さいたま市から見た八方位</h1>
+
+<div class="blocka">
+  <img class="map_image" src="img/smapq0.png">
+</div>
+<p>
+さいたま市から見てどの方位にあるかを、八方位で答えなさい（選びなさい）。<br>
+<div class="indent">
+<div class="qa">川越市　<span id="sel1"></span><span id="ans1"></span>江戸時代の城下町として栄え、古い町並みが観光地になっている</div>
+<div class="qa">越谷市　<span id="sel0"></span><span id="ans0"></span>巨大なショッピングモール（レイクタウン）がある</div>
+<div class="qa">蕨（わらび）市　<span id="sel2"></span><span id="ans2"></span>日本で一番面積が小さく人口密度が一番高い市</div>
+<div class="qa">熊谷市　<span id="sel5"></span><span id="ans5"></span>日本で最も暑い市の一つ</div>
+<div class="qa">春日部市　<span id="sel4"></span><span id="ans4"></span>アニメ（クレヨンしんちゃん）で有名</div>
+</div>
+</p>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script>
+const answer = [1,2,3,4,5,6,7,8];
+function select(id) {
+    const items = [
+      { value: 1, name: '東'},
+      { value: 2, name: '西'},
+      { value: 3, name: '南'},
+      { value: 4, name: '北'},
+      { value: 5, name: '北東'},
+      { value: 6, name: '北西'},
+      { value: 7, name: '南東'},
+      { value: 8, name: '南西'},
+    ]
+    const jsSelectBox = document.getElementById('sel'+id);
+	if (jsSelectBox == null) return;
+    const selectWrap = document.createElement('div');
+    selectWrap.classList.add('selectwrap');
+    const select = document.createElement('select');
+    select.classList.add('select');
+    const option1 = document.createElement('option');
+    option1.disabled = true;
+    option1.selected = true;
+    select.appendChild(option1);
+    items.forEach((v) => {
+      const option = document.createElement('option');
+      option.value = v.value;
+      option.textContent = v.name;
+      select.appendChild(option);
+    });
+    selectWrap.appendChild(select);
+    jsSelectBox.appendChild(selectWrap);
+    select.addEventListener('change', (e) => {
+        const ans = document.getElementById('ans'+id);
+        if (e.target.value == answer[id]) ans.textContent ='〇'; // 選択値が答えと一致
+        else ans.textContent ='×';
+        });
+}
+for (i = 0; i < 9; i++) {
+    select(i); 
+}
+</script>
+
+</body>
+</html>

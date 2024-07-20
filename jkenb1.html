@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>都道府県の県庁所在地と有名なもの</title>
+	<link rel="stylesheet" href="moriuchi.css">
+</head>
+
+<style>
+.contents {
+	display: inline-block;
+	text-align: left;
+	/*
+	background-color: orange;
+	*/
+}
+.overlap {
+	text-align: center;
+    position: relative;
+	min-width: 610px;
+}
+.overlap img {
+	border-radius: 15px;
+	/*
+	min-width: 600px;
+	width: 584px;
+	margin-bottom: -20px;
+	*/
+	/*こうしないと大きな余白ができてしまう*/
+}
+#note {
+	text-align: left;
+	position:absolute; top: 15px; left: 20px; z-index:1;
+	/*
+	color: olive;
+	background-color: orange;
+	*/
+}
+#note ul {
+	/*
+	margin-left: 20px;
+	*/
+	font-size:12px;
+}
+#markers {
+	font-size:20px;
+	font-weight: bold;
+    color: deepskyblue;
+	visibility: hidden;
+}
+#hokkaido { position:absolute; top: 74px; right:0; bottom:0; left:250px; margin:auto; z-index:1; }
+#aomori { position:absolute; top: 138px; right:0; bottom:0; left: 222px; margin:auto; z-index:1; }
+#iwate { position:absolute; top: 172px; right:0; bottom:0; left: 244px; margin:auto; z-index:1; }
+#miyagi { position:absolute; top: 210px; right:0; bottom:0; left: 230px; margin:auto; z-index:1; }
+#akita { position:absolute; top: 172px; right:0; bottom:0; left: 194px; margin:auto; z-index:1; }
+#yamagata { position:absolute; top: 212px; right:0; bottom:0; left: 204px; margin:auto; z-index:1; }
+#fukushima { position:absolute; top: 226px; right:0; bottom:0; left: 214px; margin:auto; z-index:1; }
+#ibaraki { position:absolute; top: 264px; right:0; bottom:0; left: 214px; margin:auto; z-index:1; }
+#tochigi { position:absolute; top: 258px; right:0; bottom:0; left: 184px; margin:auto; z-index:1; }
+#gunma { position:absolute; top: 265px; right:0; bottom:0; left: 148px; margin:auto; z-index:1; }
+#saitama { position:absolute; top: 276px; right:0; bottom:0; left: 172px; margin:auto; z-index:1; }
+#chiba { position:absolute; top: 282px; right:0; bottom:0; left: 194px; margin:auto; z-index:1; }
+#tokyo { position:absolute; top: 282px; right:0; bottom:0; left: 180px; margin:auto; z-index:1; }
+#kanagawa { position:absolute; top: 290px; right:0; bottom:0; left: 175px; margin:auto; z-index:1; }
+#niigata { position:absolute; top: 223px; right:0; bottom:0; left: 149px; margin:auto; z-index:1; }
+#toyama { position:absolute; top: 254px; right:0; bottom:0; left: 70px; margin:auto; z-index:1; }
+#ishikawa { position:absolute; top: 258px; right:0; bottom:0; left: 45px; margin:auto; z-index:1; }
+#fukui { position:absolute; top: 273px; right:0; bottom:0; left: 23px; margin:auto; z-index:1; }
+#yamanashi { position:absolute; top: 283px; right:0; bottom:0; left: 128px; margin:auto; z-index:1; }
+#nagano { position:absolute; top: 258px; right:0; bottom:0; left: 114px; margin:auto; z-index:1; }
+#gifu { position:absolute; top: 289px; right:0; bottom:0; left: 50px; margin:auto; z-index:1; }
+#shizuoka { position:absolute; top: 300px; right:0; bottom:0; left: 116px; margin:auto; z-index:1; }
+#aichi { position:absolute; top: 299px; right:0; bottom:0; left: 56px; margin:auto; z-index:1; }
+#mie { position:absolute; top: 309px; right:0; bottom:0; left: 39px; margin:auto; z-index:1; }
+#shiga { position:absolute; top: 300px; right:0; bottom:0; left: 16px; margin:auto; z-index:1; }
+#kyoto { position:absolute; top: 299px; right:0; bottom:0; left: 6px; margin:auto; z-index:1; }
+#osaka { position:absolute; top: 309px; right:0; bottom:0; left: -6px; margin:auto; z-index:1; }
+#hyogo { position:absolute; top: 307px; right:0; bottom:0; left: -26px; margin:auto; z-index:1; }
+#nara { position:absolute; top: 312px; right:0; bottom:0; left:7px; margin:auto; z-index:1; }
+#wakayama { position:absolute; top: 325px; right:0; bottom:0; left: -19px; margin:auto; z-index:1; }
+#tottori { position:absolute; top: 288px; right:0; bottom:0; left: -66px; margin:auto; z-index:1; }
+#shimane { position:absolute; top: 288px; right:0; bottom:0; left: -114px; margin:auto; z-index:1; }
+#okayama { position:absolute; top: 310px; right:0; bottom:0; left: -77px; margin:auto; z-index:1; }
+#hiroshima { position:absolute; top: 316px; right:0; bottom:0; left: -140px; margin:auto; z-index:1; }
+#yamaguchi { position:absolute; top: 322px; right:0; bottom:0; left: -180px; margin:auto; z-index:1; }
+#tokushima { position:absolute; top: 327px; right:0; bottom:0; left: -49px; margin:auto; z-index:1; }
+#kagawa { position:absolute; top: 320px; right:0; bottom:0; left: -72px; margin:auto; z-index:1; }
+#ehime { position:absolute; top: 332px; right:0; bottom:0; left: -124px; margin:auto; z-index:1; }
+#kochi { position:absolute; top: 341px; right:0; bottom:0; left: -97px; margin:auto; z-index:1; }
+#fukuoka { position:absolute; top: 337px; right:0; bottom:0; left: -230px; margin:auto; z-index:1; }
+#saga { position:absolute; top: 348px; right:0; bottom:0; left: -238px; margin:auto; z-index:1; }
+#nagasaki { position:absolute; top: 358px; right:0; bottom:0; left: -250px; margin:auto; z-index:1; }
+#kumamoto { position:absolute; top: 358px; right:0; bottom:0; left: -220px; margin:auto; z-index:1; }
+#oita { position:absolute; top: 346px; right:0; bottom:0; left: -182px; margin:auto; z-index:1; }
+#miyazaki { position:absolute; top: 379px; right:0; bottom:0; left: -186px; margin:auto; z-index:1; }
+#kagoshima { position:absolute; top: 389px; right:0; bottom:0; left: -224px; margin:auto; z-index:1; }
+#okinawa { position:absolute; top: 521px; right:0; bottom:0; left: -347px; margin:auto; z-index:1; }
+
+</style>
+
+<body>
+
+<main>
+<h1 class="title">都道府県の県庁所在地と有名なもの</h1>
+
+<div class="contents">
+  <div class="overlap">
+	<img src="img/jpa6.png">
+		<div id="markers">			
+		    <div id="hokkaido">★</div>
+		    <div id="aomori">★</div>
+		    <div id="iwate">★</div>
+		    <div id="miyagi">★</div>
+		    <div id="akita">★</div>
+		    <div id="yamagata">★</div>
+		    <div id="fukushima">★</div>
+		    <div id="ibaraki">★</div>
+		    <div id="tochigi">★</div>
+		    <div id="gunma">★</div>
+		    <div id="saitama">★</div>
+		    <div id="chiba">★</div>
+		    <div id="tokyo">★</div>
+		    <div id="kanagawa">★</div>
+		    <div id="niigata">★</div>
+		    <div id="toyama">★</div>
+		    <div id="ishikawa">★</div>
+		    <div id="fukui">★</div>
+		    <div id="yamanashi">★</div>
+		    <div id="nagano">★</div>
+		    <div id="gifu">★</div>
+		    <div id="shizuoka">★</div>
+		    <div id="aichi">★</div>
+		    <div id="mie">★</div>
+		    <div id="shiga">★</div>
+		    <div id="kyoto">★</div>
+		    <div id="osaka">★</div>
+		    <div id="hyogo">★</div>
+		    <div id="nara">★</div>
+		    <div id="wakayama">★</div>
+		    <div id="tottori">★</div>
+		    <div id="shimane">★</div>
+		    <div id="okayama">★</div>
+		    <div id="hiroshima">★</div>
+		    <div id="yamaguchi">★</div>
+		    <div id="tokushima">★</div>
+		    <div id="kagawa">★</div>
+		    <div id="ehime">★</div>
+		    <div id="kochi">★</div>
+		    <div id="fukuoka">★</div>
+		    <div id="saga">★</div>
+		    <div id="nagasaki">★</div>
+		    <div id="kumamoto">★</div>
+		    <div id="oita">★</div>
+		    <div id="miyazaki">★</div>
+		    <div id="kagoshima">★</div>
+		    <div id="okinawa">★</div>
+		</div>
+		<div id="note"></div>
+  </div>
+  <div class="text">
+	<a href="javascript:map_display('hokkaido')">北海道</a>
+	<a href="javascript:map_display('aomori')">青森県</a>
+	<a href="javascript:map_display('iwate')">岩手県</a>
+	<a href="javascript:map_display('miyagi')">宮城県</a>
+	<a href="javascript:map_display('akita')">秋田県</a>
+	<a href="javascript:map_display('yamagata')">山形県</a>
+	<a href="javascript:map_display('fukushima')">福島県</a>
+	<a href="javascript:map_display('ibaraki')">茨城県</a>
+	<a href="javascript:map_display('tochigi')">栃木県</a>
+	<a href="javascript:map_display('gunma')">群馬県</a>
+	<a href="javascript:map_display('saitama')">埼玉県</a>
+	<a href="javascript:map_display('chiba')">千葉県</a>
+	<a href="javascript:map_display('tokyo')">東京都</a>
+	<a href="javascript:map_display('kanagawa')">神奈川県</a>
+	<a href="javascript:map_display('niigata')">新潟県</a>
+	<a href="javascript:map_display('toyama')">富山県</a>
+	<a href="javascript:map_display('ishikawa')">石川県</a>
+	<a href="javascript:map_display('fukui')">福井県</a>
+	<a href="javascript:map_display('yamanashi')">山梨県</a>
+	<a href="javascript:map_display('nagano')">長野県</a>
+	<a href="javascript:map_display('gifu')">岐阜県</a>
+	<a href="javascript:map_display('shizuoka')">静岡県</a>
+	<a href="javascript:map_display('aichi')">愛知県</a>
+	<a href="javascript:map_display('mie')">三重県</a>
+	<a href="javascript:map_display('shiga')">滋賀県</a>
+	<a href="javascript:map_display('kyoto')">京都府</a>
+	<a href="javascript:map_display('osaka')">大阪府</a>
+	<a href="javascript:map_display('hyogo')">兵庫県</a>
+	<a href="javascript:map_display('nara')">奈良県</a>
+	<a href="javascript:map_display('wakayama')">和歌山県</a>
+	<a href="javascript:map_display('tottori')">鳥取県</a>
+	<a href="javascript:map_display('shimane')">島根県</a>
+	<a href="javascript:map_display('okayama')">岡山県</a>
+	<a href="javascript:map_display('hiroshima')">広島県</a>
+	<a href="javascript:map_display('yamaguchi')">山口県</a>
+	<a href="javascript:map_display('tokushima')">徳島県</a>
+	<a href="javascript:map_display('kagawa')">香川県</a>
+	<a href="javascript:map_display('ehime')">愛媛県</a>
+	<a href="javascript:map_display('kochi')">高知県</a>
+	<a href="javascript:map_display('fukuoka')">福岡県</a>
+	<a href="javascript:map_display('saga')">佐賀県</a>
+	<a href="javascript:map_display('nagasaki')">長崎県</a>
+	<a href="javascript:map_display('kumamoto')">熊本県</a>
+	<a href="javascript:map_display('oita')">大分県</a>
+	<a href="javascript:map_display('miyazaki')">宮崎県</a>
+	<a href="javascript:map_display('kagoshima')">鹿児島県</a>
+	<a href="javascript:map_display('okinawa')">沖縄県</a>	
+  </div>
+</div>
+
+</main>
+※ 地図画像は<a href="http://www.craftmap.box-i.net/">CraftMAP</a>を利用
+
+<footer>
+</footer>
+<!--
+https://startoo.co/workbook/81175/#google_vignette
+https://kunitori-jp.net/impression-all/#google_vignette
+-->
+<script>
+var notes = {
+	hokkaido:'北海道<ul><li>札幌市</li><li>牛乳、じゃがいも、カニ</li><li>タンチョウヅル、さっぽろ雪まつり</li></ul>',
+	aomori:'青森県<ul><li>青森市</li><li>りんご、ゴボウ、にんにく</li><li>ねぶた祭り、津軽海峡</li></ul>',
+	iwate:'岩手県<ul><li>盛岡市</li><li>ワカメ(養殖)、あわびの漁獲量</li><li>わんこそば、南部鉄器、宮沢賢治、中尊寺金色堂</li></ul>',
+	miyagi:'宮城県<ul><li>仙台市</li><li>パプリカ、フカヒレの生産量</li><li>牛タン、伊達政宗、松島</li></ul>',
+	akita:'秋田県<ul><li>秋田市</li><li>日本一深い湖（田沢湖）</li><li>米、なまはげ、きりたんぽ</li></ul>',
+	yamagata:'山形県<ul><li>山形市</li><li>さくらんぼ、洋梨、わらびの生産量</li></ul>',
+	fukushima:'福島県<ul><li>福島市</li><li>桐材の生産量、桃</li><li>赤べこ、喜多方ラーメン、白虎隊</li></ul>',
+	ibaraki:'茨城県<ul><li>水戸市</li><li>メロンの生産量日本一、さばの漁獲量</li><li>納豆、水戸黄門</li></ul>',
+	tochigi:'栃木県<ul><li>宇都宮市</li><li>いちご、かんぴょう、ウドの生産量</li><li>宇都宮餃子、日光東照宮</li></ul>',
+	gunma:'群馬県<ul><li>前橋市</li><li>キャベツ、コンニャクイモの生産量、ねぎ</li><li>草津温泉</li></ul>',
+	saitama:'埼玉県<ul><li>さいたま市</li><li>小松菜の生産量</li></ul>',
+	chiba:'千葉県<ul><li>千葉市</li><li>大根、ほうれん草の生産量</li><li>落花生（ピーナッツ）</li></ul>',
+	tokyo:'東京都<ul><li>新宿区</li><li>人口日本一</li><li>浅草、東京タワー</li></ul>',
+	kanagawa:'神奈川県<ul><li>横浜市</li><li>果実酒の生産量、かまぼこ</li><li>横浜中華街</li></ul>',
+	niigata:'新潟県<ul><li>新潟市</li><li>米、かまぼこの生産量、日本酒</li><li>ささだんご、雪国</li></ul>',
+	toyama:'富山県<ul><li>富山市</li><li>白えび、ホタルイカ</li><li>高さ日本一のダム(黒部ダム)、富山の薬売り</li></ul>',
+	ishikawa:'石川県<ul><li>金沢市</li><li>フグの漁獲量</li><li>輪島塗、金箔、兼六園</li></ul>',
+	fukui:'福井県<ul><li>福井市</li><li>さわらの漁獲量、越前ガニ</li><li>めがね、恐竜、東尋坊、若狭湾</li></ul>',
+	yamanashi:'山梨県<ul><li>甲府市</li><li>桃、ブドウの生産量</li><li>富士山、ほうとう、武田信玄</li></ul>',
+	nagano:'長野県<ul><li>長野市</li><li>レタスの生産量、りんご、そば</li><li>スキー場、軽井沢、松本城</li></ul>',
+	gifu:'岐阜県<ul><li>岐阜市</li><li>包丁の生産量</li><li>合掌造りの家（白川郷）、飛騨牛、鵜飼（うかい）</li></ul>',
+	shizuoka:'静岡県<ul><li>静岡市</li><li>まぐろ、かつおの漁獲量、お茶の生産量</li><li>富士山、伊豆</li></ul>',
+	aichi:'愛知県<ul><li>名古屋市</li><li>あさりの漁獲量</li><li>瀬戸焼、自動車、名古屋城、味噌カツ、味噌煮込みうどん</li></ul>',
+	mie:'三重県<ul><li>津市</li><li>伊勢海老の漁獲量</li><li>伊勢神宮、松坂牛</li></ul>',
+	shiga:'滋賀県<ul><li>大津市</li><li>日本一大きい湖(琵琶湖)</li><li>信楽焼</li></ul>',
+	kyoto:'京都府<ul><li>京都市</li><li>国指定重要文化財の建造物の数（神社仏閣）</li></ul>',
+	osaka:'大阪府<ul><li>大阪市</li><li>ブランデーの生産量</li><li>お好み焼き、たこ焼き、お笑い、通天閣</li></ul>',
+	hyogo:'兵庫県<ul><li>神戸市</li><li>日本酒、ホタルイカの生産量、たこ</li><li>神戸の港町、姫路城、淡路島</li></ul>',
+	nara:'奈良県<ul><li>奈良市</li><li>世界遺産の数</li><li>東大寺の大仏、法隆寺、吉野の桜</li></ul>',
+	wakayama:'和歌山県<ul><li>和歌山市</li><li>みかん、柿、梅の生産量</li><li>高野山、梅干し</li></ul>',
+	tottori:'鳥取県<ul><li>鳥取市</li><li>20世紀梨の生産量、カニ</li><li>鳥取砂丘</li></ul>',
+	shimane:'島根県<ul><li>松江市</li><li>ぶり、しじみの漁獲量</li><li>出雲大社、宍道湖</li></ul>',
+	okayama:'岡山県<ul><li>岡山市</li><li>学生服、デニムの生産量</li><li>桃太郎、桃、マスカット</li></ul>',
+	hiroshima:'広島県<ul><li>広島市</li><li>牡蠣(養殖)、レモンの生産量</li><li>お好み焼き、原爆ドーム、宮島</li></ul>',
+	yamaguchi:'山口県<ul><li>山口市</li><li>日本一広いカルスト台地(秋吉台)</li><li>ふぐ、関門海峡、長州藩</li></ul>',
+	tokushima:'徳島県<ul><li>徳島市</li><li>生しいたけ、すだちの生産量</li><li>阿波踊り、鳴門の渦潮</li></ul>',
+	kagawa:'香川県<ul><li>高松市</li><li>うどん、オリーブ、手袋の生産量</li><li>小豆島、日本一面積が小さい県</li></ul>',
+	ehime:'愛媛県<ul><li>松山市</li><li>タオル、キウイフルーツの生産量</li><li>みかん、道後温泉、坊っちゃん（夏目漱石）</li></ul>',
+	kochi:'高知県<ul><li>高知市</li><li>ニラ、なす、生姜の生産量</li><li>かつお、四万十川、坂本龍馬、よさこい祭り</li></ul>',
+	fukuoka:'福岡県<ul><li>福岡市</li><li>たけのこ、明太子の生産量</li><li>とんこつラーメン、もつ鍋、屋台</li></ul>',
+	saga:'佐賀県<ul><li>佐賀市</li><li>海苔の生産量</li><li>イカ、有田焼、伊万里焼、吉野ヶ里遺跡</li></ul>',
+	nagasaki:'長崎県<ul><li>長崎市</li><li>あじの漁獲量</li><li>びわ、カステラ、長崎ちゃんぽん</li></ul>',
+	kumamoto:'熊本県<ul><li>熊本市</li><li>スイカ、トマト、畳の生産量</li><li>熊本城、阿蘇山、馬刺し</li></ul>',
+	oita:'大分県<ul><li>大分市</li><li>温泉の源泉数日本一、かぼす、銀杏の生産量</li><li>別府温泉</li></ul>',
+	miyazaki:'宮崎県<ul><li>宮崎市</li><li>きゅうり、きんかんの生産量、ブロイラー(鶏)の飼育数</li><li>地鶏、マンゴー、高千穂峡</li></ul>',
+	kagoshima:'鹿児島県<ul><li>鹿児島市</li><li>さつまいも、さやえんどうの生産量、豚の飼育数</li><li>桜島、西郷隆盛、屋久島</li></ul>',
+	okinawa:'沖縄県<ul><li>那覇市</li><li>パイナップル、ゴーヤ、さとうきびの生産量</li><li>シーサー</li></ul>' };
+function map_clear(){
+	markers = document.getElementById('markers');
+	tags = markers.children;
+	for (let i = 0; i < tags.length; i++) {
+		tags[i].style.visibility='hidden';
+	}
+	document.getElementById("note").innerHTML="";
+	return false;
+}
+function map_display(target){
+	map_clear();
+	tag = document.getElementById(target);
+	tag.style.visibility='visible';
+	document.getElementById("note").innerHTML=notes[target];
+	return false;
+}
+</script>
+
+</body>
+</html>
