@@ -152,7 +152,7 @@ dl dd li:before {
 .sidenote {
 	display: inline-block;
 	font-size: smaller;
-	color: tomato;
+	/* color: tomato; */
 	margin-left: 20px;
 }
 .plist {
