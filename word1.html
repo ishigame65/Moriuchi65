@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>言葉1</title>
+	<link rel="stylesheet" href="moriuchi.css">
+</head>
+
+<style>
+.qa { display:flex; align-items: }
+span { margin-right:7px; color:red; }
+</style>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+		<li><a href="index.html">Top</a></li>
+		<li>言葉1</li>
+	</ul>
+<h1 class="title">言葉1</h1>
+
+<p>
+合う言葉を選びなさい。<br>
+<ul>
+<li><div class="qa">弟が　<span id="sel2"></span>とわらう。<span id="ans2"></span></div>
+<li><div class="qa">さくらの花が　<span id="sel4"></span>さき始める。<span id="ans4"></span></div>
+<li><div class="qa"><span id="sel0"></span>と急いで歩く。<span id="ans0"></span></div>
+<li><div class="qa">つなを力強く　<span id="sel5"></span>引っぱる。<span id="ans5"></span></div>
+<li><div class="qa">空の星が　<span id="sel1"></span>見える。<span id="ans1"></span></div>
+<li><div class="qa">雨雲が　<span id="sel3"></span>空に広がる。<span id="ans3"></span></div>
+</ul>
+</p>
+<br>
+<p>
+つづく言葉を選びなさい。<br>
+<ul>
+<li><div class="qa">花の美しさに心が　<span id="sem8"></span>。<span id="ant8"></span></div>
+<li><div class="qa">すなぼこりが　<span id="sem1"></span>。<span id="ant1"></span></div>
+<li><div class="qa">たくみな話し方で人を　<span id="sem0"></span>。<span id="ant0"></span></div>
+<li><div class="qa">シャツのそでを　<span id="sem6"></span>。<span id="ant6"></span></div>
+<li><div class="qa">両手に大きな荷物を　<span id="sem3"></span>。<span id="ant3"></span></div>
+<li><div class="qa">思わずわらいが　<span id="sem7"></span>。<span id="ant7"></span></div>
+<li><div class="qa">何度も話し合いを　<span id="sem2"></span>。<span id="ant2"></span></div>
+<li><div class="qa">科学者が深海のなぞを　<span id="sem9"></span>。<span id="ant9"></span></div>
+</ul>
+</p>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script>
+const answer1 = [1,2,3,4,5,6];
+function select1(id) {
+    const items = [
+      { value: 1, name: 'せかせか'},
+      { value: 2, name: 'かすかに'},
+      { value: 3, name: 'にこにこ'},
+      { value: 4, name: 'みるみる'},
+      { value: 5, name: 'いっせいに'},
+      { value: 6, name: 'ぐいぐい'},
+    ]
+    const jsSelectBox = document.getElementById('sel'+id);
+	if (jsSelectBox == null) return;
+    const selectWrap = document.createElement('div');
+    selectWrap.classList.add('selectwrap');
+    const select = document.createElement('select');
+    select.classList.add('select');
+    const option1 = document.createElement('option');
+    option1.disabled = true;
+    option1.selected = true;
+    select.appendChild(option1);
+    items.forEach((v) => {
+      const option = document.createElement('option');
+      option.value = v.value;
+      option.textContent = v.name;
+      select.appendChild(option);
+    });
+    selectWrap.appendChild(select);
+    jsSelectBox.appendChild(selectWrap);
+    select.addEventListener('change', (e) => {
+        const ans = document.getElementById('ans'+id);
+        if (e.target.value == answer1[id]) ans.textContent ='〇'; // 選択値が答えと一致
+        else ans.textContent ='×';
+        });
+}
+for (i = 0; i < 7; i++) {
+    select1(i); 
+}
+const answer2 = [1,2,3,4,5,6,7,8,9,10];
+function select2(id) {
+    const items = [
+      { value: 1, name: 'ひきつける'},
+      { value: 2, name: 'まい上がる'},
+      { value: 3, name: '重ねる'},
+      { value: 4, name: 'かかえる'},
+      { value: 5, name: 'やってくる'},
+      { value: 6, name: '乗り出す'},
+      { value: 7, name: 'たくし上げる'},
+      { value: 8, name: 'こみあげる'},
+      { value: 9, name: 'ひかれる'},
+      { value: 10, name: 'さぐる'},
+    ]
+    const jsSelectBox = document.getElementById('sem'+id);
+	if (jsSelectBox == null) return;
+    const selectWrap = document.createElement('div');
+    selectWrap.classList.add('selectwrap');
+    const select = document.createElement('select');
+    select.classList.add('select');
+    const option1 = document.createElement('option');
+    option1.disabled = true;
+    option1.selected = true;
+    select.appendChild(option1);
+    items.forEach((v) => {
+      const option = document.createElement('option');
+      option.value = v.value;
+      option.textContent = v.name;
+      select.appendChild(option);
+    });
+    selectWrap.appendChild(select);
+    jsSelectBox.appendChild(selectWrap);
+    select.addEventListener('change', (e) => {
+        const ans = document.getElementById('ant'+id);
+        if (e.target.value == answer2[id]) ans.textContent ='〇'; // 選択値が答えと一致
+        else ans.textContent ='×';
+        });
+}
+for (i = 0; i < 11; i++) {
+    select2(i); 
+}
+</script>
+
+</body>
+</html>
