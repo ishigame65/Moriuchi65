@@ -201,6 +201,17 @@ main td, th {
 b {
 	color: Tomato;
 }
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 10px;
+  /*
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; 
+  */
+}
 .breadcrumb {
 	margin-left: 8px;
 	margin-top: 0px;
