@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>3Dプリンタ Creality Ender-3 V3 SE で印刷</title>
+	<link rel="stylesheet" href="3d.css">
+</head>
+
+<style>
+</style>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+		<li><a href="../index.html">Top</a></li>
+		<li><a href="index.html">3D</a></li>
+		<li>3Dプリンタ Creality Ender-3 V3 SE で印刷</li>
+	</ul>
+<h1 class="title">3Dプリンタ Creality Ender-3 V3 SE で印刷</h1>
+
+<h2>印刷準備（印刷用Gコードファイル生成）（PC）</h2>
+<ul>
+<li>3DCAD等で3DモデルをデザインしてSTLファイルを生成
+  <ul>
+  <li>OpenSCADやSolidPythonを利用して3DモデルをデザインしてSCADファイルを生成
+  <li>OpenSCADでSCADファイルからSTLファイルを出力
+  </ul>
+<li>Creality Print (ver 5.1)を起動して、Gコードファイル生成
+  <ul>
+  <li>スタートメニューから<code>Creality Print</code>を起動<br>
+    <img src="img/crealitypp1.png">
+  <li>[ファイル]-[インポート]-[モデルファイル]からSTLファイルを開く<br>
+    <img src="img/crealitypp2.png">
+  <!--
+  <li>横200㎜幅の形状を印刷する場合にはX方向に+5㎜移動（X:115.00）<br>
+    <img src="img/prn_g21.png">
+  -->
+  <li>[スライスプレート]<br>
+    <img src="img/crealitypp3.png">
+    <ul>
+    <li>メッセージ<code>The model has not been supported and may fail to print. Do you want to continue adding supports before slicing ?</code>が表示されたら
+      <code>Add Support</code>指定して<code>Slice</code>（メッセージは旧バージョン）
+    <li>G-codeのプレビューが表示される<br><img src="img/crealitypp4.png">
+    </ul>
+  <li>スライスプレート下がLAN印刷なら、LAN印刷の右の[Λ]で表示されるメニューから[ローカルにエクスポート]を指定<br>
+    <img src="img/crealitypp5.png">
+    <img src="img/crealitypp6.png">
+  <li>[ローカルにエクスポート]からファイル名を指定してGコードファイルを[保存]<br>
+    <img src="img/crealitypp7.png">
+  </ul>
+<li>GコードファイルをSDカードに入れる
+  <ul>
+  <li>Gコードは3Dプリンタ制御コード（NC標準制御コード）
+  </ul>
+</ul>
+
+<h2>印刷（3Dプリンタ）</h2>
+<ul>
+<li>SDカード挿す（上下逆なので要注意）
+  <ul>
+  <li>付属SDカードにサンプルGコードファイルが入っている
+  </ul>
+<li>プリンタ電源ON（本体左側に電源スイッチがある）
+  <ul>
+  <li>ホームページ画面が表示されたらOK
+  </ul>
+<li>レベリング
+  <ul>
+  <li>ボタン（回転式押しボタンスイッチ）を回して<code>レベリング</code>に移動してボタンを押す<br>
+    <img src="img/prn_g9.jpg">
+    <img src="img/prn_g10.jpg">
+    <img src="img/prn_g11.jpg">
+  <li><code>完了</code>したら<code>はい</code>
+  <li>（経験則）毎回レベリングを実施した方が良さそう
+  </ul>
+<li><code>準備 / PLA予熱</code>
+  <ul>
+  <li>200度に上昇するまで待つ<br>
+    <img src="img/prn_g12.jpg">
+    <img src="img/prn_g13.jpg">
+  <li>ヘッドのフィラメント固定レバーを下方に押しながらフィラメントをノズル奥へ押し込み、ノズルからフィラメントが少し解け出たことを確認
+  <li><code>戻る</code>
+  </ul>
+<li><code>印刷 / モデル選択</code>
+  <ul>
+  <li>モデルファイルが表示されない場合は、SDカードを挿し直してからやり直す<br>
+    <img src="img/prn_g14.jpg">
+  <li>キャリブレーションが<code>OFF</code>のまま<code>はい</code>（<code>OFF</code>から<code>はい</code>に移動してから押す）で印刷開始
+    <ul>
+    <li>印刷しないまま<code>完了</code>になった場合は、<code>印刷 / モデル選択</code>からやり直す
+    </ul>
+    <img src="img/prn_g15.jpg">
+    <img src="img/prn_g16.jpg">
+    <img src="img/prn_g17.jpg">  
+  <li>開始直後の印刷状況を確認し、印刷不良の場合はZ軸補正値を修正してから印刷し直す（印刷状況を確認せずにZ軸補正値を修正するのは良くない）
+    <ul>
+    <li><code>印刷中止</code>または<code>一時停止</code>
+    <li><code>設定 / Z軸補正</code>、値を-方向（下方）に調整
+    <li>再び<code>印刷</code>または<code>再開</code>
+    </ul>
+  </ul>
+<li>印刷し終わったら生成物とシートを外して（このタイミングで必ず生成物を取り外す）<code>はい</code>
+<li><code>準備 / 解きほぐす</code>でゼロに戻る<br>
+  <img src="img/prn_g18.jpg">
+  <img src="img/prn_g19.jpg">
+  <img src="img/prn_g20.jpg">
+  <ul>
+  <li>アンローディングが終わったら、フィラメントを抜いて<code>はい</code>
+  <li><code>戻る</code>
+  </ul>
+<li>プリンタ電源OFF
+</ul>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="../img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script>
+</script>
+
+</body>
+</html>

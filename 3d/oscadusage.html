@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>OpenSCADの使い方</title>
+	<link rel="stylesheet" href="3d.css">
+</head>
+
+<style>
+</style>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+		<li><a href="../index.html">Top</a></li>
+		<li><a href="index.html">3D</a></li>
+		<li>OpenSCADの使い方</li>
+	</ul>
+<h1 class="title">OpenSCADの使い方</h1>
+
+<h2 class="title">オブジェクト操作</h2>
+<ul>
+<li>3Dオブジェクト生成
+  <ul>
+  <li>
+  <li>直方体
+    <pre>
+    cube([8,15,20]);
+    </pre>
+  <li>球体
+    <pre>
+    sphere(10);
+    </pre>
+  <li>柱や錐 cylinder
+    <pre>
+    cylinder(h=20, r=8); // 円柱
+    cylinder(h=20, r1=8, r2=8); // 円柱
+    cylinder(h=20, r1=10, r2=0); // 円錐
+    cylinder(h=20, r1=8, r2=8, $fn=5); // 多角柱
+    cylinder(h=20, r1=10, r2=0, $fn=5); // 多角錐
+    </pre>
+  <li>頂点列と面 polyhedron
+    <pre>
+    CubePoints=[[,,],[,,],[,,],[,,],[,,],[,,],[,,],[,,]]
+    CubeFaces=[[,,,],[,,,],[,,,],[,,,],[,,,],[,,,]]	// 時計回り頂点番号
+    polyhedron( CubePoints, CubeFaces );
+    </pre>
+  </ul>
+<li>移動 translate
+  <pre>
+  translate([20,0,0]) オブジェクト
+  </pre>
+<li>色指定 color
+  <pre>
+  color([0.5,0,0]) オブジェクト
+  color("cyan") オブジェクト
+  module my_red() color([200/255,120/255,120/255]) children();
+  % オブジェクト // 半透明グレー
+  </pre>
+<li>合成（演算）
+  <ul>
+  <li>OR（結合） union
+    <pre>
+    union(){オブジェクト;オブジェクト;}
+    </pre>
+  <li>差分（減算） difference
+    <pre>
+    difference(){オブジェクト;オブジェクト;}
+    </pre>
+  <li>AND（交差） intersection
+    <pre>
+    intersection(){オブジェクト;オブジェクト;}
+    </pre>
+  </ul>
+<li>回転 rotate
+  <pre>
+  rotate(a=[0,20,0]) オブジェクト
+  </pre>
+<li>拡大縮小 scale
+  <pre>
+  scale(v=[1,1,0.5]) オブジェクト
+  </pre>
+<li>サイズ変更 resize
+  <pre>
+  resize(newsize=[1,1,0.5]) オブジェクト
+  resize([2,2.0]) オブジェクト	// 0は元のまま
+  </pre>
+<li>鏡像 mirror
+  <pre>
+  mirror(v=[x,y,z]) オブジェクト
+  </pre>
+<li>アフィン変換 multmatrix
+  <pre>
+  multmatrix(m=[[,,,],[,,,],[,,,],[,,,]]) オブジェクト
+  </pre>
+<li>ミンコフスキ和 minkowski
+  <pre>
+  minkowski() オブジェクト
+  </pre>
+<li>凸包 hull
+  <pre>
+  hull() オブジェクト
+  </pre>
+<li>2Dオブジェクト生成
+  <ul>
+  <li>正方形 square
+    <pre>
+    square(20)
+    square([x,y])
+    </pre>
+  <li>ポリゴン polygon
+    <pre>
+    polygon(points=[[,],[,],[,],[,],[,],[,]]);
+    </pre>
+	<ul>
+    <li>points
+	</ul>
+  <li>テキスト text
+    <pre>
+    text("テキスト", 20)
+    </pre>
+	<ul>
+    <li>size
+    <li>font
+      <pre>
+      font = str("Liberation Sans", ":style=Bold")
+      </pre>
+      <ul>
+      <li>MS PGothic, MS Gothic, HGPGothicM
+      </ul>
+    <li>spacing
+    <li>halign
+    <li>valign
+    <li>$fn
+	</ul>
+  </ul>
+<li>2Dオブジェクト操作
+  <ul>
+  <li>内部または外部に図形生成 offset
+    <pre>
+    offset(r=10) 2Dオブジェクト		// 外側（角円）
+    offset(delta=10) 2Dオブジェクト	// 外側
+    offset(r=-10) 2Dオブジェクト	// 内側（角円）
+    offset(delta=-10) 2Dオブジェクト	// 内側
+    </pre>
+	<ul>
+    <li>r
+    <li>delta
+	</ul>
+  <li>塗りつぶし fill（開発スナップショット版が必要）
+    <pre>
+    fill() 2Dオブジェクト
+    </pre>
+  </ul>
+<li>押し出し（2Dから3D）
+  <ul>
+  <li>線形 linear_extrude
+    <pre>
+    linear_extrude(height=60, twist=90, slices=60) 2Dオブジェクト
+    linear_extrude(10) 2Dオブジェクト
+    linear_extrude(height=60, scale=3) 2Dオブジェクト	// 錐的に広がる
+    </pre>
+	<ul>
+    <li>height
+    <li>scale
+    <li>twist
+    <li>slices
+    <li>center
+	</ul>
+  <li>回転 rotate_extrude（断面形状からドーナッツオブジェクト生成）
+    <pre>
+    rotate_extrude(convexity=10) 2Dオブジェクト
+    rotate_extrude(angle=270, convexity=10) 2Dオブジェクト
+    </pre>
+	<ul>
+    <li>angle
+    <li>convexity
+    <li>$fn
+	</ul>
+  </ul>
+<li>投影（3Dから2D） projection
+  <pre>
+  %import("projection.stl");
+  projection(cut=true)
+  </pre>
+  <ul>
+  <li>cut
+  </ul>
+<li>サーフェス surface
+  <ul>
+  <li>テキストファイルからサーフェス生成
+    <pre>
+    surface(file="surface.dat", center=true, convexity=5);
+    %translate([0,0,5]) cube([10,10,10], center=true);
+    </pre>
+  <li>画像からサーフェス生成（PNG画像のグレー値を高さに変換）
+    <pre>
+    surface(file = "file.png", center = true, invert = false);
+    </pre>
+  </ul>
+</ul>
+
+<h2 class="title">コーディング</h2>
+<ul>
+<li>モジュール module
+  <pre>
+  module 名前() { ... }
+  </pre>
+  <ul>
+  <li>任意モジュール指定
+    <pre>
+    children()
+    </pre>
+  <li>任意モジュールインデックス指定
+    <pre>
+    for (i = [0:$children-1]) children(i);
+    </pre>
+  </ul>
+<li>コメント
+  <pre>
+  // コメント
+  /* コメント */
+  </pre>
+<li>繰り返し for
+  <pre>
+  for (i = [-10:10])
+  for (i = [-10:3:10])
+  for (c = "String") c
+  </pre>
+<li>ローカル変数代入 let
+  <pre>
+  let(x=値)
+  </pre>
+<li>特殊変数
+  <ul>
+  <li>$fa		フラグメントの最小角度（デフォルト12）
+  <li>$fs		フラグメントの最小サイズ（デフォルト2）
+  <li>$fn		フラグメントの数（デフォルト0、128以下、推奨50未満）
+  <li>$t		アニメーション
+  <li>$vpr	レンダリング時ビュー：回転
+  <li>$vpt	レンダリング時ビュー：平行移動
+  <li>$vpf	レンダリング時ビュー：FOV(Field of View)
+  <li>$vpd	レンダリング時ビュー：カメラ距離
+  </ul>
+<li>検索 search
+  <pre>
+  search
+  </pre>
+<li>アサート assert
+  <pre>
+  assert(論理式);
+  assert(論理式,メッセージ);
+  </pre>
+<li>コンソール出力 echo
+  <pre>
+  echo("val: ", x, y)
+  </pre>
+<li>関数 function
+  <pre>
+  function f1(x, y) = echo("f1: ", x, y)  x * y + 1;
+  r1 = f1(3, 5);
+  function f2(x) = let(y = pow(x, 3)) echo("f2: ", y) y;
+  r2 = f2(4);
+  function result(x) = echo("f3: ", x) x;
+  function f3(x) = result(x * x - 5);
+  r3 = f3(5);
+  </pre>
+<li>リスト内包表記
+  <pre>
+  polygon([for (i=[0:num-1], a=i*360/num) [ r*cos(a), r*sin(a) ]]);
+  </pre>
+<li>リスト
+  <pre>
+  concat(v1,v2,v3);
+  </pre>
+<li>再帰
+  <pre>
+  function factorial(n) = n == 0 ? 1 : factorial(n - 1) * n;
+  </pre>
+<li>乱数
+  <pre>
+  rands(min_value,max_value,value_count);
+  rands(min_value,max_value,value_count,seed_value);
+  </pre>
+<li>小数を整数に丸める
+  <pre>
+  int = round(float)
+  </pre>
+</ul>
+
+<h2 class="title">基本操作</h2>
+<ul>
+<li>プレビュー（描画）
+  <ul>
+  <li>F5キー または メニューDesign/Preview
+  </ul>
+<li>レンダリング（描画）
+  <ul>
+  <li>F6キー またはメニューDesign/Render
+  </ul>
+<li>STLファイル書き出し
+  <ul>
+  <li>レンダリング（F6キー）後に、F7キー またはメニューFile/Export / Export as STL
+  </ul>
+<li>テキストエディアでの数値対話的変更
+  <ul>
+  <li>コード中の数値の後にカーソルを置き、ALT+上下矢印で数値を増減する、オブジェクトは自動的イン再描画（レンダリング）される
+  <li>ALT+左右矢印で数値の桁を移動する
+  </ul>
+</ul>
+
+<h2 class="title">その他</h2>
+<ul>
+<li>Export as Imageの背景色を変えるには、<code>C:\Program Files\OpenSCAD\color-schemes\render\nature.json</code>を複製して編集し、
+OpenSCADを起動して、Edit/Preferencesで3D Viewで編集したColor schemeを指定する
+</ul>
+
+<h2 class="title">参考</h2>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/OpenSCAD_User_Manual">OpenSCAD User Manual</a>
+</ul>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="../img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script>
+</script>
+
+</body>
+</html>
+
+<!--
+### 要調査
+
+### 覚書き
+
+Now
+Example
+list_comprehensions.scad ...
+
+- ポリゴン座標は作図ソフトを利用して作るのが良さそう
+- ポリゴン滑らか曲線に変換できるか
+- 折れ線から厚みを持たせたポリゴンに変換できるか
+  offset
+
+-->
+

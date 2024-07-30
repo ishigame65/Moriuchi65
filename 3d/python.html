@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>Python環境の準備</title>
+	<link rel="stylesheet" href="3d.css">
+</head>
+
+<style>
+</style>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+		<li><a href="../index.html">Top</a></li>
+		<li><a href="index.html">3D</a></li>
+		<li>Python環境の準備</li>
+	</ul>
+
+<h1 class="title">Python環境の準備</h2>
+
+<h2>Python 3.12.4の例</h2>
+
+<ul>
+<li>ダウンロード
+  <ul>
+  <li><a href="https://www.python.org/downloads/windows/">Python Downloads Windows</a>を開く
+  <li>Stable ReleasesのPython 3.12.4のWindows Installer (64bit)をダウンロード<br>
+    <img src="img/python12i1.png">
+  </ul>
+
+<li>インストール
+  <ul>
+  <li>ダウンロードしたexeファイルを実行
+  <li>Add python.exe to PATHをチェックして[Install Now]<br>
+    <img src="img/python12i2.png">
+  <li>Setup was successful画面で[Close]
+  </ul>
+
+<li>仮想環境作成
+  <pre>
+  C:\dev> python -m venv --system-site-packages venv
+  </pre>
+
+<li>仮想環境有効化
+  <pre>
+  C:\dev> venv\Scripts\activate
+  (venv) C:\dev>
+  </pre>
+
+<li>pip更新
+  <pre>
+  C:\dev>python -m pip install --upgrade pip
+  </pre>
+
+<li>Python仮想環境を終了（Python仮想環境を使い終わってから実施）
+  <pre>
+  (venv) C:\dev> deactivate
+  </pre>
+
+</ul>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="../img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script>
+</script>
+
+</body>
+</html>

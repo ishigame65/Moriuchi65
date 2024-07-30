@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>SolidPython2のインストール</title>
+	<link rel="stylesheet" href="3d.css">
+</head>
+
+<style>
+</style>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+		<li><a href="../index.html">Top</a></li>
+		<li><a href="index.html">3D</a></li>
+		<li>SolidPython2のインストール</li>
+	</ul>
+<h1 class="title">SolidPython2のインストール</h1>
+
+<h2 class="title">概要</h2>
+<ul>
+<li>SolidPython2というPythonライブラリを使用することで、PythonコードからOpenSCADプログラム（.scadファイル）を生成できる。
+<li>Python環境が無い場合は先にPython環境を準備する（参照：<a href="python.html">Python環境の準備</a>）。
+</ul>
+
+<h2 class="title">インストール</h2>
+<ul>
+<li>solidpython2をpipでインストールする。
+  <pre>
+  (venv) C:\dev> pip install solidpython2
+  </pre>
+</ul>
+
+<h2 class="title">動作確認</h2>
+<ul>
+<li>テキストエディタでcube.pyを作成する。
+  <pre>
+  from solid2 import *
+  model  = cube(10)
+  model.save_as_scad()  
+  </pre>
+<li>cube.pyを実行し、scadファイルを生成する。
+  <pre>
+  (venv) C:\dev>python cube.py
+  </pre>
+  <ul>
+  <li><code>cube.scad</code>が生成される
+  </ul>
+<li>エクスプローラ上でcube.scadを選択・実行すると、OpenSCADが起動し、生成した3Dモデルが表示される。
+<br>
+    <img src="img/solidpyi10.png">
+<li>OpenSCADに3Dモデルが表示された状態で、cube.pyを編集・保存・実行すると、OpenSCADに表示された3Dモデルが更新される。
+</ul>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="../img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script>
+</script>
+
+</body>
+</html>
+
+<!--
+<h2 class="title">トラブルシューティング</h2>
+<dl>
+<dt>
+<code>UnicodeDecodeError: 'cp932' codec can't decode byte 0x92 in position xxx: illegal multibyte sequence</code>
+</dt>
+<dd>
+<ul>
+<li>ファイル中やファイルパスに和文字を使用しないようにする
+</ul>
+</dd>
+</dl>
+
+<h2 class="title">参考</h2>
+<ul>
+<li><a href="https://solidpython.readthedocs.io/en/latest/#example-code">example-code</a>
+<li><a href="https://github.com/SolidCode/SolidPython">github.com/SolidCode/SolidPython</a>
+</ul>
+
+-->
+
+<!--
+```
+https://qiita.com/bear_montblanc/items/5d6260ea9d20c32dcdf7
+https://zenn.dev/kotaproj/articles/a70464d8cd3540
+https://qiita.com/zk_phi/items/ab99315ebaef66e84aa0
+```
+-->
