@@ -19,6 +19,9 @@
 		<li>3Dプリンタ Creality Ender-3 V3 SE で印刷</li>
 	</ul>
 <h1 class="title">3Dプリンタ Creality Ender-3 V3 SE で印刷</h1>
+<p class="text">
+（2024年7月に実施した手順を記す、Creality Printのバージョンは5.1）
+</p>
 
 <h2>印刷準備（印刷用Gコードファイル生成）（PC）</h2>
 <ul>
@@ -27,7 +30,7 @@
   <li>OpenSCADやSolidPythonを利用して3DモデルをデザインしてSCADファイルを生成
   <li>OpenSCADでSCADファイルからSTLファイルを出力
   </ul>
-<li>Creality Print (ver 5.1)を起動して、Gコードファイル生成
+<li>Creality Printを起動して、Gコードファイル生成
   <ul>
   <li>スタートメニューから<code>Creality Print</code>を起動<br>
     <img src="img/crealitypp1.png">
@@ -40,11 +43,15 @@
   <li>[スライスプレート]<br>
     <img src="img/crealitypp3.png">
     <ul>
-    <li>メッセージ<code>The model has not been supported and may fail to print. Do you want to continue adding supports before slicing ?</code>が表示されたら
-      <code>Add Support</code>指定して<code>Slice</code>（メッセージは旧バージョン）
+    <li>モデルの形状に宙に浮いた部分があると「オブジェクトも向きを変えるかサポート生成を有効にしろ」という注意が表示される<br>
+	  <img src="img/crealitypp3warn.png"><br>
+	  サポートを有効にする場合は、サポートアイコンを選択して[サポートを有効にする]をチェックしてから[スライスプレート]<br>
+	  <img src="img/crealitypp3supp1.png">
+	  <img src="img/crealitypp3supp2.png">
+	  
     <li>G-codeのプレビューが表示される<br><img src="img/crealitypp4.png">
     </ul>
-  <li>スライスプレート下がLAN印刷なら、LAN印刷の右の[Λ]で表示されるメニューから[ローカルにエクスポート]を指定<br>
+  <li>LAN印刷の右の[Λ]で表示されるメニューから[ローカルにエクスポート]を指定<br>
     <img src="img/crealitypp5.png">
     <img src="img/crealitypp6.png">
   <li>[ローカルにエクスポート]から英数字のファイル名を指定してGコードファイルを[保存]<br>
