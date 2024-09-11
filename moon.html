@@ -1,0 +1,219 @@
+<!-- HTML5では画像サイズ変更が動作しない <!DOCTYPE html> -->
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>月の写真（観察用）</title>
+	<link rel="stylesheet" href="moriuchi.css">
+</head>
+
+<style>
+table {
+	border: none;
+	border-collapse: collapse;
+	background-repeat: no-repeat; 
+	background-size: contain;
+}
+#tblh td, #tblv td {
+	border: solid 1px white;
+	<!--
+	background: rgba(255, 255, 255, 0.7);
+	-->
+}
+#selphoto, #selsize, #selcell {
+	margin-left: 4px;
+	margin-right: 25px;
+	font-size: 20px;
+	padding: 0px 10px;
+}
+#tblh, #tblv {
+	margin-top: 14px;	
+	margin-left: 8px;	
+}
+#hcls, #vcls{
+	margin-left: 24px;	
+}
+</style>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+		<li><a href="index.html">Top</a></li>
+		<li>月の写真（観察用）</li>
+	</ul>
+<h1 class="title">月の写真（観察用）</h1>
+
+写真を選んで、表示サイズを指定してください。
+<p>
+<img src="img/moon1815.jpg" height="128" onclick="setv(this);">
+<img src="img/moon1915.jpg" height="128" onclick="setv(this);">
+</p>
+
+<p>
+表示サイズ（1-10）
+<select id="selsize">
+<option value="1">1</option>
+<option value="2" selected="selected">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select>
+</p>
+
+<p id="himg">
+<img id="oimgh" src="">
+</p>
+<p id="vimg">
+<img id="oimgv" src="">
+</p>
+
+<p id="htbl">
+<table id="tblh">
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td>
+    <td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td>
+    <td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td>
+    <td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td>
+    <td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+</table>
+注目場所を選んでください <a id="hcls" href="javascript:cells_clear()">注目場所をクリア</a>
+</p>
+<p id="vtbl">
+<table id="tblv">
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+<tr><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td><td class="cl" onclick="cell(this);"></td></tr>
+</table>
+注目場所を選んでください <a id="vcls" href="javascript:cells_clear()">注目場所をクリア</a>
+</p>
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script>
+const himg = document.getElementById('himg');
+const vimg = document.getElementById('vimg');
+const htbl = document.getElementById('htbl');
+const vtbl = document.getElementById('vtbl');
+const tblh = document.getElementById('tblh');
+const tblv = document.getElementById('tblv');
+const selsize = document.getElementById('selsize');
+const oimgh = document.getElementById('oimgh');
+const oimgv = document.getElementById('oimgv');
+var himgw;
+var himgh;
+var vimgw;
+var vimgh;
+
+function setimgh(imgurl) {
+	imgh = new Image();
+	imgh.addEventListener('load', function () {
+		himgw = imgh.naturalWidth;
+		himgh = imgh.naturalHeight;
+		tblh.style.width = himgw * selsize.target.value / 10;
+		tblh.style.height = himgh * selsize.target.value / 10;
+		oimgh.style.width = himgw * selsize.target.value / 10;
+	})
+	imgh.src = imgurl;
+}
+
+function setimgv(imgurl) {
+	imgv = new Image();
+	imgv.addEventListener('load', function () {
+		vimgw = imgv.naturalWidth;
+		vimgh = imgv.naturalHeight;
+		tblv.style.width = vimgw * selsize.target.value / 10;
+		tblv.style.height = vimgh * selsize.target.value / 10;
+		oimgv.style.width = vimgw * selsize.target.value / 10;
+	})
+	imgv.src = imgurl;
+}
+
+setimgh('img/iwajoshi_240731_094004.jpg');
+setimgv('img/iwajoshi_240731_094948.jpg');
+
+function seth(el){
+	himg.style.display = 'block';
+	htbl.style.display = 'block';
+	vimg.style.display = 'none';
+	vtbl.style.display = 'none';
+	setimgh(el.src);
+	oimgh.src = el.src;
+	tblh.style.backgroundImage = "url('" + el.src + "')";
+}
+function setv(el){
+	himg.style.display = 'none';
+	htbl.style.display = 'none';
+	vimg.style.display = 'block';
+	vtbl.style.display = 'block';
+	setimgv(el.src);
+	oimgv.src = el.src;
+	tblv.style.backgroundImage = "url('" + el.src + "')";
+}
+
+function setsize(v) {
+	tblh.style.width = himgw * v / 10;
+	tblh.style.height = himgh * v / 10;
+	oimgh.style.width = himgw * v / 10;
+	tblv.style.width = vimgw * v / 10;
+	tblv.style.height = vimgh * v / 10;
+	oimgv.style.width = vimgw * v / 10;
+}
+
+selsize.addEventListener('change', (e) => {
+	setsize(e.target.value);
+});
+
+const hcls = document.getElementById('hcls');
+const vcls = document.getElementById('vcls');
+const cells = document.getElementsByClassName('cl');
+
+function cell(el) {
+	for (let cell of cells) {
+		cell.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+	}
+	el.style.backgroundColor = 'rgba(0,0,0,0)';
+	hcls.style.display = 'inline';
+	vcls.style.display = 'inline';
+}
+function cells_clear() {
+	for (let cell of cells) {
+		cell.style.backgroundColor = 'rgba(0,0,0,0)';
+	}
+	hcls.style.display = 'none';
+	vcls.style.display = 'none';
+}
+
+window.onload = function() {
+	vimg.style.display = 'none';
+	vtbl.style.display = 'none';
+	himg.style.display = 'none';
+	htbl.style.display = 'none';
+	vcls.style.display = 'none';
+	hcls.style.display = 'none';
+	setsize(2);
+}
+
+</script>
+
+</body>
+</html>
