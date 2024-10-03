@@ -70,14 +70,19 @@ input[type="button"] {
 	</div>
 
 	<div id="GAME">
-	<div>
-	レベル 
-	<label><input type="radio" name="LEVEL" value="0.2" checked="">1</label>
-	<label><input type="radio" name="LEVEL" value="0.4">2</label>
-	<label><input type="radio" name="LEVEL" value="0.6">3</label>
-	<label><input type="radio" name="LEVEL" value="0.8">4</label>
-	<label><input type="radio" name="LEVEL" value="1.0">5</label>
-	<div id="INTERVAL">ブロック生成間隔: 80</div><br>
+	<div class="text">
+		亀の歩く速度:  
+		<label><input type="radio" name="SPEED" value="2" checked="">普通</label>
+		<label><input type="radio" name="SPEED" value="3">速い</label>
+	</div>
+	<div class="text">
+		レベル: 
+		<label><input type="radio" name="LEVEL" value="0.2" checked="">1</label>
+		<label><input type="radio" name="LEVEL" value="0.4">2</label>
+		<label><input type="radio" name="LEVEL" value="0.6">3</label>
+		<label><input type="radio" name="LEVEL" value="0.8">4</label>
+		<label><input type="radio" name="LEVEL" value="1.0">5</label>
+		<div id="INTERVAL">ブロック生成間隔: 80</div><br>
 	</div>
 
 	<canvas id="CANVAS1"></canvas><br>
