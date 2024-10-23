@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<meta name="description" content="漢字の練習問題を作成して印刷">
+	<title>漢字の練習問題を作成して印刷</title>
+	<link rel="stylesheet" href="moriuchi.css">
+	<link rel="stylesheet" href="qakanji.min.css">
+</head>
+
+<body>
+<main>
+<div class="CONTROL">
+	<ul class="breadcrumb">
+		<li><a href="index.html">Top</a></li>
+		<li>漢字の練習問題を作成して印刷</li>
+	</ul>
+	<h1 class="title">漢字の練習問題を作成して印刷</h1>
+	<p>
+		<ul>
+		<li>20個までの問題文を記載して印刷することができます。
+		<li>すべて全角文字で入力してください。
+		<li>問題文の記載方法は下の例を参照してください。1行に1文を記載します。
+<textarea id="SAMPLE">
+＜城（しろ）＞をきずく。
+＜辺り（あたり）＞の＜様子（ようす）＞。
+＜菜種（なたね）＞から＜油（あぶら）＞をしぼる。
+</textarea>
+		<li>問題文を記載したテキストファイルはUTF-8形式（文字コードUTF-8）で保存してください。
+		</ul>
+	</p>
+	<fieldset><legend>表題</legend>
+		<input id="TITLE_TEXT" type="text" value="漢字の練習" size="20"><br>
+	</fieldset>
+	<fieldset><legend>指示文</legend>
+		<input id="INSTRUCTION_TEXT" type="text" value="太い字の言葉は漢字で、点線は漢字と送りがなで書きましょう。" size="80" maxlength="43"><br>
+	</fieldset>
+	<fieldset><legend>問題文</legend>
+		<input type="file" onchange="app.readFile(this.files[0])" onclick="this.value = null;">
+<textarea id="CONTENTS_TEXT">
+＜城（しろ）＞をきずく。
+＜辺り（あたり）＞の＜様子（ようす）＞。
+＜菜種（なたね）＞から＜油（あぶら）＞をしぼる。
+</textarea>
+		問題文を記載したテキストファイルを、[ファイルの選択]ボタンから指定するか、上の領域にドラッグ＆ドロップしてください。
+		問題文を直接入力することもできます。
+	</fieldset>
+	<button onclick="app.createPracticeQA(true);">問題と答えを作成</button>
+	<button onclick="app.createPracticeQA(false);">問題を作成</button>
+	<button  onclick="window.print(); return false;">印刷する</button>
+</div>
+<div class="TEXTBOX">
+	<div id="VERTICAL1">
+		<div id="QATITLE">漢字の練習</div><div id="NAME">名前</div>
+		<div id="QAINSTRUCTION">太い字の言葉は漢字で、点線は漢字と送りがなで書きましょう。</div>
+	</div>
+	<div id="VERTICAL2">
+		<div id="QACONTENTS"></div>
+	</div>
+</div>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script src="FileUtil.js"></script>
+<script src="qakanji.js"></script>
+
+</body>
+</html>
