@@ -48,7 +48,8 @@
 	</fieldset>
 	<button onclick="app.createPracticeQA(true);">問題と答えを作成</button>
 	<button onclick="app.createPracticeQA(false);">問題を作成</button>
-	<button  onclick="window.print(); return false;">印刷する</button>
+	<button onclick="window.print(); return false;">印刷する</button>
+	<button onclick="app.downloadText;">問題文をダウンロード</button>
 </div>
 <div class="TEXTBOX">
 	<div id="VERTICAL1">
@@ -72,7 +73,13 @@
 	<div class="clear"></div>
 </footer>
 
+<!-- for release
+-->
 <script src="qakanji.min.js"></script>
+<!-- for debug
+<script src="qakanji.js"></script>
+<script src="FileUtilText.js"></script>
+-->
 
 </body>
 </html>
