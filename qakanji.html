@@ -43,13 +43,17 @@
 ＜辺り（あたり）＞の＜様子（ようす）＞。
 ＜菜種（なたね）＞から＜油（あぶら）＞をしぼる。
 </textarea>
-		問題文を記載したテキストファイルを、[ファイルの選択]ボタンから指定するか、上の領域にドラッグ＆ドロップしてください。<br>		
-		問題文を、上の領域にコピー＆ペーストすることも、直接入力することもできます。
+		<ul>
+		<li>問題文を記載したテキストファイルを、[ファイルの選択]ボタンから指定するか、上の領域にドラッグ＆ドロップしてください。		
+		<li>問題文を、上の領域にコピー＆ペーストすることも、直接入力することもできます。
+		<li>作成した問題文をダウンロードできます（表題のファイル名で保存されます）。 → <button onclick="app.downloadText();">問題文をダウンロード</button>
+		<//ul>
 	</fieldset>
-	<button onclick="app.createPracticeQA(true);">問題と答えを作成</button>
-	<button onclick="app.createPracticeQA(false);">問題を作成</button>
-	<button onclick="window.print(); return false;">印刷する</button>
-	<button onclick="app.downloadText;">問題文をダウンロード</button>
+	<div id="CONTROL">
+		<button onclick="app.createPracticeQA(true);">問題と答えを作成</button>
+		<button onclick="app.createPracticeQA(false);">問題を作成</button>
+		<button onclick="window.print(); return false;">印刷する</button>
+	</div>
 </div>
 <div class="TEXTBOX">
 	<div id="VERTICAL1">
