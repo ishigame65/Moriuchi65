@@ -41,15 +41,18 @@
 	</fieldset>
 	<fieldset><legend>問題文</legend>
 		<input type="file" onchange="app.readFile(this.files[0])" onclick="this.value = null;">
-		　<button onclick="app.clearText();">クリア</button>
+		　<!--<button onclick="app.clearText();">クリア</button>-->
 <textarea id="CONTENTS_TEXT">
 ＜城（しろ）＞をきずく。
 ＜辺り（あたり）＞の＜様子（ようす）＞。
 ＜菜種（なたね）＞から＜油（あぶら）＞をしぼる。
 </textarea>
 		<ul>
+		<!--
 		<li>問題文を記載したテキストファイルを、[ファイルの選択]ボタンから指定するか、上の領域にドラッグ＆ドロップしてください。		
 		<li>問題文を、上の領域にコピー＆ペーストすることも、直接入力することもできます。
+		-->
+		<li>問題文を、上の領域にコピー＆ペーストするか、直接入力してください。
 		<li>作成した問題文をダウンロードできます（表題のファイル名で保存されます）。 → <button onclick="app.downloadText();">問題文をダウンロード</button>
 		<//ul>
 	</fieldset>
@@ -85,9 +88,9 @@
 <script src="FileUtilText.js"></script>
 <script src="qakanji.js"></script>
 -->
+<script src="qakanji.min.js"></script>
 <!-- for release
 -->
-<script src="qakanji.min.js"></script>
 
 </body>
 </html>
