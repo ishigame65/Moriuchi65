@@ -7,6 +7,9 @@
 	<title>漢字の練習問題を作成して印刷</title>
 	<link rel="stylesheet" href="moriuchi.css">
 	<link rel="stylesheet" href="qakanji.min.css">
+	<!--
+	<link rel="stylesheet" href="qakanji.css">
+	-->
 </head>
 
 <body>
@@ -38,6 +41,7 @@
 	</fieldset>
 	<fieldset><legend>問題文</legend>
 		<input type="file" onchange="app.readFile(this.files[0])" onclick="this.value = null;">
+		　<button onclick="app.clearText();">クリア</button>
 <textarea id="CONTENTS_TEXT">
 ＜城（しろ）＞をきずく。
 ＜辺り（あたり）＞の＜様子（ようす）＞。
@@ -77,13 +81,13 @@
 	<div class="clear"></div>
 </footer>
 
-<!-- for release
--->
-<script src="qakanji.min.js"></script>
 <!-- for debug
 <script src="qakanji.js"></script>
 <script src="FileUtilText.js"></script>
 -->
+<!-- for release
+-->
+<script src="qakanji.min.js"></script>
 
 </body>
 </html>
