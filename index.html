@@ -8,11 +8,10 @@
 </head>
 
 <style>
-.qrcode {
+.RIGHTDIV {
   float:right;
   text-align: center;
   font-size: smaller;
-  color:gray;
 }
 .qrcode img {
   margin-bottom: -4px;
@@ -41,7 +40,11 @@
 
 <main>
 
-<div class="qrcode"><img src="img/qr_moriuchi.png"><br>ここのURL</div>
+<div class="RIGHTDIV">
+<br>
+<canvas id="EYECANVAS" width="90px" height="60px"></canvas><br><br>
+<img src="img/qr_moriuchi.png"><br>ここのURL
+</div>
 
 moriuchi65
 <h1 class="title">いろいろ</h1>
@@ -110,6 +113,8 @@ moriuchi65
 	<div class="footer-right">&copy; 2024 moriuchi65.</div>
 	<div class="clear"></div>
 </footer>
+
+<script src="moriuchi.min.js"></script>
 
 </body>
 </html>
