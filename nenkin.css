@@ -53,12 +53,9 @@ p .TEXTBOX{
 #UPDATE_PANEL{
 	float:right;
 }
-/*
-ul {
-	margin: 0;
+@media (max-width: 670px) {
+	.scroll img {
+		width: 800px;
+	}
 }
-li{
-	margin-left: 0px;
-	padding: 0;
-}
-*/
+
