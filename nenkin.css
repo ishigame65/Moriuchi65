@@ -1,4 +1,8 @@
-
+@media print {
+	div#UPDATE_PANEL{
+		display: none;
+	}
+}
 main {
 	padding: 10px;
 }
@@ -40,7 +44,7 @@ p .TEXTBOX{
 }
 .VALUES th,td{
 	border: 1px solid darkgray;
-	padding: 5px;
+	padding: 3px 5px;
 	font-size: smaller;
 }
 .VALUES td:nth-of-type(2){
@@ -49,10 +53,10 @@ p .TEXTBOX{
 #UPDATE_PANEL{
 	float:right;
 }
+/*
 ul {
 	margin: 0;
 }
-/*
 li{
 	margin-left: 0px;
 	padding: 0;
