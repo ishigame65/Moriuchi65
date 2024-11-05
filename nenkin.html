@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">	
+	<title>年金</title>
+	<!--
+	-->
+	<link rel="stylesheet" href="private.css">
+	<link rel="stylesheet" href="accordionbox.css">
+	<link rel="stylesheet" href="nenkin.css">
+</head>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+	<li><a href="index.html">Top</a>
+	<li>年金
+	</ul>
+
+<h1 class="title">年金</h1>
+以下の条件を満たす家庭の年金を整理する。
+<ul>
+<li>会社員の夫と専業主婦の妻と子供で構成され、夫が妻より先に亡くなる。
+<li>夫は会社員として25年以上保険料を納付している（老齢厚生年金受給権者である）。
+<li>障害認定者はいない。
+<li>夫と妻の年金受給開始は65歳。
+</ul>
+
+<h2>家族状況と受給年金の種類</h2>
+家族状況に応じた受給年金の種類を整理する。
+
+<h3>妻65歳（年金受給開始）以降に夫が亡くなる場合</h3>
+<img src="imgpv/nkin1a.png">
+<ul>
+<li>老齢基礎年金と老齢厚生年金は、65歳から亡くなるまで受給できる。申請が必要（65歳誕生日前日以降）。
+<li>老齢基礎年金と老齢厚生年金は、それぞれ受給開始年齢を前後にずらすことができる（すらした場合の話は省略）。
+<li>加給年金は、65歳未満の妻や子がいる場合に、老齢厚生年金に定額が加算される形で受給する。申請が必要。
+<li>遺族厚生年金は、老齢厚生年金受給権者の夫が亡くなった場合に、妻（または子）が翌月分から受給できる。申請が必要。
+<li>子は、高校卒業する3月（18歳到達年度末日）までの子供を指す。
+</ul>
+
+<h3>妻65歳（年金受給開始）より前に夫が亡くなる場合</h3>
+<img src="imgpv/nkin1b.png">
+<ul>
+<li>老齢基礎年金と老齢厚生年金は、65歳から亡くなるまで受給できる。それぞれ受給開始年齢を前後にずらすことができる。申請が必要。
+<li>加給年金は、65歳未満の妻や子がいる場合に、老齢厚生年金に定額が加算される形で受給する。申請が必要。
+<li>遺族厚生年金は、老齢厚生年金受給権者の夫が亡くなった場合に、妻（または子）が翌月分から受給できる。申請が必要。
+<li>中高齢寡婦加算は、夫が亡くなった時に40歳～65歳で同一家計の子がいない妻が、遺族厚生年金に定額が加算される形で受給する。
+<li>子は、高校卒業する3月（18歳到達年度末日）までの子供を指す。
+</ul>
+
+<h3>子供が高校卒業前に夫が亡くなる場合</h3>
+<img src="imgpv/nkin1c.png">
+<ul>
+<li>遺族基礎年金は、老齢厚生年金受給権者の夫が亡くなった場合に、同一生計の子のある妻（または子）が翌月分から受給できる。申請が必要。
+<li>遺族厚生年金は、老齢厚生年金受給権者の夫が亡くなった場合に、妻（または子）が翌月分から受給できる。申請が必要。
+<li>中高齢寡婦加算は、夫が亡くなった時に40歳～65歳で同一家計の子がいない妻が、遺族厚生年金に定額が加算される形で受給する。
+<li>子は、高校卒業する3月（18歳到達年度末日）までの子供を指す。
+<li>遺族基礎年金と遺族厚生年金は合わせて受給できる。
+</ul>
+
+<h2 class="title">受給年金額の算出</h2>
+以下の前提で受給年金額を算出する。
+<ul>
+<li>保険料納付期間をできるかぎり長くすることで、受給年金額を増やして長生きリスクに備える。
+<li>付加保険料は最大限納付する（月400円の付加保険料で受給年金額を増やせる）。
+<li>夫と妻の年金受給開始は65歳。
+</ul>
+年金額算出に必要となる規定値は年度ごとに改定されるため、厳密には毎年計算し直す必要がある。
+
+<h3>算出に必要となる規定値</h3>
+<div id="UPDATE_PANEL" class="accordion-box">
+	<input id="AC_BUTTON" type="checkbox" />
+	<label id="AC_LABEL" for="AC_BUTTON">規定値を更新（クリックで開閉）</label>
+	<div id="AC_CONTENTS">
+		<input type="file" onchange="app.readFile(this.files[0])" onclick="this.value = null;">
+		　<button onclick="app.clearText();">クリア</button>
+<textarea id="CONTENTS_TEXT">
+老齢基礎年金満額：816000
+付加年金加算額：200
+夫年金保険料納付月数： 479 
+夫付加保険料納付月数： 68 
+夫老齢厚生年金： 1567974 
+夫老齢厚生年金報酬比例部分： 1567563 
+厚生年金加給年金：234800
+厚生年金加給年金配偶者特別加算：173300
+妻年金保険料納付月数：480
+妻付加保険料納付月数：256
+遺族厚生年金中高齢寡婦加算：612000
+遺族基礎年金額：816000
+遺族基礎年金子加算額：234800
+国民年金保険料月額：16980
+国民年金付加保険料：400
+</textarea>
+		<div id="CONTROL">
+			規定値ファイルを[ファイルの選択]ボタンから指定または上の領域にドラッグ＆ドロップしてください。<br>
+			規定値リストを上の領域にコピー＆ペーストまたは直接入力することもできます。<br>
+			作成した規定値リストをダウンロードできます。 → 
+			<button onclick="app.downloadText('nenkin.txt');">規定値リストをダウンロード</button><br>
+			<button onclick="app.updateTable();">規定値を更新</button>
+		</div>
+	</div>
+</div>
+<p>
+	太字は改定される可能性がある値<br>
+	（2024年時点の規定値）
+	<div class="TEXTBOX">
+		<div id="QACONTENTS"></div>
+	</div>
+</p>
+
+<h3>算出</h3>
+<h4>老齢基礎年金（夫＋妻）</h4>
+<ul>
+<li>老齢基礎年金の年金額は、保険料を40年間（20～60歳の480ヶ月）納付した場合は老齢基礎年金満額<span class="KISOMANGAKU"></span>円で、各人の保険料納付期間に比例した年金額になる。
+	<ul>
+	<li>老齢基礎年金額 ＝ 老齢基礎年金満額<span class="KISOMANGAKU"></span>円 × 年金保険料納付月数 / 480
+	</ul>
+<li>保険料納付期間が480ヶ月（40年）未満の場合は、60～65歳（5年）の間に国民年金に任意加入して、保険料納付期間を最大の40年に近づけることができる。
+	<ul>
+	<li>夫60歳前月時点の保険料納付期間が419ヶ月（1990年4月～2025年2月）の場合、
+	最大の60ヶ月（5年）任意加入すると年金保険料納付月数が<span class="O_NOFUGESSU"></span>ヶ月となり、追加支払い分は<span id="O_TSUIKA"></span>円
+	（国民年金保険料月額<span class="HOKENRYOGETSUGAKU"></span>円 × 60ヶ月）で、
+	受給する老齢基礎年金額が<span id="O_KISOZOBUN"></span>円
+	（老齢基礎年金満額<span class="KISOMANGAKU"></span>円 × 60ヶ月 / 480）
+	増える。
+	10年（65～75歳）以上受給すれば＋（得）になるため、資産的に余裕があるなら任意加入して長生きリスクに備えた方が良い。
+	<li>妻60歳前月時点の保険料納付期間が440ヶ月（2009年3月～2045年10月）の場合、
+	40ヶ月（3年4カ月）任意加入すると年金保険料納付月数が最大の<span class="T_NOFUGESSU"></span>ヶ月となり、追加支払い分は<span id="T_TSUIKA"></span>円
+	（国民年金保険料月額<span class="HOKENRYOGETSUGAKU"></span>円 × 40ヶ月）になり、
+	受給する老齢基礎年金額が<span id="T_KISOZOBUN"></span>円
+	（老齢基礎年金満額<span class="KISOMANGAKU"></span>円 × 40ヶ月 / 480）
+	増える。
+	10年（65～75歳）以上受給すれば＋（得）になるため、資産的に余裕があるなら任意加入して長生きリスクに備えた方が良い。
+	</ul>	
+<li>国民年金支払い時に付加保険料（月<span class="FUKAGETSUGAKU"></span>円）を納めると、<span class="FUKAKASAN"></span>円×付加保険料納付月数が、老齢基礎年金に上乗せされる。
+	<ul>
+	<li>付加保険料を<span id="FUKANENGAKU"></span>円（<span class="FUKAGETSUGAKU"></span>円×12ヶ月）納付すると、毎年<span id="FUKANENKASAN"></span>円（<span class="FUKAKASAN"></span>円×12ヶ月）が上乗せされる。
+	2年（65～67歳）以上受給すれば＋（得）になるため、付加保険料は最大限納付すべきである。
+	<li>夫の付加保険料納付月数が<span class="O_FUKAGESSU"></span>ヶ月（2024年7月～2030年2月）の場合、
+	付加保険料<span id="O_FUKAHOKENRYO"></span>円（<span class="FUKAGETSUGAKU"></span>円 × <span class="O_FUKAGESSU"></span>ヶ月）納付で、
+	毎年<span class="O_FUKAZOBUN"></span>円（<span class="FUKAKASAN"></span>円×<span class="O_FUKAGESSU"></span>ヶ月）が上乗せされる。
+	<li>妻の付加保険料納付月数が<span class="T_FUKAGESSU"></span>ヶ月（2024年7月～2045年10月）の場合、
+	付加保険料<span id="T_FUKAHOKENRYO"></span>円（<span class="FUKAGETSUGAKU"></span>円 × <span class="T_FUKAGESSU"></span>ヶ月）納付で、
+	毎年<span class="T_FUKAZOBUN"></span>円（<span class="FUKAKASAN"></span>円×<span class="T_FUKAGESSU"></span>ヶ月）が上乗せされる。	
+	</ul>
+<li>夫が最大限任意加入＆付加保険料納付した場合の老齢基礎年金額は、<b><span class="O_KISONENKINGAKU"></span></b>円（老齢基礎年金満額<span class="KISOMANGAKU"></span>円 × 年金保険料納付月数<span class="O_NOFUGESSU"></span>ヶ月 / 480＋付加年金<span class="O_FUKAZOBUN"></span>円）。
+<li>妻が最大限任意加入＆付加保険料納付した場合の老齢基礎年金額は、<b><span class="T_KISONENKINGAKU"></span></b>円（老齢基礎年金満額<span class="KISOMANGAKU"></span>円 × 年金保険料納付月数<span class="T_NOFUGESSU"></span>ヶ月 / 480＋付加年金<span class="T_FUKAZOBUN"></span>円）。
+</ul>
+
+<h4>老齢厚生年金（夫）</h4>
+<ul>
+<li>老齢厚生年金の年金額（2024年10月年金事務所計算）は、<b><span class="KOSEINENKINGAKU"></span></b>円
+（報酬比例部分<span class="KOSEIHOSHU"></span>円＋経過的加算411円）。
+	<ul>
+	<li>老齢厚生年金の年金額は、厚生年金加入時（会社員期間）の報酬額に応じて計算される。計算式が複雑なので省略するが、年金事務所で計算してもらえる。
+	</ul>
+<li>65歳未満の妻がいる場合は、老齢厚生年金に加算される形で加給年金<b><span class="KOSEIKAKYUTSUMA"></span></b>円を受給できる。
+	<ul>
+	<li>加給年金<span class="KOSEIKAKYU"></span>円 ＋ 配偶者特別加算<span id="KOSEIKAKYUTOKUBETSU"></span>円 ⇒ <span class="KOSEIKAKYUTSUMA"></span>円。
+	</ul>
+<li>子がいる場合は、老齢厚生年金に加算される形で加給年金<b><span class="KOSEIKAKYU"></span></b>円を受給できる。
+</ul>
+
+<h4>遺族厚生年金（妻）</h4>
+<ul>
+<li>遺族厚生年金の年金額は、夫の老齢厚生年金の報酬比例部分<span class="KOSEIHOSHU"></span>円の4分の3で、<b><span class="IZOKUNENKINGAKU"></span></b>円。
+<li>中高齢寡婦加算の年金額は、<b><span class="IZOKUKAFU"></span></b>円。
+</ul>
+
+<h4>遺族基礎年金（妻）</h4>
+<ul>
+<li>子のある妻が受け取る場合の年金額は、<b><span class="IZOKUKISONENKINGAKU"></span></b>円＋<b><span class="IZOKUKISOKO"></span></b>円×子の数。
+	<ul>
+	<li>子が1人または2人の時の計算式（3人目以降の子は加算額が異なるが省略）。
+	<li>子2人が受け取る場合（妻がいない場合）の年金額は、<span id="IZOKUKISOKO2NIN"></span>円（<span class="IZOKUKISONENKINGAKU"></span>円＋<span class="IZOKUKISOKO"></span>円）/ 2人。
+	<li>子1人が受け取る場合（妻がいない場合）の年金額は、<span class="IZOKUKISONENKINGAKU"></span>円。
+	</ul>
+</ul>
+
+<h4>国民年金納付額</h4>
+<p class="text">
+</p>
+<ul>
+<li>国民年金保険料は月<span class="HOKENRYOGETSUGAKU"></span>円。付加保険料は月<span class="FUKAGETSUGAKU"></span>円。
+<li>月々の保険料納付額は<span id="GETSUGAKU"></span>円（<span class="HOKENRYOGETSUGAKU"></span>＋<span class="FUKAGETSUGAKU"></span>）。年間で<span id="NENGAKU"></span>円。
+<li>夫＋妻の国民年金納付額は年間で<span id="NENGAKU2NIN"></span>円。
+</ul>
+
+<h2>家族状況と受給年金額</h2>
+家族状況に応じた年単位の受給年金額を算出する。
+厳密には家族状況が変化する年は月単位で算出する必要がある。
+年金受給開始は65歳誕生月翌月、子は18歳年度末（高校卒業3月）迄、遺族年金受給開始は死亡月翌月。
+
+<h3>妻65歳（年金受給開始）以降に夫が亡くなる場合</h3>
+<img src="imgpv/nkin2a.png">
+<dl>
+<dt>① <span class="JA1"></span>円 （夫が年金を受給して65歳未満の妻と子がいる状況）
+<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円 ＋ 加給年金（子）<span class="KOSEIKAKYU"></span>円
+<dt>② <span class="JA2"></span>円 （夫が年金を受給して65歳未満の妻がいる状況）
+<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円
+<dt>③ <span id="JA3"></span>円 （夫と妻が年金を受給している状況）
+<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円
+<dd>（妻受給）妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+<dt>④ <span class="JA4"></span>円 （夫が亡くなり、妻が年金を受給している状況）
+<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+</dl>
+
+<h3>妻65歳（年金受給開始）より前に夫が亡くなる場合</h3>
+<img src="imgpv/nkin2b.png">
+<dl>
+<dt>① <span class="JA1"></span>円 （夫が年金を受給して65歳未満の妻と子がいる状況）
+<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円 ＋ 加給年金（子）<span class="KOSEIKAKYU"></span>円
+<dt>② <span class="JA2"></span>円 （夫が年金を受給して65歳未満の妻がいる状況）
+<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円
+<dt>③ <span class="JB3"></span>円 （夫が亡くなり、妻が65歳未満の状況）
+<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 中高齢寡婦加算<span class="IZOKUKAFU"></span>円
+<dt>④ <span class="JA4"></span>円 （夫が亡くなり、妻が年金を受給している状況）
+<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+</dl>
+
+<h3>子供が高校卒業前に夫が亡くなる場合</h3>
+<img src="imgpv/nkin2c.png">
+<dl>
+<dt>① <span id="JC1"></span>円 （夫が亡くなり、子が2人いる状況）
+<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 遺族基礎年金<span class="IZOKUKISONENKINGAKU"></span>円 ＋ 子の加算<span class="IZOKUKISOKO"></span>円 ＋ 子の加算<span class="IZOKUKISOKO"></span>円
+<dt>② <span id="JC2"></span>円 （夫が亡くなり、子が1人いる状況）
+<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 遺族基礎年金<span class="IZOKUKISONENKINGAKU"></span>円 ＋ 子の加算<span class="IZOKUKISOKO"></span>円
+<dt>③ <span class="JB3"></span>円 （夫が亡くなり、妻が65歳未満の状況）
+<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 中高齢寡婦加算<span class="IZOKUKAFU"></span>円
+<dt>④ <span class="JA4"></span>円 （夫が亡くなり、妻が年金を受給している状況）
+<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+</dl>
+
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-center">
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="clear"></div>
+</footer>
+
+<script src="FileUtilText.js"></script>
+<script src="nenkin.js"></script>
+
+</body>
+</html>

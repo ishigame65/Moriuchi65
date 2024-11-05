@@ -1,0 +1,35 @@
+@charset "utf-8";
+.accordion-box {
+    margin:  0 10px;
+}
+.accordion-box label#AC_LABEL {
+    display: block;
+    font-weight: bold;
+    cursor :pointer;
+    margin-top: 10px;
+    padding:4px;
+    background-color:paleturquoise;
+}
+.accordion-box input#AC_BUTTON {
+    display: none; 
+}
+.accordion-box div#AC_CONTENTS {
+    height: 0;
+    overflow-y: hidden;
+    transition: 0.5s;	/* display speed */
+    opacity: 0;
+    padding-left: 10px;
+}
+.accordion-box input#AC_BUTTON:checked + label + div {
+    height: auto;
+    opacity: 1;
+	border: 1px solid gray;
+	padding: 10px 10px;
+}
+.accordion-box label#AC_LABEL::before {
+    content: "＋";
+    padding-right: 8px;
+}
+.accordion-box input#AC_BUTTON:checked + label::before {
+    content: "－";
+}
