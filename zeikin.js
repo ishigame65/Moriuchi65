@@ -38,19 +38,14 @@ class App {
 		this.spKokik = this.spKokis = null;
 		this.spSzRitu = this.spSzHaigu = this.spSzKiso = null;	// 所得税
 
-		this.spTaiGetsu = null;
-
 		// 公的年金データ値
+		this.spTai25 = this.spTai = this.spTai30 = null;
 		this.spN1o = this.spN2o = this.spN3o = null;
 		this.spN0t = null;
-		//this.spanNenPf = this.spanNenP = null;	// 国民年金保険料（年間納付額）★おそらく不要になる★
 		this.spanNenp25 = this.spanNenp30 = this.spanNenp31 = null;	// 国民年金保険
 		this.spanNenp32 = this.spanNenp37 = this.spanNenp38 = this.spanNenp49 = null;
 
 		// 算出値
-		this.spTai25 = null;
-		this.spTai = null;
-		this.spTai30 = null;
 		this.spShot25 = this.spShot26 = null;
 		this.spN30o = this.spKN30o = this.spN33o = this.spN50o = null;
 		this.spShot1o = this.spShot2o = this.spShot3o = null;
@@ -115,7 +110,6 @@ class App {
 		this.spSzRitu = Array.from(document.getElementsByClassName("SZRITU"));	// 所得税
 		this.spSzHaigu = Array.from(document.getElementsByClassName("SZHAIGU"));
 		this.spSzKiso = Array.from(document.getElementsByClassName("SZKISO"));
-		this.spTaiGetsu = Array.from(document.getElementsByClassName("TAIGETSU"));
 		//this.spN1o = Array.from(document.getElementsByClassName("N1O"));
 		//this.spN2o = Array.from(document.getElementsByClassName("N2O"));
 		//this.spN3o = Array.from(document.getElementsByClassName("N3O"));
@@ -123,6 +117,9 @@ class App {
 
 		// 公的年金データ値
 		this.nenkinValuesMap = new Map();
+		this.spTai25 = Array.from(document.getElementsByClassName("TAI25"));
+		this.spTai = Array.from(document.getElementsByClassName("TAI"));
+		this.spTai30 = Array.from(document.getElementsByClassName("TAI30"));
 		this.spN1o = Array.from(document.getElementsByClassName("N1O"));
 		this.spN2o = Array.from(document.getElementsByClassName("N2O"));
 		this.spN3o = Array.from(document.getElementsByClassName("N3O"));
@@ -136,9 +133,6 @@ class App {
 		this.spanNenp49 = Array.from(document.getElementsByClassName("NENP49"));
 
 		// 算出値
-		this.spTai25 = Array.from(document.getElementsByClassName("TAI25"));
-		this.spTai = Array.from(document.getElementsByClassName("TAI"));
-		this.spTai30 = Array.from(document.getElementsByClassName("TAI30"));
 		this.spShot25 = Array.from(document.getElementsByClassName("SHOT25"));
 		this.spShot26 = Array.from(document.getElementsByClassName("SHOT26"));
 		this.spN30o = Array.from(document.getElementsByClassName("N30O"));
@@ -262,14 +256,11 @@ class App {
 		const szKiso = Number(zmap.get('所得税基礎控除'));
 		const szHaigu = Number(zmap.get('所得税配偶者控除'));
 
-		const taigetsu = Number(zmap.get('退職年金月額'));	// 退職年金値
-		//const n1o = Number(zmap.get('夫年金受給で65歳未満妻と子の夫課税年金額'));
-		//const n2o = Number(zmap.get('夫年金受給で65歳未満妻の夫課税年金額'));
-		//const n3o = Number(zmap.get('夫妻年金受給の夫課税年金額'));
-		//const n0t = Number(zmap.get('妻年金受給の妻課税年金額'));
-
 		// 公的年金データ値
 		const nmap = this.nenkinValuesMap;
+		const tai25 = Number(zmap.get('退職年金額2025年'));
+		const tai = Number(zmap.get('退職年金額'));
+		const tai30 = Number(zmap.get('退職年金額2030年'));
 		const n1o = Number(nmap.get('夫年金受給で65歳未満妻と子の夫課税年金額'));
 		const n2o = Number(nmap.get('夫年金受給で65歳未満妻の夫課税年金額'));
 		const n3o = Number(nmap.get('夫妻年金受給の夫課税年金額'));
@@ -287,9 +278,6 @@ class App {
 		const nenpay49 = Number(nmap.get('国民年金納付額2049年'));
 
 		// 算出
-		const tai25 = taigetsu * 9;
-		const tai = taigetsu * 12;
-		const tai30 = taigetsu * 3;
 		const n30o = Math.round(n1o * 9 / 12);
 		const kn30o = tai30 + n30o;
 		const n33o = Math.round(n1o * 3 / 12 + n2o * 9 / 12);
@@ -411,7 +399,6 @@ class App {
 		this.spSzHaigu.forEach(v => { v.innerText = szHaigu.toLocaleString(); });
 		this.spSzKiso.forEach(v => { v.innerText = szKiso.toLocaleString(); });
 		
-		this.spTaiGetsu.forEach(v => { v.innerText = taigetsu.toLocaleString(); });
 		this.spN1o.forEach(v => { v.innerText = n1o.toLocaleString(); });
 		this.spN2o.forEach(v => { v.innerText = n2o.toLocaleString(); });
 		this.spN3o.forEach(v => { v.innerText = n3o.toLocaleString(); });
@@ -653,9 +640,9 @@ class App {
 				result += key;
 				result += '</td><td>';
 				if (varkeys.includes(key)){
-					result += '<b>';
+					//result += '<b>';
 					result += Number(value).toLocaleString();	// コンマ区切り
-					result += '</b>';
+					//result += '</b>';
 				} else {
 					result += Number(value).toLocaleString();	// コンマ区切り
 				}

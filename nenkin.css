@@ -61,7 +61,7 @@ p .TEXTBOX{
 .VALUES td:nth-of-type(2){
 	text-align:right;
 }
-img.rogofig {
+img.w600m100p {
 	width: 600px;
 }
 .color1 {
@@ -84,6 +84,12 @@ img.rogofig {
 	}
 	img.rogofig {
 		max-width: 100%;
+	}
+	#UPDATE_PANEL{
+		max-width: initial;
+	}
+	#UPDATE_PANEL2{
+		max-width: initial;
 	}
 }
 
