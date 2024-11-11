@@ -2,6 +2,9 @@
 	div#UPDATE_PANEL{
 		display: none;
 	}
+	div#UPDATE_PANEL2{
+		display: none;
+	}
 }
 main {
 	padding: 10px;
@@ -22,11 +25,19 @@ textarea#CONTENTS_TEXT {
 	background-color: aliceblue;
 	padding: 6px;
 }
+textarea#CONTENTS_TEXT2 {
+	margin-top: 10px;
+	width: calc(100% - 15px);
+	height: 210px;
+	background-color: aliceblue;
+	padding: 6px;
+}
 button {
+	margin-right: 15px;
 	padding: 2px 6px;
 	font-size: 11pt;
 }
-#CONTROL button {
+.CONTROL button {
 	margin-top: 10px;
 	margin-bottom: 0;
 	margin-left: 0;
@@ -50,12 +61,29 @@ p .TEXTBOX{
 .VALUES td:nth-of-type(2){
 	text-align:right;
 }
+img.rogofig {
+	width: 600px;
+}
+.color1 {
+	color: blue;
+}
+.color2 {
+	color: magenta;
+}
 #UPDATE_PANEL{
 	float:right;
+	max-width: 50%;
+}
+#UPDATE_PANEL2{
+	float:right;
+	max-width: 50%;
 }
 @media (max-width: 670px) {
 	.scroll img {
 		width: 800px;
+	}
+	img.rogofig {
+		max-width: 90%;
 	}
 }
 

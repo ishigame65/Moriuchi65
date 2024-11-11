@@ -3,41 +3,51 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">	
-	<title>年金</title>
+	<title>公的年金</title>
 	<link rel="stylesheet" href="private.css">
 	<link rel="stylesheet" href="accordionbox.css">
 	<link rel="stylesheet" href="nenkin.css">
 </head>
+
+<style>
+img.rogofig {
+	width: 600px;
+}
+</style>
 
 <body>
 
 <main>
 	<ul class="breadcrumb">
 	<li><a href="index.html">Top</a>
-	<li>年金
+	<li>公的年金
 	</ul>
 
-<h1 class="title">年金</h1>
-以下の条件を満たす家庭の年金を整理する。
+<h1 class="title">公的年金</h1>
+以下の条件を満たす家庭の公的年金を整理する。
 <ul>
 <li>会社員の夫と専業主婦の妻と子供で構成され、夫が妻より先に亡くなる。
 <li>夫は会社員として25年以上保険料を納付している（老齢厚生年金受給権者である）。
 <li>障害認定者はいない。
-<li>夫と妻の年金受給開始は65歳。
+<li>夫と妻の公的年金受給開始は65歳。
 </ul>
 
 <h2>家族状況と受給年金の種類</h2>
 家族状況に応じた受給年金の種類を整理する。
 
 <h3>妻65歳（年金受給開始）以降に夫が亡くなる場合</h3>
+<img class = "rogofig" src="imgpv/nenkin_a.png">
+<!--
 <div class="scroll">
-	<img src="imgpv/nkin1a.png">
 </div>
+-->
+
 <ul>
 <li>老齢基礎年金と老齢厚生年金は、65歳から亡くなるまで受給できる。申請が必要（65歳誕生日前日以降）。
 <li>老齢基礎年金と老齢厚生年金は、それぞれ受給開始年齢を前後にずらすことができる（すらした場合の話は省略）。
 <li>加給年金は、65歳未満の妻や子がいる場合に、老齢厚生年金に定額が加算される形で受給する。申請が必要。
 <li>遺族厚生年金は、老齢厚生年金受給権者の夫が亡くなった場合に、妻（または子）が翌月分から受給できる。申請が必要。
+<li>遺族厚生年金は非課税であり所得には含まない。
 <li>子は、高校卒業する3月（18歳到達年度末日）までの子供を指す。
 </ul>
 
@@ -49,6 +59,7 @@
 <li>老齢基礎年金と老齢厚生年金は、65歳から亡くなるまで受給できる。それぞれ受給開始年齢を前後にずらすことができる。申請が必要。
 <li>加給年金は、65歳未満の妻や子がいる場合に、老齢厚生年金に定額が加算される形で受給する。申請が必要。
 <li>遺族厚生年金は、老齢厚生年金受給権者の夫が亡くなった場合に、妻（または子）が翌月分から受給できる。申請が必要。
+<li>遺族厚生年金は非課税であり所得には含まない。他に収入がなければ確定申告も不要。
 <li>中高齢寡婦加算は、夫が亡くなった時に40歳～65歳で同一家計の子がいない妻が、遺族厚生年金に定額が加算される形で受給する。
 <li>子は、高校卒業する3月（18歳到達年度末日）までの子供を指す。
 </ul>
@@ -60,6 +71,7 @@
 <ul>
 <li>遺族基礎年金は、老齢厚生年金受給権者の夫が亡くなった場合に、同一生計の子のある妻（または子）が翌月分から受給できる。申請が必要。
 <li>遺族厚生年金は、老齢厚生年金受給権者の夫が亡くなった場合に、妻（または子）が翌月分から受給できる。申請が必要。
+<li>遺族基礎年金・遺族厚生年金は非課税であり所得には含まない。他に収入がなければ確定申告も不要。
 <li>中高齢寡婦加算は、夫が亡くなった時に40歳～65歳で同一家計の子がいない妻が、遺族厚生年金に定額が加算される形で受給する。
 <li>子は、高校卒業する3月（18歳到達年度末日）までの子供を指す。
 <li>遺族基礎年金と遺族厚生年金は合わせて受給できる。
@@ -102,16 +114,16 @@
 			規定値ファイルを[ファイルの選択]ボタンから指定または上の領域にドラッグ＆ドロップしてください。<br>
 			規定値リストを上の領域にコピー＆ペーストまたは直接入力することもできます。<br>
 			作成した規定値リストをダウンロードできます。 → 
-			<button onclick="app.downloadText('nenkin.txt');">規定値リストをダウンロード</button><br>
-			<button onclick="app.updateTable();">規定値を更新</button>
+			<button onclick="app.downloadText('nenkinParam.txt');">規定値リストをダウンロード</button><br>
+			<button onclick="app.viewNenkinParams();">年金規定値を更新</button>
 		</div>
 	</div>
 </div>
 <p>
-	強調数値は改定される可能性がある値<br>
+	強調値は改定される可能性がある値<br>
 	（2024年時点の規定値）
 	<div class="TEXTBOX">
-		<div id="QACONTENTS"></div>
+		<div id="NENKIN_PARAMS"></div>
 	</div>
 </p>
 
@@ -184,15 +196,6 @@
 	</ul>
 </ul>
 
-<h4>国民年金納付額</h4>
-<p class="text">
-</p>
-<ul>
-<li>国民年金保険料は月<span class="HOKENRYOGETSUGAKU"></span>円。付加保険料は月<span class="FUKAGETSUGAKU"></span>円。
-<li>月々の保険料納付額は<span id="GETSUGAKU"></span>円（<span class="HOKENRYOGETSUGAKU"></span>＋<span class="FUKAGETSUGAKU"></span>）。年間で<span id="NENGAKU"></span>円。
-<li>夫＋妻の国民年金納付額は年間で<span id="NENGAKU2NIN"></span>円。
-</ul>
-
 <h2>家族状況と受給年金額</h2>
 家族状況に応じた年単位の受給年金額を算出する。
 厳密には家族状況が変化する年は月単位で算出する必要がある。
@@ -203,15 +206,16 @@
 	<img src="imgpv/nkin2a.png">
 </div>
 <dl>
-<dt>① <span class="JA1"></span>円 （夫が年金を受給して65歳未満の妻と子がいる状況）
-<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円 ＋ 加給年金（子）<span class="KOSEIKAKYU"></span>円
-<dt>② <span class="JA2"></span>円 （夫が年金を受給して65歳未満の妻がいる状況）
-<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円
-<dt>③ <span id="JA3"></span>円 （夫と妻が年金を受給している状況）
-<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円
-<dd>（妻受給）妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
-<dt>④ <span class="JA4"></span>円 （夫が亡くなり、妻が年金を受給している状況）
-<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+<dt>① 夫が年金を受給して65歳未満の妻と子がいる状況
+<dd>（夫受給）<span class="color2"><span class="JA1"></span></span>円 ＝ 夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円 ＋ 加給年金（子）<span class="KOSEIKAKYU"></span>円
+<dt>② 夫が年金を受給して65歳未満の妻がいる状況
+<dd>（夫受給）<span class="color2"><span class="JA2"></span></span>円 ＝ 夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円
+<dt>③ 夫と妻が年金を受給している状況
+<dd>（夫受給）<span class="color2"><span id="JA3"></span></span>円 ＝ 夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円
+<dd>（妻受給）<span class="color2"><span class="T_KISONENKINGAKU"></span></span>円（妻老齢基礎年金）
+<dt>④ 夫が亡くなって妻が年金を受給している状況
+<dd>（妻受給）<span class="JA4"></span>円 ＝ 遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+<dd>※ 課税年金収入額は<span class="color2"><span class="T_KISONENKINGAKU"></span></span>円（妻老齢基礎年金）
 </dl>
 
 <h3>妻65歳（年金受給開始）より前に夫が亡くなる場合</h3>
@@ -219,14 +223,16 @@
 	<img src="imgpv/nkin2b.png">
 </div>
 <dl>
-<dt>① <span class="JA1"></span>円 （夫が年金を受給して65歳未満の妻と子がいる状況）
-<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円 ＋ 加給年金（子）<span class="KOSEIKAKYU"></span>円
-<dt>② <span class="JA2"></span>円 （夫が年金を受給して65歳未満の妻がいる状況）
-<dd>（夫受給）夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円
-<dt>③ <span class="JB3"></span>円 （夫が亡くなり、妻が65歳未満の状況）
-<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 中高齢寡婦加算<span class="IZOKUKAFU"></span>円
-<dt>④ <span class="JA4"></span>円 （夫が亡くなり、妻が年金を受給している状況）
-<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+<dt>① 夫が年金を受給して65歳未満の妻と子がいる状況
+<dd>（夫受給）<span class="color2"><span class="JA1"></span></span>円 ＝ 夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円 ＋ 加給年金（子）<span class="KOSEIKAKYU"></span>円
+<dt>② 夫が年金を受給して65歳未満の妻がいる状況
+<dd>（夫受給）<span class="color2"><span class="JA2"></span></span>円 ＝ 夫老齢基礎年金<span class="O_KISONENKINGAKU"></span>円 ＋ 老齢厚生年金<span class="KOSEINENKINGAKU"></span>円 ＋ 加給年金（妻）<span class="KOSEIKAKYUTSUMA"></span>円
+<dt>③ 夫が亡くなって妻が65歳未満の状況
+<dd>（妻受給）<span class="JB3"></span>円 ＝ 遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 中高齢寡婦加算<span class="IZOKUKAFU"></span>円
+<dd>※ 課税年金収入額は<span class="color2">0</span>円
+<dt>④ 夫が亡くなって妻が年金を受給している状況
+<dd>（妻受給）<span class="JA4"></span>円 ＝ 遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+<dd>※ 課税年金収入額は<span class="color2"><span class="T_KISONENKINGAKU"></span></span>円（妻老齢基礎年金）
 </dl>
 
 <h3>子供が高校卒業前に夫が亡くなる場合</h3>
@@ -234,16 +240,79 @@
 	<img src="imgpv/nkin2c.png">
 </div>
 <dl>
-<dt>① <span id="JC1"></span>円 （夫が亡くなり、子が2人いる状況）
-<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 遺族基礎年金<span class="IZOKUKISONENKINGAKU"></span>円 ＋ 子の加算<span class="IZOKUKISOKO"></span>円 ＋ 子の加算<span class="IZOKUKISOKO"></span>円
-<dt>② <span id="JC2"></span>円 （夫が亡くなり、子が1人いる状況）
-<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 遺族基礎年金<span class="IZOKUKISONENKINGAKU"></span>円 ＋ 子の加算<span class="IZOKUKISOKO"></span>円
-<dt>③ <span class="JB3"></span>円 （夫が亡くなり、妻が65歳未満の状況）
-<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 中高齢寡婦加算<span class="IZOKUKAFU"></span>円
-<dt>④ <span class="JA4"></span>円 （夫が亡くなり、妻が年金を受給している状況）
-<dd>（妻受給）遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+<dt>① 夫が亡くなって子が2人いる状況
+<dd>（妻受給）<span id="JC1"></span>円 ＝ 遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 遺族基礎年金<span class="IZOKUKISONENKINGAKU"></span>円 ＋ 子の加算<span class="IZOKUKISOKO"></span>円 ＋ 子の加算<span class="IZOKUKISOKO"></span>円
+<dd>※ 課税年金収入額は<span class="color2">0</span>円
+<dt>② 夫が亡くなって子が1人いる状況
+<dd>（妻受給）<span id="JC2"></span>円 ＝ 遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 遺族基礎年金<span class="IZOKUKISONENKINGAKU"></span>円 ＋ 子の加算<span class="IZOKUKISOKO"></span>円
+<dd>※ 課税年金収入額は<span class="color2">0</span>円
+<dt>③ 夫が亡くなって妻が65歳未満の状況
+<dd>（妻受給）<span class="JB3"></span>円 ＝ 遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 中高齢寡婦加算<span class="IZOKUKAFU"></span>円
+<dd>※ 課税年金収入額は<span class="color2">0</span>円
+<dt>④ 夫が亡くなって妻が年金を受給している状況
+<dd>（妻受給）<span class="JA4"></span>円 ＝ 遺族厚生年金<span class="IZOKUNENKINGAKU"></span>円 ＋ 妻老齢基礎年金<span class="T_KISONENKINGAKU"></span>円
+<dd>※ 課税年金収入額は<span class="color2"><span class="T_KISONENKINGAKU"></span></span>円（妻老齢基礎年金）
 </dl>
 
+<h2>国民年金保険料納付額</h2>
+
+<ul>
+<li>国民年金は20歳以上60歳未満の人が加入する。ただし会社員は国民年金ではなく厚生年金に加入する。<br>
+<li>年金（国民年金＋厚生年金）加入月数が一定以下の人は、60歳以上も国民年金に任意加入でき、受給する老齢基礎年金額を増やすことができる。
+また、支払った保険料は社会保険料控除の対象となり、所得税が減額される。
+
+<li>収入のない子供でも20歳以上になったら国民年金に加入して保険料を支払う必要があるが、就職して会社員になったら厚生年金に切り替わる。
+厚生年金に加入することで国民年金から自動的に脱退するため脱退手続きは不要。
+</ul>
+
+<h3>算出方法</h3>
+<ul>
+<li>国民年金保険料は月<span class="HOKENRYOGETSUGAKU"></span>円。付加保険料は月<span class="FUKAGETSUGAKU"></span>円。
+<li>月々の保険料納付額は<span class="GETSUGAKU"></span>円（<span class="HOKENRYOGETSUGAKU"></span>＋<span class="FUKAGETSUGAKU"></span>）。
+年間で<span class="NENGAKU"></span>円（<span class="GETSUGAKU"></span> × 12）。
+<li>夫＋妻の国民年金保険料納付額は年間で<span class="NENGAKU2NIN"></span>円（<span class="NENGAKU"></span> × 2）。
+<li>子供の国民年金保険料納付額（付加保険料なし）は年間で<span class="NENGAK1KODOMO"></span>円（<span class="HOKENRYOGETSUGAKU"></span> × 12）。
+</ul>
+
+<h3>算出</h3>
+以下の前提で年ごとの納付額を算出する。
+<ul>
+<li>夫は2030年2月まで加入（60歳から60ヶ月任意加入）、妻は2049年2月まで加入（60歳から40ヶ月任意加入）し、付加保険料も納付する。
+<li>子供は20歳～22歳大学卒業まで加入する。
+<li>夫が世帯加入者全員分の国民年金を納付する。
+第1子大学卒業と第2子20歳到達が同じため、第1子20歳～第2子大学卒業まで親が子供1人分の国民年金を納付することになる。
+</ul>
+
+<dl>
+<dt>2025～2029年、夫と妻が加入する状況。
+	<dd>夫の国民年金納付額は<span class="color2"><span class="NENP25"></span></span>円
+	（<span class="GETSUGAKU"></span> × 24）。
+<dt>2030年、2月まで夫と妻、3月から妻が加入する状況。
+	<dd>夫の国民年金納付額は<span class="color2"><span class="NENP30"></span></span>円
+	（<span class="GETSUGAKU"></span> × 14）。
+<dt>2031年、10月まで妻、11月から妻と子供1人が加入する状況。
+	<dd>夫の国民年金納付額は<span class="color2"><span class="NENP31"></span></span>円
+	（<span class="GETSUGAKU"></span> × 12 + <span class="HOKENRYOGETSUGAKU"></span> × 2）。
+<dt>2032～2036年、妻と子供1人が加入する状況。
+	<dd>夫の国民年金納付額は<span class="color2"><span class="NENP32"></span></span>円
+	（<span class="GETSUGAKU"></span> × 12 + <span class="HOKENRYOGETSUGAKU"></span> × 12）。
+<dt>2037年、3月まで妻と子供1人、4月から妻が加入する状況。
+	<dd>夫の国民年金納付額は<span class="color2"><span class="NENP37"></span></span>円
+	（<span class="GETSUGAKU"></span> × 12 + <span class="HOKENRYOGETSUGAKU"></span> × 3）。
+<dt>2038～2048年、妻が加入する状況。
+	<dd>夫の国民年金納付額は<span class="color2"><span class="NENP38"></span></span>円
+	（<span class="GETSUGAKU"></span> × 12）。
+<dt>2049年、2月まで妻が加入する状況。
+	<dd>夫の国民年金納付額は<span class="color2"><span class="NENP49"></span></span>円
+	（<span class="GETSUGAKU"></span> × 2）。
+</dl>
+
+<!--
+<div id="CONTROL">
+	<button onclick="app.downloadResult('nenkinData.txt');">公的年金算出結果をダウンロード</button>
+</div>
+<br>
+-->
 
 </main>
 
@@ -254,6 +323,7 @@
 	<div class="footer-right">&copy; 2024 moriuchi65.</div>
 	<div class="footer-center">
 		<button onclick="window.print(); return false;">印刷</button>
+		<button onclick="app.downloadResult('nenkinData.txt');">ダウンロード</button>
 	</div>
 </footer>
 

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">	
+	<title>税金</title>
+	<link rel="stylesheet" href="private.css">
+	<link rel="stylesheet" href="accordionbox.css">
+	<link rel="stylesheet" href="nenkin.css">
+</head>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+	<li><a href="index.html">Top</a>
+	<li>税金
+	</ul>
+
+<h1 class="title">税金</h1>
+税金は、所得税・住民税・国民健康保険料・介護保険料・後期高齢者保険料の5つ。
+2025年以降の所得に応じた税金を以下の前提で整理する。
+<ul>
+<li>夫と妻は無職。
+<li>妻は40歳以上。
+<!--
+<li>子供は28歳年末に独立する。
+-->
+<li>夫は65歳の公的年金受給開始までは生存する。
+<li>夫は60～65歳の間「退職年金」を受け取る。
+<li>夫と妻の公的年金受給開始は65歳。<a href="nenkin.html">公的年金</a>を参照。
+<li>現時点で不確定な貯金の利子と株式配当は考慮しない。利子所得と配当所得は所得の一部で税金額に影響するが、これに関わる（収入―税金）は＋であり、＋分を無視しても実害はない。
+</ul>
+
+<h2>税金の計算に必要となる規定値</h2>
+税金の計算に必要となる規定値は改定される可能性があるため、改定されたら計算し直す必要がある。
+<div id="UPDATE_PANEL" class="accordion-box">
+	<input id="AC_BUTTON" type="checkbox" />
+	<label id="AC_LABEL" for="AC_BUTTON">規定値を更新（クリックで開閉）</label>
+	<div id="AC_CONTENTS">
+		<input type="file" onchange="app.readFile(this.files[0])" onclick="this.value = null;">
+		　<button onclick="app.clearText();">クリア</button>
+<textarea id="CONTENTS_TEXT">
+公的年金等控除65歳未満130万円以下控除額:600000
+公的年金等控除65歳未満410万円以下控除額定額分:275000
+公的年金等控除65歳以上330万円以下控除額:1100000
+公的年金等控除65歳以上410万円以下控除額定額分:275000
+国民健康保険基礎控除:430000
+国民健康保険医療分所得割：7.01
+国民健康保険医療分均等割：35000
+国民健康保険医療分限度額：650000
+国民健康保険支援分所得割：2.6
+国民健康保険支援分均等割：12200
+国民健康保険支援分限度額：240000
+国民健康保険介護分所得割：2.24
+国民健康保険介護分均等割：13400
+国民健康保険介護分限度額：170000
+介護保険料第5段階年額：76800
+介護保険料第6段階年額：84500
+介護保険料第7段階年額：99900
+後期高齢者保険基礎控除:430000
+後期高齢者保険均等割：45930
+後期高齢者保険所得割：9.03
+年金所得税率（復興特別税含む）：5.105
+所得税基礎控除：480000
+所得税配偶者控除：380000
+国民年金保険料：203760
+国民年金保険料（付加保険料込）：208560
+退職年金月額：85400
+</textarea>
+<!--
+夫年金受給で65歳未満妻と子の夫課税年金額：3038774
+夫年金受給で65歳未満妻の夫課税年金額：2803974
+夫妻年金受給の夫課税年金額：2395874
+妻年金受給の妻課税年金額：867200
+-->
+		<div class="CONTROL">
+			規定値ファイルを[ファイルの選択]ボタンから指定または上の領域にドラッグ＆ドロップしてください。<br>
+			規定値リストを上の領域にコピー＆ペーストまたは直接入力することもできます。<br>
+			作成した規定値リストをダウンロードできます。 → 
+			<button onclick="app.downloadText('zeikin.txt');">規定値リストをダウンロード</button><br>
+			<button onclick="app.viewZeikinParams();">規定値を更新</button>
+		</div>
+	</div>
+</div>
+<p>
+	強調値は改定される可能性がある値<br>
+	（初期値は2024年の規定値）
+	<div class="TEXTBOX">
+		<div id="ZEIKIN_PARAMS"></div>
+	</div>
+</p>
+
+<h2>税金の計算に必要となる公的年金額</h2>
+
+税金の計算には<a href="nenkin.html">公的年金</a>で算出した公的年金額（納付額と受給額）が必要。
+公的年金額を算出しなおしたら、<a href="nenkin.html">公的年金</a>でダウンロードした公的年金額データを読み込み、
+税金を計算し直す必要がある。
+
+<div id="UPDATE_PANEL2" class="accordion-box2">
+	<input id="AC_BUTTON2" type="checkbox" />
+	<label id="AC_LABEL2" for="AC_BUTTON2">公的年金額データ値を更新（クリックで開閉）</label>
+	<div id="AC_CONTENTS2">
+		<input type="file" onchange="app.readFile2(this.files[0])" onclick="this.value = null;">
+<textarea id="CONTENTS_TEXT2">
+夫年金受給で65歳未満妻と子の夫課税年金額：3038774
+夫年金受給で65歳未満妻の夫課税年金額：2803974
+夫妻年金受給の夫課税年金額：2395874
+妻年金受給の妻課税年金額：867200
+夫亡き妻65歳未満で子が2人の妻年金額：2461272
+夫亡き妻65歳未満で子が1人の妻年金額：2226472
+夫亡き妻65歳未満の妻年金額：1787672
+夫亡き妻年金受給の妻年金額：2042872
+国民年金納付額2025～2029年：417120
+国民年金納付額2030年：243320
+国民年金納付額2031年：242520
+国民年金納付額2032～2036年：412320
+国民年金納付額2037年：259500
+国民年金納付額2038～2048年：208560
+国民年金納付額2049年：34760
+</textarea>
+		<div class="CONTROL">
+			公的年金額データファイルを[ファイルの選択]ボタンから指定または上の領域にドラッグ＆ドロップしてください。<br>
+			公的年金額データ値リストを上の領域にコピー＆ペーストまたは直接入力することもできます。<br>
+			<button onclick="app.viewNenkinValues();">公的年金額を更新</button>
+		</div>
+	</div>
+</div>
+<p>
+	公的年金額（初期値は2024年の算値）
+	<div class="TEXTBOX">
+		<div id="NENKIN_VALUES"></div>
+	</div>
+</p>
+
+<h2>所得の算出</h2>
+所得に応じて税金額が変わるため、まず所得を算出する必要がある。
+所得には、利子所得・配当所得・不動産所得・事業所得・給与所得・退職所得・山林所得・譲渡所得・一時所得・雑所得があるが、
+2025年以降に税金額に影響する収入があるのは、雑所得である（利子所得と配当所得は無視する）。
+
+<h3>雑所得</h3>
+<ul>
+<li>雑所得は利子所得・配当所得・不動産所得・事業所得・給与所得・退職所得・山林所得・譲渡所得・一時所得ではない所得。公的年金、生命保険年金など。
+<li>雑所得のうち「公的年金等の雑所得」については、公的年金等控除が適用される（収入が一定以下なら非課税になる枠がある）。
+<li>公的年金等の雑所得は、課税年金収入額 ー 公的年金等控除額。それ以外の雑所得は、収入金額 ー 必要経費。
+	<ul>
+	<li>遺族年金は非課税のため、課税年金収入額に含めない。
+	</ul>
+<li>公的年金等控除額（「公的年金等の雑所得」以外の所得が1000万円以下の場合）は以下。
+	<ul>
+	<li>年金受取人が65歳未満で公的年金等の収入金額が130万円以下は、控除額<span class="KKY1"></span>円。
+	<li>年金受取人が65歳未満で公的年金等の収入金額が410万円以下は、公的年金等収入金額 × 0.25 ＋ 控除額定額分<span class="KKY2"></span>円。
+	<li>年金受取人が65歳以上で公的年金等の収入金額が330万円以下は、控除額<span class="KKO1"></span>円。
+	<li>年金受取人が65歳以上で公的年金等の収入金額が410万円未満は、公的年金等収入金額 × 0.25 ＋ 控除額定額分<span class="KKO2"></span>円。
+	</ul>
+<li>夫が60～65歳の間受け取る「退職年金」は「公的年金等の雑所得」。
+	<ul>
+	<li>2025年4月から2030年3月まで月額<span class="TAIGETSU"></span>円を受け取る（<b>⓪</b>）。
+	<li>2025年の退職年金額（4～12月分）は<span class="TAI25"></span>円（<span class="TAIGETSU"></span> × 9）で、
+	夫の雑所得は<span class="color1"><span class="SHOT25"></span></span>円（<span class="TAI25"></span> － <span class="KKY1"></span>）。
+	<li>2026～2029年の退職年金額は<span class="TAI"></span>円（<span class="TAIGETSU"></span> × 12）で、
+	夫の雑所得は<span class="color1"><span class="SHOT26"></span></span>円（<span class="TAI"></span> － <span class="KKY1"></span>）。
+	<li>2030年の退職年金額（1～3月分）は<span class="TAI30"></span>円（<span class="TAIGETSU"></span> × 3）。
+	</ul>
+<li>夫と妻が受け取る公的年金は「公的年金等の雑所得」。<br>
+	<canvas id="can11"></canvas><canvas id="can12"></canvas>
+	<ul>
+	<li>夫が年金を受給して65歳未満の妻と子がいる状況（<b>①</b>）の夫課税年金額は<span class="color2"><span class="N1O"></span></span>円で、
+	夫の雑所得は<span class="color1"><span class="SHOT1O"></span></span>円（<span class="N1O"></span> － <span class="KKO1"></span>）。
+	<li>夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）の夫課税年金額は<span class="color2"><span class="N2O"></span></span>円で、
+	夫の雑所得は<span class="color1"><span class="SHOT2O"></span></span>円（<span class="N2O"></span> － <span class="KKO1"></span>）。
+	<li>夫と妻が年金を受給している状況（<b>③</b>）の夫課税年金額は<span class="color2"><span class="N3O"></span></span>円で、
+	夫の雑所得は<span class="color1"><span class="SHOT3O"></span></span>円（<span class="N3O"></span> － <span class="KKO1"></span>）。
+	<li>妻が年金を受給している状況（<b>④</b>）の妻課税年金額は<span class="color2"><span class="N0T"></span></span>円で、
+	妻の雑所得は<span class="color1"><span class="SHOT0T"></span></span>円（<span class="N0T"></span> － <span class="KKO1"></span>）。
+	<li>2030年の夫公的年金額（4～12月分）は<span class="N30O"></span>円（<span class="color2"><span class="N1O"></span></span> * 9 / 12）。
+	<li>2033年夫が年金を受給して65歳未満の妻と3月まで子がいる状況（<b>①</b>と<b>②</b>の境目）の
+	夫課税年金額は<span class="color2"><span class="N33O"></span></span>円（前年<span class="N1O"></span> × 3 / 12 + 翌年<span class="N2O"></span> × 9 / 12）で、
+	夫の雑所得は<span class="color1"><span class="SHOT33O"></span></span>円
+	（<span class="color2"><span class="N33O"></span></span> － <span class="KKO1"></span>）。
+	<li>2050年夫が年金を受給して妻が12月から年金受給した状況（<b>②</b>と<b>③</b>の境目）の
+	夫課税年金額は<span class="color2"><span class="N50O"></span></span>円（前年<span class="N2O"></span> × 11 / 12 + 翌年<span class="N3O"></span> / 12）で、
+	夫の雑所得は<span class="color1"><span class="SHOT50O"></span></span>円
+	（<span class="color2"><span class="N50O"></span></span> － <span class="KKO1"></span>）。
+	</ul>
+<li>2030年夫が年公的金を受給開始して65歳未満の妻と子がいる状況（<b>⓪</b>と<b>①</b>の境目）の
+夫課税年金額は<span class="color2"><span class="KN30O"></span></span>円（退職年金3ヶ月分<span class="TAI30"></span> ＋ 夫公的年金9ヶ月分<span class="N30O"></span>）で、
+夫の雑所得は<span class="color1"><span class="SHOT30"></span></span>円（<span class="color2"><span class="KN30O"></span></span> － <span class="KKO1"></span>）。
+
+</ul>
+
+
+<h2>国民健康保険料</h2>
+<ul>
+<li>国民健康保険は0歳以上75歳未満の人が加入する。ただし会社員は国民健康保険ではなく企業の健康保険に加入する。
+<li>75歳になったら国民健康保険から後期高齢者医療制度に自動的に移行する。
+<li>国民健康保険税（＝国民健康保険料）は世帯単位で課税され、世帯主が届出や保険料納付の義務を負っている。
+<li>国民健康保険税には扶養の概念はないため子供の保険料も支払う必要があるが、子供が就職して会社員になったら企業の健康保険に加入する。
+企業の健康保険に加入したら国民健康保険を脱退する手続きを行う必要がある。
+</ul>
+
+<h3>算出方法</h3>
+国民健康保険税は、医療分・支援分・介護分ごとの所得割額＋均等割額を合算した値（課税限度額が上限）が年税額となる。
+<ul>
+<li>年税額 = 医療分（所得割額＋均等割額）＋ 支援分（所得割額＋均等割額）＋ 介護分（所得割額＋均等割額）。
+	<ul>
+	<li>医療分・支援分・介護分はそれぞれ100円未満切り捨て。
+	</ul>
+<li>介護分は40歳以上誕生月から発生し、65歳以上は無し（65歳以上は国民健康保険税とは別に介護保険料を納付、75歳以上は後期高齢者保険料を納付）。
+<li>所得割額 = 世帯該当者全員の課税標準所得額 × 所得割。
+<li>均等割額 = 世帯該当者人数 × 均等割。
+	<ul>
+	<li>介護分については、40～60歳以外は該当者に含めない。
+	</ul>
+<li>さいたま市の医療分所得割は<span class="KHIS"></span>％、医療分均等割は<span class="KHIK"></span>円、医療分限度額<span class="KHIG"></span>円。
+<li>さいたま市の支援分所得割は<span class="KHSS"></span>％、支援分均等割は<span class="KHSK"></span>円、支援分限度額<span class="KHSG"></span>円。
+<li>さいたま市の介護分所得割は<span class="KKHSB"></span>％、介護分均等割は<span class="KKHKB"></span>円、介護分限度額<span class="KHKG"></span>円。
+<li>課税標準所得額 = 前年総所得金額 － （国民健康保険）基礎控除額<span class="KOKKHISWO"></span>円。
+</ul>
+
+<h3>算出</h3>
+<dl>
+<dt>2025～2029年：世帯は夫婦＋子供2人
+	<dd><canvas id="can26"></canvas>
+	<dd>夫の総所得金額は、雑所得<span class="color1"><span class="SHOT26"></span></span>円（退職年金）。
+	2025年は雑所得<span class="color1"><span class="SHOT25"></span></span>円（退職年金4～12月分）。
+	<dd>夫の課税標準所得額は、<span class="KS26O"></span>円（<span class="SHOT26"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>医療分所得割額<span class="KHISW26"></span>円 = 世帯課税標準所得額<span class="KS26O"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW26"></span>円 = 世帯加入者人数4 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB26"></span>円 = 医療分所得割額<span class="KHISW26"></span>円 ＋ 医療分均等割額<span class="KHIKW26"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW26"></span>円 = 世帯課税標準所得額<span class="KS26O"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW26"></span>円 = 世帯加入者人数4 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB26"></span>円 = 支援分所得割額<span class="KHSSW26"></span>円 ＋ 支援分均等割額<span class="KHSKW26"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>介護分所得割額<span class="KKHSBW26"></span>円 = 世帯40～65歳加入者課税標準所得額<span class="KS26O"></span>円 × 所得割<span class="KKHSB"></span>％。
+	<dd>介護分均等割額<span class="KKHKBW26"></span>円 = 世帯40～65歳加入者人数2 × 均等割<span class="KKHKB"></span>円。
+	<dd>介護分<span class="KHKB26"></span>円 = 介護分所得割額<span class="KKHSBW26"></span>円 ＋ 介護分均等割額<span class="KKHKBW26"></span>円
+	（100円未満切り捨て、限度額<span class="KHKG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK26"></span></b>円
+	（医療分<span class="KHIB26"></span> ＋ 支援分<span class="KHSB26"></span> ＋ 介護分<span class="KHKB26"></span>）。
+
+<dt>2030年：世帯は夫婦＋子供2人
+	<dd><canvas id="can30"></canvas>
+	<dd>夫の総所得金額は、雑所得<span class="color1"><span class="SHOT30"></span></span>円（退職年金1～3月分＋公的年金4～12月分）。
+	<dd>夫の課税標準所得額は、<span class="KS30O"></span>円（<span class="SHOT30"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>医療分所得割額<span class="KHISW30"></span>円 = 世帯課税標準所得額<span class="KS30O"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW30"></span>円 = 世帯加入者人数4 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB30"></span>円 = 医療分所得割額<span class="KHISW30"></span>円 ＋ 医療分均等割額<span class="KHIKW30"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW30"></span>円 = 世帯課税標準所得額<span class="KS30O"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW30"></span>円 = 世帯加入者人数4 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB30"></span>円 = 支援分所得割額<span class="KHSSW30"></span>円 ＋ 支援分均等割額<span class="KHSKW30"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>介護分所得割額<span class="KKHSBW30"></span>円 = 世帯40～65歳加入者課税標準所得額<span class="KS30O"></span>円 × 所得割<span class="KKHSB"></span>％。
+	<dd>介護分均等割額<span class="KKHKBW30"></span>円 = 世帯40～65歳加入者人数2 × 均等割<span class="KKHKB"></span>円。
+	<dd>介護分<span class="KHKB30"></span>円 = 介護分所得割額<span class="KKHSBW30"></span>円 ＋ 介護分均等割額<span class="KKHKBW30"></span>円
+	（100円未満切り捨て、限度額<span class="KHKG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK30"></span></b>円
+	（医療分<span class="KHIB30"></span> ＋ 支援分<span class="KHSB30"></span> ＋ 介護分<span class="KHKB30"></span>）。
+
+<dt>2031～2032年：夫が年金を受給して65歳未満の妻と子がいる状況、世帯は夫婦＋子供2人
+	<dd><canvas id="can1"></canvas>
+	<dd>夫の総所得金額は、雑所得<span class="color1"><span class="SHOT1O"></span></span>円。
+	<dd>夫の課税標準所得額は、<span class="KS1O"></span>円（<span class="SHOT1O"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>医療分所得割額<span class="KHISW1"></span>円 = 世帯課税標準所得額<span class="KS1O"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW1"></span>円 = 世帯加入者人数4 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB1"></span>円 = 医療分所得割額<span class="KHISW1"></span>円 ＋ 医療分均等割額<span class="KHIKW1"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW1"></span>円 = 世帯課税標準所得額<span class="KS1O"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW1"></span>円 = 世帯加入者人数4 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB1"></span>円 = 支援分所得割額<span class="KHSSW1"></span>円 ＋ 支援分均等割額<span class="KHSKW1"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>介護分所得割額<span class="KKHSBW1"></span>円 = 世帯40～65歳加入者課税標準所得額0円 × 所得割<span class="KKHSB"></span>％。
+	<dd>介護分均等割額<span class="KKHKBW1"></span>円 = 世帯40～65歳加入者人数1 × 均等割<span class="KKHKB"></span>円。
+	<dd>介護分<span class="KHKB1"></span>円 = 介護分所得割額<span class="KKHSBW1"></span>円 ＋ 介護分均等割額<span class="KKHKBW1"></span>円
+	（100円未満切り捨て、限度額<span class="KHKG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK1"></span></b>円
+	（医療分<span class="KHIB1"></span> ＋ 支援分<span class="KHSB1"></span> ＋ 介護分<span class="KHKB1"></span>）。
+
+<dt>2033年：夫が年金を受給して65歳未満の妻と3月まで子がいる状況、世帯は夫婦＋子供2人
+	<dd><canvas id="can33"></canvas>
+	<dd>夫の総所得金額は、雑所得<span class="color1"><span class="SHOT33O"></span></span>円。
+	<dd>夫の課税標準所得額は、<span class="KS33O"></span>円（<span class="SHOT33O"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>医療分所得割額<span class="KHISW33"></span>円 = 世帯課税標準所得額<span class="KS33O"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW33"></span>円 = 世帯加入者人数4 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB33"></span>円 = 医療分所得割額<span class="KHISW33"></span>円 ＋ 医療分均等割額<span class="KHIKW33"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW33"></span>円 = 世帯課税標準所得額<span class="KS33O"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW33"></span>円 = 世帯加入者人数4 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB33"></span>円 = 支援分所得割額<span class="KHSSW33"></span>円 ＋ 支援分均等割額<span class="KHSKW33"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>介護分所得割額<span class="KKHSBW33"></span>円 = 世帯40～65歳加入者課税標準所得額0円 × 所得割<span class="KKHSB"></span>％。
+	<dd>介護分均等割額<span class="KKHKBW33"></span>円 = 世帯40～65歳加入者人数1 × 均等割<span class="KKHKB"></span>円。
+	<dd>介護分<span class="KHKB33"></span>円 = 介護分所得割額<span class="KKHSBW33"></span>円 ＋ 介護分均等割額<span class="KKHKBW33"></span>円
+	（100円未満切り捨て、限度額<span class="KHKG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK33"></span></b>円
+	（医療分<span class="KHIB33"></span> ＋ 支援分<span class="KHSB33"></span> ＋ 介護分<span class="KHKB33"></span>）。
+
+<dt>2034～2039年：夫が年金を受給して65歳未満の妻がいる状況、世帯は夫婦＋子供2人
+	<dd><canvas id="can2k2"></canvas>
+	<dd>夫の総所得金額は、雑所得<span class="color1"><span class="SHOT2O"></span></span>円。
+	<dd>夫の課税標準所得額は、<span class="KS2O"></span>円（<span class="SHOT2O"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>医療分所得割額<span class="KHISW2K2"></span>円 = 世帯課税標準所得額<span class="KS2O"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW2K2"></span>円 = 世帯加入者人数4 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB2K2"></span>円 = 医療分所得割額<span class="KHISW2K2"></span>円 ＋ 医療分均等割額<span class="KHIKW2K2"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW2K2"></span>円 = 世帯課税標準所得額<span class="KS2O"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW2K2"></span>円 = 世帯加入者人数4 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB2K2"></span>円 = 支援分所得割額<span class="KHSSW2K2"></span>円 ＋ 支援分均等割額<span class="KHSKW2K2"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>介護分所得割額<span class="KKHSBW2K2"></span>円 = 世帯40～65歳加入者課税標準所得額0円 × 所得割<span class="KKHSB"></span>％。
+	<dd>介護分均等割額<span class="KKHKBW2K2"></span>円 = 世帯40～65歳加入者人数1 × 均等割<span class="KKHKB"></span>円。
+	<dd>介護分<span class="KHKB2K2"></span>円 = 介護分所得割額<span class="KKHSBW2K2"></span>円 ＋ 介護分均等割額<span class="KKHKBW2K2"></span>円
+	（100円未満切り捨て、限度額<span class="KHKG"></span>円が上限）
+	<dd翌年の>年税額は<b><span class="HK2K2"></span></b>円
+	（医療分<span class="KHIB2K2"></span> ＋ 支援分<span class="KHSB2K2"></span> ＋ 介護分<span class="KHKB2K2"></span>）。
+
+<dt>2040～2042年：夫が年金を受給して65歳未満の妻がいる状況、世帯は夫婦＋子供1人
+	<dd><canvas id="can2k1"></canvas>
+	<dd>夫の総所得金額は、雑所得<span class="color1"><span class="SHOT2O"></span></span>円。
+	<dd>夫の課税標準所得額は、<span class="KS2O"></span>円（<span class="SHOT2O"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>医療分所得割額<span class="KHISW2K1"></span>円 = 世帯課税標準所得額<span class="KS2O"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW2K1"></span>円 = 世帯加入者人数3 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB2K1"></span>円 = 医療分所得割額<span class="KHISW2K1"></span>円 ＋ 医療分均等割額<span class="KHIKW2K1"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW2K1"></span>円 = 世帯課税標準所得額<span class="KS2O"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW2K1"></span>円 = 世帯加入者人数3 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB2K1"></span>円 = 支援分所得割額<span class="KHSSW2K1"></span>円 ＋ 支援分均等割額<span class="KHSKW2K1"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>介護分所得割額<span class="KKHSBW2K1"></span>円 = 世帯40～65歳加入者課税標準所得額0円 × 所得割<span class="KKHSB"></span>％。
+	<dd>介護分均等割額<span class="KKHKBW2K1"></span>円 = 世帯40～65歳加入者人数1 × 均等割<span class="KKHKB"></span>円。
+	<dd>介護分<span class="KHKB2K1"></span>円 = 介護分所得割額<span class="KKHSBW2K1"></span>円 ＋ 介護分均等割額<span class="KKHKBW2K1"></span>円
+	（100円未満切り捨て、限度額<span class="KHKG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK2K1"></span></b>円
+	（医療分<span class="KHIB2K1"></span> ＋ 支援分<span class="KHSB2K1"></span> ＋ 介護分<span class="KHKB2K1"></span>）。
+
+<dt>2043～2049年：夫が年金を受給して65歳未満の妻がいる状況、世帯は夫婦
+	<dd><canvas id="can2k0"></canvas>
+	<dd>夫の総所得金額は、雑所得<span class="color1"><span class="SHOT2O"></span></span>円。
+	<dd>夫の課税標準所得額は、<span class="KS2O"></span>円（<span class="SHOT2O"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>医療分所得割額<span class="KHISW2K0"></span>円 = 世帯課税標準所得額<span class="KS2O"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW2K0"></span>円 = 世帯加入者人数2 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB2K0"></span>円 = 医療分所得割額<span class="KHISW2K0"></span>円 ＋ 医療分均等割額<span class="KHIKW2K0"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW2K0"></span>円 = 世帯課税標準所得額<span class="KS2O"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW2K0"></span>円 = 世帯加入者人数2 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB2K0"></span>円 = 支援分所得割額<span class="KHSSW2K0"></span>円 ＋ 支援分均等割額<span class="KHSKW2K0"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>介護分所得割額<span class="KKHSBW2K0"></span>円 = 世帯40～65歳加入者課税標準所得額0円 × 所得割<span class="KKHSB"></span>％。
+	<dd>介護分均等割額<span class="KKHKBW2K0"></span>円 = 世帯40～65歳加入者人数1 × 均等割<span class="KKHKB"></span>円。
+	<dd>介護分<span class="KHKB2K0"></span>円 = 介護分所得割額<span class="KKHSBW2K0"></span>円 ＋ 介護分均等割額<span class="KKHKBW2K0"></span>円
+	（100円未満切り捨て、限度額<span class="KHKG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK2K0"></span></b>円
+	（医療分<span class="KHIB2K0"></span> ＋ 支援分<span class="KHSB2K0"></span> ＋ 介護分<span class="KHKB2K0"></span>）。
+
+<dt>2050年：夫が年金を受給して妻が12月から年金受給した状況、世帯は夫婦
+	<dd><canvas id="can50"></canvas>
+	<dd>夫の総所得金額は、雑所得<span class="color1"><span class="SHOT50O"></span></span>円。
+	<dd>妻の総所得金額は、雑所得<span class="color1"><span class="SHOT0T"></span></span>円。
+	<dd>夫の課税標準所得額は、<span class="KS50O"></span>円（<span class="SHOT50O"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>妻の課税標準所得額は、<span class="KS0T"></span>円（<span class="SHOT0T"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>世帯課税標準所得額は、<span class="KS50OT"></span>円（<span class="KS50O"></span> ＋ <span class="KS0T"></span>）。
+
+	<dd>医療分所得割額<span class="KHISW50"></span>円 = 世帯課税標準所得額（<span class="KS50OT"></span>）円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW50"></span>円 = 世帯加入者人数2 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB50"></span>円 = 医療分所得割額<span class="KHISW50"></span>円 ＋ 医療分均等割額<span class="KHIKW50"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW50"></span>円 = 世帯課税標準所得額<span class="KS50OT"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW50"></span>円 = 世帯加入者人数2 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB50"></span>円 = 支援分所得割額<span class="KHSSW50"></span>円 ＋ 支援分均等割額<span class="KHSKW50"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>介護分所得割額<span class="KKHSBW50"></span>円 = 世帯40～65歳加入者課税標準所得額<span class="KS0T"></span>円 × 所得割<span class="KKHSB"></span>％。
+	<dd>介護分均等割額<span class="KKHKBW50"></span>円 = 世帯40～65歳加入者人数1 × 均等割<span class="KKHKB"></span>円。
+	<dd>介護分<span class="KHKB50"></span>円 = 介護分所得割額<span class="KKHSBW50"></span>円 ＋ 介護分均等割額<span class="KKHKBW50"></span>円
+	（100円未満切り捨て、限度額<span class="KHKG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK50"></span></b>円
+	（医療分<span class="KHIB50"></span> ＋ 支援分<span class="KHSB50"></span> ＋ 介護分<span class="KHKB50"></span>）。
+
+<dt>2051年～：夫と妻が年金を受給している状況、世帯は夫婦
+	<dd><canvas id="can3"></canvas>
+	<dd>夫の総所得金額は、雑所得<span class="color1"><span class="SHOT3O"></span></span>円。
+	<dd>妻の総所得金額は、雑所得<span class="color1"><span class="SHOT0T"></span></span>円。
+	<dd>夫の課税標準所得額は、<span class="KS3O"></span>円（<span class="SHOT3O"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>妻の課税標準所得額は、<span class="KS0T"></span>円（<span class="SHOT0T"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>世帯課税標準所得額は、<span class="KS3OT"></span>円（<span class="KS3O"></span> ＋ <span class="KS0T"></span>）。
+
+	<dd>医療分所得割額<span class="KHISW3"></span>円 = 世帯課税標準所得額<span class="KS3OT"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW3"></span>円 = 世帯加入者人数2 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB3"></span>円 = 医療分所得割額<span class="KHISW3"></span>円 ＋ 医療分均等割額<span class="KHIKW3"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW3"></span>円 = 世帯課税標準所得額<span class="KS3OT"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW3"></span>円 = 世帯加入者人数2 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB3"></span>円 = 支援分所得割額<span class="KHSSW3"></span>円 ＋ 支援分均等割額<span class="KHSKW3"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK3"></span></b>円
+	（医療分<span class="KHIB3"></span> ＋ 支援分<span class="KHSB3"></span>）。
+
+<dt>2051年～：夫が亡くなって妻が年金を受給している状況、世帯は妻1人
+	<dd><canvas id="can5"></canvas><canvas id="can5b"></canvas>
+	<dd>妻の総所得金額は、雑所得<span class="color1"><span class="SHOT0T"></span></span>円。
+	<dd>妻の課税標準所得額は、<span class="KS0T"></span>円（<span class="SHOT0T"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+
+	<dd>医療分所得割額<span class="KHISW5"></span>円 = 世帯課税標準所得額<span class="KS0T"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW5"></span>円 = 世帯加入者人数1 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB5"></span>円 = 医療分所得割額<span class="KHISW5"></span>円 ＋ 医療分均等割額<span class="KHIKW5"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW5"></span>円 = 世帯課税標準所得額<span class="KS0T"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW5"></span>円 = 世帯加入者人数1 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB5"></span>円 = 支援分所得割額<span class="KHSSW5"></span>円 ＋ 支援分均等割額<span class="KHSKW5"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK5"></span></b>円
+	（医療分<span class="KHIB5"></span> ＋ 支援分<span class="KHSB5"></span>）。
+
+<dt>2034～2050年：夫が亡くなって妻が65歳未満の状況、世帯は妻1人
+	<dd><canvas id="can4"></canvas>
+	<dd>妻の総所得金額は、雑所得<span class="color1"><span class="SHOT0T"></span></span>円。
+	<dd>妻の課税標準所得額は、<span class="KS0T"></span>円（<span class="SHOT0T"></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>医療分所得割額<span class="KHISW4"></span>円 = 世帯課税標準所得額<span class="KS0T"></span>円 × 所得割<span class="KHIS"></span>％。
+	<dd>医療分均等割額<span class="KHIKW4"></span>円 = 世帯加入者人数1 × 均等割<span class="KHIK"></span>円。
+	<dd>医療分<span class="KHIB4"></span>円 = 医療分所得割額<span class="KHISW4"></span>円 ＋ 医療分均等割額<span class="KHIKW4"></span>円
+	（100円未満切り捨て、限度額<span class="KHIG"></span>円が上限）
+	<dd>支援分所得割額<span class="KHSSW4"></span>円 = 世帯課税標準所得額<span class="KS0T"></span>円 × 所得割<span class="KHSS"></span>％。
+	<dd>支援分均等割額<span class="KHSKW4"></span>円 = 世帯加入者人数1 × 均等割<span class="KHSK"></span>円。
+	<dd>支援分<span class="KHSB4"></span>円 = 支援分所得割額<span class="KHSSW4"></span>円 ＋ 支援分均等割額<span class="KHSKW4"></span>円
+	（100円未満切り捨て、限度額<span class="KHSG"></span>円が上限）
+	<dd>介護分所得割額<span class="KKHSBW4"></span>円 = 世帯40～65歳加入者課税標準所得額<span class="KS0T"></span>円 × 所得割<span class="KKHSB4"></span>％。
+	<dd>介護分均等割額<span class="KKHKBW4"></span>円 = 世帯40～65歳加入者人数1 × 均等割<span class="KKHKB"></span>円。
+	<dd>介護分<span class="KHKB4"></span>円 = 介護分所得割額<span class="KKHSBW4"></span>円 ＋ 介護分均等割額<span class="KKHKBW4"></span>円
+	（100円未満切り捨て、限度額<span class="KHKG"></span>円が上限）
+	<dd>翌年の年税額は<b><span class="HK4"></span></b>円
+	（医療分<span class="KHIB4"></span> ＋ 支援分<span class="KHSB4"></span> ＋ 介護分<span class="KHKB4"></span>）。
+
+<dt>2039～2041年：夫が亡くなって妻が65歳未満の状況、世帯は妻1人＋子供1人
+	<dd><canvas id="can6c1"></canvas><canvas id="can7c1"></canvas>
+	<dd>（未算出）
+
+<dt>2030～2038年：夫が亡くなって妻が65歳未満の状況、世帯は妻1人＋子供2人
+	<dd><canvas id="can6c2"></canvas><canvas id="can7c2"></canvas>
+	<dd>（未算出）
+
+<dt>～2029年：夫が亡くなって65歳未満の妻と子2人がいる状況、世帯は妻1人＋子供2人
+	<dd><canvas id="can7b"></canvas>
+	<dd>（未算出）
+
+<dt>2030～2032年：夫が亡くなって65歳未満の妻と子1人がいる状況、世帯は妻1人＋子供2人
+	<dd><canvas id="can7c"></canvas>
+	<dd>（未算出）
+
+<dt>2033～2038年：夫が亡くなって65歳未満の妻がいる状況、世帯は妻1人＋子供2人
+	<dd><canvas id="can7d"></canvas>
+	<dd>（未算出）
+
+<dt>2033～2038年：夫が亡くなって65歳未満の妻がいる状況、世帯は妻1人＋子供1人
+	<dd><canvas id="can7e"></canvas>
+	<dd>（未算出）
+
+</dl>
+
+<h2>介護保険料</h2>
+65歳以上は介護保険料を納付する。65歳になった月分から（納付は翌月から）一生涯支払う。
+
+<h3>算出方法</h3>
+<ul>
+<li>介護保険料は市町村が3年ごとに見直す。
+<li>（第5段階）本人住民税非課税＆（課税年金収入額＋所得額）が80万円超の翌年の介護保険料は、年額<span class="KAIG5"></span>円。
+<li>（第6段階）本人住民税課税＆前年所得が120万円未満の翌年の介護保険料は、年額<span class="KAIG6"></span>円。
+<li>（第7段階）本人住民税課税＆前年所得が120～210万円未満の翌年の介護保険料は、年額<span class="KAIG7"></span>円。
+<li>収入が公的年金のみ場合は、所得 ＝ 雑所得。
+<li>単身世帯所得45万円以下は住民税非課税。
+<li>企業健康保険の扶養者は支払う必要がないが、国民健康保険には扶養の概念がないため、各人が支払う必要がある。
+</ul>
+
+<h3>算出</h3>
+<canvas id="can11b"></canvas><canvas id="can12b"></canvas>
+<dl>
+<dt>2030年：夫が年公的金を受給開始して65歳未満の妻と子がいる状況（<b>⓪</b>と<b>①</b>の境目）
+	<dd>夫所得は<span class="color1"><span class="SHOT30"></span></span>円なので、
+	第<span class="KAIG30L"></span>段階となり、翌年の夫介護保険料は年額<b><span class="KAIG30O"></span></b>円。
+
+<dt>2031～2032年：夫が年金を受給して65歳未満の妻と子がいる状況（<b>①</b>）
+	<dd>夫所得は<span class="color1"><span class="SHOT1O"></span></span>円なので、
+	第<span class="KAIG1L"></span>段階となり、翌年の夫介護保険料は年額<b><span class="KAIG1O"></span></b>円。
+
+<dt>2033年：夫が年金を受給して65歳未満の妻と3月まで子がいる状況（<b>①</b>と<b>②</b>の境目）
+	<dd>夫所得は<span class="color1"><span class="SHOT33O"></span></span>円なので、
+	第<span class="KAIG33L"></span>段階となり、翌年の夫介護保険料は年額<b><span class="KAIG33O"></span></b>円。
+
+<dt>2034～2049年：夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）
+	<dd>夫所得は<span class="color1"><span class="SHOT2O"></span></span>円なので、
+	第<span class="KAIG2L"></span>段階となり、翌年の夫介護保険料は年額<b><span class="KAIG2O"></span></b>円。
+
+<dt>2050年：夫が年金を受給して妻が12月から年金受給した状況（<b>②</b>と<b>③</b>の境目）
+	<dd>夫所得は<span class="color1"><span class="SHOT50O"></span></span>円なので、
+	第<span class="KAIG50L"></span>段階となり、翌年の夫介護保険料は年額<b><span class="KAIG50O"></span></b>円。
+
+<dt>2051年～：夫と妻が年金を受給している状況（<b>③</b>）
+	<dd>夫所得は<span class="color1"><span class="SHOT3O"></span></span>円なので、
+	第<span class="KAIG3L"></span>段階となり、翌年の夫介護保険料は年額<b><span class="KAIG3O"></span></b>円。
+<dt>2051年～：妻が年金を受給している状況（<b>④</b>）
+	<dd>妻課税年金額は<span class="color2"><span class="N0T"></span></span>円＆妻所得は<span class="color1"><span class="SHOT0T"></span></span>円なので、
+	第<span class="KAIG4L"></span>段階となり、翌年の妻介護保険料は年額<b><span class="KAIG4T"></span></b>円。
+	<dd>※ 単身世帯でない状況の介護保険料を算出できていない（ひとまず先送り）。
+</dl>
+
+<h2>後期高齢者保険料</h2>
+75歳以上は後期高齢者保険料を納付する。
+
+<h3>算出方法</h3>
+<ul>
+<li>均等割額と所得割率は2年ごとに県が見直す（埼玉県R6～7年度は均等割額45930円、所得割率9.03％）。
+<li>翌年の保険料 ＝ 均等割額<span class="color2"><span class="KOKIK"></span></span>円 ＋ （所得額 － 基礎控除額<span class="color2"><span class="KOKIKISO"></span></span>円）× 所得割率<span class="color2"><span class="KOKIS"></span></span>％。
+<!--<li>（限度額80万円） -->
+</ul>
+
+<h3>算出</h3>
+<canvas id="can11c"></canvas><canvas id="can12c"></canvas>
+<dl>
+	
+<dt>2039～2049年：夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）
+	<dd>夫所得は<span class="color1"><span class="SHOT2O"></span></span>円なので、
+	翌年（夫75歳～）の夫後期高齢者保険料は年額<b><span class="KOKI2O"></span></b>円
+	＝ <span class="KOKIK"></span> ＋ （<span class="SHOT2O"></span> － <span class="KOKIKISO"></span>）× <span class="KOKIS"></span>％。
+
+<dt>2050年：夫が年金を受給して妻が12月から年金受給した状況（<b>②</b>と<b>③</b>の境目）
+	<dd>夫所得は<span class="color1"><span class="SHOT50O"></span></span>円なので、
+	翌年の夫後期高齢者保険料は年額<b><span class="KOKI50O"></span></b>円
+	＝ <span class="KOKIK"></span> ＋ （<span class="SHOT50O"></span> － <span class="KOKIKISO"></span>）× <span class="KOKIS"></span>％。
+
+<dt>2051年～：夫と妻が年金を受給している状況（<b>③</b>）
+	<dd>夫所得は<span class="color1"><span class="SHOT3O"></span></span>円なので、
+	翌年の夫後期高齢者保険料は年額<b><span class="KOKI3O"></span></b>円
+	＝ <span class="KOKIK"></span> ＋ （<span class="SHOT3O"></span> － <span class="KOKIKISO"></span>）× <span class="KOKIS"></span>％。
+<dt>2060年～：妻が年金を受給している状況（<b>④</b>）
+	<dd>妻所得は<span class="color1"><span class="SHOT0T"></span></span>円なので、
+	翌年（妻75歳～）の妻後期高齢者保険料は年額<b><span class="KOKI4T"></span></b>円
+	＝ <span class="KOKIK"></span> ＋ （<span class="SHOT0T"></span> － <span class="KOKIKISO"></span>）× <span class="KOKIS"></span>％。
+</dl>
+
+
+<h2>所得税（65歳以上で収入が公的年金のみの場合）</h2>
+所得税は個人の所得に対してかかる国税（国に納める税金）で年金支払時に源泉徴収されるが、確定申告することで所得税が減額され還付されることがある。
+
+<h3>算出方法</h3>
+
+年金に対する所得税は、次式で計算される（1円未満切り捨て）。
+<ul>
+<li>所得税額 ＝（課税年金収入額 ー 社会保険料 ー 各種控除）x 年金所得税率（復興特別税含む）<span class="SZRITU"></span>％。
+<li>社会保険料 = 国民年金保険料＋付加保険料＋＋国民健康保険料＋介護保険料＋後期高齢者医療保険料。
+<li>各種控除 = 公的年金等控除 ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+<li>公的年金等控除額は以下（「所得の算出」記載と同じ）。
+	<ul>
+	<li>年金受取人が65歳以上で公的年金等の収入金額が330万円以下は、控除額<span class="KKO1"></span>円。
+	<li>年金受取人が65歳以上で公的年金等の収入金額が410万円未満は、公的年金等収入金額 × 0.25 ＋ 控除額定額分<span class="KKO2"></span>円。
+	</ul>
+</ul>
+
+<h4>源泉徴収税額の算出方法</h4>
+
+年金支払時に源泉徴収される所得税は、次式で計算される（1円未満切り捨て）。
+<ul>
+<li>源泉徴収税額 ＝（課税年金収入額 ー 社会保険料 ー 各種控除）x 年金所得税率（復興特別税含む）<span class="SZRITU"></span>％。
+<li>社会保険料 = 国民健康保険料＋介護保険料＋後期高齢者医療保険料（公的年金等から特別徴収される社会保険料）。
+</ul>
+本来、社会保険料として認められる国民年金保険料および付加保険料が計算式に含まれていないため、本来より高い所得税が徴収される可能性がある。<br>
+なお、65歳以上単身者の場合は年金額（月額）から社会保険料（月額）を引いた額が135,000円以下なら課税されない。
+
+<h4>確定申告</h4>
+
+状況に応じて確定申告を行って清算する必要がある。
+<ul>
+<li>年金収入額が400万円以上または年金以外の所得額が20万円以上の場合は確定申告する必要がある。
+<li>公的年金等から特別徴収されていない社会保険料がある場合は、確定申告を行って清算する。
+国民年金保険料および付加保険料を支払っている場合は、確定申告することで所得税が減額され還付される。
+<li>源泉収税額が0円の場合は還付されないため、確定申告は不要。
+<li>70歳以上の高齢者を扶養している場合は通常より多い控除額になるため、確定申告することで所得税が減額され還付される。
+</ul>
+
+<h3>算出</h3>
+
+<canvas id="can11d"></canvas><canvas id="can12d"></canvas>
+<dl>
+<dt>2030年：夫が年公的金を受給開始して65歳未満の妻と子がいる状況（<b>⓪</b>と<b>①</b>の境目）
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP30"></span>円＋付加保険料＋国民健康保険料<span class="HK30"></span>円＋介護保険料<span class="KAIG30O"></span>。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="KN30O"></span></span>円なので、
+
+<dt>2031年：夫が年金を受給して65歳未満の妻と子がいる状況（<b>①</b>）
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP31"></span>＋付加保険料＋国民健康保険料<span class="HK1"></span>円＋介護保険料<span class="KAIG1O"></span>。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N1O"></span></span>円
+
+<dt>2032年：夫が年金を受給して65歳未満の妻と子がいる状況（<b>①</b>）
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP32"></span>＋付加保険料＋国民健康保険料<span class="HK1"></span>円＋介護保険料<span class="KAIG1O"></span>。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N1O"></span></span>円
+
+<dt>2033年：夫が年金を受給して65歳未満の妻と3月まで子がいる状況（<b>①</b>と<b>②</b>の境目）
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP32"></span>＋付加保険料＋国民健康保険料<span class="HK33"></span>円＋介護保険料<span class="KAIG33O"></span>。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N33O"></span></span>円
+
+<dt>2034～2036年：夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）、世帯は夫婦＋子供2人
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP34"></span> ＋付加保険料＋国民健康保険料<span class="HK2"></span>円＋介護保険料<span class="KAIG2O"></span>。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N2O"></span></span>円
+
+<dt>2037年：夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）、世帯は夫婦＋子供2人
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP37"></span> ＋付加保険料＋国民健康保険料<span class="HK2"></span>円＋介護保険料<span class="KAIG2O"></span>。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N2O"></span></span>円
+
+<dt>2038年：夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）、世帯は夫婦＋子供2人
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP38"></span> ＋付加保険料＋国民健康保険料<span class="HK2"></span>円＋介護保険料<span class="KAIG2O"></span>。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N2O"></span></span>円
+
+<dt>2039年：夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）、世帯は夫婦＋子供2人
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP38"></span> ＋付加保険料＋国民健康保険料<span class="HK2"></span>円＋介護保険料<span class="KAIG2O"></span>。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N2O"></span></span>円
+
+<dt>2040～2042年：夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）、世帯は夫婦＋子供1人、夫75歳以上以上
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP38"></span>＋付加保険料＋国民健康保険料<span class="HK2"></span>円＋介護保険料<span class="KAIG2O"></span>＋後期高齢者医療保険料<span class="KOKI2O"></span>円。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N2O"></span></span>円
+
+
+<dt>2043～2048年：夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）、世帯は夫婦、夫75歳以上以上
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP38"></span>＋付加保険料＋国民健康保険料<span class="HK2"></span>円＋介護保険料<span class="KAIG2O"></span>＋後期高齢者医療保険料<span class="KOKI2O"></span>円。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N2O"></span></span>円
+
+
+<dt>2049年：夫が年金を受給して65歳未満の妻がいる状況（<b>②</b>）、世帯は夫婦、夫75歳以上以上
+	<dd>夫社会保険料は = 国民年金保険料<span class="NENP49"></span>＋付加保険料＋国民健康保険料<span class="HK2"></span>円＋介護保険料<span class="KAIG2O"></span>＋後期高齢者医療保険料<span class="KOKI2O"></span>円。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N2O"></span></span>円
+
+
+<dt>2050年：夫が年金を受給して妻が12月から年金受給した状況（<b>②</b>と<b>③</b>の境目）、夫75歳以上以上
+	<dd>夫社会保険料は = 国民健康保険料<span class="HK50"></span>円＋介護保険料<span class="KAIG50O"></span>＋後期高齢者医療保険料<span class="KOKI50O"></span>円。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N50O"></span></span>円
+
+
+<dt>2051年～：夫と妻が年金を受給している状況（<b>③</b>）、夫75歳以上以上
+	<dd>夫社会保険料は = 国民健康保険料<span class="HK3"></span>円＋介護保険料<span class="KAIG3O"></span>＋後期高齢者医療保険料<span class="KOKI3O"></span>円。
+
+	<dd>夫各種控除は = 公的年金等控除<span class="KKO1"></span> ＋ 基礎控除<span class="SZKISO"></span>円 ＋ 配偶者控除<span class="SZHAIGU"></span>円。
+
+	<dd>夫課税年金額は<span class="color2"><span class="N3O"></span></span>円
+
+
+<dt>2051～2059年：妻が年金を受給している状況（<b>④</b>）
+	<dd>妻社会保険料は = 国民健康保険料<span class="HK4"></span>円＋介護保険料<span class="KAIG4T"></span>。
+
+	<dd>妻課税年金額は<span class="color2"><span class="N0T"></span></span>円
+
+
+<dt>2060年～：妻が年金を受給している状況（<b>④</b>）、妻75歳以上
+	<dd>妻社会保険料は = 国民健康保険料<span class="HK4"></span>円＋介護保険料<span class="KAIG4T"></span>＋後期高齢者医療保険料<span class="KOKI4T"></span>円。
+
+	<dd>妻課税年金額は<span class="color2"><span class="N0T"></span></span>円
+
+
+</dl>
+
+<!--
+
+
+-->
+
+
+<h2>住民税</h2>
+
+住民税は年金支払時に特別徴収される。
+
+<!--
+住民税基礎控除43万円
+
+（さいたま市）
+市民税・県民税は、均等割と所得割がある
+
+均等割額
+	市民税3000円
+	県民税1000円
+	一定所得以下は課税されない
+		単身世帯前年所得45万円以下		★
+		配偶者＋前年所得が101万円以下
+		（2人年金受給時は課税される）
+所得割額
+	課税標準額（所得金額－所得控除）×税率－税額控除
+		所得金額 = 収入金額－必要経費（整理済）
+		所得控除
+			基礎控除43万円
+			医療費控除
+			社会保険料控除（健康保険、年金、介護など）★要整理★所得税と同じか？
+			配偶者控除（夫側で発生）、とりあえずさておく。
+		税率10%  市民税8%＋県民税2%
+		税額控除（該当なし）
+			配当、寄付金、住宅借入金など
+	一定所得以下は課税されない
+		単身世帯前年所得45万円以下		★
+	課税標準額は、1,000円未満の端数を切り捨てます。
+	所得割額は、100円未満の端数を切り捨てます。
+	
+森林環境税
+
+
+
+-->
+
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="footer-center">
+		<button onclick="window.print(); return false;">印刷</button>
+	</div>
+</footer>
+
+<script src="FileUtilText.js"></script>
+<script src="zeikin.js"></script>
+
+</body>
+</html>
