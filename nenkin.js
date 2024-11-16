@@ -35,19 +35,18 @@ class App {
 		this.spanHokenryoGetsugaku = this.spanFukaGetsugaku = null;
 		// 算出値
 		this.spTai25 = this.spTai = this.spTai30 = null;
-		this.spanOTsuika = this.spanOKisoZobun = null;
-		this.spanTTsuika = this.spanTKisoZobun = null;
-		this.spanOFukaHokenryo = this.spanOFukaZobun = null;
-		this.spanTFukaHokenryo = this.spanTFukaZobun = null;
-		this.spanOKisoNenkingaku = this.spanTKisoNenkingaku = null;
-		this.spanKoseiKakyuTsuma = null;
-		this.spanIzokuNenkingaku = null;
-		//this.spanIzokuKisoKo2nin = null;
-		this.spanFukaNenKasan = this.spanFukaNengaku = null;
-		this.spanJa1 = this.spanJa2 = this.spanJa3 = null;
-		this.spanJa4 = this.spanJb3 = this.spanJc1 = this.spanJc2 = null;
-		this.spanGetsugaku = null;
-		this.spanNengaku = this.spanNengaku2nin = this.spanNengaku1kodomo = null;
+		this.spOFukaZobun = this.spTFukaZobun = null;
+		this.spOKisoNenkingaku = this.spTKisoNenkingaku = null;
+		this.spKisoO30 = this.spKisoT50 = null;
+		this.spKoseiKakyuTsuma = null;
+		this.spKosei30 = this.spKosei31 = this.spKosei33 = this.spKosei34 = this.spKosei50 = null;
+		this.spIzokuNenkingaku = null;
+		this.spIzoku49 = this.spIzoku50 = this.spIzoku33 = this.spIzokuKiso29 = null;
+		this.spIzokuKiso30 = this.spIzokuKiso31 = this.spIzokuKiso33 = null;
+		this.spONenA30 = this.spONenA30 = this.spONenA31 = this.spONenA33 = null;
+		this.spONenA34 = this.spONenA50 = this.spONenA51 = this.spTNenA99 = null;
+		this.spTNenB50 = null;
+		this.spTNenD29 = this.spTNenD30 = this.spTNenD31 = this.spTNenD33 = null;
 		this.spanNenp25 = this.spanNenp30 = this.spanNenp31 = null;	// 国民年金保険
 		this.spanNenp32 = this.spanNenp37 = this.spanNenp38 = this.spanNenp49 = null;
 		this.result = null;
@@ -80,32 +79,38 @@ class App {
 		this.spTai25 = Array.from(document.getElementsByClassName("TAI25"));
 		this.spTai = Array.from(document.getElementsByClassName("TAI"));
 		this.spTai30 = Array.from(document.getElementsByClassName("TAI30"));
-		this.spanOTsuika = document.querySelector("#O_TSUIKA");
-		this.spanOKisoZobun = document.querySelector("#O_KISOZOBUN");
-		this.spanTTsuika = document.querySelector("#T_TSUIKA");
-		this.spanTKisoZobun = document.querySelector("#T_KISOZOBUN");
-		this.spanOFukaHokenryo = document.querySelector("#O_FUKAHOKENRYO");
-		this.spanOFukaZobun = Array.from(document.getElementsByClassName("O_FUKAZOBUN"));
-		this.spanTFukaHokenryo = document.querySelector("#T_FUKAHOKENRYO");
-		this.spanTFukaZobun = Array.from(document.getElementsByClassName("T_FUKAZOBUN"));
-		this.spanOKisoNenkingaku = Array.from(document.getElementsByClassName("O_KISONENKINGAKU"));
-		this.spanTKisoNenkingaku = Array.from(document.getElementsByClassName("T_KISONENKINGAKU"));
-		this.spanKoseiKakyuTsuma = Array.from(document.getElementsByClassName("KOSEIKAKYUTSUMA"));
-		this.spanIzokuNenkingaku = Array.from(document.getElementsByClassName("IZOKUNENKINGAKU"));
-		//this.spanIzokuKisoKo2nin = document.querySelector("#IZOKUKISOKO2NIN");
-		this.spanFukaNenKasan = document.querySelector("#FUKANENKASAN");
-		this.spanFukaNengaku = document.querySelector("#FUKANENGAKU");
-		this.spanJa1 = Array.from(document.getElementsByClassName("JA1"));
-		this.spanJa2 = Array.from(document.getElementsByClassName("JA2"));
-		this.spanJa3 = document.querySelector("#JA3");
-		this.spanJa4 = Array.from(document.getElementsByClassName("JA4"));
-		this.spanJb3 = Array.from(document.getElementsByClassName("JB3"));
-		this.spanJc1 = document.querySelector("#JC1");
-		this.spanJc2 = document.querySelector("#JC2");
-		this.spanGetsugaku = Array.from(document.getElementsByClassName("GETSUGAKU"));
-		this.spanNengaku = Array.from(document.getElementsByClassName("NENGAKU"));
-		this.spanNengaku2nin = Array.from(document.getElementsByClassName("NENGAKU2NIN"));
-		this.spanNengaku1kodomo = Array.from(document.getElementsByClassName("NENGAK1KODOMO"));
+		this.spOKisoNenkingaku = Array.from(document.getElementsByClassName("O_KISONENKINGAKU"));
+		this.spTKisoNenkingaku = Array.from(document.getElementsByClassName("T_KISONENKINGAKU"));
+		this.spOFukaZobun = Array.from(document.getElementsByClassName("O_FUKAZOBUN"));
+		this.spTFukaZobun = Array.from(document.getElementsByClassName("T_FUKAZOBUN"));
+		this.spKisoO30 = Array.from(document.getElementsByClassName("O_KISO30"));
+		this.spKisoT50 = Array.from(document.getElementsByClassName("T_KISO50"));
+		this.spKoseiKakyuTsuma = Array.from(document.getElementsByClassName("KOSEIKAKYUTSUMA"));
+		this.spKosei30 = Array.from(document.getElementsByClassName("KOSEI30"));
+		this.spKosei31 = Array.from(document.getElementsByClassName("KOSEI31"));
+		this.spKosei33 = Array.from(document.getElementsByClassName("KOSEI33"));
+		this.spKosei34 = Array.from(document.getElementsByClassName("KOSEI34"));
+		this.spKosei50 = Array.from(document.getElementsByClassName("KOSEI50"));
+		this.spIzokuNenkingaku = Array.from(document.getElementsByClassName("IZOKUNENKINGAKU"));
+		this.spIzoku49 = Array.from(document.getElementsByClassName("IZOKU49"));
+		this.spIzoku50 = Array.from(document.getElementsByClassName("IZOKU50"));
+		this.spIzoku33 = Array.from(document.getElementsByClassName("IZOKU33"));
+		this.spIzokuKiso29 = Array.from(document.getElementsByClassName("IZOKUKISO29"));
+		this.spIzokuKiso30 = Array.from(document.getElementsByClassName("IZOKUKISO30"));
+		this.spIzokuKiso31 = Array.from(document.getElementsByClassName("IZOKUKISO31"));
+		this.spIzokuKiso33 = Array.from(document.getElementsByClassName("IZOKUKISO33"));
+		this.spONenA30 = Array.from(document.getElementsByClassName("O_NA30"));
+		this.spONenA31 = Array.from(document.getElementsByClassName("O_NA31"));
+		this.spONenA33 = Array.from(document.getElementsByClassName("O_NA33"));
+		this.spONenA34 = Array.from(document.getElementsByClassName("O_NA34")); 
+		this.spONenA50 = Array.from(document.getElementsByClassName("O_NA50"));
+		this.spONenA51 = Array.from(document.getElementsByClassName("O_NA51"));
+		this.spTNenA99 = Array.from(document.getElementsByClassName("T_NA99"));
+		this.spTNenB50 = Array.from(document.getElementsByClassName("T_NB50"));
+		this.spTNenD29 = Array.from(document.getElementsByClassName("T_ND29"));
+		this.spTNenD30 = Array.from(document.getElementsByClassName("T_ND30"));
+		this.spTNenD31 = Array.from(document.getElementsByClassName("T_ND31"));
+		this.spTNenD33 = Array.from(document.getElementsByClassName("T_ND33"));
 		this.spanNenp25 = Array.from(document.getElementsByClassName("NENP25"));
 		this.spanNenp30 = Array.from(document.getElementsByClassName("NENP30"));
 		this.spanNenp31 = Array.from(document.getElementsByClassName("NENP31"));
@@ -139,12 +144,39 @@ class App {
 		const tai25 = taigetsu * 9;
 		const tai = taigetsu * 12;
 		const tai30 = taigetsu * 3;
-		const oFukaNenkingaku = 200 * oFukaGessu;
-		const tFukaNenkingaku = 200 * tFukaGessu;
-		const izokuNenkingaku = Math.round(koseiHoshu * 3 / 4);
-		const getsugaku = hokenryoGetsugaku + fukaGetsugaku;
+		const oFukaNenkingaku = fukaKasan * oFukaGessu;
+		const tFukaNenkingaku = fukaKasan * tFukaGessu;
 		const oKisoNenkingaku = kisoMangaku * oNofuGessu / 480 + oFukaNenkingaku;
 		const tKisoNenkingaku = kisoMangaku * tNofuGessu / 480 + tFukaNenkingaku;
+		const oKiso30 = Math.floor(oKisoNenkingaku * 9/12);
+		const tKiso50 = Math.floor(tKisoNenkingaku / 12);
+		const koseiKakyuTsuma = koseiKakyu + koseiKakyuTokubetsu;
+		const kosei30 = Math.floor((koseiNenkingaku + koseiKakyuTsuma + koseiKakyu) * 9/12);
+		const kosei31 = koseiNenkingaku + koseiKakyuTsuma + koseiKakyu;
+		const kosei33 = Math.floor(koseiNenkingaku + koseiKakyuTsuma + koseiKakyu * 3/12);
+		const kosei34 = koseiNenkingaku + koseiKakyuTsuma;
+		const kosei50 = Math.floor(koseiNenkingaku + koseiKakyuTsuma * 11/12);
+		const izokuNenkingaku = Math.floor(koseiHoshu * 3 / 4);
+		const izoku49 = izokuNenkingaku + izokuKafu;
+		const izoku50 = Math.floor(izokuNenkingaku + izokuKafu * 11/12);
+		const izoku33 = Math.floor(izokuNenkingaku + izokuKafu * 9/12);
+		const izokuKiso29 = izokuKisoNenkingaku + izokuKisoKo * 2;
+		const izokuKiso30 = Math.floor(izokuKisoNenkingaku + izokuKisoKo * 15/12);
+		const izokuKiso31 = izokuKisoNenkingaku + izokuKisoKo;
+		const izokuKiso33 = Math.floor((izokuKisoNenkingaku + izokuKisoKo) * 3/12);
+		const oNenA30 = tai30 + oKiso30 + kosei30;
+		const oNenA31 = oKisoNenkingaku + kosei31;
+		const oNenA33 = oKisoNenkingaku + kosei33;
+		const oNenA34 = oKisoNenkingaku + kosei34;
+		const oNenA50 = oKisoNenkingaku + kosei50;
+		const oNenA51 = oKisoNenkingaku + koseiNenkingaku;
+		const tNenA99 = izokuNenkingaku + tKisoNenkingaku;
+		const tNenB50 = izoku50 + tKiso50;
+		const tNenD29 = izokuNenkingaku + izokuKiso29;
+		const tNenD30 = izokuNenkingaku + izokuKiso30;
+		const tNenD31 = izokuNenkingaku + izokuKiso31;
+		const tNenD33 = izoku33 + izokuKiso33;
+
 		// 規定値
 		this.spTaiGetsu.forEach(v => { v.innerText = taigetsu.toLocaleString(); });
 		this.spanKisoMangaku.forEach(v => { v.innerText = kisoMangaku.toLocaleString(); });
@@ -166,41 +198,39 @@ class App {
 		this.spTai25.forEach(v => { v.innerText = tai25.toLocaleString(); });
 		this.spTai.forEach(v => { v.innerText = tai.toLocaleString(); });
 		this.spTai30.forEach(v => { v.innerText = tai30.toLocaleString(); });
-		this.spanOTsuika.innerText = (hokenryoGetsugaku * 60).toLocaleString();
-		this.spanOKisoZobun.innerText = (kisoMangaku * 60 / 480).toLocaleString();
-		this.spanTTsuika.innerText = (hokenryoGetsugaku * 40).toLocaleString();
-		this.spanTKisoZobun.innerText = (kisoMangaku * 40 / 480).toLocaleString();
-		this.spanOFukaHokenryo.innerText = (400 * oFukaGessu).toLocaleString();
-		this.spanTFukaHokenryo.innerText = (400 * tFukaGessu).toLocaleString();
-		this.spanOFukaZobun.forEach(v => { v.innerText = oFukaNenkingaku.toLocaleString(); });
-		this.spanTFukaZobun.forEach(v => { v.innerText = tFukaNenkingaku.toLocaleString(); });
-		this.spanOKisoNenkingaku.forEach(v => { v.innerText = oKisoNenkingaku.toLocaleString(); });
-		this.spanTKisoNenkingaku.forEach(v => { v.innerText = tKisoNenkingaku.toLocaleString(); });
-		this.spanKoseiKakyuTsuma.forEach(v => { v.innerText = (koseiKakyu + koseiKakyuTokubetsu).toLocaleString(); });
-		this.spanIzokuNenkingaku.forEach(v => { v.innerText = izokuNenkingaku.toLocaleString(); });
-		//this.spanIzokuKisoKo2nin.innerText = (izokuKisoNenkingaku + izokuKisoKo).toLocaleString();
-		this.spanFukaNenKasan.innerText = (fukaKasan * 12).toLocaleString();
-		this.spanFukaNengaku.innerText = (fukaGetsugaku * 12).toLocaleString();
-
-		const ja1 = oKisoNenkingaku + koseiNenkingaku + koseiKakyu + koseiKakyuTokubetsu + koseiKakyu;
-		const ja2 = oKisoNenkingaku + koseiNenkingaku + koseiKakyu + koseiKakyuTokubetsu;
-		const ja3 = oKisoNenkingaku + koseiNenkingaku;
-		const ja4 = izokuNenkingaku + tKisoNenkingaku;
-		const jb3 = izokuNenkingaku + izokuKafu;
-		const jc1 = izokuNenkingaku + izokuKisoNenkingaku + izokuKisoKo + izokuKisoKo;
-		const jc2 = izokuNenkingaku + izokuKisoNenkingaku + izokuKisoKo;
-		this.spanJa1.forEach(v => { v.innerText = ja1.toLocaleString(); });
-		this.spanJa2.forEach(v => { v.innerText = ja2.toLocaleString(); });
-		this.spanJa3.innerText = ja3.toLocaleString();
-		this.spanJa4.forEach(v => { v.innerText = ja4.toLocaleString(); });
-		this.spanJb3.forEach(v => { v.innerText = jb3.toLocaleString(); });
-		this.spanJc1.innerText = jc1.toLocaleString();
-		this.spanJc2.innerText = jc2.toLocaleString();
-		
-		this.spanGetsugaku.forEach(v => { v.innerText = getsugaku.toLocaleString(); });
-		this.spanNengaku.forEach(v => { v.innerText = (getsugaku * 12).toLocaleString(); });
-		this.spanNengaku2nin.forEach(v => { v.innerText = (getsugaku * 24).toLocaleString(); });
-		this.spanNengaku1kodomo.forEach(v => { v.innerText = (hokenryoGetsugaku * 12).toLocaleString(); });
+		this.spOKisoNenkingaku.forEach(v => { v.innerText = oKisoNenkingaku.toLocaleString(); });
+		this.spTKisoNenkingaku.forEach(v => { v.innerText = tKisoNenkingaku.toLocaleString(); });
+		this.spOFukaZobun.forEach(v => { v.innerText = oFukaNenkingaku.toLocaleString(); });
+		this.spTFukaZobun.forEach(v => { v.innerText = tFukaNenkingaku.toLocaleString(); });
+		this.spKisoO30.forEach(v => { v.innerText = oKiso30.toLocaleString(); });
+		this.spKisoT50.forEach(v => { v.innerText = tKiso50.toLocaleString(); });
+		this.spKoseiKakyuTsuma.forEach(v => { v.innerText = koseiKakyuTsuma.toLocaleString(); });
+		this.spKosei30.forEach(v => { v.innerText = kosei30.toLocaleString(); });
+		this.spKosei31.forEach(v => { v.innerText = kosei31.toLocaleString(); });
+		this.spKosei33.forEach(v => { v.innerText = kosei33.toLocaleString(); });
+		this.spKosei34.forEach(v => { v.innerText = kosei34.toLocaleString(); });
+		this.spKosei50.forEach(v => { v.innerText = kosei50.toLocaleString(); });
+		this.spIzokuNenkingaku.forEach(v => { v.innerText = izokuNenkingaku.toLocaleString(); });
+		this.spIzoku49.forEach(v => { v.innerText = izoku49.toLocaleString(); });
+		this.spIzoku50.forEach(v => { v.innerText = izoku50.toLocaleString(); });
+		this.spIzoku33.forEach(v => { v.innerText = izoku33.toLocaleString(); });
+		this.spIzokuKiso29.forEach(v => { v.innerText = izokuKiso29.toLocaleString(); });
+		this.spIzokuKiso30.forEach(v => { v.innerText = izokuKiso30.toLocaleString(); });
+		this.spIzokuKiso31.forEach(v => { v.innerText = izokuKiso31.toLocaleString(); });
+		this.spIzokuKiso33.forEach(v => { v.innerText = izokuKiso33.toLocaleString(); });
+		this.spONenA30.forEach(v => { v.innerText = oNenA30.toLocaleString(); });
+		this.spONenA31.forEach(v => { v.innerText = oNenA31.toLocaleString(); });
+		this.spONenA33.forEach(v => { v.innerText = oNenA33.toLocaleString(); });
+		this.spONenA34.forEach(v => { v.innerText = oNenA34.toLocaleString(); });
+		this.spONenA50.forEach(v => { v.innerText = oNenA50.toLocaleString(); });
+		this.spONenA51.forEach(v => { v.innerText = oNenA51.toLocaleString(); });
+		this.spTNenA99.forEach(v => { v.innerText = tNenA99.toLocaleString(); });
+		this.spTNenB50.forEach(v => { v.innerText = tNenB50.toLocaleString(); });
+		this.spTNenD29.forEach(v => { v.innerText = tNenD29.toLocaleString(); });
+		this.spTNenD30.forEach(v => { v.innerText = tNenD30.toLocaleString(); });
+		this.spTNenD31.forEach(v => { v.innerText = tNenD31.toLocaleString(); });
+		this.spTNenD33.forEach(v => { v.innerText = tNenD33.toLocaleString(); });
+		const getsugaku = hokenryoGetsugaku + fukaGetsugaku;
 		const nenp25 = getsugaku * 24;
 		const nenp30 = getsugaku * 14;
 		const nenp31 = getsugaku * 12 + hokenryoGetsugaku * 2;
@@ -215,26 +245,66 @@ class App {
 		this.spanNenp37.forEach(v => { v.innerText = nenp37.toLocaleString(); });
 		this.spanNenp38.forEach(v => { v.innerText = nenp38.toLocaleString(); });
 		this.spanNenp49.forEach(v => { v.innerText = nenp49.toLocaleString(); });
-		// 年金値データ
+		// 年金値データ for Download
 		let text = "";
-		text += `退職年金額2025年：${tai25}\n`;
-		text += `退職年金額：${tai}\n`;
-		text += `退職年金額2030年：${tai30}\n`;
-		text += `夫年金受給で65歳未満妻と子の夫課税年金額：${ja1}\n`;
-		text += `夫年金受給で65歳未満妻の夫課税年金額：${ja2}\n`;
-		text += `夫妻年金受給の夫課税年金額：${ja3}\n`;
-		text += `妻年金受給の妻課税年金額：${tKisoNenkingaku}\n`;
-		text += `夫亡き妻65歳未満で子が2人の妻年金額：${jc1}\n`;
-		text += `夫亡き妻65歳未満で子が1人の妻年金額：${jc2}\n`;
-		text += `夫亡き妻65歳未満の妻年金額：${jb3}\n`;
-		text += `夫亡き妻年金受給の妻年金額：${ja4}\n`;
-		text += `国民年金納付額2025～2029年：${nenp25}\n`;
-		text += `国民年金納付額2030年：${nenp30}\n`;
-		text += `国民年金納付額2031年：${nenp31}\n`;
-		text += `国民年金納付額2032～2036年：${nenp32}\n`;
-		text += `国民年金納付額2037年：${nenp37}\n`;
-		text += `国民年金納付額2038～2048年：${nenp38}\n`;
-		text += `国民年金納付額2049年：${nenp49}\n`;
+		text += `長寿_夫受給年金額25：${tai25}\n`;
+		text += `長寿_夫受給年金額26_29：${tai}\n`;
+		text += `長寿_夫受給年金額30：${oNenA30}\n`;
+		text += `長寿_夫受給年金額31_32：${oNenA31}\n`;
+		text += `長寿_夫受給年金額33：${oNenA33}\n`;
+		text += `長寿_夫受給年金額34_49：${oNenA34}\n`;
+		text += `長寿_夫受給年金額50：${oNenA50}\n`;
+		text += `長寿_妻受給年金額50：${tKiso50}\n`;
+		text += `長寿_夫受給年金額51_X：${oNenA51}\n`;
+		text += `長寿_妻受給年金額51_X：${tKisoNenkingaku}\n`;
+		text += `長寿_妻受給年金額X：${tNenA99}\n`;
+		text += `長寿_妻課税年金額X：${tKisoNenkingaku}\n`;
+		text += `標準_夫受給年金額25：${tai25}\n`;
+		text += `標準_夫受給年金額26_29：${tai}\n`;
+		text += `標準_夫受給年金額30：${oNenA30}\n`;
+		text += `標準_夫受給年金額31_32：${oNenA31}\n`;
+		text += `標準_夫受給年金額33：${oNenA33}\n`;
+		text += `標準_夫受給年金額34_X：${oNenA34}\n`;
+		text += `標準_妻受給年金額X_49：${izoku49}\n`;
+		text += `標準_妻受給年金額50：${tNenB50}\n`;
+		text += `標準_妻受給年金額51_x：${tNenA99}\n`;
+		text += `標準_妻課税年金額X_49：${0}\n`;
+		text += `標準_妻課税年金額50：${tKiso50}\n`;
+		text += `標準_妻課税年金額51_x：${tKisoNenkingaku}\n`;
+		text += `短命_夫受給年金額25：${tai25}\n`;
+		text += `短命_夫受給年金額26_X：${tai}\n`;
+		text += `短命_妻受給年金額X_29：${tNenD29}\n`;
+		text += `短命_妻受給年金額30：${tNenD30}\n`;
+		text += `短命_妻受給年金額31_32：${tNenD31}\n`;
+		text += `短命_妻受給年金額33：${tNenD33}\n`;
+		text += `短命_妻受給年金額34_49：${izoku49}\n`;
+		text += `短命_妻受給年金額50：${tNenB50}\n`;
+		text += `短命_妻受給年金額51_x：${tNenA99}\n`;
+		text += `短命_妻課税年金額X_49：${0}\n`;
+		text += `短命_妻課税年金額50：${tKiso50}\n`;
+		text += `短命_妻課税年金額51_x：${tKisoNenkingaku}\n`;
+		text += `長寿_夫年金納付額25_29：${nenp25}\n`;
+		text += `長寿_夫年金納付額30：${nenp30}\n`;
+		text += `長寿_夫年金納付額31：${nenp31}\n`;
+		text += `長寿_夫年金納付額32_36：${nenp32}\n`;
+		text += `長寿_夫年金納付額37：${nenp37}\n`;
+		text += `長寿_夫年金納付額38_48：${nenp38}\n`;
+		text += `長寿_夫年金納付額49：${nenp49}\n`;
+		text += `標準_夫年金納付額25_29：${nenp25}\n`;
+		text += `標準_夫年金納付額30：${nenp30}\n`;
+		text += `標準_夫年金納付額31：${nenp31}\n`;
+		text += `標準_夫年金納付額32_36：${nenp32}\n`;
+		text += `標準_夫年金納付額37：${nenp37}\n`;
+		text += `標準_夫年金納付額38_X：${nenp38}\n`;
+		text += `標準_妻年金納付額X_48：${nenp38}\n`;
+		text += `標準_妻年金納付額49：${nenp49}\n`;
+		text += `短命_夫年金納付額25_X：${nenp25}\n`;
+		text += `短命_妻年金納付額X_30：${nenp38}\n`;
+		text += `短命_妻年金納付額31：${nenp31}\n`;
+		text += `短命_妻年金納付額32_36：${nenp32}\n`;
+		text += `短命_妻年金納付額37：${nenp37}\n`;
+		text += `短命_妻年金納付額38_48：${nenp38}\n`;
+		text += `短命_妻年金納付額49：${nenp49}\n`;
 		this.result = text;
 	}
 
@@ -332,37 +402,6 @@ class App {
 	downloadResult(filename){
 		FileUtil.downloadText(this.result, filename);
 	}
-
-	/*
-	-------------------------
-	（税金用）
-	夫年金受給で65歳未満妻と子の夫課税年金額	ja1
-	夫年金受給で65歳未満妻の夫課税年金額	ja2
-	夫妻年金受給の夫課税年金額	ja3
-	妻年金受給の妻課税年金額		tKisoNenkingaku
-	夫亡き妻65歳未満で子が2人の妻年金額	(jc1)
-	夫亡き妻65歳未満で子が1人の妻年金額	(jc2)
-	夫亡き妻65歳未満の妻年金額	(jb3)
-	夫亡き妻年金受給の妻年金額	(ja4)
-	国民年金納付額2025～2029年	nenp25
-	国民年金納付額2030年	nenp30
-	国民年金納付額2031年	nenp31
-	国民年金納付額2032～2036年	nenp32
-	国民年金納付額2037年	nenp37
-	国民年金納付額2038～2048年	nenp38
-	国民年金納付額2049年	nenp49
-	-------------------------
-	（受給額）
-	夫年金受給で65歳未満の妻の夫年金額	ja1
-	夫年金受給で65歳未満の妻の夫年金額	ja2
-	夫妻年金受給の夫年金額	ja3, tKisoNenkingaku
-	夫亡き妻65歳未満で子が2人の夫年金額	JC1
-	夫亡き妻65歳未満で子が1人の夫年金額	JC2
-	夫亡き妻65歳未満の夫年金額	JB3
-	夫亡き妻年金受給の夫年金額	JA4
-	-------------------------
-	*/
-
 }
 
 // Python's zip
