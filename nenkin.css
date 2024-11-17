@@ -91,9 +91,10 @@ img.w600m100p {
 .DATA_TABLE {
 	border-collapse: collapse;	
 }
-.DATA_TABLE td{
+.DATA_TABLE th, td{
 	border: 1px solid darkgray;
 	padding: 1px 5px;
+	white-space: nowrap
 }
 
 @media (max-width: 670px) {
@@ -112,9 +113,15 @@ img.w600m100p {
 	#NENKIN_VALUES {
 		max-width: initial;
 	}
-	.DATA_TABLE {
-		overflow-x: scroll;
+	/*
+	.DATA_TABLE th, td{
+		white-space: nowrap
 	}
-
+		overflow-x: scroll;
+	*/
+	.HSCROLL {
+		overflow-x: auto;
+		display: block;
+	}
 }
 
