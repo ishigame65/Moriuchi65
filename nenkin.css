@@ -7,6 +7,9 @@
 	}
 }
 main {
+	/*
+	padding: 30px;
+	*/
 	padding: 10px;
 }
 h2 {
@@ -50,12 +53,14 @@ p .TEXTBOX{
 	padding: 20px;
 }
 .VALUES{
-	border-collapse: collapse;
-	
+	border-collapse: collapse;	
 }
 .VALUES th,td{
-	border: 1px solid darkgray;
+	/*
 	padding: 3px 5px;
+	*/
+	border: 1px solid darkgray;
+	padding: 1px 5px;
 	font-size: smaller;
 }
 .VALUES td:nth-of-type(2){
@@ -78,6 +83,19 @@ img.w600m100p {
 	float:right;
 	max-width: 50%;
 }
+#NENKIN_VALUES {
+	max-width: calc(50% - 25px);
+	overflow:auto;
+	height: 440px;
+}
+.DATA_TABLE {
+	border-collapse: collapse;	
+}
+.DATA_TABLE td{
+	border: 1px solid darkgray;
+	padding: 1px 5px;
+}
+
 @media (max-width: 670px) {
 	.scroll img {
 		width: 800px;
@@ -91,5 +109,12 @@ img.w600m100p {
 	#UPDATE_PANEL2{
 		max-width: initial;
 	}
+	#NENKIN_VALUES {
+		max-width: initial;
+	}
+	.DATA_TABLE {
+		overflow-x: scroll;
+	}
+
 }
 

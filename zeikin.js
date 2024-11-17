@@ -346,7 +346,7 @@ class NenkinValues {
 	aNen51o = 0;	// 長寿_夫受給年金額51_X
 	aNen51t = 0;	// 長寿_妻受給年金額51_X
 	aNenXtF = 0;	// 長寿_妻受給年金額X（非課税分含む）
-	aNenXt = 0;	// 長寿_妻課税年金額X（課税）
+	aNenXt = 0;		// 長寿_妻課税年金額X（課税）
 	bNen25o = 0;	// 標準_夫受給年金額25
 	bNen26o = 0;	// 標準_夫受給年金額26_29
 	bNen30o = 0;	// 標準_夫受給年金額30
@@ -372,27 +372,27 @@ class NenkinValues {
 	cNen50t = 0;	// 短命_妻課税年金額50（課税）
 	cNen51t = 0;	// 短命_妻課税年金額51_x（課税）
 	aNenPay25_29o = 0;	// 長寿_夫年金納付額25_29
-	aNenPay30o = 0;	// 長寿_夫年金納付額30
-	aNenPay31o = 0;	// 長寿_夫年金納付額31
+	aNenPay30o = 0;		// 長寿_夫年金納付額30
+	aNenPay31o = 0;		// 長寿_夫年金納付額31
 	aNenPay32_36o = 0;	// 長寿_夫年金納付額32_36
-	aNenPay37o = 0;	// 長寿_夫年金納付額37
+	aNenPay37o = 0;		// 長寿_夫年金納付額37
 	aNenPay38_48o = 0;	// 長寿_夫年金納付額38_48
-	aNenPay49o = 0;	// 長寿_夫年金納付額49
+	aNenPay49o = 0;		// 長寿_夫年金納付額49
 	bNenPay25_29 = 0;	// 標準_夫年金納付額25_29
-	bNenPay30o = 0;	// 標準_夫年金納付額30
-	bNenPay31o = 0;	// 標準_夫年金納付額31
+	bNenPay30o = 0;		// 標準_夫年金納付額30
+	bNenPay31o = 0;		// 標準_夫年金納付額31
 	bNenPay32_36o = 0;	// 標準_夫年金納付額32_36
-	bNenPay37o = 0;	// 標準_夫年金納付額37
+	bNenPay37o = 0;		// 標準_夫年金納付額37
 	bNenPay38_Xo = 0;	// 標準_夫年金納付額38_X
 	bNenPayX_48t = 0;	// 標準_妻年金納付額X_48
-	bNenPay49o = 0;	// 標準_妻年金納付額49
+	bNenPay49o = 0;		// 標準_妻年金納付額49
 	cNenPay25_Xo = 0;	// 短命_夫年金納付額25_X
 	cNenPayX_30t = 0;	// 短命_妻年金納付額X_30
-	cNenPay31t = 0;	// 短命_妻年金納付額31
+	cNenPay31t = 0;		// 短命_妻年金納付額31
 	cNenPay32_36t = 0;	// 短命_妻年金納付額32_36
-	cNenPay37t = 0;	// 短命_妻年金納付額37
+	cNenPay37t = 0;		// 短命_妻年金納付額37
 	cNenPay38_48t = 0;	// 短命_妻年金納付額38_48
-	cNenPay49t = 0;	// 短命_妻年金納付額49
+	cNenPay49t = 0;		// 短命_妻年金納付額49
 
 	constructor(nmap){
 		this.aNen25o = Number(nmap.get('長寿_夫受給年金額25'));

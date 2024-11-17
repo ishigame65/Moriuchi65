@@ -1,7 +1,9 @@
 @charset "utf-8";
 @page {
-	margin: 10px;
-	size: A4 portrait;
+	size: A4;
+	margin: 10mm;
+	/* ページ番号
+	*/
 }
 @media print {
 	ul.breadcrumb{
