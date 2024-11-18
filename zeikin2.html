@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">	
-	<title>税金（長寿）</title>
+	<title>税金（標準）</title>
 	<link rel="stylesheet" href="private.css">
 	<link rel="stylesheet" href="accordionbox.css">
 	<link rel="stylesheet" href="nenkin.css">
@@ -19,13 +19,13 @@
 	<ul class="breadcrumb">
 	<li><a href="index.html">Top</a>
 	<li><a href="okane.html">お金</a>
-	<li>税金（長寿）
+	<li>税金（標準）
 	</ul>
 
-<h1 class="title">税金（長寿）</h1>
-<strong>妻65歳（年金受給開始）以降に夫が亡くなる場合の税金を整理する。</strong><br>
+<h1 class="title">税金（標準）</h1>
+<strong>妻65歳（年金受給開始）より前に夫が亡くなる場合の税金を整理する。</strong><br>
 税金は、所得税・住民税・国民健康保険料・介護保険料・後期高齢者保険料の5つ。<br>
-2025年以降の所得に応じた税金を以下の前提で整理する。<br>
+2025年以降の所得に応じた税金を以下の前提で整理する。
 <ul>
 <li>夫と妻は無職。
 <li>妻は40歳以上。
@@ -82,6 +82,11 @@
 住民税扶養控除特定：450000
 住民税扶養控除老人：380000
 </textarea>
+<!--
+国民年金保険料：203760
+国民年金保険料（付加保険料込）：208560
+退職年金月額：85400
+-->
 		<div class="CONTROL">
 			規定値ファイルを[ファイルの選択]ボタンから指定または上の領域にドラッグ＆ドロップしてください。<br>
 			規定値リストを上の領域にコピー＆ペーストまたは直接入力することもできます。<br>
@@ -215,71 +220,25 @@
 
 <h3>所得の算出</h3>
 <ul>
-<li>2025年の夫雑所得は<span class="color1"><span class="AOSHOT25"></span></span>円
-（夫課税年金額<span class="color2"><span class="AONEN25"></span></span> － 公的年金等控除額<span class="KKY1"></span>）。
-<li>2026～2029年の夫雑所得は<span class="color1"><span class="AOSHOT26"></span></span>円
-（夫課税年金額<span class="color2"><span class="AONEN26"></span></span> － 公的年金等控除額<span class="KKY1"></span>）。
-<li>2030年（夫65歳）の夫雑所得は<span class="color1"><span class="AOSHOT30"></span></span>円
-（夫課税年金額<span class="AONEN30"<span class="color2">></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
-<li>2031～2032年の雑所得は<span class="color1"><span class="AOSHOT31"></span></span>円
-（夫課税年金額<span class="color2"><span class="AONEN31"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
-<li>2033年（第2子高校卒業）の夫雑所得は<span class="color1"><span class="AOSHOT33"></span></span>円
-（夫課税年金額<span class="color2"><span class="AONEN33"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
-<li>2034～2049年の夫雑所得は<span class="color1"><span class="AOSHOT34"></span></span>円
-（夫課税年金額<span class="color2"><span class="AONEN34"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
-<li>2050年（妻65歳）の夫雑所得は<span class="color1"><span class="AOSHOT50"></span></span>円
-（夫課税年金額<span class="color2"><span class="AONEN50"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
-<li>2050年（妻65歳）の妻雑所得は<span class="color1"><span class="ATSHOT50"></span></span>円
-（妻課税年金額<span class="color2"><span class="ATNEN50"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
-<li>2051年以降の夫雑所得は<span class="color1"><span class="AOSHOT51"></span></span>円
-（夫課税年金額<span class="color2"><span class="AONEN51"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
-<li>2051年以降の妻雑所得は<span class="color1"><span class="ATSHOT51"></span></span>円
-（妻課税年金額<span class="color2"><span class="ATNEN51"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
-</ul>
-<!--
-<h3>妻65歳（年金受給開始）より前に夫が亡くなる場合の所得の算出</h3>
-<ul>
 <li>2025年の夫雑所得は<span class="color1"><span class="BOSHOT25"></span></span>円
-（夫課税年金額<span class="BONEN25"></span> － 公的年金等控除額<span class="KKY1"></span>）。
+（夫課税年金額<span class="color2"><span class="BONEN25"></span></span> － 公的年金等控除額<span class="KKY1"></span>）。
 <li>2026～2029年の夫雑所得は<span class="color1"><span class="BOSHOT26"></span></span>円
-（夫課税年金額<span class="BONEN26"></span> － 公的年金等控除額<span class="KKY1"></span>）。
+（夫課税年金額<span class="color2"><span class="BONEN26"></span></span> － 公的年金等控除額<span class="KKY1"></span>）。
 <li>2030年（夫65歳）の夫雑所得は<span class="color1"><span class="BOSHOT30"></span></span>円
-（夫課税年金額<span class="BONEN30"></span> － 公的年金等控除額<span class="KKO1"></span>）。
+（夫課税年金額<span class="color2"><span class="BONEN30"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
 <li>2031～2032年の夫雑所得は<span class="color1"><span class="BOSHOT31"></span></span>円
-（夫課税年金額<span class="BONEN31"></span> － 公的年金等控除額<span class="KKO1"></span>）。
+（夫課税年金額<span class="color2"><span class="BONEN31"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
 <li>2033年（第2子高校卒業）の夫雑所得は<span class="color1"><span class="BOSHOT33"></span></span>円
-（夫課税年金額<span class="BONEN33"></span> － 公的年金等控除額<span class="KKO1"></span>）。
+（夫課税年金額<span class="color2"><span class="BONEN33"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
 <li>2034以降夫生存中の夫雑所得は<span class="color1"><span class="BOSHOT34"></span></span>円
-（夫課税年金額<span class="BONEN34"></span> － 公的年金等控除額<span class="KKO1"></span>）。
+（夫課税年金額<span class="color2"><span class="BONEN34"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
 <li>夫死亡翌年～2049年の妻雑所得は<span class="color1"><span class="BTSHOT49"></span></span>円
-（妻課税年金額<span class="BTNEN49"></span> － 公的年金等控除額<span class="KKY1"></span>）。
+（妻課税年金額<span class="color2"><span class="BTNEN49"></span></span> － 公的年金等控除額<span class="KKY1"></span>）。
 <li>2050年（妻65歳）の妻雑所得は<span class="color1"><span class="BTSHOT50"></span></span>円
-（妻課税年金額<span class="BTNEN50"></span> － 公的年金等控除額<span class="KKO1"></span>）。
+（妻課税年金額<span class="color2"><span class="BTNEN50"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
 <li>2051年以降の妻雑所得は<span class="color1"><span class="BTSHOT51"></span></span>円
-（妻課税年金額<span class="BTNEN51"></span> － 公的年金等控除額<span class="KKO1"></span>）。
+（妻課税年金額<span class="color2"><span class="BTNEN51"></span></span> － 公的年金等控除額<span class="KKO1"></span>）。
 </ul>
-<h3>子供が高校卒業前に夫が亡くなる場合の所得の算出</h3>
-<ul>
-<li>2025年の夫雑所得は<span class="color1"><span class="COSHOT25"></span></span>円
-（夫課税年金額<span class="CONEN25"></span> － 公的年金等控除額<span class="KKY1"></span>）。
-<li>2026以降夫生存中の夫雑所得は<span class="color1"><span class="COSHOT26"></span></span>円
-（夫課税年金額<span class="CONEN26"></span> － 公的年金等控除額<span class="KKY1"></span>）。
-<li>夫死亡翌年～2029年の妻雑所得は<span class="color1"><span class="CTSHOT29"></span></span>円
-（妻課税年金額<span class="CTNEN29"></span> － 公的年金等控除額<span class="KKY1"></span>）。
-<li>2030年（第1子高校卒業）の妻雑所得は<span class="color1"><span class="CTSHOT30"></span></span>円
-（妻課税年金額<span class="CTNEN30"></span> － 公的年金等控除額<span class="KKY1"></span>）。
-<li>2031～2032年の妻雑所得は<span class="color1"><span class="CTSHOT31"></span></span>円
-（妻課税年金額<span class="CTNEN31"></span> － 公的年金等控除額<span class="KKY1"></span>）。
-<li>2033年（第2子高校卒業）の妻雑所得は<span class="color1"><span class="CTSHOT33"></span></span>円
-（妻課税年金額<span class="CTNEN33"></span> － 公的年金等控除額<span class="KKY1"></span>）。
-<li>2034～2049年の妻雑所得は<span class="color1"><span class="CTSHOT34"></span></span>円
-（妻課税年金額<span class="CTNEN34"></span> － 公的年金等控除額<span class="KKY1"></span>）。
-<li>2050年（妻65歳）の妻雑所得は<span class="color1"><span class="CTSHOT50"></span></span>円
-（妻課税年金額<span class="CTNEN50"></span> － 公的年金等控除額<span class="KKO1"></span>）。
-<li>2051年以降の妻雑所得は<span class="color1"><span class="CTSHOT51"></span></span>円
-（妻課税年金額<span class="CTNEN51"></span> － 公的年金等控除額<span class="KKO1"></span>）。
-</ul>
--->
 
 <h2>国民健康保険料</h2>
 <ul>
@@ -313,7 +272,7 @@
 <h3>国民健康保険税の算出</h3>
 <dl>
 <dt>2026～2029年<b>⓪</b>
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 	<dd>2025年夫課税標準所得は<span class="AKSHOT25O"></span>円
 	（夫所得<span class="color1"><span class="AOSHOT25"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
@@ -338,7 +297,7 @@
 	（医療分<span class="AKHIB26"></span> ＋ 支援分<span class="AKHSB26"></span> ＋ 介護分<span class="AKHKB26"></span>）。
 
 <dt>2030年（夫65歳）<b>⓪</b>と<b>①</b>の堺
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 	<dd>2026～2029年夫課税標準所得は<span class="AKSHOT26O"></span>円
 	（夫所得<span class="color1"><span class="AOSHOT26"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
@@ -362,7 +321,7 @@
 	（医療分<span class="AKHIB30"></span> ＋ 支援分<span class="AKHSB30"></span> ＋ 介護分<span class="AKHKB30"></span>）。
 
 <dt>2031年<b>①</b>
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
 	<dd>2030年の夫課税標準所得は<span class="AKSHOT30O"></span>円
@@ -386,7 +345,7 @@
 	（医療分<span class="AKHIB31"></span> ＋ 支援分<span class="AKHSB31"></span> ＋ 介護分<span class="AKHKB31"></span>）。
 
 <dt>2032～2033年<b>①</b>
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
 	<dd>2031～2032年の夫課税標準所得は<span class="AKSHOT31O"></span>円
@@ -410,7 +369,7 @@
 
 
 <dt>2034年（第1子独立）<b>①</b>と<b>②</b>の堺
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
 	<dd>2033年の夫課税標準所得は<span class="AKSHOT33O"></span>円
@@ -435,7 +394,7 @@
 	（医療分<span class="AKHIB34"></span> ＋ 支援分<span class="AKHSB34"></span> ＋ 介護分<span class="AKHKB34"></span>）。
 
 <dt>2035～2036年<b>②</b>
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
 	<dd>2034～2049年の夫課税標準所得は<span class="AKSHOT34O"></span>円
@@ -459,7 +418,7 @@
 	（医療分<span class="AKHIB35"></span> ＋ 支援分<span class="AKHSB35"></span> ＋ 介護分<span class="AKHKB35"></span>）。
 
 <dt>2037年（第2子独立）<b>②</b>と<b>③</b>の堺
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
 	<dd>2034～2049年の夫課税標準所得は<span class="AKSHOT34O"></span>円
@@ -484,7 +443,7 @@
 	（医療分<span class="AKHIB37"></span> ＋ 支援分<span class="AKHSB37"></span> ＋ 介護分<span class="AKHKB37"></span>）。
 
 <dt>2038～2039年<b>③</b>
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
 	<dd>2034～2049年の夫課税標準所得は<span class="AKSHOT34O"></span>円
@@ -508,7 +467,7 @@
 	（医療分<span class="AKHIB38"></span> ＋ 支援分<span class="AKHSB38"></span> ＋ 介護分<span class="AKHKB38"></span>）。
 
 <dt>2040年（夫75歳）<b>③</b>と<b>④</b>の堺
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
 	<dd>2034～2049年の夫課税標準所得は<span class="AKSHOT34O"></span>円
@@ -532,13 +491,13 @@
 	<dd>国民健康保険税額は<b><span class="AKH40"></span></b>円
 	（医療分<span class="AKHIB40"></span> ＋ 支援分<span class="AKHSB40"></span> ＋ 介護分<span class="AKHKB40"></span>）。
 
-<dt>2041～2049年<b>④</b>
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+<dt>2041年以降夫生存中<b>④</b>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
-	<dd>2034～2049年の夫課税標準所得は<span class="AKSHOT34O"></span>円
+	<dd>2034年以降夫生存中の夫課税標準所得は<span class="AKSHOT34O"></span>円
 	（夫所得<span class="color1"><span class="AOSHOT34"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
-	<dd>2034～2049年の世帯課税標準所得は<span class="AKSHOT34O"></span>円（夫課税標準所得）
+	<dd>2034年以降夫生存中の世帯課税標準所得は<span class="AKSHOT34O"></span>円（夫課税標準所得）
 
 	<dd>医療分所得割額<span class="AKHISW41"></span>円 = 世帯課税標準所得<span class="AKSHOT34O"></span>円 × 所得割<span class="color2"><span class="KHIS"></span></span>％。
 	<dd>医療分均等割額<span class="AKHIKW41"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHIK"></span></span>円。
@@ -555,81 +514,61 @@
 	<dd>国民健康保険税額は<b><span class="AKH41"></span></b>円
 	（医療分<span class="AKHIB41"></span> ＋ 支援分<span class="AKHSB41"></span> ＋ 介護分<span class="AKHKB41"></span>）。
 
-<dt>2050年（妻65歳）<b>④</b>と<b>⑤</b>の堺
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+<dt>夫死亡翌年～2049年<b>⑤</b>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
-	<dd>2034～2049年の夫課税標準所得は<span class="AKSHOT34O"></span>円
-	（夫所得<span class="color1"><span class="AOSHOT34"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
-	<dd>2034～2049年の世帯課税標準所得は<span class="AKSHOT34O"></span>円（夫課税標準所得）
+	<dd>夫死亡翌年～2049年の妻課税標準所得は<span class="BKSHOT49T"></span>円
+	（妻所得<span class="color1"><span class="BTSHOT49"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>夫死亡翌年～2049年の世帯課税標準所得は<span class="BKSHOT49T"></span>円（妻課税標準所得）
+
+	<dd>医療分所得割額<span class="BKHISW49"></span>円 = 世帯課税標準所得<span class="BKSHOT49T"></span>円 × 所得割<span class="color2"><span class="KHIS"></span></span>％。
+	<dd>医療分均等割額<span class="BKHIKW49"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHIK"></span></span>円。
+	<dd>医療分<span class="BKHIB49"></span>円 = 医療分所得割額<span class="BKHISW49"></span>円 ＋ 医療分均等割額<span class="BKHIKW49"></span>円
+	（100円未満切り捨て、限度額<span class="color2"><span class="KHIG"></span></span>円が上限）
+	<dd>支援分所得割額<span class="BKHSSW49"></span>円 = 世帯課税標準所得<span class="BKSHOT49T"></span>円 × 所得割<span class="color2"><span class="KHSS"></span></span>％。
+	<dd>支援分均等割額<span class="BKHSKW49"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHSK"></span></span>円。
+	<dd>支援分<span class="BKHSB49"></span>円 = 支援分所得割額<span class="BKHSSW49"></span>円 ＋ 支援分均等割額<span class="BKHSKW49"></span>円
+	（100円未満切り捨て、限度額<span class="color2"><span class="KHSG"></span></span>円が上限）
+	<dd>介護分所得割額<span class="BKHKSW49"></span>円 = 世帯40～65歳加入者課税標準所得<span class="BKSHOT49T"></span>円 × 所得割<span class="color2"><span class="KKHSB"></span></span>％。
+	<dd>介護分均等割額<span class="BKHKKW49"></span>円 = 世帯40～65歳加入者人数1 × 均等割<span class="color2"><span class="KKHKB"></span></span>円。
+	<dd>介護分<span class="BKHKB49"></span>円 = 介護分所得割額<span class="BKHKSW49"></span>円 ＋ 介護分均等割額<span class="BKHKKW49"></span>円
+	（100円未満切り捨て、限度額<span class="color2"><span class="KHKG"></span></span>円が上限）
+	<dd>国民健康保険税額は<b><span class="BKH49"></span></b>円
+	（医療分<span class="BKHIB49"></span> ＋ 支援分<span class="BKHSB49"></span> ＋ 介護分<span class="BKHKB49"></span>）。
+
+<dt>2050年（妻65歳）<b>⑤</b>と<b>⑥</b>の堺
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
+	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
+
+	<dd>夫死亡翌年～2049年の妻課税標準所得は<span class="BKSHOT49T"></span>円
+	（妻所得<span class="color1"><span class="BTSHOT49"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
+	<dd>夫死亡翌年～2049年の世帯課税標準所得は<span class="BKSHOT49T"></span>円（妻課税標準所得）
 
 	<dd>妻の介護分は10月分まで納付するため、世帯40～65歳加入者人数を0.83（10/12）とする。
 
-	<dd>医療分所得割額<span class="AKHISW50"></span>円 = 世帯課税標準所得<span class="AKSHOT34O"></span>円 × 所得割<span class="color2"><span class="KHIS"></span></span>％。
-	<dd>医療分均等割額<span class="AKHIKW50"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHIK"></span></span>円。
-	<dd>医療分<span class="AKHIB50"></span>円 = 医療分所得割額<span class="AKHISW50"></span>円 ＋ 医療分均等割額<span class="AKHIKW50"></span>円
+	<dd>医療分所得割額<span class="BKHISW50"></span>円 = 世帯課税標準所得<span class="BKSHOT49T"></span>円 × 所得割<span class="color2"><span class="KHIS"></span></span>％。
+	<dd>医療分均等割額<span class="BKHIKW50"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHIK"></span></span>円。
+	<dd>医療分<span class="BKHIB50"></span>円 = 医療分所得割額<span class="BKHISW50"></span>円 ＋ 医療分均等割額<span class="BKHIKW50"></span>円
 	（100円未満切り捨て、限度額<span class="color2"><span class="KHIG"></span></span>円が上限）
-	<dd>支援分所得割額<span class="AKHSSW50"></span>円 = 世帯課税標準所得<span class="AKSHOT34O"></span>円 × 所得割<span class="color2"><span class="KHSS"></span></span>％。
-	<dd>支援分均等割額<span class="AKHSKW50"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHSK"></span></span>円。
-	<dd>支援分<span class="AKHSB50"></span>円 = 支援分所得割額<span class="AKHSSW50"></span>円 ＋ 支援分均等割額<span class="AKHSKW50"></span>円
+	<dd>支援分所得割額<span class="BKHSSW50"></span>円 = 世帯課税標準所得<span class="BKSHOT49T"></span>円 × 所得割<span class="color2"><span class="KHSS"></span></span>％。
+	<dd>支援分均等割額<span class="BKHSKW50"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHSK"></span></span>円。
+	<dd>支援分<span class="BKHSB50"></span>円 = 支援分所得割額<span class="BKHSSW50"></span>円 ＋ 支援分均等割額<span class="BKHSKW50"></span>円
 	（100円未満切り捨て、限度額<span class="color2"><span class="KHSG"></span></span>円が上限）
-	<dd>介護分所得割額<span class="AKHKSW50"></span>円 = 世帯40～65歳加入者課税標準所得<span class="AKSHOT34O"></span>円 × 所得割<span class="color2"><span class="KKHSB"></span></span>％。
-	<dd>介護分均等割額<span class="AKHKKW50"></span>円 = 世帯40～65歳加入者人数0.83 × 均等割<span class="color2"><span class="KKHKB"></span></span>円。
-	<dd>介護分<span class="AKHKB50"></span>円 = 介護分所得割額<span class="AKHKSW50"></span>円 ＋ 介護分均等割額<span class="AKHKKW50"></span>円
+	<dd>介護分所得割額<span class="BKHKSW50"></span>円 = 世帯40～65歳加入者課税標準所得<span class="BKSHOT49T"></span>円 × 所得割<span class="color2"><span class="KKHSB"></span></span>％。
+	<dd>介護分均等割額<span class="BKHKKW50"></span>円 = 世帯40～65歳加入者人数0.83 × 均等割<span class="color2"><span class="KKHKB"></span></span>円。
+	<dd>介護分<span class="BKHKB50"></span>円 = 介護分所得割額<span class="BKHKSW50"></span>円 ＋ 介護分均等割額<span class="BKHKKW50"></span>円
 	（100円未満切り捨て、限度額<span class="color2"><span class="KHKG"></span></span>円が上限）
-	<dd>国民健康保険税額は<b><span class="AKH50"></span></b>円
-	（医療分<span class="AKHIB50"></span> ＋ 支援分<span class="AKHSB50"></span> ＋ 介護分<span class="AKHKB50"></span>）。
+	<dd>国民健康保険税額は<b><span class="BKH50"></span></b>円
+	（医療分<span class="BKHIB50"></span> ＋ 支援分<span class="BKHSB50"></span> ＋ 介護分<span class="BKHKB50"></span>）。
 
-<dt>2051年<b>⑤</b>
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+<dt>2051～2059年<b>⑥</b>
+	<dd><img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
 
-	<dd>2050年の夫課税標準所得は<span class="AKSHOT50O"></span>円
-	（夫所得<span class="color1"><span class="AOSHOT50"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
-	<dd>2050年の妻課税標準所得は<span class="AKSHOT50T"></span>円
-	（妻所得<span class="color1"><span class="ATSHOT50"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
-	<dd>2050年の世帯課税標準所得は<span class="AKSHOT50OT"></span>円 = 夫課税標準所得<span class="AKSHOT50O"></span> ＋ 妻課税標準所得は<span class="AKSHOT50T"></span>
-
-	<dd>医療分所得割額<span class="AKHISW51"></span>円 = 世帯課税標準所得<span class="AKSHOT50OT"></span>円 × 所得割<span class="color2"><span class="KHIS"></span></span>％。
-	<dd>医療分均等割額<span class="AKHIKW51"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHIK"></span></span>円。
-	<dd>医療分<span class="AKHIB51"></span>円 = 医療分所得割額<span class="AKHISW51"></span>円 ＋ 医療分均等割額<span class="AKHIKW51"></span>円
-	（100円未満切り捨て、限度額<span class="color2"><span class="KHIG"></span></span>円が上限）
-	<dd>支援分所得割額<span class="AKHSSW51"></span>円 = 世帯課税標準所得<span class="AKSHOT50OT"></span>円 × 所得割<span class="color2"><span class="KHSS"></span></span>％。
-	<dd>支援分均等割額<span class="AKHSKW51"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHSK"></span></span>円。
-	<dd>支援分<span class="AKHSB51"></span>円 = 支援分所得割額<span class="AKHSSW51"></span>円 ＋ 支援分均等割額<span class="AKHSKW51"></span>円
-	（100円未満切り捨て、限度額<span class="color2"><span class="KHSG"></span></span>円が上限）
-	<dd>国民健康保険税額は<b><span class="AKH51"></span></b>円
-	（医療分<span class="AKHIB51"></span> ＋ 支援分<span class="AKHSB51"></span>）。
-
-<dt>2052年以降夫生存中<b>⑤</b>
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
-	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
-
-	<dd>2051年以降夫生存中の夫課税標準所得は<span class="AKSHOT51O"></span>円
-	（夫所得<span class="color1"><span class="AOSHOT51"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
-	<dd>2051年以降夫生存中の妻課税標準所得は<span class="AKSHOT51T"></span>円
-	（妻所得<span class="color1"><span class="ATSHOT51"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
-	<dd>2051年以降夫生存中の世帯課税標準所得は<span class="AKSHOT51OT"></span>円 = 夫課税標準所得<span class="AKSHOT51O"></span> ＋ 妻課税標準所得<span class="AKSHOT51T"></span>。
-
-
-	<dd>医療分所得割額<span class="AKHISW52"></span>円 = 世帯課税標準所得<span class="AKSHOT51OT"></span>円 × 所得割<span class="color2"><span class="KHIS"></span></span>％。
-	<dd>医療分均等割額<span class="AKHIKW52"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHIK"></span></span>円。
-	<dd>医療分<span class="AKHIB52"></span>円 = 医療分所得割額<span class="AKHISW52"></span>円 ＋ 医療分均等割額<span class="AKHIKW52"></span>円
-	（100円未満切り捨て、限度額<span class="color2"><span class="KHIG"></span></span>円が上限）
-	<dd>支援分所得割額<span class="AKHSSW52"></span>円 = 世帯課税標準所得<span class="AKSHOT51OT"></span>円 × 所得割<span class="color2"><span class="KHSS"></span></span>％。
-	<dd>支援分均等割額<span class="AKHSKW52"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHSK"></span></span>円。
-	<dd>支援分<span class="AKHSB52"></span>円 = 支援分所得割額<span class="AKHSSW52"></span>円 ＋ 支援分均等割額<span class="AKHSKW52"></span>円
-	（100円未満切り捨て、限度額<span class="color2"><span class="KHSG"></span></span>円が上限）
-	<dd>国民健康保険税額は<b><span class="AKH52"></span></b>円
-	（医療分<span class="AKHIB52"></span> ＋ 支援分<span class="AKHSB52"></span>）。
-
-<dt>夫死亡翌年～2059年<b>⑥</b>
-	<dd><img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
-	<div class="color">※ 国民健康保険税は<img src="imgpv/cpurple1.png">と<img src="imgpv/cgreen1.png">（介護分）。</div>
-
-	<dd>夫死亡翌年以降の妻課税標準所得は<span class="AKSHOTXT"></span>円
+	<dd>2050年以降の妻課税標準所得は<span class="AKSHOTXT"></span>円
 	（妻所得<span class="color1"><span class="ATSHOTX"></span></span> － 基礎控除<span class="KOKKHISWO"></span>）。
-	<dd>夫死亡翌年以降の世帯課税標準所得は<span class="AKSHOTXT"></span>円（妻課税標準所得）
+	<dd>2050年以降の世帯課税標準所得は<span class="AKSHOTXT"></span>円（妻課税標準所得）
 
 	<dd>医療分所得割額<span class="AKHISWX"></span>円 = 世帯課税標準所得<span class="AKSHOTXT"></span>円 × 所得割<span class="color2"><span class="KHIS"></span></span>％。
 	<dd>医療分均等割額<span class="AKHIKWX"></span>円 = 世帯加入者人数1 × 均等割<span class="color2"><span class="KHIK"></span></span>円。
@@ -647,8 +586,6 @@
 	<dd>世帯課税標準所得は<span class="AKSHOTXT"></span>円（前年と同じ）。	
 	<dd>10月分まで納付するので、前年額の10/12とする。
 	<dd>国民健康保険税額は<b><span class="AKH60"></span></b>円（前年額<span class="AKHX"></span> × 10/12）。
-
-</dl>
 
 </dl>
 
@@ -671,10 +608,7 @@
 </ul>
 
 <h3>介護保険料の算出</h3>
-<!--
-<canvas id="can11b"></canvas><canvas id="can12b"></canvas>
--->
-<img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+<img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 <div class="color">※ 介護保険料は<img src="imgpv/corange1.png">。</div>
 
 <dl>
@@ -684,46 +618,26 @@
 	第<span class="AOKAIG29L"></span>段階（年額<span class="AOKAIG30Y"></span>円）。
 	<dd>夫の介護保険料は<b><span class="AOKAIG30"></span></b>円（<span class="AOKAIG30Y"></span> × 10/12）。
 
-<dt>2031年以降（夫）<b>①</b><b>②</b><b>③</b><b>④</b><b>⑤</b>
+<dt>2031年以降（夫）<b>①②③④</b>
 	<dd>2030年夫の所得は<span class="color1"><span class="AOSHOT30"></span></span>円なので
 	第<span class="AOKAIG30L"></span>段階。
 	<dd>2031～2032年夫の所得は<span class="color1"><span class="AOSHOT31"></span></span>円なので
 	第<span class="AOKAIG31L"></span>段階。
 	<dd>2033年夫の所得は<span class="color1"><span class="AOSHOT33"></span></span>円なので
 	第<span class="AOKAIG33L"></span>段階。
-	<dd>2034～2049年夫の所得は<span class="color1"><span class="AOSHOT34"></span></span>円なので
+	<dd>2034年以降夫の所得は<span class="color1"><span class="AOSHOT34"></span></span>円なので
 	第<span class="AOKAIG34L"></span>段階。
-	<dd>2050年夫の所得は<span class="color1"><span class="AOSHOT50"></span></span>円なので
-	第<span class="AOKAIG50L"></span>段階。
-	<dd>2051年以降夫の所得<span class="color1"><span class="AOSHOT51"></span></span>円なので
-	第<span class="AOKAIG51L"></span>段階。
 	<dd>夫の介護保険料は<b><span class="AOKAIG31"></span></b>円。
 
-<dt>2050年（妻）<b>④</b>と<b>⑤</b>の堺
+<dt>2050～2051年（妻）<b>⑤</b>と<b>⑥</b>の堺
 	<dd>2049年妻の所得は<span class="color1">0</span>円で課税年金額は<span class="color2">0</span>円。
-	<dd>2049年夫の所得は<span class="color1"><span class="AOSHOT34"></span></span>円で
-	課税年金額は<span class="color2"><span class="AONEN34"></span></span>円。
-	<dd>おそらく世帯は非課税にならず、第<span class="ATKAIG49L"></span>段階。
-	<dd>妻の介護保険料は年額<b><span class="ATKAIG50"></span></b>円。
-
-<dt>2051年（妻）<b>⑤</b>
 	<dd>2050年妻の所得は<span class="color1"><span class="ATSHOT50"></span></span>円で
 	課税年金額は<span class="color2"><span class="ATNEN50"></span></span>円。	
-	<dd>2050年夫の所得は<span class="color1"><span class="AOSHOT50"></span></span>円で
-	課税年金額は<span class="color2"><span class="AONEN50"></span></span>円。
-	<dd>おそらく世帯は非課税にならず、第<span class="ATKAIG50L"></span>段階。
-	<dd>妻の介護保険料は年額<b><span class="ATKAIG51"></span></b>円。
+	<dd>単身世帯で世帯の住民税が非課税になり、第<span class="BTKAIG49L">★★★★★</span>段階。
+	<dd>妻の介護保険料は年額<b><span class="BTKAIG50">★★★★★</span></b>円。
 
-<dt>2052年以降夫生存中（妻）<b>⑤</b>
+<dt>2052年以降（妻）<b>⑥⑦</b>
 	<dd>2051年以降妻の所得は<span class="color1"><span class="ATSHOT51"></span></span>円で
-	課税年金額は<span class="color2"><span class="ATNEN51"></span></span>円。
-	<dd>夫の所得は<span class="color1"><span class="AOSHOT34"></span></span>円で
-	課税年金額は<span class="color2"><span class="AONEN34"></span></span>円。
-	<dd>おそらく世帯は非課税にならず、第<span class="ATKAIG51L"></span>段階。
-	<dd>妻の介護保険料は年額<b><span class="ATKAIG52"></span></b>円。
-
-<dt>夫死亡後（妻）<b>⑥</b><b>⑦</b>
-	<dd>妻の所得は<span class="color1"><span class="ATSHOT51"></span></span>円で
 	課税年金額は<span class="color2"><span class="ATNEN51"></span></span>円。
 	<dd>単身世帯で世帯の住民税が非課税になり、第<span class="ATKAIGXL"></span>段階。
 	<dd>妻の介護保険料は年額<b><span class="ATKAIGX"></span></b>円。
@@ -740,22 +654,16 @@
 </ul>
 
 <h3>後期高齢者保険料の算出</h3>
-<img class = "w600m100p" src="imgpv/kenpo_a.png"><br>
+<img class = "w600m100p" src="imgpv/kenpo_b.png"><br>
 <div class="color">※ 後期高齢者保険料は<img src="imgpv/cpink1.png">。</div>
 <dl>
 <dt>2040年（夫）<b>③</b>と<b>④</b>の堺
 	<dd>年額<span class="AOKOKI41"></span>円
 	＝ <span class="KOKIK"></span> ＋ （夫前年所得<span class="color1"><span class="AOSHOT34"></span></span>円 － <span class="KOKIKISO"></span>）× <span class="KOKIS"></span>％。
 	<dd>夫の後期高齢者保険料<b><span class="AOKOKI40"></span></b>円 ＝ <span class="ATKOKI61"></span> × 10/12。
-<dt>2041～2050年（夫）<b>④</b>
+<dt>2041年以降（夫）<b>④</b>
 	<dd>夫の後期高齢者保険料<b><span class="AOKOKI41"></span></b>円
 	＝ <span class="KOKIK"></span> ＋ （夫前年所得<span class="color1"><span class="AOSHOT34"></span></span>円 － <span class="KOKIKISO"></span>）× <span class="KOKIS"></span>％。
-<dt>2051年（夫）<b>⑤</b>
-	<dd>夫の後期高齢者保険料<b><span class="AOKOKI51"></span></b>円
-	＝ <span class="KOKIK"></span> ＋ （夫前年所得<span class="color1"><span class="AOSHOT50"></span></span>円 － <span class="KOKIKISO"></span>）× <span class="KOKIS"></span>％。
-<dt>2052年以降（夫）<b>⑤</b>
-	<dd>夫の後期高齢者保険料<b><span class="AOKOKI52"></span></b>円
-	＝ <span class="KOKIK"></span> ＋ （夫前年所得<span class="color1"><span class="AOSHOT51"></span></span>円 － <span class="KOKIKISO"></span>）× <span class="KOKIS"></span>％。
 <dt>2060年（妻）<b>⑥</b>と<b>⑦</b>の堺
 	<dd>年額<span class="ATKOKI61"></span>円
 	＝ <span class="KOKIK"></span> ＋（妻前年所得<span class="color1"><span class="ATSHOT51"></span></span>円 － <span class="KOKIKISO"></span>）× <span class="KOKIS"></span>％。
@@ -835,6 +743,7 @@
 	<td><span class="AKH31"></span></td><td><span class="AOKAIG31"></span></td><td>0</td><td>2</td></tr>
 	<tr><td>妻</td><td>2031年</td><td>0</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
 	</table></div>
+	</table></div>
 	<dd>夫社会保険料<span class="color1"><span class="ASZSH31O"></span></span>円 = 国民年金保険料<span class="ANENP30"></span>
 	＋ 国民健康保険料<span class="AKH31"></span> ＋ 介護保険料<span class="AOKAIG31"></span>
 	<dd>夫各種控除<span class="ASZKJ31O"></span>円 = 公的年金等控除<span class="color2"><span class="KKO1"></span></span>
@@ -850,6 +759,7 @@
 	<tr><td>夫</td><td>2032年</td><td><span class="AONEN31"></span></td><td><span class="KKO1"></span></td><td><span class="ANENP31"></span></td>
 	<td><span class="AKH32"></span></td><td><span class="AOKAIG31"></span></td><td>0</td><td>2</td></tr>
 	<tr><td>妻</td><td>2032年</td><td>0</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
+	</table></div>
 	</table></div>
 	<dd>夫社会保険料<span class="color1"><span class="ASZSH32O"></span></span>円 = 国民年金保険料<span class="ANENP31"></span>
 	＋ 国民健康保険料<span class="AKH32"></span> ＋ 介護保険料<span class="AOKAIG31"></span>
@@ -867,6 +777,7 @@
 	<td><span class="AKH32"></span></td><td><span class="AOKAIG31"></span></td><td>0</td><td>2</td></tr>
 	<tr><td>妻</td><td>2033年</td><td>0</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
 	</table></div>
+	</table></div>
 	<dd>夫社会保険料<span class="color1"><span class="ASZSH33O"></span></span>円 = 国民年金保険料<span class="ANENP32"></span>
 	＋ 国民健康保険料<span class="AKH32"></span> ＋ 介護保険料<span class="AOKAIG31"></span>
 	<dd>夫各種控除<span class="ASZKJ33O"></span>円 = 公的年金等控除<span class="color2"><span class="KKO1"></span></span>
@@ -882,6 +793,7 @@
 	<tr><td>夫</td><td>2034年</td><td><span class="AONEN33"></span></td><td><span class="KKO1"></span></td><td><span class="ANENP32"></span></td>
 	<td><span class="AKH34"></span></td><td><span class="AOKAIG31"></span></td><td>0</td><td>2</td></tr>
 	<tr><td>妻</td><td>2034年</td><td>0</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
+	</table></div>
 	</table></div>
 	<dd>夫社会保険料<span class="color1"><span class="ASZSH34O"></span></span>円 = 国民年金保険料<span class="ANENP32"></span>
 	＋ 国民健康保険料<span class="AKH34"></span> ＋ 介護保険料<span class="AOKAIG31"></span>
@@ -899,6 +811,7 @@
 	<td><span class="AKH35"></span></td><td><span class="AOKAIG31"></span></td><td>0</td><td>1</td></tr>
 	<tr><td>妻</td><td>2035～2036年</td><td>0</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
 	</table></div>
+	</table></div>
 	<dd>夫社会保険料<span class="color1"><span class="ASZSH35O"></span></span>円 = 国民年金保険料<span class="ANENP32"></span>
 	＋ 国民健康保険料<span class="AKH35"></span> ＋ 介護保険料<span class="AOKAIG31"></span>
 	<dd>夫各種控除<span class="ASZKJ35O"></span>円 = 公的年金等控除<span class="color2"><span class="KKO1"></span></span>
@@ -915,6 +828,7 @@
 	<td><span class="AKH37"></span></td><td><span class="AOKAIG31"></span></td><td>0</td><td>1</td></tr>
 	<tr><td>妻</td><td>2037年</td><td>0</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
 	</table></div>
+	</table></div>
 	<dd>夫社会保険料<span class="color1"><span class="ASZSH37O"></span></span>円 = 国民年金保険料<span class="ANENP32"></span>
 	＋ 国民健康保険料<span class="AKH37"></span> ＋ 介護保険料<span class="AOKAIG31"></span>
 	<dd>夫各種控除<span class="ASZKJ37O"></span>円 = 公的年金等控除<span class="color2"><span class="KKO1"></span></span>
@@ -930,6 +844,7 @@
 	<tr><td>夫</td><td>2038年</td><td><span class="AONEN34"></span></td><td><span class="KKO1"></span></td><td><span class="ANENP37"></span></td>
 	<td><span class="AKH38"></span></td><td><span class="AOKAIG31"></span></td><td>0</td></tr>
 	<tr><td>妻</td><td>2038年</td><td>0</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
+	</table></div>
 	</table></div>
 	<dd>夫社会保険料<span class="color1"><span class="ASZSH38O"></span></span>円 = 国民年金保険料<span class="ANENP37"></span>
 	＋ 国民健康保険料<span class="AKH38"></span> ＋ 介護保険料<span class="AOKAIG31"></span>
@@ -968,13 +883,13 @@
 	<dd>夫の所得税<b><span class="ASHOZEI40O"></span></b>円 ＝（課税年金額<span class="AONEN34"></span> ー 社会保険料<span class="ASZSH40O"></span>
 	ー 各種控除<span class="ASZKJ40O"></span>）× 年金所得税率（復興特別税含む）<span class="color2"><span class="SZRITU"></span></span>％。
 	<dd>妻の所得税<b>0</b>円（課税年金108万円以下）。
-<dt>2041～2049年、世帯：夫妻
+<dt>2041年以降夫生存中、世帯：夫妻
 	<dd>
 	<div class="HSCROLL"><table class="DATA_TABLE">
 	<tr><td></td><td>年</td><td>課税年金額</td><td>公的年金控除額</td><td>国民年金保険料</td><td>国民健康保険料</td><td>介護保険料</td><td>後期高齢者医療保険料</td></tr>
-	<tr><td>夫</td><td>2041～2049年</td><td><span class="AONEN34"></span></td><td><span class="KKO1"></span></td><td><span class="ANENP38"></span></td>
+	<tr><td>夫</td><td>2041年以降夫生存中</td><td><span class="AONEN34"></span></td><td><span class="KKO1"></span></td><td><span class="ANENP38"></span></td>
 	<td><span class="AKH41"></span></td><td><span class="AOKAIG31"></span></td><td><span class="AOKOKI41"></span></td></tr>
-	<tr><td>妻</td><td>2041～2049年</td><td>0</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
+	<tr><td>妻</td><td>2041年以降夫生存中</td><td>0</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
 	</table></div>
 	<dd>夫社会保険料<span class="color1"><span class="ASZSH41O"></span></span>円 = 国民年金保険料<span class="ANENP38"></span>
 	＋ 国民健康保険料<span class="AKH41"></span> ＋ 介護保険料<span class="AOKAIG31"></span> ＋ 後期高齢者医療保険料<span class="AOKOKI41"></span>
@@ -983,57 +898,19 @@
 	<dd>夫の所得税<b><span class="ASHOZEI41O"></span></b>円 ＝（課税年金額<span class="AONEN34"></span> ー 社会保険料<span class="ASZSH41O"></span>
 	ー 各種控除<span class="ASZKJ41O"></span>）× 年金所得税率（復興特別税含む）<span class="color2"><span class="SZRITU"></span></span>％。
 	<dd>妻の所得税<b>0</b>円（課税年金108万円以下）。
-<dt>2050年、世帯：夫妻
-	<dd>
-	<div class="HSCROLL"><table class="DATA_TABLE">
-	<tr><td></td><td>年</td><td>課税年金額</td><td>公的年金控除額</td><td>国民年金保険料</td><td>国民健康保険料</td><td>介護保険料</td><td>後期高齢者医療保険料</td></tr>
-	<tr><td>夫</td><td>2050年</td><td><span class="AONEN34"></span></td><td><span class="KKO1"></span></td><td><span class="ANENP49"></span></td>
-	<td><span class="AKH50"></span></td><td><span class="AOKAIG31"></span></td><td><span class="AOKOKI41"></span></td></tr>
-	<tr><td>妻</td><td>2050年</td><td>0</td><td><span class="KKY1"></span></td><td>0</td>
-	<td>0</td><td><span class="ATKAIG50"></span></td><td>0</td></tr>
-	</table></div>
-	<dd>夫社会保険料<span class="color1"><span class="ASZSH50O"></span></span>円 = 国民年金保険料<span class="ANENP49"></span>
-	＋ 国民健康保険料<span class="AKH50"></span> ＋ 介護保険料<span class="AOKAIG31"></span> ＋ 後期高齢者医療保険料<span class="AOKOKI41"></span>
-	<dd>夫各種控除<span class="ASZKJ50O"></span>円 = 公的年金等控除<span class="color2"><span class="KKO1"></span></span>
-	＋ 基礎控除<span class="color2"><span class="SZKISO"></span></span> ＋ 配偶者控除<span class="color2"><span class="SZHAIGU"></span></span>。
-	<dd>夫の所得税<b><span class="ASHOZEI50O"></span></b>円 ＝（課税年金額<span class="AONEN34"></span> ー 社会保険料<span class="ASZSH50O"></span>
-	ー 各種控除<span class="ASZKJ50O"></span>）× 年金所得税率（復興特別税含む）<span class="color2"><span class="SZRITU"></span></span>％。
-	<dd>妻の所得税<b>0</b>円（課税年金108万円以下）。
-<dt>2051年、世帯：夫妻
-	<dd>
-	<div class="HSCROLL"><table class="DATA_TABLE">
-	<tr><td></td><td>年</td><td>課税年金額</td><td>公的年金控除額</td><td>国民年金保険料</td><td>国民健康保険料</td><td>介護保険料</td><td>後期高齢者医療保険料</td></tr>
-	<tr><td>夫</td><td>2051年</td><td><span class="AONEN50"></span></td><td><span class="KKO1"></span></td><td>0</td>
-	<td><span class="AKH51"></span></td><td><span class="AOKAIG31"></span></td><td><span class="AOKOKI51"></span></td></tr>
-	<tr><td>妻</td><td>2051年</td><td><span class="ATNEN50"></span></td><td><span class="KKO1"></span></td><td>0</td>
-	<td>0</td><td><span class="ATKAIG51"></td><td>0</td></tr>
-	</table></div>
-	<dd>夫社会保険料<span class="color1"><span class="ASZSH51O"></span></span>円 = 国民健康保険料<span class="AKH51"></span> ＋ 介護保険料<span class="AOKAIG31"></span> ＋ 後期高齢者医療保険料<span class="AOKOKI51"></span>
-	<dd>夫各種控除<span class="ASZKJ51O"></span>円 = 公的年金等控除<span class="color2"><span class="KKO1"></span></span>
-	＋ 基礎控除<span class="color2"><span class="SZKISO"></span></span> ＋ 配偶者控除<span class="color2"><span class="SZHAIGU"></span></span>。
-	<dd>夫の所得税<b><span class="ASHOZEI51O"></span></b>円 ＝（課税年金額<span class="AONEN50"></span> ー 社会保険料<span class="ASZSH51O"></span>
-	ー 各種控除<span class="ASZKJ51O"></span>）× 年金所得税率（復興特別税含む）<span class="color2"><span class="SZRITU"></span></span>％。
-	<dd>妻の所得税<b>0</b>円（課税年金158万円以下）。
-<dt>2052年以降夫生存中、世帯：夫妻
-	<dd>
-	<div class="HSCROLL"><table class="DATA_TABLE">
-	<tr><td></td><td>年</td><td>課税年金額</td><td>公的年金控除額</td><td>国民年金保険料</td><td>国民健康保険料</td><td>介護保険料</td><td>後期高齢者医療保険料</td></tr>
-	<tr><td>夫</td><td>2052年以降夫生存中</td><td><span class="AONEN51"></span></td><td><span class="KKO1"></span></td><td>0</td>
-	<td><span class="AKH52"></span></td><td><span class="AOKAIG31"></span></td><td><span class="AOKOKI52"></span></td></tr>
-	<tr><td>妻</td><td>2052年以降夫生存中</td><td><span class="ATNEN51"></span></td><td><span class="KKO1"></span></td><td>0</td>
-	<td>0</td><td><span class="ATKAIG52"></td><td>0</td></tr>
-	</table></div>
-	<dd>夫社会保険料<span class="color1"><span class="ASZSH52O"></span></span>円 = 国民健康保険料<span class="AKH52"></span> ＋ 介護保険料<span class="AOKAIG31"></span> ＋ 後期高齢者医療保険料<span class="AOKOKI52"></span>
-	<dd>夫各種控除<span class="ASZKJ52O"></span>円 = 公的年金等控除<span class="color2"><span class="KKO1"></span></span>
-	＋ 基礎控除<span class="color2"><span class="SZKISO"></span></span> ＋ 配偶者控除<span class="color2"><span class="SZHAIGU"></span></span>。
-	<dd>夫の所得税<b><span class="ASHOZEI52O"></span></b>円 ＝（課税年金額<span class="AONEN51"></span> ー 社会保険料<span class="ASZSH52O"></span>
-	ー 各種控除<span class="ASZKJ52O"></span>）× 年金所得税率（復興特別税含む）<span class="color2"><span class="SZRITU"></span></span>％。
-	<dd>妻の所得税<b>0</b>円（課税年金158万円以下）。
 <dt>夫死亡翌年以降、世帯：妻
 	<dd>
 	<div class="HSCROLL"><table class="DATA_TABLE">
 	<tr><td></td><td>年</td><td>課税年金額</td><td>公的年金控除額</td><td>国民年金保険料</td><td>国民健康保険料</td><td>介護保険料</td><td>後期高齢者医療保険料</td></tr>
-	<tr><td>妻</td><td>夫死亡後～2059年</td><td><span class="ATNEN51"></span></td><td><span class="KKO1"></span></td><td>0</td>
+	<tr><td>妻</td><td>夫死亡翌年～2048年</td><td><span class="BTNEN49"></span></td><td><span class="KKY1"></span></td><td><span class="ANENP38"></span></td>
+	<td><span class="BKH49"></span></td><td>0</td><td>0</td></tr>
+	<tr><td>妻</td><td>2049年</td><td><span class="BTNEN49"></span></td><td><span class="KKY1"></span></td><td><span class="ANENP49"></span></td>
+	<td><span class="BKH49"></span></td><td>0</td><td>0</td></tr>
+	<tr><td>妻</td><td>2050年</td><td>0</td><td><span class="KKY1"></span></td><td>0</td>
+	<td><span class="BKH50"></span></td><td><span class="BTKAIG50"></span></td><td>0</td></tr>
+	<tr><td>妻</td><td>2051年</td><td><span class="ATNEN50"></span></td><td><span class="KKO1"></span></td><td>0</td>
+	<td><span class="AKHX"></span></td><td><span class="BTKAIG50"></td><td>0</td></tr>
+	<tr><td>妻</td><td>2052～2059年</td><td><span class="ATNEN51"></span></td><td><span class="KKO1"></span></td><td>0</td>
 	<td><span class="AKHX"></span></td><td><span class="ATKAIGX"></span></td><td>0</td></tr>
 	<tr><td>妻</td><td>2060年</td><td><span class="ATNEN51"></span></td><td><span class="KKO1"></span></td><td>0</td>
 	<td><span class="AKH60"></span></td><td><span class="ATKAIGX"></span></td><td><span class="ATKOKI60"></span></td></tr>
@@ -1094,19 +971,8 @@
 	<tr><td>2027～2029年</td><td><span class="AOSHOT26"></span></td><td>0</td><td><span class="ASZSH27O"></span></td><td>0</td><td>一般1</td></tr>
 	<tr><td>2030年</td><td><span class="AOSHOT26"></span></td><td>0</td><td><span class="ASZSH30O"></span></td><td>0</td><td>一般1特定1</td></tr>
 	</table></div>
-	<!--
-	<dd>夫所得控除<span class="AJZKJ26O"></span>円 ＝ 社会保険料<span class="ASZSH26O"></span> ＋ 寡婦控除0
-	 ＋ 配偶者控除<span class="color2"><span class="JZHAIGU"></span></span> ＋ 扶養控除0 ＋ 基礎控除<span class="color2"><span class="JZKISO"></span></span>。
-	<dd>夫の住民税<b><span class="AJUZEI26O"></span></b>円 ＝ 均等割額<span class="color2"><span class="JZKINTO"></span></span>
-	 ＋ （所得<span class="AOSHOT25"></span> － 夫所得控除<span class="AJZKJ26O"></span>） × 税率<span class="color2"><span class="JZRITU"></span></span>％。
-	-->	
-	<!--
-	<dd>夫所得控除<span class="AJZKJ27O"></span>円 ＝ 社会保険料<span class="ASZSH27O"></span> ＋ 寡婦控除0
-	 ＋ 配偶者控除<span class="color2"><span class="JZHAIGU"></span></span> ＋ 扶養控除0 ＋ 基礎控除<span class="color2"><span class="JZKISO"></span></span>。
-	<dd>夫の住民税<b><span class="AJUZEI27O"></span></b>円 ＝ 均等割額<span class="color2"><span class="JZKINTO"></span></span>
-	 ＋ （所得<span class="AOSHOT26"></span> － 夫所得控除<span class="AJZKJ27O"></span>） × 税率<span class="color2"><span class="JZRITU"></span></span>％。
-	-->
-	<dd>夫と妻の住民税<b>0</b>円（所得101万円以下）。
+	<dd>夫の住民税<b>0</b>円（所得101万円以下）。
+	<dd>妻の住民税<b>0</b>円（所得101万円以下）。
 
 <dt>2031年、世帯：夫妻子供2
 	<dd>
@@ -1114,12 +980,6 @@
 	<tr><td>年</td><td>夫前年所得</td><td>妻前年所得</td><td>夫社会保険料</td><td>妻社会保険料</td><td>扶養</td></tr>
 	<tr><td>2031年</td><td><span class="AOSHOT30"></span></td><td>0</td><td><span class="ASZSH31O"></span></td><td>0</td><td>一般1特定1</td></tr>
 	</table></div>
-	<!--
-	<dd>夫所得控除<span class="AJZKJ31O"></span>円 ＝ 社会保険料<span class="color1"><span class="ASZSH31O"></span></span>
-	 ＋ 配偶者控除<span class="color2"><span class="JZHAIGU"></span></span> ＋ 一般扶養控除<span class="color2"><span class="JZFUYOA"></span></span> ＋ 特定扶養控除<span class="color2"><span class="JZFUYOB"></span></span> ＋ 基礎控除<span class="color2"><span class="JZKISO"></span></span>。
-	<dd>夫の住民税<b><span class="AJUZEI31O"></span></b>円 ＝ 均等割額<span class="color2"><span class="JZKINTO"></span></span>
-	 ＋（所得<span class="AOSHOT30"></span> － 夫所得控除<span class="AJZKJ31O"></span>） × 税率<span class="color2"><span class="JZRITU"></span></span>％。
-	-->
 	<dd>夫の住民税<b>0</b>円（所得が171万円＝35万円×世帯4人＋31万円以下）。
 	<dd>妻の住民税<b>0</b>円（所得101万円以下）。
 		
@@ -1226,11 +1086,11 @@
 	 ＋（前年所得<span class="AOSHOT34"></span> － 夫所得控除<span class="AJZKJ40O"></span>） × 税率<span class="color2"><span class="JZRITU"></span></span>％。
 	<dd>妻の住民税は<b>0</b>円（所得101万円以下）。
 
-<dt>2041～2049年、世帯：夫妻
+<dt>2041年以降夫生存中、世帯：夫妻
 	<dd>
 	<div class="HSCROLL"><table class="DATA_TABLE">
 	<tr><td>年</td><td>夫前年所得</td><td>妻前年所得</td><td>夫社会保険料</td><td>妻社会保険料</td></tr>
-	<tr><td>2041～2049年</td><td><span class="AOSHOT34"></span></td><td>0</td><td><span class="ASZSH41O"></span></td><td>0</td></tr>
+	<tr><td>2041年以降</td><td><span class="AOSHOT34"></span></td><td>0</td><td><span class="ASZSH41O"></span></td><td>0</td></tr>
 	</table></div>
 	<dd>夫所得控除<span class="AJZKJ41O"></span>円 ＝ 社会保険料<span class="color1"><span class="ASZSH41O"></span></span>
 	 ＋ 配偶者控除<span class="color2"><span class="JZHAIGU"></span></span> ＋ 基礎控除<span class="color2"><span class="JZKISO"></span></span>。
@@ -1238,55 +1098,17 @@
 	 ＋（前年所得<span class="AOSHOT34"></span> － 夫所得控除<span class="AJZKJ41O"></span>） × 税率<span class="color2"><span class="JZRITU"></span></span>％。
 	<dd>妻の住民税は<b>0</b>円（所得101万円以下）。
 
-<dt>2050年、世帯：夫妻
+<dt>夫死亡翌年以降、世帯：妻
 	<dd>
 	<div class="HSCROLL"><table class="DATA_TABLE">
-	<tr><td>年</td><td>夫前年所得</td><td>妻前年所得</td><td>夫社会保険料</td><td>妻社会保険料</td></tr>
-	<tr><td>2050年</td><td><span class="AOSHOT34"></span></td><td>0</td>
-	<td><span class="ASZSH50O"></span></td><td><span class="ASZSH50T"></span></td></tr>
-	</table></div>
-	<dd>夫所得控除<span class="AJZKJ50O"></span>円 ＝ 社会保険料<span class="color1"><span class="ASZSH50O"></span></span> ＋ 寡婦控除0
-	 ＋ 配偶者控除<span class="color2"><span class="JZHAIGU"></span></span> ＋ 基礎控除<span class="color2"><span class="JZKISO"></span></span>。
-	<dd>夫の住民税<b><span class="AJUZEI50O"></span></b>円 ＝ 均等割額<span class="color2"><span class="JZKINTO"></span></span>
-	 ＋（前年所得<span class="AOSHOT34"></span> － 夫所得控除<span class="AJZKJ50O"></span>） × 税率<span class="color2"><span class="JZRITU"></span></span>％。
-	<dd>妻の住民税<b>0</b>円（所得101万円以下）。
-
-<dt>2051年、世帯：夫妻
-	<dd>
-	<div class="HSCROLL"><table class="DATA_TABLE">
-	<tr><td>年</td><td>夫前年所得</td><td>妻前年所得</td><td>夫社会保険料</td><td>妻社会保険料</td></tr>
-	<tr><td>2051年</td><td><span class="AOSHOT50"></span></td><td><span class="ATSHOT50"></span></td>
-	<td><span class="ASZSH51O"></span></td><td><span class="ASZSH51T"></span></td></tr>
-	</table></div>
-	<dd>夫所得控除<span class="AJZKJ51O"></span>円 ＝ 社会保険料<span class="color1"><span class="ASZSH51O"></span></span> ＋ 寡婦控除0
-	 ＋ 配偶者控除<span class="color2"><span class="JZHAIGU"></span></span> ＋ 基礎控除<span class="color2"><span class="JZKISO"></span></span>。
-	<dd>夫の住民税<b><span class="AJUZEI51O"></span></b>円 ＝ 均等割額<span class="color2"><span class="JZKINTO"></span></span>
-	 ＋（前年所得<span class="AOSHOT50"></span> － 夫所得控除<span class="AJZKJ51O"></span>） × 税率<span class="color2"><span class="JZRITU"></span></span>％。
-	<dd>妻の住民税<b>0</b>円（所得101万円以下）。
-
-<dt>2052年以降夫生存中、世帯：夫妻
-	<dd>
-	<div class="HSCROLL"><table class="DATA_TABLE">
-	<tr><td>年</td><td>夫前年所得</td><td>妻前年所得</td><td>夫社会保険料</td><td>妻社会保険料</td></tr>
-	<tr><td>2052年</td><td><span class="AOSHOT51"></span></td><td><span class="ATSHOT51"></span></td>
-	<td><span class="ASZSH52O"></span></td><td><span class="ASZSH52T"></span></td></tr>
-	</table></div>
-	<dd>夫所得控除<span class="AJZKJ52O"></span>円 ＝ 社会保険料<span class="color1"><span class="ASZSH52O"></span></span> ＋ 寡婦控除0
-	 ＋ 配偶者控除<span class="color2"><span class="JZHAIGU"></span></span> ＋ 基礎控除<span class="color2"><span class="JZKISO"></span></span>。
-	<dd>夫の住民税<b><span class="AJUZEI52O"></span></b>円 ＝ 均等割額<span class="color2"><span class="JZKINTO"></span></span>
-	 ＋（前年所得<span class="AOSHOT51"></span> － 夫所得控除<span class="AJZKJ52O"></span>） × 税率<span class="color2"><span class="JZRITU"></span></span>％。
-	<dd>妻の住民税<b>0</b>円（所得101万円以下）。
-
-<dt>夫死亡後～、世帯：妻
-	<dd>
-	<div class="HSCROLL"><table class="DATA_TABLE">
-	<tr><td>年</td><td>妻所得</td><td>妻社会保険料</td></tr>
-	<tr><td>夫死亡後～2059年</td><td><span class="ATSHOT51"></span></td>
-	<td><span class="ASZSHXT"></span></td></tr>
-	<tr><td>2060年</td><td><span class="ATSHOT51"></span></td>
-	<td><span class="ASZSH60T"></span></td></tr>
-	<tr><td>2061年以降</td><td><span class="ATSHOT51"></span></td>
-	<td><span class="ASZSH61T"></span></td></tr>
+	<tr><td>年</td><td>妻前年所得</td><td>妻社会保険料</td></tr>
+	<tr><td>夫死亡翌年～2048年</td><td><span class="BTSHOT49"></span></td><td><span class="BSZSH48T"></span></td></tr>
+	<tr><td>2049年</td><td><span class="BTSHOT49"></span></td><td><span class="BSZSH49T"></span></td></tr>
+	<tr><td>2050年</td><td><span class="BTSHOT49"></span></td><td><span class="BSZSH50T"></span></td></tr>
+	<tr><td>2051年</td><td><span class="BTSHOT50"></span></td><td><span class="BSZSH51T"></span></td></tr>
+	<tr><td>2052年～2059年</td><td><span class="ATSHOT51"></span></td><td><span class="ASZSHXT"></span></td></tr>
+	<tr><td>2060年</td><td><span class="ATSHOT51"></span></td><td><span class="ASZSH60T"></span></td></tr>
+	<tr><td>2061年以降</td><td><span class="ATSHOT51"></span></td><td><span class="ASZSH61T"></span></td></tr>
 	</table></div>
 	<dd>妻の住民税は<b>0</b>円（所得101万円以下）。
 </dl>
@@ -1305,7 +1127,7 @@
 </footer>
 
 <script src="FileUtilText.js"></script>
-<script src="zeikin.js"></script>
+<script src="zeikin2.js"></script>
 
 </body>
 </html>

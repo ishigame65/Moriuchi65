@@ -532,22 +532,15 @@ class Zeikin {
 	aKhSb41 = 0;
 	aKhKb41 = 0;
 	aKh41 = 0;
-	aKhIb50 = 0;
-	aKhSb50 = 0;
-	aKhKb50 = 0;
-	aKh50 = 0;
-	aKshot50o = 0;
-	aKshot50t = 0;
-	aKshot50ot = 0;
-	aKhIb51 = 0;
-	aKhSb51 = 0;
-	aKh51 = 0;
-	aKshot51o = 0;
-	aKshot51t = 0;
-	aKshot51ot = 0;
-	aKhIb52 = 0;
-	aKhSb52 = 0;
-	aKh52 = 0;
+	bKshot49t = 0;
+	bKhIb49 = 0;
+	bKhSb49 = 0;
+	bKhKb49 = 0;
+	bKh49 = 0;
+	bKhIb50 = 0;
+	bKhSb50 = 0;
+	bKhKb50 = 0;
+	bKh50 = 0;
 	aKshotXt = 0;
 	aKhIbX = 0;
 	aKhSbX = 0;
@@ -558,18 +551,12 @@ class Zeikin {
 	aKaig31Lo = 0;
 	aKaig33Lo = 0;
 	aKaig34Lo = 0;
-	aKaig50Lo = 0;
-	aKaig51Lo = 0;
-	aKaig49Lt = 0;
-	aKaig50Lt = 0;
-	aKaig51Lt = 0;
+	bKaig49Lt = 0;
 	aKaigXLt = 0;
 	aKaig30oY = 0;
 	aKaig30o = 0;
 	aKaig31o = 0;
-	aKaig50t = 0;
-	aKaig51t = 0;
-	aKaig52t = 0;
+	bKaig50t = 0;
 	aKaigXt = 0;
 	oKoki40y = 0;
 	aKoki40o = 0;
@@ -580,14 +567,8 @@ class Zeikin {
 	aKoki60t = 0;
 	// 所得税
 	aSzSh26o = 0;
-	aSzKj26o = 0;
-	aShoZei26o = 0;
 	aSzSh27o = 0;
-	aSzKj27o = 0;
-	aShoZei27o = 0;
 	aSzSh30o = 0;
-	aSzKj30o = 0;
-	aShoZei30o = 0;
 	aSzSh31o = 0;
 	aSzKj31o = 0;
 	aShoZei31o = 0;
@@ -618,33 +599,13 @@ class Zeikin {
 	aSzSh41o = 0;
 	aSzKj41o = 0;
 	aShoZei41o = 0;
-	aSzSh50o = 0;
-	aSzKj50o = 0;
-	aShoZei50o = 0;
-	aSzSh50t = 0;
-	aSzKj50t = 0;
-	aShoZei50t = 0;
-	aSzSh51o = 0;
-	aSzKj51o = 0;
-	aShoZei51o = 0;
-	aSzSh51t = 0;
-	aSzKj51t = 0;
-	aShoZei51t = 0;
-	aSzSh52o = 0;
-	aSzKj52o = 0;
-	aShoZei52o = 0;
-	aSzSh52t = 0;
-	aSzKj52t = 0;
-	aShoZei52t = 0;
 	aSzShXt = 0;
-	aSzKjXt = 0;
-	aShoZeiXt = 0;
 	aSzSh60t = 0;
-	aSzKj60t = 0;
-	aShoZei60t = 0;
 	aSzSh61t = 0;
-	aSzKj61t = 0;
-	aShoZei61t = 0;
+	bSzSh48t = 0;
+	bSzSh49t = 0;
+	bSzSh50t = 0;
+	bSzSh51t = 0;
 	// 住民税
 	aJzKj32o = 0;
 	aJuZei32o = 0;
@@ -664,12 +625,6 @@ class Zeikin {
 	aJuZei40o = 0;
 	aJzKj41o = 0;
 	aJuZei41o = 0;
-	aJzKj50o = 0;
-	aJuZei50o = 0;
-	aJzKj51o = 0;
-	aJuZei51o = 0;
-	aJzKj52o = 0;
-	aJuZei52o = 0;
 
 	constructor(zp, nv){
 		this.calc(zp, nv);
@@ -762,27 +717,19 @@ class Zeikin {
 		this.aKhKb41 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot34o, 1);
 		this.aKh41 = this.aKhIb41[2] + this.aKhSb41[2] + this.aKhKb41[2];
 
-		this.aKhIb50 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot34o, 1);	// 国保50
-		this.aKhSb50 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot34o, 1);
-		this.aKhKb50 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot34o, 0.83);
-		this.aKh50 = this.aKhIb50[2] + this.aKhSb50[2] + this.aKhKb50[2];
+		this.bKshot49t = this.minusKojo(this.bShot49t, zp.khKiso);
+		this.bKhIb49 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.bKshot49t, 1);	// 国保49
+		this.bKhSb49 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.bKshot49t, 1);
+		this.bKhKb49 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.bKshot49t, 1);
+		this.bKh49 = this.bKhIb49[2] + this.bKhSb49[2] + this.bKhKb49[2];
 
-		this.aKshot50o = this.minusKojo(this.aShot50o, zp.khKiso);
-		this.aKshot50t = this.minusKojo(this.aShot50t, zp.khKiso);
-		this.aKshot50ot = this.aKshot50o + this.aKshot50t;
-		this.aKhIb51 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot50ot, 1);	// 国保51
-		this.aKhSb51 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot50ot, 1);
-		this.aKh51 = this.aKhIb51[2] + this.aKhSb51[2];
-
-		this.aKshot51o = this.minusKojo(this.aShot51o, zp.khKiso);
-		this.aKshot51t = this.minusKojo(this.aShot51t, zp.khKiso);
-		this.aKshot51ot = this.aKshot51o + this.aKshot51t;
-		this.aKhIb52 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot51ot, 1);	// 国保52
-		this.aKhSb52 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot51ot, 1);
-		this.aKh52 = this.aKhIb52[2] + this.aKhSb52[2];
+		this.bKhIb50 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.bKshot49t, 1);	// 国保50
+		this.bKhSb50 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.bKshot49t, 1);
+		this.bKhKb50 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.bKshot49t, 0.83);
+		this.bKh50 = this.bKhIb50[2] + this.bKhSb50[2] + this.bKhKb50[2];
 
 		this.aKshotXt = this.minusKojo(this.aShotXt, zp.khKiso);
-		this.aKhIbX = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshotXt, 1);	// 国保X
+		this.aKhIbX = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshotXt, 1);	// 国保52★国保X
 		this.aKhSbX = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshotXt, 1);
 		this.aKhX = this.aKhIbX[2] + this.aKhSbX[2];
 
@@ -793,19 +740,13 @@ class Zeikin {
 		this.aKaig31Lo = this.calcKaigoLevel(this.aShot31o, -1, true);
 		this.aKaig33Lo = this.calcKaigoLevel(this.aShot33o, -1, true);
 		this.aKaig34Lo = this.calcKaigoLevel(this.aShot34o, -1, true);
-		this.aKaig50Lo = this.calcKaigoLevel(this.aShot50o, -1, true);
-		this.aKaig51Lo = this.calcKaigoLevel(this.aShot51o, -1, true);
-		this.aKaig49Lt = this.calcKaigoLevel(0, 0, true);
-		this.aKaig50Lt = this.calcKaigoLevel(this.aShot50t, nv.aNen50t, true);
-		this.aKaig51Lt = this.calcKaigoLevel(this.aShot51t, nv.aNen51t, true);
+		this.bKaig49Lt = this.calcKaigoLevel(0, 0, false);	// BTKAIG49L
 		this.aKaigXLt = this.calcKaigoLevel(this.aShot51t, nv.aNen51t, false);	// 世帯非課税
 		const kaigov = [-1,zp.kaig1,zp.kaig2,zp.kaig3,zp.kaig4,zp.kaig5,zp.kaig6,zp.kaig7,-1];
 		this.aKaig30oY = kaigov[this.aKaig29Lo];
 		this.aKaig30o = this.kirisute100(this.aKaig30oY * 10/12);
 		this.aKaig31o = kaigov[this.aKaig30Lo];
-		this.aKaig50t = kaigov[this.aKaig49Lt];
-		this.aKaig51t = kaigov[this.aKaig50Lt];
-		this.aKaig52t = kaigov[this.aKaig51Lt];
+		this.bKaig50t = kaigov[this.bKaig49Lt];	// BTKAIG50
 		this.aKaigXt = kaigov[this.aKaigXLt];
 		//console.log(`dbg> aKaig51Lt: ${aKaig51Lt}`);
 
@@ -821,16 +762,10 @@ class Zeikin {
 		// 社会保険料 = 国民年金保険料＋国民健康保険料＋介護保険料＋後期高齢者医療保険料
 		// 各種控除 = 公的年金等控除＋基礎控除＋配偶者控除＋扶養控除
 		this.aSzSh26o = nv.aNenPay25_29o + this.aKh26;
-		this.aSzKj26o = zp.knKy1 + zp.szKiso + zp.szHaigu;
-		this.aShoZei26o = this.calcShotZei(nv.aNen25o, this.aSzSh26o, this.aSzKj26o, zp.szRitu);
 
 		this.aSzSh27o = nv.aNenPay25_29o + this.aKh26;
-		this.aSzKj27o = zp.knKy1 + zp.szKiso + zp.szHaigu + zp.szFuyo;
-		this.aShoZei27o = this.calcShotZei(nv.aNen26o, this.aSzSh27o, this.aSzKj27o, zp.szRitu);
 
 		this.aSzSh30o = nv.aNenPay25_29o + this.aKh30 + this.aKaig30o;
-		this.aSzKj30o = zp.knKy1 + zp.szKiso + zp.szHaigu + zp.szFuyo * 2;
-		this.aShoZei30o = this.calcShotZei(nv.aNen26o, this.aSzSh30o, this.aSzKj30o, zp.szRitu);
 
 		this.aSzSh31o = nv.aNenPay30o + this.aKh31 + this.aKaig31o;
 		this.aSzKj31o = zp.knKo1 + zp.szKiso + zp.szHaigu + zp.szFuyo * 2;
@@ -872,41 +807,19 @@ class Zeikin {
 		this.aSzKj41o = zp.knKo1 + zp.szKiso + zp.szHaigu;
 		this.aShoZei41o = this.calcShotZei(nv.aNen34o, this.aSzSh41o, this.aSzKj41o, zp.szRitu);
 
-		this.aSzSh50o = nv.aNenPay49o + this.aKh50 + this.aKaig31o + this.aKoki41o;
-		this.aSzKj50o = zp.knKo1 + zp.szKiso + zp.szHaigu;
-		this.aShoZei50o = this.calcShotZei(nv.aNen34o, this.aSzSh50o, this.aSzKj50o, zp.szRitu);
+		this.bSzSh48t = nv.bNenPayX_48t + this.bKh49;
 
-		this.aSzSh50t = this.aKaig50t;
-		this.aSzKj50t = zp.knKy1 + zp.szKiso;
-		this.aShoZei50t = this.calcShotZei(0, this.aSzSh50t, this.aSzKj50t, zp.szRitu);
+		this.bSzSh49t = nv.bNenPay49t + this.bKh49;
 
-		this.aSzSh51o = this.aKh51 + this.aKaig31o + this.aKoki51o;
-		this.aSzKj51o = zp.knKo1 + zp.szKiso + zp.szHaigu;
-		this.aShoZei51o = this.calcShotZei(nv.aNen50o, this.aSzSh51o, this.aSzKj51o, zp.szRitu);
+		this.bSzSh50t = this.bKh50 + this.bKaig50t;
 
-		this.aSzSh51t = this.aKaig51t;
-		this.aSzKj51t = zp.knKo1 + zp.szKiso;
-		this.aShoZei51t = this.calcShotZei(nv.aNen50t, this.aSzSh51t, this.aSzKj51t, zp.szRitu);
-
-		this.aSzSh52o = this.aKh52 + this.aKaig31o + this.aKoki52o;
-		this.aSzKj52o = zp.knKo1 + zp.szKiso + zp.szHaigu;
-		this.aShoZei52o = this.calcShotZei(nv.aNen51o, this.aSzSh52o, this.aSzKj52o, zp.szRitu);
-
-		this.aSzSh52t = this.aKaig52t;
-		this.aSzKj52t = zp.knKo1 + zp.szKiso;
-		this.aShoZei52t = this.calcShotZei(nv.aNen51t, this.aSzSh52t, this.aSzKj52t, zp.szRitu);
+		this.bSzSh51t = this.aKhX + this.bKaig50t;
 
 		this.aSzShXt = this.aKhX + this.aKaigXt;
-		this.aSzKjXt = zp.knKo1 + zp.szKiso;
-		this.aShoZeiXt = this.calcShotZei(nv.aNen51t, this.aSzShXt, this.aSzKjXt, zp.szRitu);
 
 		this.aSzSh60t = this.aKh60 + this.aKaigXt + this.aKoki60t;
-		this.aSzKj60t = zp.knKo1 + zp.szKiso;
-		this.aShoZei60t = this.calcShotZei(nv.aNen51t, this.aSzSh60t, this.aSzKj60t, zp.szRitu);
 
 		this.aSzSh61t = this.aKaigXt + this.aKoki61t;
-		this.aSzKj61t = zp.knKo1 + zp.szKiso;
-		this.aShoZei61t = this.calcShotZei(nv.aNen51t, this.aSzSh61t, this.aSzKj61t, zp.szRitu);
 
 		// 住民税
 		this.aJzKj32o = this.aSzSh32o + zp.jzHaigu + zp.jzFuyoA + zp.jzFuyoB + zp.jzKiso;
@@ -927,12 +840,6 @@ class Zeikin {
 		this.aJuZei40o = zp.jzKinto + this.kirisute1000minusKojo(this.aShot34o, this.aJzKj40o) * zp.jzRitu / 100;
 		this.aJzKj41o = this.aSzSh41o + zp.jzHaigu + zp.jzKiso;
 		this.aJuZei41o = zp.jzKinto + this.kirisute1000minusKojo(this.aShot34o, this.aJzKj41o) * zp.jzRitu / 100;
-		this.aJzKj50o = this.aSzSh50o + zp.jzHaigu + zp.jzKiso;
-		this.aJuZei50o = zp.jzKinto + this.kirisute1000minusKojo(this.aShot34o, this.aJzKj50o) * zp.jzRitu / 100;
-		this.aJzKj51o = this.aSzSh51o + zp.jzHaigu + zp.jzKiso;
-		this.aJuZei51o = zp.jzKinto + this.kirisute1000minusKojo(this.aShot34o, this.aJzKj51o) * zp.jzRitu / 100;
-		this.aJzKj52o = this.aSzSh52o + zp.jzHaigu + zp.jzKiso;
-		this.aJuZei52o = zp.jzKinto + this.kirisute1000minusKojo(this.aShot34o, this.aJzKj52o) * zp.jzRitu / 100;
 	}
 
 	calcShotZei(nenkin, shaHoken, szKojo, shRitu){
@@ -1020,10 +927,8 @@ class ZeikinWidget {
 	spAKshot31o = null;
 	spAKshot33o = null;
 	spAKshot34o = null;
-	spAKshot50o = null;
-	spAKshot50t = null;
-	spAKshot51o = null;
-	spAKshot51t = null;
+	spBKshot49t = null;
+	//spBKshot50t = null;
 	spAKshotXt = null;
 	spAKh26 = null;
 	spAKhI26 = null;
@@ -1065,16 +970,14 @@ class ZeikinWidget {
 	spAKhI41 = null;
 	spAKhS41 = null;
 	spAKhK41 = null;
-	spAKh50 = null;
-	spAKhI50 = null;
-	spAKhS50 = null;
-	spAKhK50 = null;
-	spAKh51 = null;
-	spAKhI51 = null;
-	spAKhS51 = null;
-	spAKh52 = null;
-	spAKhI52 = null;
-	spAKhS52 = null;
+	spBKh49 = null;
+	spBKhI49 = null;
+	spBKhS49 = null;
+	spBKhK49 = null;
+	spBKh50 = null;
+	spBKhI50 = null;
+	spBKhS50 = null;
+	spBKhK50 = null;
 	spAKhX = null;
 	spAKhIX = null;
 	spAKhSX = null;
@@ -1118,24 +1021,6 @@ class ZeikinWidget {
 	spASzSh41O = null;
 	spASzKj41O = null;
 	spAShoZei41O = null;
-	spASzSh50O = null;
-	spASzKj50O = null;
-	spAShoZei50O = null;
-	spASzSh50T = null;
-	spASzKj50T = null;
-	spAShoZei50T = null;
-	spASzSh51O = null;
-	spASzKj51O = null;
-	spAShoZei51O = null;
-	spASzSh51T = null;
-	spASzKj51T = null;
-	spAShoZei51T = null;
-	spASzSh52O = null;
-	spASzKj52O = null;
-	spAShoZei52O = null;
-	spASzSh52T = null;
-	spASzKj52T = null;
-	spAShoZei52T = null;
 	spASzShXT = null;
 	spASzKjXT = null;
 	spAShoZeiXT = null;
@@ -1145,6 +1030,18 @@ class ZeikinWidget {
 	spASzSh61T = null;
 	spASzKj61T = null;
 	spAShoZei61T = null;
+	spBSzSh48t = null;
+	spBSzKj48t = null;
+	spBShoZei48t = null;
+	spBSzSh49t = null;
+	spBSzKj49t = null;
+	spBShoZei49t = null;
+	spBSzSh50t = null;
+	spBSzKj50t = null;
+	spBShoZei50t = null;
+	spBSzSh51t = null;
+	spBSzKj51t = null;
+	spBShoZei51t = null;
 	// 住民税
 	spAJzKj32o = null;
 	spAJuZei32o = null;
@@ -1209,13 +1106,8 @@ class ZeikinWidget {
 		this.spAKshot31o = Array.from(document.getElementsByClassName("AKSHOT31O"));
 		this.spAKshot33o = Array.from(document.getElementsByClassName("AKSHOT33O"));
 		this.spAKshot34o = Array.from(document.getElementsByClassName("AKSHOT34O"));
-		this.spAKshot50o = Array.from(document.getElementsByClassName("AKSHOT50O"));
-		this.spAKshot50t = Array.from(document.getElementsByClassName("AKSHOT50T"));
-		this.spAKshot50ot = Array.from(document.getElementsByClassName("AKSHOT50OT"));
-
-		this.spAKshot51o = Array.from(document.getElementsByClassName("AKSHOT51O"));
-		this.spAKshot51t = Array.from(document.getElementsByClassName("AKSHOT51T"));
-		this.spAKshot51ot = Array.from(document.getElementsByClassName("AKSHOT51OT"));
+		this.spBKshot49t = Array.from(document.getElementsByClassName("BKSHOT49T"));
+		//this.spBKshot50t = Array.from(document.getElementsByClassName("BKSHOT50T"));
 		this.spAKshotXt = Array.from(document.getElementsByClassName("AKSHOTXT"));
 
 		this.spAKh26 = Array.from(document.getElementsByClassName("AKH26"));	// 国保26
@@ -1267,20 +1159,14 @@ class ZeikinWidget {
 		this.spAKhI41 = this.getSpan3parts("AKHISW41", "AKHIKW41", "AKHIB41");
 		this.spAKhS41 = this.getSpan3parts("AKHSSW41", "AKHSKW41", "AKHSB41");
 		this.spAKhK41 = this.getSpan3parts("AKHKSW41", "AKHKKW41", "AKHKB41");
-
-		this.spAKh50 = Array.from(document.getElementsByClassName("AKH50"));	// 国保50
-		this.spAKhI50 = this.getSpan3parts("AKHISW50", "AKHIKW50", "AKHIB50");
-		this.spAKhS50 = this.getSpan3parts("AKHSSW50", "AKHSKW50", "AKHSB50");
-		this.spAKhK50 = this.getSpan3parts("AKHKSW50", "AKHKKW50", "AKHKB50");
-
-		this.spAKh51 = Array.from(document.getElementsByClassName("AKH51"));	// 国保51
-		this.spAKhI51 = this.getSpan3parts("AKHISW51", "AKHIKW51", "AKHIB51");
-		this.spAKhS51 = this.getSpan3parts("AKHSSW51", "AKHSKW51", "AKHSB51");
-
-		this.spAKh52 = Array.from(document.getElementsByClassName("AKH52"));	// 国保52
-		this.spAKhI52 = this.getSpan3parts("AKHISW52", "AKHIKW52", "AKHIB52");
-		this.spAKhS52 = this.getSpan3parts("AKHSSW52", "AKHSKW52", "AKHSB52");
-
+		this.spBKh49 = Array.from(document.getElementsByClassName("BKH49"));	// 国保
+		this.spBKhI49 = this.getSpan3parts("BKHISW49", "BKHIKW49", "BKHIB49");
+		this.spBKhS49 = this.getSpan3parts("BKHSSW49", "BKHSKW49", "BKHSB49");
+		this.spBKhK49 = this.getSpan3parts("BKHKSW49", "BKHKKW49", "BKHKB49");
+		this.spBKh50 = Array.from(document.getElementsByClassName("BKH50"));	// 国保
+		this.spBKhI50 = this.getSpan3parts("BKHISW50", "BKHIKW50", "BKHIB50");
+		this.spBKhS50 = this.getSpan3parts("BKHSSW50", "BKHSKW50", "BKHSB50");
+		this.spBKhK50 = this.getSpan3parts("BKHKSW50", "BKHKKW50", "BKHKB50");
 		this.spAKhX = Array.from(document.getElementsByClassName("AKHX"));		// 国保X
 		this.spAKhIX = this.getSpan3parts("AKHISWX", "AKHIKWX", "AKHIBX");
 		this.spAKhSX = this.getSpan3parts("AKHSSWX", "AKHSKWX", "AKHSBX");
@@ -1292,19 +1178,12 @@ class ZeikinWidget {
 		this.spAOKaig31L = Array.from(document.getElementsByClassName("AOKAIG31L"));
 		this.spAOKaig33L = Array.from(document.getElementsByClassName("AOKAIG33L"));
 		this.spAOKaig34L = Array.from(document.getElementsByClassName("AOKAIG34L"));
-		this.spAOKaig50L = Array.from(document.getElementsByClassName("AOKAIG50L"));
-		this.spAOKaig51L = Array.from(document.getElementsByClassName("AOKAIG51L"));
-		this.spATKaig49L = Array.from(document.getElementsByClassName("ATKAIG49L"));
-		this.spATKaig50L = Array.from(document.getElementsByClassName("ATKAIG50L"));
-		this.spATKaig51L = Array.from(document.getElementsByClassName("ATKAIG51L"));
+		this.spBTKaig49L = Array.from(document.getElementsByClassName("BTKAIG49L"));
 		this.spATKaigXL = Array.from(document.getElementsByClassName("ATKAIGXL"));
-
 		this.spAOKaig30Y = Array.from(document.getElementsByClassName("AOKAIG30Y"));
 		this.spAOKaig30 = Array.from(document.getElementsByClassName("AOKAIG30"));
 		this.spAOKaig31 = Array.from(document.getElementsByClassName("AOKAIG31"));
-		this.spATKaig50 = Array.from(document.getElementsByClassName("ATKAIG50"));
-		this.spATKaig51 = Array.from(document.getElementsByClassName("ATKAIG51"));
-		this.spATKaig52 = Array.from(document.getElementsByClassName("ATKAIG52"));
+		this.spBTKaig50 = Array.from(document.getElementsByClassName("BTKAIG50"));
 		this.spATKaigX = Array.from(document.getElementsByClassName("ATKAIGX"));
 		
 		this.spAKoki40o = Array.from(document.getElementsByClassName("AOKOKI40"));	// 後期高齢者保険
@@ -1312,12 +1191,12 @@ class ZeikinWidget {
 		this.spAKoki51o = Array.from(document.getElementsByClassName("AOKOKI51"));
 		this.spAKoki52o = Array.from(document.getElementsByClassName("AOKOKI52"));
 		this.spAKoki60t = Array.from(document.getElementsByClassName("ATKOKI60"));
-		this.spAKoki61t = Array.from(document.getElementsByClassName("ATKOKI61"));				
+		this.spAKoki61t = Array.from(document.getElementsByClassName("ATKOKI61"));
 
+		// 所得税
 		this.spASzSh26o = Array.from(document.getElementsByClassName("ASZSH26O"));
 		this.spASzSh27o = Array.from(document.getElementsByClassName("ASZSH27O"));
 		this.spASzSh30o = Array.from(document.getElementsByClassName("ASZSH30O"));
-		this.spASzKj30o = Array.from(document.getElementsByClassName("ASZKJ30O"));
 		this.spASzSh31o = Array.from(document.getElementsByClassName("ASZSH31O"));
 		this.spASzKj31o = Array.from(document.getElementsByClassName("ASZKJ31O"));
 		this.spAShoZei31o = Array.from(document.getElementsByClassName("ASHOZEI31O"));
@@ -1348,27 +1227,14 @@ class ZeikinWidget {
 		this.spASzSh41o = Array.from(document.getElementsByClassName("ASZSH41O"));
 		this.spASzKj41o = Array.from(document.getElementsByClassName("ASZKJ41O"));
 		this.spAShoZei41o = Array.from(document.getElementsByClassName("ASHOZEI41O"));
-		this.spASzSh50o = Array.from(document.getElementsByClassName("ASZSH50O"));
-		this.spASzKj50o = Array.from(document.getElementsByClassName("ASZKJ50O"));
-		this.spAShoZei50o = Array.from(document.getElementsByClassName("ASHOZEI50O"));
-		this.spASzSh50t = Array.from(document.getElementsByClassName("ASZSH50T"));
-		this.spASzKj50t = Array.from(document.getElementsByClassName("ASZKJ50T"));
-		this.spAShoZei50t = Array.from(document.getElementsByClassName("ASHOZEI50T"));
-		this.spASzSh51o = Array.from(document.getElementsByClassName("ASZSH51O"));
-		this.spASzKj51o = Array.from(document.getElementsByClassName("ASZKJ51O"));
-		this.spAShoZei51o = Array.from(document.getElementsByClassName("ASHOZEI51O"));
-		this.spASzSh51t = Array.from(document.getElementsByClassName("ASZSH51T"));
-		this.spASzKj51t = Array.from(document.getElementsByClassName("ASZKJ51T"));
-		this.spAShoZei51t = Array.from(document.getElementsByClassName("ASHOZEI51T"));
-		this.spASzSh52o = Array.from(document.getElementsByClassName("ASZSH52O"));
-		this.spASzKj52o = Array.from(document.getElementsByClassName("ASZKJ52O"));
-		this.spAShoZei52o = Array.from(document.getElementsByClassName("ASHOZEI52O"));
-		this.spASzSh52t = Array.from(document.getElementsByClassName("ASZSH52T"));
-		this.spASzKj52t = Array.from(document.getElementsByClassName("ASZKJ52T"));
-		this.spAShoZei52t = Array.from(document.getElementsByClassName("ASHOZEI52T"));
 		this.spASzShXt = Array.from(document.getElementsByClassName("ASZSHXT"));
 		this.spASzSh60t = Array.from(document.getElementsByClassName("ASZSH60T"));
 		this.spASzSh61t = Array.from(document.getElementsByClassName("ASZSH61T"));
+		this.spBSzSh48t = Array.from(document.getElementsByClassName("BSZSH48T"));
+		this.spBSzSh49t = Array.from(document.getElementsByClassName("BSZSH49T"));
+		this.spBSzSh50t = Array.from(document.getElementsByClassName("BSZSH50T"));
+		this.spBSzSh51t = Array.from(document.getElementsByClassName("BSZSH51T"));
+		
 		// 住民税
 		this.spAJzKj32o = Array.from(document.getElementsByClassName("AJZKJ32O"));
 		this.spAJuZei32o = Array.from(document.getElementsByClassName("AJUZEI32O"));
@@ -1388,12 +1254,6 @@ class ZeikinWidget {
 		this.spAJuZei40o = Array.from(document.getElementsByClassName("AJUZEI40O"));
 		this.spAJzKj41o = Array.from(document.getElementsByClassName("AJZKJ41O"));
 		this.spAJuZei41o = Array.from(document.getElementsByClassName("AJUZEI41O"));
-		this.spAJzKj50o = Array.from(document.getElementsByClassName("AJZKJ50O"));
-		this.spAJuZei50o = Array.from(document.getElementsByClassName("AJUZEI50O"));
-		this.spAJzKj51o = Array.from(document.getElementsByClassName("AJZKJ51O"));
-		this.spAJuZei51o = Array.from(document.getElementsByClassName("AJUZEI51O"));
-		this.spAJzKj52o = Array.from(document.getElementsByClassName("AJZKJ52O"));
-		this.spAJuZei52o = Array.from(document.getElementsByClassName("AJUZEI52O"));
 	}
 
 	update(val) {	// 更新
@@ -1483,24 +1343,16 @@ class ZeikinWidget {
 		this.setSpan3parts(this.spAKhK41, val.aKhKb41);
 		this.spAKh41.forEach(v => { v.innerText = val.aKh41.toLocaleString(); });
 
-		this.setSpan3parts(this.spAKhI50, val.aKhIb50);		// 国保50
-		this.setSpan3parts(this.spAKhS50, val.aKhSb50);
-		this.setSpan3parts(this.spAKhK50, val.aKhKb50);
-		this.spAKh50.forEach(v => { v.innerText = val.aKh50.toLocaleString(); });
+		this.spBKshot49t.forEach(v => { v.innerText = val.bKshot49t.toLocaleString(); });
+		this.setSpan3parts(this.spBKhI49, val.bKhIb49);		// 国保
+		this.setSpan3parts(this.spBKhS49, val.bKhSb49);
+		this.setSpan3parts(this.spBKhK49, val.bKhKb49);
+		this.spBKh49.forEach(v => { v.innerText = val.bKh49.toLocaleString(); });
 
-		this.spAKshot50o.forEach(v => { v.innerText = val.aKshot50o.toLocaleString(); });
-		this.spAKshot50t.forEach(v => { v.innerText = val.aKshot50t.toLocaleString(); });
-		this.spAKshot50ot.forEach(v => { v.innerText = val.aKshot50ot.toLocaleString(); });
-		this.setSpan3parts(this.spAKhI51, val.aKhIb51);		// 国保51
-		this.setSpan3parts(this.spAKhS51, val.aKhSb51);
-		this.spAKh51.forEach(v => { v.innerText = val.aKh51.toLocaleString(); });
-
-		this.spAKshot51o.forEach(v => { v.innerText = val.aKshot51o.toLocaleString(); });
-		this.spAKshot51t.forEach(v => { v.innerText = val.aKshot51t.toLocaleString(); });
-		this.spAKshot51ot.forEach(v => { v.innerText = val.aKshot51ot.toLocaleString(); });
-		this.setSpan3parts(this.spAKhI52, val.aKhIb52);		// 国保52
-		this.setSpan3parts(this.spAKhS52, val.aKhSb52);
-		this.spAKh52.forEach(v => { v.innerText = val.aKh52.toLocaleString(); });
+		this.setSpan3parts(this.spBKhI50, val.bKhIb50);		// 国保
+		this.setSpan3parts(this.spBKhS50, val.bKhSb50);
+		this.setSpan3parts(this.spBKhK50, val.bKhKb50);
+		this.spBKh50.forEach(v => { v.innerText = val.bKh50.toLocaleString(); });
 
 		this.spAKshotXt.forEach(v => { v.innerText = val.aKshotXt.toLocaleString(); });
 		this.setSpan3parts(this.spAKhIX, val.aKhIbX);		// 国保X
@@ -1514,19 +1366,13 @@ class ZeikinWidget {
 		this.spAOKaig31L.forEach(v => { v.innerText = val.aKaig31Lo.toLocaleString(); });
 		this.spAOKaig33L.forEach(v => { v.innerText = val.aKaig33Lo.toLocaleString(); });
 		this.spAOKaig34L.forEach(v => { v.innerText = val.aKaig34Lo.toLocaleString(); });
-		this.spAOKaig50L.forEach(v => { v.innerText = val.aKaig50Lo.toLocaleString(); });
-		this.spAOKaig51L.forEach(v => { v.innerText = val.aKaig51Lo.toLocaleString(); });
-		this.spATKaig49L.forEach(v => { v.innerText = val.aKaig49Lt.toLocaleString(); });
-		this.spATKaig50L.forEach(v => { v.innerText = val.aKaig50Lt.toLocaleString(); });
-		this.spATKaig51L.forEach(v => { v.innerText = val.aKaig51Lt.toLocaleString(); });
+		this.spBTKaig49L.forEach(v => { v.innerText = val.bKaig49Lt.toLocaleString(); });
 		this.spATKaigXL.forEach(v => { v.innerText = val.aKaigXLt.toLocaleString(); });
 
 		this.spAOKaig30Y.forEach(v => { v.innerText = val.aKaig30oY.toLocaleString(); });
 		this.spAOKaig30.forEach(v => { v.innerText = val.aKaig30o.toLocaleString(); });
 		this.spAOKaig31.forEach(v => { v.innerText = val.aKaig31o.toLocaleString(); });
-		this.spATKaig50.forEach(v => { v.innerText = val.aKaig50t.toLocaleString(); });
-		this.spATKaig51.forEach(v => { v.innerText = val.aKaig51t.toLocaleString(); });
-		this.spATKaig52.forEach(v => { v.innerText = val.aKaig52t.toLocaleString(); });
+		this.spBTKaig50.forEach(v => { v.innerText = val.bKaig50t.toLocaleString(); });
 		this.spATKaigX.forEach(v => { v.innerText = val.aKaigXt.toLocaleString(); });
 		//console.log(`dbg> kaig4t: ${kaig4t}`);
 		
@@ -1571,27 +1417,14 @@ class ZeikinWidget {
 		this.spASzSh41o.forEach(v => { v.innerText = val.aSzSh41o.toLocaleString(); });
 		this.spASzKj41o.forEach(v => { v.innerText = val.aSzKj41o.toLocaleString(); });
 		this.spAShoZei41o.forEach(v => { v.innerText = val.aShoZei41o.toLocaleString(); });
-		this.spASzSh50o.forEach(v => { v.innerText = val.aSzSh50o.toLocaleString(); });
-		this.spASzKj50o.forEach(v => { v.innerText = val.aSzKj50o.toLocaleString(); });
-		this.spAShoZei50o.forEach(v => { v.innerText = val.aShoZei50o.toLocaleString(); });
-		this.spASzSh50t.forEach(v => { v.innerText = val.aSzSh50t.toLocaleString(); });
-		this.spASzKj50t.forEach(v => { v.innerText = val.aSzKj50t.toLocaleString(); });
-		this.spAShoZei50t.forEach(v => { v.innerText = val.aShoZei50t.toLocaleString(); });
-		this.spASzSh51o.forEach(v => { v.innerText = val.aSzSh51o.toLocaleString(); });
-		this.spASzKj51o.forEach(v => { v.innerText = val.aSzKj51o.toLocaleString(); });
-		this.spAShoZei51o.forEach(v => { v.innerText = val.aShoZei51o.toLocaleString(); });
-		this.spASzSh51t.forEach(v => { v.innerText = val.aSzSh51t.toLocaleString(); });
-		this.spASzKj51t.forEach(v => { v.innerText = val.aSzKj51t.toLocaleString(); });
-		this.spAShoZei51t.forEach(v => { v.innerText = val.aShoZei51t.toLocaleString(); });
-		this.spASzSh52o.forEach(v => { v.innerText = val.aSzSh52o.toLocaleString(); });
-		this.spASzKj52o.forEach(v => { v.innerText = val.aSzKj52o.toLocaleString(); });
-		this.spAShoZei52o.forEach(v => { v.innerText = val.aShoZei52o.toLocaleString(); });
-		this.spASzSh52t.forEach(v => { v.innerText = val.aSzSh52t.toLocaleString(); });
-		this.spASzKj52t.forEach(v => { v.innerText = val.aSzKj52t.toLocaleString(); });
-		this.spAShoZei52t.forEach(v => { v.innerText = val.aShoZei52t.toLocaleString(); });
 		this.spASzShXt.forEach(v => { v.innerText = val.aSzShXt.toLocaleString(); });
 		this.spASzSh60t.forEach(v => { v.innerText = val.aSzSh60t.toLocaleString(); });
 		this.spASzSh61t.forEach(v => { v.innerText = val.aSzSh61t.toLocaleString(); });
+		this.spBSzSh48t.forEach(v => { v.innerText = val.bSzSh48t.toLocaleString(); });
+		this.spBSzSh49t.forEach(v => { v.innerText = val.bSzSh49t.toLocaleString(); });
+		this.spBSzSh50t.forEach(v => { v.innerText = val.bSzSh50t.toLocaleString(); });
+		this.spBSzSh51t.forEach(v => { v.innerText = val.bSzSh51t.toLocaleString(); });
+
 		// 住民税
 		this.spAJzKj32o.forEach(v => { v.innerText = val.aJzKj32o.toLocaleString(); });
 		this.spAJuZei32o.forEach(v => { v.innerText = val.aJuZei32o.toLocaleString(); });
@@ -1611,12 +1444,6 @@ class ZeikinWidget {
 		this.spAJuZei40o.forEach(v => { v.innerText = val.aJuZei40o.toLocaleString(); });
 		this.spAJzKj41o.forEach(v => { v.innerText = val.aJzKj41o.toLocaleString(); });
 		this.spAJuZei41o.forEach(v => { v.innerText = val.aJuZei41o.toLocaleString(); });
-		this.spAJzKj50o.forEach(v => { v.innerText = val.aJzKj50o.toLocaleString(); });
-		this.spAJuZei50o.forEach(v => { v.innerText = val.aJuZei50o.toLocaleString(); });
-		this.spAJzKj51o.forEach(v => { v.innerText = val.aJzKj51o.toLocaleString(); });
-		this.spAJuZei51o.forEach(v => { v.innerText = val.aJuZei51o.toLocaleString(); });
-		this.spAJzKj52o.forEach(v => { v.innerText = val.aJzKj52o.toLocaleString(); });
-		this.spAJuZei52o.forEach(v => { v.innerText = val.aJuZei52o.toLocaleString(); });
 	}
 
 	getSpan3parts(name1, name2, name3){
@@ -2029,12 +1856,12 @@ class App {
 			result += '<tr><th>項目</th><th>値</th></tr>';
 			this.nenkinValuesMap.forEach((value, key) => {
 				//console.log(key.substr(0,2));
-				if ("長寿" == key.substr(0,2)) {
+				if ("標準" == key.substr(0,2)) {
 					result += '<tr><td>';
 					result += key;
 					result += '</td><td>';
 					result += Number(value).toLocaleString();	// コンマ区切り
-					result += '</td></tr>';
+					result += '</td></tr>';				
 				}
 			});
 			result += '</table>';
