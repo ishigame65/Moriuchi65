@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 	<meta charset="utf-8">
+	<script src="Chart.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">	
 	<title>収支計画</title>
 	<link rel="stylesheet" href="private.css">
@@ -213,17 +214,36 @@
 
 <h2 class="title">収支計算</h2>
 <!--
-寿命ごとの2071年残高を自動的に計算する
-2024年の収入と2025年税金と2025年末の預金残高を見積もる
-計算開始年を入力
+（将来）2024年の収入と2025年税金と2025年末の預金残高を見積もる
+（将来）計算開始年を入力
 -->
-<label><span>金融資産額</span><input id="YOKIN" type="number" value="110000000"></label>円<br>
-<label><span>寿命</span><input id="JUMYO" type="number" value="86"></label>歳（69～96で指定）<br>
-<button onclick="app.calcShushi()">収支を計算する</button><br>
-<span>残高</span><input id="ZANDAKA" readonly="true">円<br>
 
+<label><span>金融資産額</span><input id="YOKIN" type="number" value="110000000"></label>円<br>
+
+<h3>夫寿命を指定して収支予定を算出</h3>
+
+<label><span>寿命</span><input id="JUMYO" type="number" value="86"></label>歳（69～96で指定）
+ ⇒ 　
+<button onclick="app.calcShushi()">収支を計算する</button>
+ ⇒ 　
+<span>2071年残高</span><input id="ZANDAKA" readonly="true">円
 <p>
 	<div id="ZCALC_TABLE"></div>
+</p>
+
+<h3>シミュレーション</h3>
+
+<button onclick="app.doSim1()">夫寿命と2071年残高の関係を可視化</button>
+<p>
+	<div style="width:400px; height:300px;">
+    <canvas id="CHART" width="400" height="300"></canvas>
+	</div>
+	<!--
+	<div id="SIM1RESULT"></div>
+	-->
+</p>
+
+<p>
 </p>
 
 </main>
@@ -243,6 +263,7 @@
 
 <script src="FileUtilText.js"></script>
 <script src="shushi.js"></script>
+
 
 </body>
 </html>

@@ -309,8 +309,8 @@ class App {
 	// 計算用税金マップ作成
 	calcZeikinValueMap(jumyo){
 		const zmap = (jumyo >= 85) ? this.zeiValMap : this.zei2ValMap;
-		const cmap = this.zeiCalcValMap;
-		cmap.clear();
+		const cmap = new Map();//this.zeiCalcValMap;
+		//cmap.clear();
 		const lastYear = jumyo - 35
 		let iNenTpre = 0;
 		let iNenTcont = -1;
@@ -382,9 +382,10 @@ class App {
 		for (let year = 63; year < 72; year++){
 			cmap.set(String(year), [0, Number(data[1]), 0, Number(data[3]), Number(data[4]), 0, Number(data[6]), 0, Number(data[8]), 0, Number(data[10]), 0, Number(data[12])]);
 		}
+		return cmap;
 	}
 	
-	// 計算
+	// 収支を計算する（GUIから呼ばれる）
 	calcShushi(){
 		const yokin = Number(this.inputYokin.value);
 		let jumyo = Number(this.inputJumyo.value);
@@ -392,13 +393,13 @@ class App {
 		if (jumyo > 96) jumyo = 96;
 		this.inputJumyo.value = String(jumyo);
 
-		this.calcZeikinValueMap(jumyo);	// 計算用税金マップ作成
+		this.zeiCalcValMap = this.calcZeikinValueMap(jumyo);	// 計算用税金マップ作成
 
 		// 収支計画年表を表示
 		const zmap = new Map();
 		const cmap = this.zeiCalcValMap;
 		const lmap = this.livingValMap;
-		const lastYear = jumyo - 35
+		//const lastYear = jumyo - 35
 		let zandaka = yokin;
 		for (let year = 26; year < 72; year++){
 			const data = cmap.get(String(year));
@@ -427,8 +428,94 @@ class App {
 
 		this.viewMoneyPlanTable(zmap);	// 収支計画表表示
 	}
+	
+	// 寿命ごとの2071年残高を計算する（GUIから呼ばれる）
+	doSim1(){
+		const yokin = Number(this.inputYokin.value);
+		const jmMap = new Map();		
+		for (let jumyo = 69; jumyo <= 96; jumyo++) {
+			const cmap = this.calcZeikinValueMap(jumyo);	// 計算用税金マップ作成
+			const lmap = this.livingValMap;
+			let zandaka = yokin;
+			for (let year = 26; year < 72; year++){
+				const data = cmap.get(String(year));
+				const iNenO = Number(data[0]);
+				const iNenT = Number(data[1]);
+				const pNenO = Number(data[2]);
+				const pNenT = Number(data[3]);
+				const pKenOT = Number(data[4]);
+				const pKaiO = Number(data[5]);
+				const pKaiT = Number(data[6]);
+				const pKokO = Number(data[7]);
+				const pKokT = Number(data[8]);
+				const pShzO = Number(data[9]);
+				const pShzT = Number(data[10]);
+				const pJuzO = Number(data[11]);
+				const pJuzT = Number(data[12]);
+				const living = lmap.get(String(year));
+				const iLiving = Number(living[0]);
+				const pLiving = Number(living[1]);
+				const income = iNenO + iNenT + iLiving;
+				const payment = pNenO + pNenT + pKenOT + pKaiO + pKaiT + pKokO + pKokT + pShzO + pShzT + pJuzO + pJuzT + pLiving;
+				zandaka += (income - payment);
+			}
+			jmMap.set(jumyo, zandaka);
+		}
+		
+		let dataAry = [];
+		let labelAry = [];
+		for (let jumyo = 69; jumyo <= 96; jumyo++) {
+			const man = Math.floor(jmMap.get(jumyo) / 10000);
+			dataAry.push(man);
+			labelAry.push(jumyo);
+		}
+		const data = {
+		  "datasets": [
+			{ "label": "name", "data": dataAry, "backgroundColor": "#66f" } ],
+		  "labels": labelAry
+		};
+		const options = {
+		  "title": { "display": true, "text": "夫寿命と2071年残高", "fontSize": 18 },
+		  "legend": { "display": false },
+		  "layout": { "padding": { "left": 10, "right": 20, "top": 10, "bottom": 10 } },
+		  "scales": {
+			"yAxes": [ {
+				"scaleLabel": { "display": true, "labelString": "残高（万円）", "fontSize": 15 },
+				"ticks": { "fontSize": 12, "min": 0, "max": 2500, "stepSize": 500 },
+				"gridLines": { "display": true },
+				"stacked": false } ],
+			"xAxes": [ {
+				"scaleLabel": { "display": true, "labelString": "寿命（歳）", "fontSize": 15 },
+				"ticks": { "fontSize": 12 },
+				"gridLines": { "display": false },
+				"stacked": false } ] },
+		  "maintainAspectRatio": true
+		};		
+		Chart.plugins.register({
+			beforeDraw: function(c){
+				const ctx = c.chart.ctx;
+				ctx.fillStyle = "#fff";
+				ctx.fillRect(0, 0, c.chart.width, c.chart.height);
+			}
+		});
+		const canvas = document.getElementById("CHART");
+		const chartObj = new Chart(canvas, { type: "bar", data: data, options: options });
+		
+		//const man = Math.floor(jmMap.get(jumyo) / 10000);
 
-	// 結果をダウンロード
+		/* 表作成
+		let result = '<table class="VALUES"><tr><th>寿命</th><th>残高</th></tr>';
+		for (let jumyo = 69; jumyo <= 96; jumyo++) {
+			result += `<tr><td>${jumyo}</td><td>${jmMap.get(jumyo)}</td></tr>`;		
+		}
+		result += '</table>';
+		*/
+
+		//const sim1result = document.querySelector("#SIM1RESULT");
+		//sim1result.innerHTML = result;
+	}
+
+	// 結果をダウンロード（未使用）
 	downloadResult(filename){
 		FileUtil.downloadText(this.result, filename);
 	}
