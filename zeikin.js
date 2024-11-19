@@ -1633,26 +1633,26 @@ class ZeikinWidget {
 	}
 }
 
-// 受給年金表
+// 受給年金予定表
 class NenkinGets {
 	aNenkinO = null;
 	aNenkinT = null;
-	bNenkinO = null;
-	bNenkinT = null;
+	//bNenkinO = null;
+	//bNenkinT = null;
 	cNenkinO = null;
 	cNenkinT = null;
 
 	constructor(val){
 		this.aNenkinO = Array(63);
 		this.aNenkinT = Array(63);
-		this.bNenkinO = Array(63);
-		this.bNenkinT = Array(63);
+		//this.bNenkinO = Array(63);
+		//this.bNenkinT = Array(63);
 		this.cNenkinO = Array(63);
 		this.cNenkinT = Array(63);
 		this.aNenkinO.fill(0);
 		this.aNenkinT.fill(0);
-		this.bNenkinO.fill(0);
-		this.bNenkinT.fill(0);
+		//this.bNenkinO.fill(0);
+		//this.bNenkinT.fill(0);
 		this.cNenkinO.fill(0);
 		this.cNenkinT.fill(0);
 		// 長寿
@@ -1669,19 +1669,19 @@ class NenkinGets {
 		this.aNenkinT[52] = 99;
 		this.aNenkinT.fill(val.aNenXtF, 53, 63);	// 夫死亡後
 		// 標準
-		this.bNenkinO[25] = val.bNen25o;
-		this.bNenkinO.fill(val.bNen26o, 26, 30);		
-		this.bNenkinO[30] = val.bNen30o;
-		this.bNenkinO.fill(val.bNen31o, 31, 33);		
-		this.bNenkinO[33] = val.bNen33o;
-		this.bNenkinO[34] = val.bNen34o;	// 夫生存中
-		this.bNenkinO[34] = 99;
-		this.bNenkinT.fill(99, 34, 49);
-		this.bNenkinT[49] = val.bNen49tF;	// 夫死亡後
-		this.bNenkinT[50] = val.bNen50tF;
-		this.bNenkinT[51] = val.bNen51tF;
-		this.bNenkinT[52] = 99;
-		// 短命
+		//this.bNenkinO[25] = val.bNen25o;
+		//this.bNenkinO.fill(val.bNen26o, 26, 30);		
+		//this.bNenkinO[30] = val.bNen30o;
+		//this.bNenkinO.fill(val.bNen31o, 31, 33);		
+		//this.bNenkinO[33] = val.bNen33o;
+		//this.bNenkinO[34] = val.bNen34o;	// 夫生存中
+		//this.bNenkinO[34] = 99;
+		//this.bNenkinT.fill(99, 34, 49);
+		//this.bNenkinT[49] = val.bNen49tF;	// 夫死亡後
+		//this.bNenkinT[50] = val.bNen50tF;
+		//this.bNenkinT[51] = val.bNen51tF;
+		//this.bNenkinT[52] = 99;
+		// 短命（未使用だが将来のためここに残しておく）
 		this.cNenkinO[25] = val.cNen25o;
 		this.cNenkinO[26] = val.cNen26o;
 		this.cNenkinO[27] = 99;
@@ -1697,26 +1697,26 @@ class NenkinGets {
 	}
 }
 
-// 国民年金支払い表
+// 年金支払い予定表
 class NenkinPays {
 	aNenPaysO = null;
 	aNenPaysT = null;
-	bNenPaysO = null;
-	bNenPaysT = null;
+	//bNenPaysO = null;
+	//bNenPaysT = null;
 	cNenPaysO = null;
 	cNenPaysT = null;
 
 	constructor(val){
 		this.aNenPaysO = Array(63);	// 2000-2062年の箱（2025-2062を使用）
 		this.aNenPaysT = Array(63);
-		this.bNenPaysO = Array(63);
-		this.bNenPaysT = Array(63);
+		//this.bNenPaysO = Array(63);
+		//this.bNenPaysT = Array(63);
 		this.cNenPaysO = Array(63);
 		this.cNenPaysT = Array(63);
 		this.aNenPaysO.fill(0);
 		this.aNenPaysT.fill(0);
-		this.bNenPaysO.fill(0);
-		this.bNenPaysT.fill(0);
+		//this.bNenPaysO.fill(0);
+		//this.bNenPaysT.fill(0);
 		this.cNenPaysO.fill(0);
 		this.cNenPaysT.fill(0);
 		this.aNenPaysO.fill(val.aNenPay25_29o, 25, 30);
@@ -1726,16 +1726,18 @@ class NenkinPays {
 		this.aNenPaysO[37] = val.aNenPay37o;
 		this.aNenPaysO.fill(val.aNenPay38_48o, 38, 49);
 		this.aNenPaysO[49] = val.aNenPay49o;		
-		this.bNenPaysO.fill(val.bNenPay25_29, 25, 30)
-		this.bNenPaysO[30] = val.bNenPay30o;
-		this.bNenPaysO[31] = val.bNenPay31o;
-		this.bNenPaysO.fill(val.bNenPay32_36o, 32, 37);
-		this.bNenPaysO[37] = val.bNenPay37o;
-		this.bNenPaysO[38] = val.bNenPay38_Xo;
-		this.bNenPaysO[39] = 99;
-		this.bNenPaysT.fill(99, 39, 48);
-		this.bNenPaysT[48] = val.bNenPayX_48t;
-		this.bNenPaysT[49] = val.bNenPay49t;
+		//this.bNenPaysO.fill(val.bNenPay25_29, 25, 30)
+		//this.bNenPaysO[30] = val.bNenPay30o;
+		//this.bNenPaysO[31] = val.bNenPay31o;
+		//this.bNenPaysO.fill(val.bNenPay32_36o, 32, 37);
+		//this.bNenPaysO[37] = val.bNenPay37o;
+		//this.bNenPaysO[38] = val.bNenPay38_Xo;
+		//this.bNenPaysO[39] = 99;
+		//this.bNenPaysT.fill(99, 39, 48);
+		//this.bNenPaysT[48] = val.bNenPayX_48t;
+		//this.bNenPaysT[49] = val.bNenPay49t;
+
+		// 短命（未使用だが将来のためここに残しておく）
 		this.cNenPaysO[25] = val.cNenPay25_Xo;
 		this.cNenPaysO[26] = 99;
 		this.cNenPaysT.fill(99, 27, 30);
@@ -1748,7 +1750,7 @@ class NenkinPays {
 	}
 }
 
-// 税金支払い表
+// 税金支払い予定表
 class ZeikinPays {
 	aKokuhoPay = null;	// 健保支払
 	aKaigoPayO = null;	// 夫介護支払
@@ -1821,13 +1823,9 @@ class ZeikinPays {
 		this.aShotPayO[50] = zk.aShoZei50o;
 		this.aShotPayO[51] = zk.aShoZei51o;
 		this.aShotPayO.fill(zk.aShoZei52o, 52, 63);
-		this.aShotPayT[50] = zk.aShoZei50t;
 		this.aShotPayT[51] = zk.aShoZei51t;
 		this.aShotPayT[52] = zk.aShoZei52t;
-		this.aShotPayT[53] = 99;
-		this.aShotPayT.fill(zk.aShoZeiXt, 54, 60);
-		this.aShotPayT[60] = zk.aShoZei60t;
-		this.aShotPayT.fill(zk.aShoZei61t, 61, 63);
+		this.aShotPayT.fill(zk.aShoZei52t, 52, 63);
 		// 住民税
 		this.aJuminPayO = Array(63);	// 夫住民支払
 		this.aJuminPayT = Array(63);	// 妻住民支払
@@ -1841,9 +1839,10 @@ class ZeikinPays {
 		this.aJuminPayO[38] = zk.aJuZei38o;
 		this.aJuminPayO[39] = zk.aJuZei39o;
 		this.aJuminPayO[40] = zk.aJuZei40o;
-		this.aJuminPayO.fill(zk.aJuZei41o, 41, 51);
+		this.aJuminPayO.fill(zk.aJuZei41o, 41, 50);
+		this.aJuminPayO[50] = zk.aJuZei50o;
 		this.aJuminPayO[51] = zk.aJuZei51o;
-		this.aJuminPayO.fill(zk.aJuZei52o, 52, 53);
+		this.aJuminPayO.fill(zk.aJuZei52o, 52, 63);
 	}
 };
 
@@ -1900,22 +1899,12 @@ class App {
 		this.viewNenkinValues();	// 年金値表示
 		this.calcZeikin();			// 税金計算
 	}
-	
-	// 税金計算
-	calcZeikin(){
-		const zp = new ZeikinParam(this.zeikinParamsMap);	// 税金算出規定値
-		const nv = new NenkinValues(this.nenkinValuesMap);	// 公的年金データ値
 
-		const zeikin = new Zeikin(zp, nv);	// 税金算出値（計算）
-
-		this.zeikinParamWidget.update(zp);	// 税金算出規定値更新
-		this.nenkinValueWidget.update(nv);	// 公的年金データ値更新
-		this.zeikinWidget.update(zeikin);	// 税金算出更新
-
-		// 長寿データ for Download
-		const ngets = new NenkinGets(nv);	// 受給年金表
-		const npays = new NenkinPays(nv);	// 年金支払い表
-		const zpays = new ZeikinPays(zeikin);	// 税金支払い表
+	// 資金計画データ作成 for Download
+	buildPlanData(zp, nv, zeikin){
+		const ngets = new NenkinGets(nv);		// 受給年金予定表
+		const npays = new NenkinPays(nv);		// 年金支払い予定表
+		const zpays = new ZeikinPays(zeikin);	// 税金支払い予定表
 
 		let text = "年, 夫年金, 妻年金";
 		text += ", 夫年金支払, 妻年金支払, 健保支払, 夫介護支払, 妻介護支払, 夫後期支払, 妻後期支払";
@@ -1932,6 +1921,19 @@ class App {
 			text += '\n';
 		}
 		this.result = text;
+	}
+	
+	// 税金計算
+	calcZeikin(){
+		const zp = new ZeikinParam(this.zeikinParamsMap);	// 税金算出規定値
+		const nv = new NenkinValues(this.nenkinValuesMap);	// 公的年金データ値
+		const zeikin = new Zeikin(zp, nv);	// 税金算出値（計算）
+
+		this.zeikinParamWidget.update(zp);	// 税金算出規定値更新
+		this.nenkinValueWidget.update(nv);	// 公的年金データ値更新
+		this.zeikinWidget.update(zeikin);	// 税金算出更新
+
+		this.buildPlanData(zp, nv, zeikin);	// 資金計画データ作成
 	}
 
 	// 税金パラメータをテキストから読み取って辞書作成

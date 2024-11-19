@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">	
+	<title>収支計画</title>
+	<link rel="stylesheet" href="private.css">
+	<link rel="stylesheet" href="accordionbox.css">
+	<link rel="stylesheet" href="nenkin.css">
+</head>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+	<li><a href="index.html">Top</a>
+	<li><a href="okane.html">お金</a>
+	<li>収支計画
+	</ul>
+
+<h1 class="title">収支計画</h1>
+<!--
+zeikinPlan1,zeikinPlan2のデータを読み込み
+寿命入力で、収支計画年表を表示
+-->
+
+<h2>収支元データ</h2>
+
+<div id="UPDATE_PANEL" class="accordion-box">
+	<input id="AC_BUTTON" type="checkbox" />
+	<label id="AC_LABEL" for="AC_BUTTON">規定値を更新</label>
+	<div id="AC_CONTENTS">
+		<input type="file" onchange="app.readFile(this.files[0])" onclick="this.value = null;">
+		　<button onclick="app.clearText();">クリア</button>
+<textarea id="CONTENTS_TEXT">
+
+
+</textarea>
+		<div class="CONTROL">
+			規定値ファイルを[ファイルの選択]ボタンから指定または上の領域にドラッグ＆ドロップしてください。<br>
+			規定値リストを上の領域にコピー＆ペーストまたは直接入力することもできます。<br>
+			作成した規定値リストをダウンロードできます。 → 
+			<button onclick="app.downloadText('zeikin.txt');">規定値リストをダウンロード</button><br>
+			<button onclick="app.updateZeikinParams();">規定値を更新</button>
+		</div>
+	</div>
+</div>
+<p>
+	<div class="TEXTBOX">
+		<div id="ZEIKIN_PARAMS"></div>
+	</div>
+</p>
+
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-right">&copy; 2024 moriuchi65.</div>
+	<div class="footer-center">
+		<!--
+		<button onclick="window.print(); return false;">印刷</button>
+		<button onclick="app.downloadResult('zeikinPlan2.txt');">ダウンロード</button>
+		-->
+	</div>
+</footer>
+
+<script src="FileUtilText.js"></script>
+<script src="zeikin2.js"></script>
+
+</body>
+</html>

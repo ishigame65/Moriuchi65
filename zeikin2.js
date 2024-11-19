@@ -662,36 +662,42 @@ class Zeikin {
 		this.cShot51t = this.minusKojo(nv.cNen51t, zp.knKo1);
 
 		this.aKshot25o = this.minusKojo(this.aShot25o, zp.khKiso);
+
 		this.aKhIb26 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot25o, 4);	// 国保26
 		this.aKhSb26 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot25o, 4);
 		this.aKhKb26 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot25o, 2);
 		this.aKh26 = this.aKhIb26[2] + this.aKhSb26[2] + this.aKhKb26[2];
 
 		this.aKshot26o = this.minusKojo(this.aShot26o, zp.khKiso);
+
 		this.aKhIb30 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot26o, 4);	// 国保30
 		this.aKhSb30 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot26o, 4);
 		this.aKhKb30 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot26o, 1.17);
 		this.aKh30 = this.aKhIb30[2] + this.aKhSb30[2] + this.aKhKb30[2];
 
 		this.aKshot30o = this.minusKojo(this.aShot30o, zp.khKiso);
+
 		this.aKhIb31 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot30o, 4);	// 国保31
 		this.aKhSb31 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot30o, 4);
 		this.aKhKb31 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot30o, 1);
 		this.aKh31 = this.aKhIb31[2] + this.aKhSb31[2] + this.aKhKb31[2];
 
 		this.aKshot31o = this.minusKojo(this.aShot31o, zp.khKiso);
+
 		this.aKhIb32 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot31o, 4);	// 国保32
 		this.aKhSb32 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot31o, 4);
 		this.aKhKb32 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot31o, 1);
 		this.aKh32 = this.aKhIb32[2] + this.aKhSb32[2] + this.aKhKb32[2];
 
 		this.aKshot33o = this.minusKojo(this.aShot33o, zp.khKiso);
+
 		this.aKhIb34 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot33o, 3.25);	// 国保34
 		this.aKhSb34 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot33o, 3.25);
 		this.aKhKb34 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot33o, 1);
 		this.aKh34 = this.aKhIb34[2] + this.aKhSb34[2] + this.aKhKb34[2];
 
 		this.aKshot34o = this.minusKojo(this.aShot34o, zp.khKiso);
+
 		this.aKhIb35 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot34o, 3);	// 国保35
 		this.aKhSb35 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot34o, 3);
 		this.aKhKb35 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot34o, 1);
@@ -712,13 +718,14 @@ class Zeikin {
 		this.aKhKb40 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot34o, 1);
 		this.aKh40 = this.aKhIb40[2] + this.aKhSb40[2] + this.aKhKb40[2];
 
-		this.aKhIb41 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot34o, 1); 	// 国保41
+		this.aKhIb41 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshot34o, 1); 	// 国保41生存中
 		this.aKhSb41 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshot34o, 1);
 		this.aKhKb41 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.aKshot34o, 1);
 		this.aKh41 = this.aKhIb41[2] + this.aKhSb41[2] + this.aKhKb41[2];
 
 		this.bKshot49t = this.minusKojo(this.bShot49t, zp.khKiso);
-		this.bKhIb49 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.bKshot49t, 1);	// 国保49
+
+		this.bKhIb49 = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.bKshot49t, 1);	// 国保49死亡後
 		this.bKhSb49 = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.bKshot49t, 1);
 		this.bKhKb49 = this.calcKokuhoPart(zp.khKS, zp.khKK, zp.khKG, this.bKshot49t, 1);
 		this.bKh49 = this.bKhIb49[2] + this.bKhSb49[2] + this.bKhKb49[2];
@@ -729,12 +736,14 @@ class Zeikin {
 		this.bKh50 = this.bKhIb50[2] + this.bKhSb50[2] + this.bKhKb50[2];
 
 		this.aKshotXt = this.minusKojo(this.aShotXt, zp.khKiso);
-		this.aKhIbX = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshotXt, 1);	// 国保52★国保X
+
+		this.aKhIbX = this.calcKokuhoPart(zp.khIS, zp.khIK, zp.khIG, this.aKshotXt, 1);	// 国保51
 		this.aKhSbX = this.calcKokuhoPart(zp.khSS, zp.khSK, zp.khSG, this.aKshotXt, 1);
 		this.aKhX = this.aKhIbX[2] + this.aKhSbX[2];
 
 		this.aKh60 = this.kirisute100(this.aKhX * 10/12);	// 国保60
 
+		// 介護保険料
 		this.aKaig29Lo = this.calcKaigoLevel(this.aShot26o, -1, true);	// 介護保険料段階
 		this.aKaig30Lo = this.calcKaigoLevel(this.aShot30o, -1, true);	// 介護保険料段階
 		this.aKaig31Lo = this.calcKaigoLevel(this.aShot31o, -1, true);
@@ -750,11 +759,12 @@ class Zeikin {
 		this.aKaigXt = kaigov[this.aKaigXLt];
 		//console.log(`dbg> aKaig51Lt: ${aKaig51Lt}`);
 
-		this.oKoki40y = Math.floor(zp.kokik + this.minusKojo(this.aShot34o, zp.kkKiso) * zp.kokis / 100.0);// 後期高齢者保険
+		// 後期高齢者保険料
+		this.oKoki40y = Math.floor(zp.kokik + this.minusKojo(this.aShot34o, zp.kkKiso) * zp.kokis / 100.0);
 		this.aKoki40o = Math.floor(this.oKoki40y * 10 / 12);
 		this.aKoki41o = Math.floor(zp.kokik + this.minusKojo(this.aShot34o, zp.kkKiso) * zp.kokis / 100.0);
-		this.aKoki51o = Math.floor(zp.kokik + this.minusKojo(this.aShot50o, zp.kkKiso) * zp.kokis / 100.0);
-		this.aKoki52o = Math.floor(zp.kokik + this.minusKojo(this.aShot51o, zp.kkKiso) * zp.kokis / 100.0);
+		//this.aKoki51o = Math.floor(zp.kokik + this.minusKojo(this.aShot50o, zp.kkKiso) * zp.kokis / 100.0);
+		//this.aKoki52o = Math.floor(zp.kokik + this.minusKojo(this.aShot51o, zp.kkKiso) * zp.kokis / 100.0);
 		this.aKoki61t = Math.floor(zp.kokik + this.minusKojo(this.aShot51t, zp.kkKiso) * zp.kokis / 100.0);
 		this.aKoki60t = Math.floor(this.aKoki61t * 2 / 12);
 
@@ -808,17 +818,11 @@ class Zeikin {
 		this.aShoZei41o = this.calcShotZei(nv.aNen34o, this.aSzSh41o, this.aSzKj41o, zp.szRitu);
 
 		this.bSzSh48t = nv.bNenPayX_48t + this.bKh49;
-
 		this.bSzSh49t = nv.bNenPay49t + this.bKh49;
-
 		this.bSzSh50t = this.bKh50 + this.bKaig50t;
-
 		this.bSzSh51t = this.aKhX + this.bKaig50t;
-
 		this.aSzShXt = this.aKhX + this.aKaigXt;
-
 		this.aSzSh60t = this.aKh60 + this.aKaigXt + this.aKoki60t;
-
 		this.aSzSh61t = this.aKaigXt + this.aKoki61t;
 
 		// 住民税
@@ -1462,215 +1466,136 @@ class ZeikinWidget {
 
 // 受給年金表
 class NenkinGets {
-	aNenkinO = null;
-	aNenkinT = null;
 	bNenkinO = null;
 	bNenkinT = null;
-	cNenkinO = null;
-	cNenkinT = null;
 
 	constructor(val){
-		this.aNenkinO = Array(63);
-		this.aNenkinT = Array(63);
 		this.bNenkinO = Array(63);
 		this.bNenkinT = Array(63);
-		this.cNenkinO = Array(63);
-		this.cNenkinT = Array(63);
-		this.aNenkinO.fill(0);
-		this.aNenkinT.fill(0);
 		this.bNenkinO.fill(0);
 		this.bNenkinT.fill(0);
-		this.cNenkinO.fill(0);
-		this.cNenkinT.fill(0);
-		// 長寿
-		this.aNenkinO[25] = val.aNen25o;
-		this.aNenkinO.fill(val.aNen26o, 26, 30);
-		this.aNenkinO[30] = val.aNen30o;
-		this.aNenkinO.fill(val.aNen31o, 31, 33);	
-		this.aNenkinO[33] = val.aNen33o;
-		this.aNenkinO.fill(val.aNen34o, 34, 50);
-		this.aNenkinO[50] = val.aNen50o;
-		this.aNenkinO.fill(val.aNen51o, 51, 63);
-		this.aNenkinT[50] = val.aNen50t;
-		this.aNenkinT[51] = val.aNen51t;	// 夫生存中
-		this.aNenkinT[52] = 99;
-		this.aNenkinT.fill(val.aNenXtF, 53, 63);	// 夫死亡後
 		// 標準
 		this.bNenkinO[25] = val.bNen25o;
 		this.bNenkinO.fill(val.bNen26o, 26, 30);		
 		this.bNenkinO[30] = val.bNen30o;
 		this.bNenkinO.fill(val.bNen31o, 31, 33);		
 		this.bNenkinO[33] = val.bNen33o;
-		this.bNenkinO[34] = val.bNen34o;	// 夫生存中
-		this.bNenkinO[34] = 99;
-		this.bNenkinT.fill(99, 34, 49);
-		this.bNenkinT[49] = val.bNen49tF;	// 夫死亡後
+		this.bNenkinO.fill(val.bNen34o, 34, 63);	// 夫生存中
+		this.bNenkinT.fill(val.bNen49tF, 34, 50);	// 夫死亡後
 		this.bNenkinT[50] = val.bNen50tF;
-		this.bNenkinT[51] = val.bNen51tF;
-		this.bNenkinT[52] = 99;
-		// 短命
-		this.cNenkinO[25] = val.cNen25o;
-		this.cNenkinO[26] = val.cNen26o;
-		this.cNenkinO[27] = 99;
-		this.cNenkinT.fill(99, 27, 29);
-		this.cNenkinT[29] = val.cNen29t;
-		this.cNenkinT[30] = val.cNen30t;
-		this.cNenkinT.fill(val.cNen31t, 31, 33);
-		this.cNenkinT[33] = val.cNen33t;
-		this.cNenkinT.fill(val.cNen34tF, 34, 50);
-		this.cNenkinT[50] = val.cNen50tF;
-		this.cNenkinT[51] = val.cNen51tF;
-		this.cNenkinT[52] = 99;
+		this.bNenkinT.fill(val.bNen51tF, 51, 63);
 	}
 }
 
 // 国民年金支払い表
 class NenkinPays {
-	aNenPaysO = null;
-	aNenPaysT = null;
 	bNenPaysO = null;
 	bNenPaysT = null;
-	cNenPaysO = null;
-	cNenPaysT = null;
 
 	constructor(val){
-		this.aNenPaysO = Array(63);	// 2000-2062年の箱（2025-2062を使用）
-		this.aNenPaysT = Array(63);
 		this.bNenPaysO = Array(63);
 		this.bNenPaysT = Array(63);
-		this.cNenPaysO = Array(63);
-		this.cNenPaysT = Array(63);
-		this.aNenPaysO.fill(0);
-		this.aNenPaysT.fill(0);
 		this.bNenPaysO.fill(0);
 		this.bNenPaysT.fill(0);
-		this.cNenPaysO.fill(0);
-		this.cNenPaysT.fill(0);
-		this.aNenPaysO.fill(val.aNenPay25_29o, 25, 30);
-		this.aNenPaysO[30] = val.aNenPay30o;
-		this.aNenPaysO[31] = val.aNenPay31o;
-		this.aNenPaysO.fill(val.aNenPay32_36o, 32, 37);
-		this.aNenPaysO[37] = val.aNenPay37o;
-		this.aNenPaysO.fill(val.aNenPay38_48o, 38, 49);
-		this.aNenPaysO[49] = val.aNenPay49o;		
 		this.bNenPaysO.fill(val.bNenPay25_29, 25, 30)
 		this.bNenPaysO[30] = val.bNenPay30o;
 		this.bNenPaysO[31] = val.bNenPay31o;
 		this.bNenPaysO.fill(val.bNenPay32_36o, 32, 37);
 		this.bNenPaysO[37] = val.bNenPay37o;
-		this.bNenPaysO[38] = val.bNenPay38_Xo;
-		this.bNenPaysO[39] = 99;
-		this.bNenPaysT.fill(99, 39, 48);
-		this.bNenPaysT[48] = val.bNenPayX_48t;
+		//this.bNenPaysO[38] = val.bNenPay38_Xo;
+		//this.bNenPaysO[39] = 99;
+		this.bNenPaysO.fill(val.bNenPay38_Xo, 38, 49);
+		this.bNenPaysO[49] = val.bNenPay49t;
+		//this.bNenPaysT.fill(99, 39, 48);
+		//this.bNenPaysT[48] = val.bNenPayX_48t;
+		this.bNenPaysT.fill(val.bNenPayX_48t, 39, 49);
 		this.bNenPaysT[49] = val.bNenPay49t;
-		this.cNenPaysO[25] = val.cNenPay25_Xo;
-		this.cNenPaysO[26] = 99;
-		this.cNenPaysT.fill(99, 27, 30);
-		this.cNenPaysT[30] = val.cNenPayX_30t;
-		this.cNenPaysT[31] = val.cNenPay31t;
-		this.cNenPaysT.fill(val.cNenPay32_36t, 32, 37);
-		this.cNenPaysT[37] = val.cNenPay37t;
-		this.cNenPaysT.fill(val.cNenPay38_48t, 38, 49);
-		this.cNenPaysT[49] = val.cNenPay49t;
 	}
 }
 
 // 税金支払い表
 class ZeikinPays {
-	aKokuhoPay = null;	// 健保支払
-	aKaigoPayO = null;	// 夫介護支払
-	aKaigoPayT = null;	// 妻介護支払
-	aKokiPayO = null;	// 夫後期支払
-	aKokiPayT = null;	// 妻後期支払
-	aShotPayO = null;	// 夫所得支払
-	aShotPayT = null;	// 妻所得支払
-	aJuminPayO = null;	// 夫住民支払
-	aJuminPayT = null;	// 妻住民支払
+	kokuhoPay = null;	// 健保支払
+	kaigoPayO = null;	// 夫介護支払
+	kaigoPayT = null;	// 妻介護支払
+	kokiPayO = null;	// 夫後期支払
+	kokiPayT = null;	// 妻後期支払
+	shotPayO = null;	// 夫所得支払
+	shotPayT = null;	// 妻所得支払
+	juminPayO = null;	// 夫住民支払
+	juminPayT = null;	// 妻住民支払
 
 	constructor(zk){
-		this.aKokuhoPay = Array(63);
-		this.aKokuhoPay.fill(0);
-		this.aKokuhoPay.fill(zk.aKh26, 26, 30);
-		this.aKokuhoPay[30] = zk.aKh30;
-		this.aKokuhoPay[31] = zk.aKh31;
-		this.aKokuhoPay.fill(zk.aKh32, 32, 34);
-		this.aKokuhoPay[34] = zk.aKh34;
-		this.aKokuhoPay.fill(zk.aKh35, 35, 37);
-		this.aKokuhoPay[37] = zk.aKh37;
-		this.aKokuhoPay.fill(zk.aKh38, 38, 40);
-		this.aKokuhoPay[40] = zk.aKh40;
-		this.aKokuhoPay.fill(zk.aKh41, 41, 50);
-		this.aKokuhoPay[50] = zk.aKh50;
-		this.aKokuhoPay[51] = zk.aKh51;
-		this.aKokuhoPay[52] = zk.aKh52;	// 生存中
-		this.aKokuhoPay[53] = 99;
-		this.aKokuhoPay.fill(zk.aKhX, 54, 60);	// 死亡後
-		this.aKokuhoPay[60] = zk.aKh60;
-		this.aKaigoPayO = Array(63);
-		this.aKaigoPayT = Array(63);
-		this.aKaigoPayO.fill(0);
-		this.aKaigoPayT.fill(0);
-		this.aKaigoPayO[30] = zk.aKaig30o;
-		this.aKaigoPayO.fill(zk.aKaig31o, 31, 63);
-		this.aKaigoPayT[50] = zk.aKaig50t;
-		this.aKaigoPayT[51] = zk.aKaig51t;
-		this.aKaigoPayT[52] = zk.aKaig52t;	// 生存中
-		this.aKaigoPayT[53] = 99;
-		this.aKaigoPayT.fill(zk.aKaigXt, 54, 63);	// 死亡後
-		this.aKokiPayO = Array(63);
-		this.aKokiPayT = Array(63);
-		this.aKokiPayO.fill(0);
-		this.aKokiPayT.fill(0);
-		this.aKokiPayO[40] = zk.aKoki40o;
-		this.aKokiPayO.fill(zk.aKoki41o, 41, 51);
-		this.aKokiPayO[51] = zk.aKoki51o;
-		this.aKokiPayO.fill(zk.aKoki52o, 52, 63);
-		this.aKokiPayT[60] = zk.aKoki60t;
-		this.aKokiPayT.fill(zk.aKoki61t, 61, 63);
+		// 健保
+		this.kokuhoPay = Array(63);
+		this.kokuhoPay.fill(0);
+		this.kokuhoPay.fill(zk.aKh26, 26, 30);
+		this.kokuhoPay[30] = zk.aKh30;
+		this.kokuhoPay[31] = zk.aKh31;
+		this.kokuhoPay.fill(zk.aKh32, 32, 34);
+		this.kokuhoPay[34] = zk.aKh34;
+		this.kokuhoPay.fill(zk.aKh35, 35, 37);
+		this.kokuhoPay[37] = zk.aKh37;
+		this.kokuhoPay.fill(zk.aKh38, 38, 40);
+		this.kokuhoPay[40] = zk.aKh40;
+		this.kokuhoPay[41] = zk.aKh41;	// 生存中
+		this.kokuhoPay[42] = 99;
+		this.kokuhoPay.fill(zk.bKh49, 43, 50);	// 死亡後
+		this.kokuhoPay[50] = zk.bKh50;
+		this.kokuhoPay.fill(zk.aKhX, 51, 60);
+		this.kokuhoPay[60] = zk.aKh60;
+		// 介護保険料
+		this.kaigoPayO = Array(63);
+		this.kaigoPayT = Array(63);
+		this.kaigoPayO.fill(0);
+		this.kaigoPayT.fill(0);
+		this.kaigoPayO[30] = zk.aKaig30o;
+		this.kaigoPayO.fill(zk.aKaig31o, 31, 63);
+		this.kaigoPayT.fill(zk.bKaig50t, 50, 52);
+		this.kaigoPayT.fill(zk.aKaigXt, 52, 63);
+		// 後期高齢者保険料★
+		this.kokiPayO = Array(63);
+		this.kokiPayT = Array(63);
+		this.kokiPayO.fill(0);
+		this.kokiPayT.fill(0);
+		this.kokiPayO[40] = zk.aKoki40o;
+		this.kokiPayO.fill(zk.aKoki41o, 41, 63);
+		//this.kokiPayO[51] = zk.aKoki51o;
+		//this.kokiPayO.fill(zk.aKoki52o, 52, 63);
+		this.kokiPayT[60] = zk.aKoki60t;
+		this.kokiPayT.fill(zk.aKoki61t, 61, 63);
 		// 所得税
-		this.aShotPayO = Array(63);	// 夫所得支払
-		this.aShotPayT = Array(63);	// 妻所得支払
-		this.aShotPayO.fill(0);
-		this.aShotPayT.fill(0);
-		this.aShotPayO[26] = zk.aShoZei26o;
-		this.aShotPayO.fill(zk.aShoZei27o, 27, 30);
-		this.aShotPayO[30] = zk.aShoZei30o;
-		this.aShotPayO[31] = zk.aShoZei31o;
-		this.aShotPayO[32] = zk.aShoZei32o;
-		this.aShotPayO[33] = zk.aShoZei33o;
-		this.aShotPayO[34] = zk.aShoZei34o;
-		this.aShotPayO.fill(zk.aShoZei35o, 35, 37);
-		this.aShotPayO[37] = zk.aShoZei37o;
-		this.aShotPayO[38] = zk.aShoZei38o;
-		this.aShotPayO[39] = zk.aShoZei39o;
-		this.aShotPayO[40] = zk.aShoZei40o;
-		this.aShotPayO.fill(zk.aShoZei41o, 41, 50);
-		this.aShotPayO[50] = zk.aShoZei50o;
-		this.aShotPayO[51] = zk.aShoZei51o;
-		this.aShotPayO.fill(zk.aShoZei52o, 52, 63);
-		this.aShotPayT[50] = zk.aShoZei50t;
-		this.aShotPayT[51] = zk.aShoZei51t;
-		this.aShotPayT[52] = zk.aShoZei52t;
-		this.aShotPayT[53] = 99;
-		this.aShotPayT.fill(zk.aShoZeiXt, 54, 60);
-		this.aShotPayT[60] = zk.aShoZei60t;
-		this.aShotPayT.fill(zk.aShoZei61t, 61, 63);
+		this.shotPayO = Array(63);	// 夫所得支払
+		this.shotPayT = Array(63);	// 妻所得支払
+		this.shotPayO.fill(0);
+		this.shotPayT.fill(0);
+		//this.shotPayO[26] = zk.aShoZei26o;
+		//this.shotPayO.fill(zk.aShoZei27o, 27, 30);
+		//this.shotPayO[30] = zk.aShoZei30o;
+		this.shotPayO[31] = zk.aShoZei31o;
+		this.shotPayO[32] = zk.aShoZei32o;
+		this.shotPayO[33] = zk.aShoZei33o;
+		this.shotPayO[34] = zk.aShoZei34o;
+		this.shotPayO.fill(zk.aShoZei35o, 35, 37);
+		this.shotPayO[37] = zk.aShoZei37o;
+		this.shotPayO[38] = zk.aShoZei38o;
+		this.shotPayO[39] = zk.aShoZei39o;
+		this.shotPayO[40] = zk.aShoZei40o;
+		this.shotPayO.fill(zk.aShoZei41o, 41, 63);
 		// 住民税
-		this.aJuminPayO = Array(63);	// 夫住民支払
-		this.aJuminPayT = Array(63);	// 妻住民支払
-		this.aJuminPayO.fill(0);
-		this.aJuminPayT.fill(0);
-		this.aJuminPayO[32] = zk.aJuZei32o;
-		this.aJuminPayO[33] = zk.aJuZei33o;
-		this.aJuminPayO[34] = zk.aJuZei34o;
-		this.aJuminPayO.fill(zk.aJuZei35o, 35, 37);
-		this.aJuminPayO[37] = zk.aJuZei37o;
-		this.aJuminPayO[38] = zk.aJuZei38o;
-		this.aJuminPayO[39] = zk.aJuZei39o;
-		this.aJuminPayO[40] = zk.aJuZei40o;
-		this.aJuminPayO.fill(zk.aJuZei41o, 41, 51);
-		this.aJuminPayO[51] = zk.aJuZei51o;
-		this.aJuminPayO.fill(zk.aJuZei52o, 52, 53);
+		this.juminPayO = Array(63);	// 夫住民支払
+		this.juminPayT = Array(63);	// 妻住民支払
+		this.juminPayO.fill(0);
+		this.juminPayT.fill(0);
+		this.juminPayO[32] = zk.aJuZei32o;
+		this.juminPayO[33] = zk.aJuZei33o;
+		this.juminPayO[34] = zk.aJuZei34o;
+		this.juminPayO.fill(zk.aJuZei35o, 35, 37);
+		this.juminPayO[37] = zk.aJuZei37o;
+		this.juminPayO[38] = zk.aJuZei38o;
+		this.juminPayO[39] = zk.aJuZei39o;
+		this.juminPayO[40] = zk.aJuZei40o;
+		this.juminPayO.fill(zk.aJuZei41o, 41, 63);
 	}
 };
 
@@ -1727,7 +1652,30 @@ class App {
 		this.viewNenkinValues();	// 年金値表示
 		this.calcZeikin();			// 税金計算
 	}
-	
+
+	// 収支計画データ作成 for Download
+	buildPlanData(zp, nv, zeikin){
+		const ngets = new NenkinGets(nv);	// 受給年金表
+		const npays = new NenkinPays(nv);	// 年金支払い表
+		const zpays = new ZeikinPays(zeikin);	// 税金支払い表
+
+		let text = "年, 夫年金, 妻年金";
+		text += ", 夫年金支払, 妻年金支払, 健保支払, 夫介護支払, 妻介護支払, 夫後期支払, 妻後期支払";
+		text += ", 夫所得支払, 妻所得支払, 夫住民支払, 妻住民支払\n";
+		for (let i = 25; i <= 62; i++) {
+			text += `${i}`;
+			text += `, ${ngets.bNenkinO[i]}, ${ngets.bNenkinT[i]}`;		// 年金受給額
+			text += `, ${npays.bNenPaysO[i]}, ${npays.bNenPaysT[i]}`;	// 国民年金保険料納付額
+			text += `, ${zpays.kokuhoPay[i]}`;							// 国民健康保険料納付額
+			text += `, ${zpays.kaigoPayO[i]}, ${zpays.kaigoPayT[i]}`;	// 介護保険料納付額
+			text += `, ${zpays.kokiPayO[i]}, ${zpays.kokiPayT[i]}`;	// 後期高齢者保険料納付額
+			text += `, ${zpays.shotPayO[i]}, ${zpays.shotPayT[i]}`;	// 所得税納付額
+			text += `, ${zpays.juminPayO[i]}, ${zpays.juminPayT[i]}`;	// 住民税納付額
+			text += '\n';
+		}
+		this.result = text;
+	}
+
 	// 税金計算
 	calcZeikin(){
 		const zp = new ZeikinParam(this.zeikinParamsMap);	// 税金算出規定値
@@ -1739,26 +1687,7 @@ class App {
 		this.nenkinValueWidget.update(nv);	// 公的年金データ値更新
 		this.zeikinWidget.update(zeikin);	// 税金算出更新
 
-		// 長寿データ for Download
-		const ngets = new NenkinGets(nv);	// 受給年金表
-		const npays = new NenkinPays(nv);	// 年金支払い表
-		const zpays = new ZeikinPays(zeikin);	// 税金支払い表
-
-		let text = "年, 夫年金, 妻年金";
-		text += ", 夫年金支払, 妻年金支払, 健保支払, 夫介護支払, 妻介護支払, 夫後期支払, 妻後期支払";
-		text += ", 夫所得支払, 妻所得支払, 夫住民支払, 妻住民支払\n";
-		for (let i = 25; i <= 62; i++) {
-			text += `${i}`;
-			text += `, ${ngets.aNenkinO[i]}, ${ngets.aNenkinT[i]}`;		// 年金受給額
-			text += `, ${npays.aNenPaysO[i]}, ${npays.aNenPaysT[i]}`;	// 国民年金保険料納付額
-			text += `, ${zpays.aKokuhoPay[i]}`;							// 国民健康保険料納付額
-			text += `, ${zpays.aKaigoPayO[i]}, ${zpays.aKaigoPayT[i]}`;	// 介護保険料納付額
-			text += `, ${zpays.aKokiPayO[i]}, ${zpays.aKokiPayT[i]}`;	// 後期高齢者保険料納付額
-			text += `, ${zpays.aShotPayO[i]}, ${zpays.aShotPayT[i]}`;	// 所得税納付額
-			text += `, ${zpays.aJuminPayO[i]}, ${zpays.aJuminPayT[i]}`;	// 住民税納付額
-			text += '\n';
-		}
-		this.result = text;
+		this.buildPlanData(zp, nv, zeikin);	// 収支計画データ作成
 	}
 
 	// 税金パラメータをテキストから読み取って辞書作成
