@@ -1900,7 +1900,7 @@ class App {
 		this.calcZeikin();			// 税金計算
 	}
 
-	// 資金計画データ作成 for Download
+	// 収支計画データ作成 for Download
 	buildPlanData(zp, nv, zeikin){
 		const ngets = new NenkinGets(nv);		// 受給年金予定表
 		const npays = new NenkinPays(nv);		// 年金支払い予定表
@@ -1933,7 +1933,7 @@ class App {
 		this.nenkinValueWidget.update(nv);	// 公的年金データ値更新
 		this.zeikinWidget.update(zeikin);	// 税金算出更新
 
-		this.buildPlanData(zp, nv, zeikin);	// 資金計画データ作成
+		this.buildPlanData(zp, nv, zeikin);	// 収支計画データ作成
 	}
 
 	// 税金パラメータをテキストから読み取って辞書作成

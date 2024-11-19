@@ -1,0 +1,129 @@
+@media print {
+	div#UPDATE_PANEL, div#UPDATE_PANEL2, div#UPDATE_PANEL3{
+		display: none;
+	}
+}
+main {
+	padding: 10px;
+}
+h2 {
+	padding:4px 10px;
+	background-color:thistle;	
+}
+fieldset {
+	padding: 0 10px 3px 10px;
+	border: dashed 1px darkcyan;
+	color: darkslategray;
+}
+textarea#CONTENTS_TEXT, textarea#CONTENTS_TEXT2, textarea#CONTENTS_TEXT3 {
+	margin-top: 10px;
+	width: calc(100% - 15px);
+	height: 210px;
+	background-color: aliceblue;
+	padding: 6px;
+}
+button {
+	margin-right: 15px;
+	padding: 2px 6px;
+	font-size: 11pt;
+}
+.CONTROL button {
+	margin-top: 10px;
+	margin-bottom: 0;
+	margin-left: 0;
+	padding: 4px 8px;
+	font-size: 11pt;
+}
+.VALUES, .VALUES3{
+	border-collapse: collapse;	
+}
+.VALUES th,td{
+	border: 1px solid darkgray;
+	padding: 1px 5px;
+	font-size: smaller;
+}
+.VALUES3 th,td{
+	border: 1px solid darkgray;
+	padding: 1px 5px;
+	font-size: smaller;
+}
+.VALUES td{
+	text-align:right;
+}
+.VALUES3 td:nth-of-type(3){
+	text-align:left;
+}
+img.w600m100p {
+	width: 600px;
+}
+.color1 {
+	color: blue;
+}
+.color2 {
+	color: magenta;
+}
+#UPDATE_PANEL, #UPDATE_PANEL2, #UPDATE_PANEL3{
+	/*
+	float:right;
+	max-width: 50%;
+	*/
+}
+#ZEIKIN_TABLE, #ZEIKIN_TABLE2, #LIVING_TABLE {
+	margin-left:10px;
+	max-width: calc(100% - 25px);
+	overflow:auto;
+	height: 240px;
+	/*
+	background-color: yellow;
+	*/
+}
+.DATA_TABLE {
+	border-collapse: collapse;	
+}
+.DATA_TABLE th, td{
+	border: 1px solid darkgray;
+	padding: 1px 5px;
+	white-space: nowrap
+}
+
+#JUMYO, #ZANDAKA, #YOKIN {
+	margin: 0.2em 0.4em;
+	text-align: right;
+	font-size: 13pt;
+}
+#YOKIN {
+	width: 120px;
+	background: #fdd;
+	padding-right: 0px;
+}
+#JUMYO {
+	width: 45px;
+}
+#ZANDAKA {
+	width: 100px;
+	background: #fdd;
+	padding-right: 20px;
+}
+
+@media (max-width: 670px) {
+	.scroll img {
+		width: 800px;
+	}
+	img.w600m100p {
+		max-width: 100%;
+	}
+	#ZEIKIN_TABLE, #ZEIKIN_TABLE2, #LIVING_TABLE {
+		margin-left: initial;
+		max-width: initial;
+	}
+	/*
+	.DATA_TABLE th, td{
+		white-space: nowrap
+	}
+	*/
+	.HSCROLL {
+		overflow-x: auto;
+		display: block;
+	}
+}
+

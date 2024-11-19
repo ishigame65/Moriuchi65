@@ -1481,6 +1481,7 @@ class NenkinGets {
 		this.bNenkinO.fill(val.bNen31o, 31, 33);		
 		this.bNenkinO[33] = val.bNen33o;
 		this.bNenkinO.fill(val.bNen34o, 34, 63);	// 夫生存中
+		this.bNenkinT[33] = 99;
 		this.bNenkinT.fill(val.bNen49tF, 34, 50);	// 夫死亡後
 		this.bNenkinT[50] = val.bNen50tF;
 		this.bNenkinT.fill(val.bNen51tF, 51, 63);
@@ -1508,6 +1509,7 @@ class NenkinPays {
 		this.bNenPaysO[49] = val.bNenPay49t;
 		//this.bNenPaysT.fill(99, 39, 48);
 		//this.bNenPaysT[48] = val.bNenPayX_48t;
+		this.bNenPaysT[38] = 99;
 		this.bNenPaysT.fill(val.bNenPayX_48t, 39, 49);
 		this.bNenPaysT[49] = val.bNenPay49t;
 	}
