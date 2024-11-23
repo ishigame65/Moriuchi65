@@ -56,13 +56,13 @@ td:nth-of-type(3), td:nth-of-type(6){
 <main>
 
 <div class="CONTROL">
-	英単語とその意味を表内に直接入力および編集できます。<br>
+	英単語を表示した状態で、英単語とその意味を直接入力および編集できます。<br>
 	<button onclick="dispanswer();">英単語を表示</button>
 	<button onclick="hideanswer();">英単語を非表示</button>
 	<button  onclick="window.print(); return false;">印刷する</button>
 	<br><br>
 	<fieldset style="border: 1px dotted #000000; padding: 10px;">
-		<legend>読み込みと保存</legend>
+		<legend>CSVファイルの読み込みと保存</legend>
 		<input type="file" onchange="readFile(this.files[0])" onclick="this.value = null;">
 		<button onclick="csvDownload();">ファイルの保存（ダウンロード）</button>
 	</fieldset>
@@ -70,31 +70,31 @@ td:nth-of-type(3), td:nth-of-type(6){
 
 <h2>英単語</h2>
 <table id="tableArea">
-<tr><td>1</td><td contenteditable="true">山</td><td class="ANS" contenteditable="true">Mountain</td><td>26</td><td contenteditable="true">海</td><td class="ANS" contenteditable="true">Ocean</td></tr>
-<tr><td>2</td><td contenteditable="true">太陽</td><td class="ANS" contenteditable="true">Sun</td><td>27</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>3</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>28</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>4</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>29</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>5</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>30</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>6</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>31</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>7</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>32</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>8</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>33</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>9</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>34</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>10</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>35</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>11</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>36</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>12</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>37</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>13</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>38</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>14</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>39</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>15</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>40</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>16</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>41</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>17</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>41</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>18</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>43</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>19</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>44</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>20</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>45</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>21</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>46</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>22</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>47</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>23</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>48</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>24</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>49</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
-<tr><td>25</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>50</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>1</td><td contenteditable="true">山</td><td contenteditable="true" class="ANS">Mountain</td><td>26</td><td contenteditable="true">海</td><td contenteditable="true" class="ANS">Ocean</td></tr>
+<tr><td>2</td><td contenteditable="true">太陽</td><td contenteditable="true" class="ANS">Sun</td><td>27</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>3</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>28</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>4</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>29</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>5</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>30</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>6</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>31</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>7</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>32</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>8</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>33</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>9</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>34</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>10</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>35</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>11</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>36</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>12</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>37</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>13</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>38</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>14</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>39</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>15</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>40</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>16</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>41</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>17</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>41</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>18</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>43</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>19</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>44</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>20</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>45</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>21</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>46</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>22</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>47</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>23</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>48</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>24</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>49</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
+<tr><td>25</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td><td>50</td><td contenteditable="true"></td><td contenteditable="true" class="ANS"></td></tr>
 </table>
 
 </main>
