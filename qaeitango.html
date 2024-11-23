@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<!--
+	<link rel="stylesheet" href="qeitango.css">
+	-->
+</head>
+
+<style>
+@page {
+	margin: 0;
+	size: A4;
+}
+@media print {
+	.CONTROL{
+		display: none;
+	}
+}
+main {
+	padding: 30px;
+}
+table {
+    background-color: white;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: calc(100% - 10px);
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+	font-size: 10pt;
+}
+button {
+	margin-top: 10px;
+	margin-right: 10px;
+}
+input {
+	margin-bottom: 10px;
+}
+.ANS {
+	width: 19%;
+}
+td:nth-of-type(1), td:nth-of-type(4){
+	text-align:right;
+	width:20px;
+}
+td:nth-of-type(3), td:nth-of-type(6){
+	min-width:30%;
+}
+
+</style>
+<body>
+<main>
+
+<div class="CONTROL">
+	英単語とその意味を表内に直接入力および編集できます。<br>
+	<button onclick="dispanswer();">英単語を表示</button>
+	<button onclick="hideanswer();">英単語を非表示</button>
+	<button  onclick="window.print(); return false;">印刷する</button>
+	<br><br>
+	<fieldset style="border: 1px dotted #000000; padding: 10px;">
+		<legend>読み込みと保存</legend>
+		<input type="file" onchange="readFile(this.files[0])" onclick="this.value = null;">
+		<button onclick="csvDownload();">ファイルの保存（ダウンロード）</button>
+	</fieldset>
+</div>
+
+<h2>英単語</h2>
+<table id="tableArea">
+<tr><td>1</td><td contenteditable="true">山</td><td class="ANS" contenteditable="true">Mountain</td><td>26</td><td contenteditable="true">海</td><td class="ANS" contenteditable="true">Ocean</td></tr>
+<tr><td>2</td><td contenteditable="true">太陽</td><td class="ANS" contenteditable="true">Sun</td><td>27</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>3</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>28</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>4</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>29</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>5</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>30</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>6</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>31</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>7</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>32</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>8</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>33</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>9</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>34</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>10</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>35</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>11</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>36</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>12</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>37</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>13</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>38</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>14</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>39</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>15</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>40</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>16</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>41</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>17</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>41</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>18</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>43</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>19</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>44</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>20</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>45</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>21</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>46</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>22</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>47</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>23</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>48</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>24</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>49</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+<tr><td>25</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td><td>50</td><td contenteditable="true"></td><td class="ANS" contenteditable="true"></td></tr>
+</table>
+
+</main>
+
+<script src="FileUtilText.js"></script>
+<script>
+function hideanswer()
+{
+	const elms = document.getElementsByClassName('ANS');
+	for (let i = 0; i < elms.length; i++) {
+		elms[i].style.opacity = 0;
+	}
+}
+function dispanswer()
+{
+	const elms = document.getElementsByClassName('ANS');
+	for (let i = 0; i < elms.length; i++) {
+		elms[i].style.opacity = 1;
+	}
+}
+function csvDownload()
+{
+	const objTable = document.getElementById('tableArea');
+	let csv = '';
+	for (r = 0; r < objTable.rows.length; r++) {
+		for (c = 0; c < objTable.rows[r].cells.length; c++) {
+			if (c > 0) {
+				csv += ',';
+			}
+			csv += objTable.rows[r].cells[c].textContent;
+		}
+		csv += "\n";
+	}
+	FileUtil.downloadText(csv, "eitango.csv");
+}
+
+async function readFile(file)
+{
+	const objTable = document.getElementById('tableArea');
+	const csv = await FileUtil.readTextSync(file);
+	if (csv){
+		// innerText、innerHTMLだと改行がらみでNG
+		//this.contentsText.value = text;
+		let lines = csv.split(/\r\n|\n|\r/);	// 行分割
+		lines = lines.filter(s => s.trim());	// 空行除去
+		for (let r = 0; r < lines.length; r++){
+			let vals = lines[r].split(",");		// カンマ分割
+			for (let c = 0; c < vals.length; c++) {
+				objTable.rows[r].cells[c].innerHTML = vals[c];
+			}
+		}
+	}
+	else {
+		alert(`ファイルがありません`);
+	}
+}
+</script>
+
+</body>
+</html>

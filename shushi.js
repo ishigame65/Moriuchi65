@@ -131,12 +131,12 @@ class App {
 		try{
 			lmap.clear();
 			for (let line of this.contentsText3.value.split('\n')){	// 1行ずつ
-				if (line.startsWith("年")) continue;
+				if (line.startsWith("年")) continue;		// 先頭行は飛ばす
 				let words = line.split(",");
 				if (words == '') continue;
 				if (words.length <= 1) continue;
 				const top = words.shift();
-				lmap.set(top, words);
+				lmap.set(top, words);	// 年と費用のマップ
 			}
 		}
 		catch(e){
@@ -197,9 +197,12 @@ class App {
 		try{
 			this.livingTable.innerHTML = "";
 			let result = '<table class="VALUES3">';
-			result += '<tr><th>年</th><th>収入</th><th>支出</th><th>補足</th></tr>';
-			this.livingValMap.forEach((values, key) => {
-				result += '<tr><td>20' + key + '</td>';
+			result += '<tr><th rowspan=2>年</th><th colspan=2><span class="color1">収入</span></th>';
+			result += '<th colspan=7>生活費その他支出</th><th rowspan=2><span class="color1">特別</span></th><th rowspan=2>補足</th></tr>';
+			result += '<tr><th>生存保険</th><th>補助金</th><th>住居</th><th>車</th><th>夫婦</th><th>長女</th><th>次女</th>';
+			result += '<th>教育1</th><th>教育2</th></tr>';
+			this.livingValMap.forEach((values, key) => {	// 年、費用
+				result += '<tr><td>' + key + '</td>';
 				for (let i = 0; i < (values.length - 1); i++) {
 					result += '<td>' + Number(values[i]).toLocaleString() + '</td>';
 				}
@@ -219,13 +222,37 @@ class App {
 
 	viewMoneyPlanTable(zmap){
 		try{
+			const isZeikinShosai = document.querySelector("#ISZEIKINSHOSAI").checked;
+			const isSekatuShosai = document.querySelector("#ISSEKATUSHOSAI").checked;
+			let zeikinHeader = '';
+			let zeikinHeader2 = '';
+			if (isZeikinShosai){
+				zeikinHeader += '<th colspan=2>年金保険料</th><th>健康保険料</th><th colspan=2>介護保険料</th>';
+				zeikinHeader += '<th colspan=2>後期高齢者保険料</th><th colspan=2>所得税</th><th colspan=2>住民税</th>';
+				zeikinHeader2 += '<th>夫</th><th>妻</th><th>夫⇒妻</th><th>夫</th><th>妻</th>';
+				zeikinHeader2 += '<th>夫</th><th>妻</th><th>夫</th><th>妻</th><th>夫</th><th>妻</th>';
+			}else{
+				zeikinHeader += '<th rowspan=2>保険料<br>税金支払い</th>';
+			}
+			let seikatuHeader = '';
+			let seikatuHeader2 = '';
+			if (isSekatuShosai){
+				seikatuHeader += '<th colspan=7>生活費その他支出</th>';
+				seikatuHeader2 += '<th>住居</th><th>車</th>';
+				seikatuHeader2 += '<th>夫婦</th><th>長女</th><th>次女</th>';
+				seikatuHeader2 += '<th>教育1</th><th>教育2</th></tr>';
+			}else{
+				seikatuHeader += '<th rowspan=2>生活費<br>その他支出</th>';
+			}
 			let header = '<tr><th rowspan=2>年</th><th colspan=2><span class="color1">受給年金</span></th>';
-			header += '<th colspan=2>年金保険料</th><th>健康保険料</th><th colspan=2>介護保険料</th>';
-			header += '<th colspan=2>後期高齢者保険料</th><th colspan=2>所得税</th><th colspan=2>住民税</th>';
-			header += '<th colspan=2>生活費その他</th><th rowspan=2><span class="color2">残高</span></th></tr>';
-			header += '<tr><th>夫</th><th>妻</th><th>夫</th><th>妻</th><th>夫⇒妻</th><th>夫</th><th>妻</th>';
-			header += '<th>夫</th><th>妻</th><th>夫</th><th>妻</th><th>夫</th><th>妻</th>';
-			header += '<th><span class="color1">収入</span></th><th>支出</th></tr>';
+			header += zeikinHeader;
+			header += '<th colspan=2><span class="color1">収入</span></th>';
+			header += seikatuHeader;
+			header += '<th rowspan=2><span class="color1">特別</span></th><th rowspan=2><span class="color2">残高</span></th></tr>';
+			header += '<tr><th>夫</th><th>妻</th>';
+			header += zeikinHeader2;
+			header += '<th>生存保険</th><th>補助金</th>';
+			header += seikatuHeader2;
 
 			this.zeiCalcTable.innerHTML = "";
 			let result = '<table class="VALUES">' + header;
@@ -233,18 +260,52 @@ class App {
 			const lmap = this.livingValMap;
 			for (let year = 26; year < 72; year++){
 				const values = cmap.get(String(year));
-				result += '<tr><td>20' + String(year) + '</td>';
-				for (let i = 0; i < values.length; i++) {
-					result += '<td>' + Number(values[i]).toLocaleString() + '</td>';
+				const n0s = Number(values[0]).toLocaleString();
+				const n1s = Number(values[1]).toLocaleString();
+				result += '<tr><td>20' + String(year) + '</td><td>';
+				if (year >= 30 && year < 40) result += '<span class="color3">';
+				else if (year >= 40 && year < 50) result += '<span class="color4">';
+				result += n0s;
+				if (year >= 30 && year < 50) result += '</span>';
+				result += '</td><td>';
+				if (year >= 50 && year < 60) result += '<span class="color3">';
+				else if (year >= 60 && year < 70) result += '<span class="color4">';
+				result += n1s;
+				if (year >= 50 && year < 70) result += '</span>';
+				result += '</td>';
+				if (isZeikinShosai){
+					for (let i = 2; i < values.length; i++){
+						result += '<td>' + Number(values[i]).toLocaleString() + '</td>';
+					}
+				} else{
+					let zeiTotal = 0;
+					for (let i = 2; i < values.length; i++){						
+						zeiTotal += Number(values[i]);
+					}
+					result += '<td>' + zeiTotal.toLocaleString() + '</td>';
 				}
-				const living = lmap.get(String(year));
-				result += '<td>' + Number(living[0]).toLocaleString() + '</td>';
-				result += '<td>' + Number(living[1]).toLocaleString() + '</td>';
+				const living = lmap.get(String(year+2000));
+				if (isSekatuShosai){
+					for (let i = 0; i < (living.length - 1); i++){
+						result += '<td>' + Number(living[i]).toLocaleString() + '</td>';
+					}
+				} else{
+					for (let i = 0; i < 2; i++){
+						result += '<td>' + Number(living[i]).toLocaleString() + '</td>';
+					}
+					let sekatuTotal = 0;
+					for (let i = 2; i < (living.length - 2); i++){
+						sekatuTotal += Number(living[i]);
+					}
+					result += '<td>' + sekatuTotal.toLocaleString() + '</td>';
+					result += '<td>' + Number(living[living.length - 2]).toLocaleString() + '</td>';
+				}
 				const zandaka = zmap.get(year);
 				result += '<td><span class="color2">' + zandaka.toLocaleString() + '</span></td>';
 				result += '</tr>';				
 			}
 			result += '</table>';
+			result += '※ <span class="color3">■</span>は65～74歳。<span class="color4">■</span>は75～84歳。';
 			this.zeiCalcTable.innerHTML = result;
 		}
 		catch(e){
@@ -416,10 +477,20 @@ class App {
 			const pShzT = Number(data[10]);
 			const pJuzO = Number(data[11]);
 			const pJuzT = Number(data[12]);
-			const living = lmap.get(String(year));
-			const iLiving = Number(living[0]);
-			const pLiving = Number(living[1]);
-			const income = iNenO + iNenT + iLiving;
+			const living = lmap.get(String(year + 2000));
+			const iSeizon = Number(living[0]);	// 生存保険
+			const iHojokin = Number(living[1]);	// 補助金
+			const iLiving = iSeizon + iHojokin;
+			const pJukyo = Number(living[2]);	// 住居
+			const pKuruma = Number(living[3]);	// 車
+			const pFufu = Number(living[4]);	// 夫婦
+			const pChojo = Number(living[5]);	// 長女
+			const pJijo = Number(living[6]);	// 次女
+			const pKyoiku1 = Number(living[7]);	// 教育1
+			const pKyoiku2 = Number(living[8]);	// 教育2
+			const pLiving = pJukyo + pKuruma + pFufu + pChojo + pJijo + pKyoiku1 + pKyoiku2;
+			const ioSpecial = Number(living[9]);	// 特別
+			const income = iNenO + iNenT + iLiving + ioSpecial;
 			const payment = pNenO + pNenT + pKenOT + pKaiO + pKaiT + pKokO + pKokT + pShzO + pShzT + pJuzO + pJuzT + pLiving;
 			zandaka += (income - payment);
 			zmap.set(year, zandaka);
@@ -452,10 +523,20 @@ class App {
 				const pShzT = Number(data[10]);
 				const pJuzO = Number(data[11]);
 				const pJuzT = Number(data[12]);
-				const living = lmap.get(String(year));
-				const iLiving = Number(living[0]);
-				const pLiving = Number(living[1]);
-				const income = iNenO + iNenT + iLiving;
+				const living = lmap.get(String(year + 2000));
+				const iSeizon = Number(living[0]);	// 生存保険
+				const iHojokin = Number(living[1]);	// 補助金
+				const iLiving = iSeizon + iHojokin;
+				const pJukyo = Number(living[2]);	// 住居
+				const pKuruma = Number(living[3]);	// 車
+				const pFufu = Number(living[4]);	// 夫婦
+				const pChojo = Number(living[5]);	// 長女
+				const pJijo = Number(living[6]);	// 次女
+				const pKyoiku1 = Number(living[7]);	// 教育1
+				const pKyoiku2 = Number(living[8]);	// 教育2
+				const pLiving = pJukyo + pKuruma + pFufu + pChojo + pJijo + pKyoiku1 + pKyoiku2;
+				const ioSpecial = Number(living[9]);	// 特別
+				const income = iNenO + iNenT + iLiving + ioSpecial;
 				const payment = pNenO + pNenT + pKenOT + pKaiO + pKaiT + pKokO + pKokT + pShzO + pShzT + pJuzO + pJuzT + pLiving;
 				zandaka += (income - payment);
 			}

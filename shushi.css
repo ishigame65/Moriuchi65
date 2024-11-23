@@ -47,10 +47,10 @@ button {
 	padding: 1px 5px;
 	font-size: smaller;
 }
-.VALUES td{
+.VALUES, .VALUES3 td{
 	text-align:right;
 }
-.VALUES3 td:nth-of-type(3){
+.VALUES3 td:nth-of-type(12){
 	text-align:left;
 }
 img.w600m100p {
@@ -62,21 +62,32 @@ img.w600m100p {
 .color2 {
 	color: magenta;
 }
+.color3 {
+	color: DodgerBlue;
+}
+.color4 {
+	color: Orange;
+}
 #UPDATE_PANEL, #UPDATE_PANEL2, #UPDATE_PANEL3{
 	/*
 	float:right;
 	max-width: 50%;
-	*/
-}
-#ZEIKIN_TABLE, #ZEIKIN_TABLE2, #LIVING_TABLE {
-	margin-left:10px;
-	max-width: calc(100% - 25px);
-	overflow:auto;
-	height: 240px;
-	/*
 	background-color: yellow;
 	*/
 }
+#ZEIKIN_TABLE, #ZEIKIN_TABLE2 {
+	margin-left:10px;
+	max-width: calc(100% - 25px);
+	overflow:auto;
+	height: 180px;
+}
+#LIVING_TABLE {
+	margin-left:10px;
+	max-width: calc(100% - 25px);
+	overflow:auto;
+	height: 280px;
+}
+
 .DATA_TABLE {
 	border-collapse: collapse;	
 }
