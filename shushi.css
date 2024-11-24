@@ -1,5 +1,5 @@
 @media print {
-	div#UPDATE_PANEL, div#UPDATE_PANEL2, div#UPDATE_PANEL3{
+	div#UPDATE_PANEL, div#UPDATE_PANEL2{
 		display: none;
 	}
 }
@@ -15,14 +15,17 @@ fieldset {
 	border: dashed 1px darkcyan;
 	color: darkslategray;
 }
-textarea#CONTENTS_TEXT, textarea#CONTENTS_TEXT2, textarea#CONTENTS_TEXT3 {
+textarea#CONTENTS_TEXT, textarea#CONTENTS_TEXT2 {
 	margin-top: 10px;
 	width: calc(100% - 15px);
 	height: 210px;
 	background-color: aliceblue;
 	padding: 6px;
 }
-button {
+textarea#DEFAULT_LIVING_COST {
+	display: none;
+}
+button, input {
 	margin-right: 15px;
 	padding: 2px 6px;
 	font-size: 11pt;
@@ -34,7 +37,7 @@ button {
 	padding: 4px 8px;
 	font-size: 11pt;
 }
-.VALUES, .VALUES3{
+.VALUES, #LIVING_TABLE{
 	border-collapse: collapse;	
 }
 .VALUES th,td{
@@ -42,15 +45,18 @@ button {
 	padding: 1px 5px;
 	font-size: smaller;
 }
-.VALUES3 th,td{
+#LIVING_TABLE th,td{
 	border: 1px solid darkgray;
 	padding: 1px 5px;
 	font-size: smaller;
 }
-.VALUES, .VALUES3 td{
+.VALUES, #LIVING_TABLE td{
 	text-align:right;
 }
-.VALUES3 td:nth-of-type(12){
+th {
+	text-align:left;
+}
+#LIVING_TABLE td:nth-of-type(12){
 	text-align:left;
 }
 img.w600m100p {
@@ -68,24 +74,19 @@ img.w600m100p {
 .color4 {
 	color: Orange;
 }
-#UPDATE_PANEL, #UPDATE_PANEL2, #UPDATE_PANEL3{
-	/*
-	float:right;
-	max-width: 50%;
-	background-color: yellow;
-	*/
-}
 #ZEIKIN_TABLE, #ZEIKIN_TABLE2 {
 	margin-left:10px;
 	max-width: calc(100% - 25px);
 	overflow:auto;
 	height: 180px;
 }
-#LIVING_TABLE {
+#LIVING_TABLE_DIV {
 	margin-left:10px;
+	/*
 	max-width: calc(100% - 25px);
 	overflow:auto;
 	height: 280px;
+	*/
 }
 
 .DATA_TABLE {
@@ -107,6 +108,13 @@ img.w600m100p {
 	background: #fdd;
 	padding-right: 0px;
 }
+#YOKIN_YEAR {
+	margin: 0.2em 0.4em;
+	font-size: 13pt;
+	width: 60px;
+	background: #fdd;
+	padding-right: 0px;
+}
 #JUMYO {
 	width: 45px;
 }
@@ -123,7 +131,7 @@ img.w600m100p {
 	img.w600m100p {
 		max-width: 100%;
 	}
-	#ZEIKIN_TABLE, #ZEIKIN_TABLE2, #LIVING_TABLE {
+	#ZEIKIN_TABLE, #ZEIKIN_TABLE2, #LIVING_TABLE_DIV {
 		margin-left: initial;
 		max-width: initial;
 	}
