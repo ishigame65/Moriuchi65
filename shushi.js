@@ -662,12 +662,12 @@ class App {
 		  "layout": { "padding": { "left": 10, "right": 20, "top": 10, "bottom": 10 } },
 		  "scales": {
 			"yAxes": [ {
-				"scaleLabel": { "display": true, "labelString": "残高（万円）", "fontSize": 15 },
+				"scaleLabel": { "display": true, "labelString": "2071年預金残高（万円）", "fontSize": 15 },
 				"ticks": { "fontSize": 12, "min": 0, "max": 2000, "stepSize": 500 },
 				"gridLines": { "display": true },
 				"stacked": false } ],
 			"xAxes": [ {
-				"scaleLabel": { "display": true, "labelString": "寿命（歳）", "fontSize": 15 },
+				"scaleLabel": { "display": true, "labelString": "夫寿命（歳）", "fontSize": 15 },
 				"ticks": { "fontSize": 12 },
 				"gridLines": { "display": false },
 				"stacked": false } ] },
