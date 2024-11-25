@@ -76,11 +76,15 @@ class App {
 		this.spanHokenryoGetsugaku = Array.from(document.getElementsByClassName("HOKENRYOGETSUGAKU"));
 		this.spanFukaGetsugaku = Array.from(document.getElementsByClassName("FUKAGETSUGAKU"));
 		// 算出値
+		this.spanFukaNengaku = document.querySelector("#FUKANENGAKU");
+		this.spanFukaNenKasan = document.querySelector("#FUKANENKASAN");
+		this.spanOFukaHokenryo = document.querySelector("#O_FUKAHOKENRYO");
+		this.spanTFukaHokenryo = document.querySelector("#T_FUKAHOKENRYO");
 		this.spTai25 = Array.from(document.getElementsByClassName("TAI25"));
 		this.spTai = Array.from(document.getElementsByClassName("TAI"));
 		this.spTai30 = Array.from(document.getElementsByClassName("TAI30"));
 		this.spOKisoNenkingaku = Array.from(document.getElementsByClassName("O_KISONENKINGAKU"));
-		this.spTKisoNenkingaku = Array.from(document.getElementsByClassName("T_KISONENKINGAKU"));
+		this.spTKisoNenkingaku = Array.from(document.getElementsByClassName("T_KISONENKINGAKU"));		
 		this.spOFukaZobun = Array.from(document.getElementsByClassName("O_FUKAZOBUN"));
 		this.spTFukaZobun = Array.from(document.getElementsByClassName("T_FUKAZOBUN"));
 		this.spKisoO30 = Array.from(document.getElementsByClassName("O_KISO30"));
@@ -230,6 +234,10 @@ class App {
 		this.spTNenD30.forEach(v => { v.innerText = tNenD30.toLocaleString(); });
 		this.spTNenD31.forEach(v => { v.innerText = tNenD31.toLocaleString(); });
 		this.spTNenD33.forEach(v => { v.innerText = tNenD33.toLocaleString(); });
+		this.spanFukaNengaku.innerText = (fukaGetsugaku * 12).toLocaleString();
+		this.spanFukaNenKasan.innerText = (fukaKasan * 12).toLocaleString();
+		this.spanOFukaHokenryo.innerText = (400 * oFukaGessu).toLocaleString();
+		this.spanTFukaHokenryo.innerText = (400 * tFukaGessu).toLocaleString();
 		const getsugaku = hokenryoGetsugaku + fukaGetsugaku;
 		const nenp25 = getsugaku * 24;
 		const nenp30 = getsugaku * 14;
