@@ -128,15 +128,18 @@ dl dd {
 dl dd ul {
 	list-style-type: none;
 }
-dl dd li {
+dl dd ul li {
 	margin-left: -15px;
 	margin-right: -10px;
 }
-dl dd li:before {
+dl dd ul li:before {
 	color: #9FCFFF;
 	content: "●";
 	margin-left: 0px;
 	margin-right: 6px;
+}
+dl dd ol li {
+	margin-left: 20px;
 }
 .sub_ul {
 	margin-left: 54px;

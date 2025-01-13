@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">	
+	<title>WEBページ制作の覚書き</title>
+	<!--
+	<link rel="stylesheet" href="private.css">
+	-->
+	<link rel="stylesheet" href="moriuchi.css">
+</head>
+
+<body>
+
+<main>
+	<ul class="breadcrumb">
+	<li><a href="index.html">Top</a>
+	<li>WEBページ制作の覚書き
+	</ul>
+
+<h1 class="title">WEBページ制作の覚書き</h1>
+
+<p class="text">
+WEBページはいつも適当に知っている知識だけで作ってしまっているが、そればかりだといつまでも上達しないので、
+ここで今更ながら新たに知ったことを整理して少しずつ自分のモノにしていこうと思う。
+</p>
+
+<h2>HTML</h2>
+
+<dl>
+<dt>class = "A B"
+	<dd>クラスを複数指定できる。
+<dt>section
+	<dd>章や節を示すタグ。HTML5で追加されたタグ。sectionタグには見出しタグh1～h6を付ける。
+<pre>
+  <code>
+&lt;section&gt;
+  &lt;h2&gt;見出し1&lt;/h2&gt;
+  &lt;p&gt;コンテンツ&lt;/p&gt;
+&lt;/section&gt;
+  </code>
+</pre>
+<dt>article
+	<dd>他から独立して単体で意味を持つ記事を示すタグ。HTML5で追加されたタグ。
+</dl>
+
+<h2>CSS</h2>
+
+<dl>
+<dt>単位
+	<dd>
+	<table>
+	<tr><th>pt</th><td>1px = 0.75pt、ptを使わずpxを使えば良い</td></tr>
+	<tr><th>em</th><td>割り当てられるフォントサイズ、1行あたりの文字数を指定する場合に使用</td></tr>
+	<tr><th>rem</th><td>ルート要素のフォントサイズ</td></tr>
+	<tr><th>vw, vh</th><td>画面サイズ、画面の縦または横いっぱいに表示する場合に使用</td></tr>
+	<tr><th>100vh</th><td>画面高さを100％にする、vhは"viewport height"の略</td></tr>
+	<tr><th>fr</th><td>グリッド中の余りスペース、CSSグリッドでスペースを均等配分する場合に使用</td></tr>
+	</table>
+<dt>テキスト text-align
+	<dd>
+	<table>
+	<tr><th>justify</th><td>均等割付</td></tr>
+	</table>
+<dt>ボーダー border-style
+	<dd>
+	<table>
+	<tr><th>ridge</th><td>線が突起して見えるような線で表示</td></tr>
+	<tr><th>inset</th><td>領域全体が窪んで見えるような線で表示</td></tr>
+	<tr><th>outset</th><td>領域全体が突起して見えるような線で表示</td></tr>
+	</table>
+<dt>リスト list-style-type
+	<dd>
+	<table>
+	<tr><th>none</th><td>表示しない</td></tr>
+	<tr><th>disc</th><td>黒丸(●)</td></tr>
+	<tr><th>circle</th><td>白丸(○) </td></tr>
+	<tr><th>square</th><td>黒四角(■) </td></tr>
+	<tr><th>box</th><td>白四角(□) </td></tr>
+	<tr><th>check</th><td>チェックマーク(✓) </td></tr>
+	<tr><th>diamond</th><td>ダイヤモンドマーク(◆)</td></tr>
+	<tr><th>hiragana</th><td>ひらがな(あ, い, う...)</td></tr>
+	<tr><th>katakana</th><td>カタカナ(ア, イ, ウ...)</td></tr>
+	<tr><th>decimal-leading-zero</th><td>0付き数字(01, 02, 03...) </td></tr>
+	</table>
+<dt>リスト list-style-position
+	<dd>
+	<table>
+	<tr><th>outside</th><td>マーカーを文章よりも左側の位置に表示</td></tr>
+	<tr><th>inside</th><td>マーカーを文章と同じインデント位置に表示</td></tr>
+	</table>
+<dt>フレックスボックス frex-wrap
+	<dd>
+	<table>
+	<tr><th>wrap</th><td>複数行(列)に改行して表示</td></tr>
+	<tr><th>nowrap</th><td>はみ出しても一列に並べて表示</td></tr>
+	</table>
+<dt>フレックスボックス flex-direction
+	<dd>
+	<table>
+	<tr><th>row-reverse</th><td>横方向に逆方向に並べる</td></tr>
+	<tr><th>column</th><td>縦方向に並べる</td></tr>
+	</table>
+<dt>フレックス横方向配置 justify-content
+	<dd>
+	<table>
+	<tr><th>center</th><td>中寄せ</td></tr>
+	<tr><th>flex-end</th><td>右寄せ</td></tr>
+	</table>
+<dt>フレックス縦方向配置 align-items
+	<dd>
+	<table>
+	<tr><th>center</th><td>中寄せ</td></tr>
+	<tr><th>flex-end</th><td>下寄せ</td></tr>
+	</table>
+<dt>グリッド横方向配置 justify-content
+	<dd>
+	<table>
+	<tr><th>center</th><td>中寄せ</td></tr>
+	<tr><th>end</th><td>右寄せ</td></tr>
+	<tr><th>space-between</th><td>均等配置(A)</td></tr>
+	</table>
+<dt>グリッド縦方向配置 align-content
+	<dd>
+	<table>
+	<tr><th>center</th><td>中寄せ</td></tr>
+	<tr><th>end</th><td>下寄せ</td></tr>
+	<tr><th>space-between</th><td>均等配置(A)</td></tr>
+	</table>
+</dl>
+
+<!--
+
+-->
+
+<h2>その他</h2>
+
+<p class="text">
+</p>
+<dl>
+<dt>VSCodeでファイル比較
+<dd>
+	<ol>
+	<li>対象ファイルを開き、一方をアクティブにする
+	<li>メニュー：表示／コマンドパレット
+	<li>「比較」または「Compare」と入力
+	<li>「ファイル:アクティブファイルを比較しています」を選択
+	<li>比較対象をクリックする
+	</ol>
+</dl>
+
+</main>
+
+<footer>
+	<div class="footer-left">
+	<a href="https://www.instagram.com/moriuchi65/"><img src="img/insta60.png" alt="Instagram" width=32 height=32></a>
+	</div>
+	<div class="footer-right">&copy; 2025 moriuchi65.</div>
+	<div class="footer-center">
+	</div>
+</footer>
+
+</body>
+</html>
