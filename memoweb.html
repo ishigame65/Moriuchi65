@@ -42,6 +42,18 @@ WEBページはいつも知っている知識だけで適当に作ってしま�
 </pre>
 <dt>article
 	<dd>他から独立して単体で意味を持つ記事を示すタグ。HTML5で追加されたタグ。
+	
+<dt>表示領域指定 &lt;meta name="viewport" content=”width=device-width,initial-scale=1″&gt;
+	<dd>Google推奨レスポンシブWEBデザイン適用時に指定
+	<dd>
+	<table>
+	<tr><th>width=device-width</th><td>表示領域幅を端末画面幅に合わせる</td></tr>
+	<tr><th>initial-scale=1</th><td>初期ズーム倍率を1にする</td></tr>
+	</table>
+
+<dt>リソース先読み &lt;link rel="preconnect" href="URL"&gt;
+	<dd>後のアクセスに備えて、あらかじめTCPコネクションを確立する
+
 </dl>
 
 <h2>CSS</h2>
@@ -56,6 +68,13 @@ WEBページはいつも知っている知識だけで適当に作ってしま�
 	<tr><th>vw, vh</th><td>画面サイズ、画面の縦または横いっぱいに表示する場合に使用</td></tr>
 	<tr><th>100vh</th><td>画面高さを100％にする、vhは"viewport height"の略</td></tr>
 	<tr><th>fr</th><td>グリッド中の余りスペース、CSSグリッドでスペースを均等配分する場合に使用</td></tr>
+	</table>
+<dt>余白 margin
+	<dd>
+	<table>
+	<tr><th>A B</th><td>余白を「上下｜左右」で指定</td></tr>
+	<tr><th>A B C</th><td>余白を「上｜左右｜下」で指定</td></tr>
+	<tr><th>A B C D</th><td>余白を「上｜右｜下｜左」で指定</td></tr>
 	</table>
 <dt>テキスト text-align
 	<dd>
@@ -127,10 +146,30 @@ WEBページはいつも知っている知識だけで適当に作ってしま�
 	<tr><th>end</th><td>下寄せ</td></tr>
 	<tr><th>space-between</th><td>均等配置(A)</td></tr>
 	</table>
+<dt>背景画像サイズ background-size
+	<dd>
+	<table>
+	<tr><th>cover</th><td>元画像の縦横比は保持して、要素をちょうどよく覆うサイズで表示</td></tr>
+	<tr><th>contain</th><td>元画像の縦横比は保持して、要素に元画像が全て収まるサイズで表示</td></tr>
+	</table>
+<dt>アニメーション transition
+	<dd>
+	<table>
+	<tr><th>(property) (duration) (timing-function) (delay)</th><td>アニメーション4プロパティ一括指定<br>（例）color 3s linear 1s</td></tr>
+	<tr><th>.5s</th><td>アニメーション開始から終了までの時間transition-durationが0.5s</td></tr>
+	</table>
 </dl>
 
 <!--
 
+<dt>
+	<dd>
+	<table>
+	<tr><th></th><td></td></tr>
+	<tr><th></th><td></td></tr>
+	<tr><th></th><td></td></tr>
+	</table>
+	
 -->
 
 <h2>その他</h2>
