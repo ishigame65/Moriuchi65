@@ -13,7 +13,7 @@
 <body>
 
 <main>
-	<ul class="breadcrumb">
+	<ul class="breadcrumb"><!-- パンくずリスト -->
 	<li><a href="index.html">Top</a>
 	<li>WEBページ制作の覚書き
 	</ul>
@@ -54,11 +54,46 @@ WEBページはいつも知っている知識だけで適当に作ってしま�
 <dt>リソース先読み &lt;link rel="preconnect" href="URL"&gt;
 	<dd>後のアクセスに備えて、あらかじめTCPコネクションを確立する
 
+<dt>header、main、footer
+	<dd>
+	<pre>
+&lt;body&gt;
+  &lt;header&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+	</pre>
+
+<dt>small
+	<dd>表示フォントサイズ小からサイドコメントに意味が変わった、copyright表記などに使用する
+
 </dl>
+
+<!--
+aside
+
+&nbsp; 半角スペース
+
+フッターにサイトマップを置く場合も多い
+
+<dt>
+	<dd>
+	<table>
+	<tr><th></th><td></td></tr>
+	<tr><th></th><td></td></tr>
+	<tr><th></th><td></td></tr>
+	</table>
+	
+-->
 
 <h2>CSS</h2>
 
 <dl>
+<dt>CSSからCSSを読み込む
+	<dd>@import url(CSSパス);
 <dt>単位
 	<dd>
 	<table>
@@ -158,6 +193,7 @@ WEBページはいつも知っている知識だけで適当に作ってしま�
 	<tr><th>(property) (duration) (timing-function) (delay)</th><td>アニメーション4プロパティ一括指定<br>（例）color 3s linear 1s</td></tr>
 	<tr><th>.5s</th><td>アニメーション開始から終了までの時間transition-durationが0.5s</td></tr>
 	</table>
+
 </dl>
 
 <!--
