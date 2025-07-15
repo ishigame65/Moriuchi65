@@ -1,0 +1,81 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    -webkit-text-size-adjust: 100%; /* iPhone横向きSafariでフォントサイズが大きくなる問題の対処 */
+}
+.floatleft {
+    float: left;
+}
+.floatright {
+    float: right;
+}
+.textright {
+    display: block;
+    text-align: right;
+}
+.clear {
+	clear: both;	/* 配置指定（回り込み）解除 */
+}
+.smallfont {
+    font-size: smaller;
+}
+.indent {
+    margin-left: 0.6em;
+}
+.opacity05 {
+    opacity: 0.5;
+}
+blockquote {
+    margin-left: 1em;
+}
+img {
+    vertical-align: top;
+}
+ul li, ol li {
+    margin-left: 0.6em;
+}
+p {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+td.num_text {
+    text-align: right;
+}
+.smart_table {
+    border-collapse: collapse;
+}
+.smart_table th, td {
+    border: 1px solid gray;
+    padding: 2px 8px;
+}
+.breadcrumb {
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+.breadcrumb ul {
+    display: flex;
+    list-style-type: none;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+.breadcrumb li:not(:last-of-type)::after {
+	content: "›";
+    margin-left: 0.3em;
+	color: #777;
+	font-weight: bold;
+}
+@media (max-width: 700px) {
+    .indent {
+        /* margin-left: 0.3em; */
+        margin-left: 0.4em;
+    }
+    .breadcrumb {
+        font-size: smaller;
+    }
+    .breadcrumb li:not(:last-of-type)::after {
+        margin-left: 0.2em;
+    }
+}

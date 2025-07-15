@@ -1,0 +1,187 @@
+@charset "utf-8";
+
+@import url(common.css);
+@import url(slidemenu.css);
+@import url(arrow.css);
+@import url(accordionbox.css);
+
+body {
+    background: linear-gradient(0deg, honeydew, lightcyan, honeydew);
+}
+
+header, main, footer {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+header {
+    margin-bottom: 0.75em;
+    display: flex;
+}
+footer {
+    margin-top: 1em;
+    padding-top: 1em;
+    margin-bottom: 1em;
+    border-top: 1px dashed darkgrey;
+    display: flex;
+    justify-content: space-between;
+}
+img, video {
+    max-width: 100%;
+}
+h1 {
+    margin-top: 15px;
+}
+h2 {
+    margin: 0.6em 0 0.2em;
+}
+h3 {
+    margin: 0.5em 0 0.2em;
+}
+dd {
+    margin-left: 1em;
+}
+.noborder td, th {
+	border: 0px none;
+}
+#instaicon2 {
+    font-size: larger;
+    width: 1.2em;
+    height: 1.2em;
+}
+.arrow-up {
+    font-size: larger;
+    vertical-align: top;
+    margin-right: 1em;
+    color: #CE5D8B;
+}
+#footlinks {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+}
+nav {
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 4em;
+    height: 70px;
+}
+nav ul, #footlinks ul {
+    display: flex;
+    list-style-type: none;
+    white-space: nowrap;
+    font-size: smaller;
+}
+nav ul {
+    margin-top: 3em;
+}
+#footlinks ul {
+    gap: 0.5em;
+}
+nav a, #footlinks a {
+    padding: 0 0.5em;
+    text-decoration: none;
+    color: DarkSlateGray;
+}
+nav li:hover, #footlinks li:hover {
+    scale: 1.0 1.2;
+}
+nav a:hover, #footlinks a:hover {
+    color: black;
+}
+h2 {
+    background: linear-gradient(90deg, paleturquoise, rgba(255,255,255,0.0));
+    padding: 0.2em 0.3em;
+    border-radius: 0.15em;
+}
+h2.mono {
+    background: linear-gradient(90deg, silver, rgba(255,255,255,0.0));
+}
+h4 {
+    margin-top: 0.4em;
+}
+.maxw100 {
+    max-width: 100%;
+}
+img.bike {
+    max-width: 320px;
+    max-height: 320px;
+    border-radius: 4px;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    margin-bottom: 0.75em;
+}
+article {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 24em;
+    max-width: 28em;
+    margin-right: 1em;
+    padding-right: 1em;
+}
+article h3, section h3, article h4, section h4 {
+    background: linear-gradient(90deg, royalblue, rgba(255,255,255,0.0));
+    color: linen;
+    padding: 0.2em 0.3em;
+    border-radius: 0.1em;
+}
+article h3.mono, section h3.mono, h4.mono, section h4.mono{
+    background: linear-gradient(90deg, gray, rgba(255,255,255,0.0));
+}
+.article_content, .section_content {
+    margin-left: 0.4em;
+}
+.notes {
+    font-size: smaller;
+    color: dimgray;
+    margin-left: 1em;
+}
+/* 今後検討 */
+/* .scroller {
+    scrollbar-color: #FAF8D8 #DE94BF;
+} */
+@media (min-width: 1000px) {
+    h1 {
+        position: absolute;
+    }
+    nav {
+        padding-right: 0;
+    }
+}
+@media (max-width: 700px) {
+    body {
+        font-size: smaller;
+    }
+    header, main, footer {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    h1 {
+        margin-top: 10px;
+    }
+    img#logo {
+        width: 130px;
+        margin-bottom: 10px;
+    }
+    nav, #footlinks {
+        display: none;
+    }
+    article, section {
+        min-width: none;
+        /* max-width: 95%; */
+        max-width: 97%;
+        padding: 0;
+    }
+    .article_content, .section_content {
+        /* margin-left: 0.2em; */
+        margin-left: 0.3em;
+    }
+    img.bike {
+        max-width: 288px;
+        max-height: 288px;
+        border-radius: 3px;
+    }
+    canvas {
+        margin-left: 0;
+    }
+}

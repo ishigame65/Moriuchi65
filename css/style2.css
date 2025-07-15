@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+body {
+    /* background: none; */
+    background: rgb(245,245,255);
+}
+#menu_btn, #menu_cont {
+    background-color: transparent;
+}
+#menu_btn span,
+#menu_btn span::before,
+#menu_btn span::after {
+    background-color: black;
+}
+#menu_btn #title {
+    color: black;
+}
+.arrow-up {
+    color: black;
+}
+.breadcrumb, a {
+    color: DarkSlateGray;
+}
+a, .popup-open {
+    text-decoration-color: black;
+}
+ul.marker01 li:before {
+    color: DarkSlateGray;
+}
