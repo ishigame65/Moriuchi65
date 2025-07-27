@@ -10,6 +10,7 @@
     <title>地番区画データ取得ライブラリ</title>
 </head>
 <style>
+    /* 画面サイズに合わせた縮小表示はせず、スクロール表示で操作する前提 */
     #mapWrap {
         margin: 1em 0;
         position: relative;
@@ -23,7 +24,6 @@
         width: 500px;
         height: 500px;
         border: 1px solid gray;
-        max-width: 98%;
     }
     #mapBack {
         position: absolute;
@@ -31,7 +31,6 @@
         height: 100%;
         background-image: url(./gmapphoto.png);
         background-repeat: no-repeat;
-        background-size: contain;
         opacity: 0.3;
         display: none;
     }
@@ -102,11 +101,8 @@
         text-decoration: none;
         line-height: 40px;
     }
-    @media (max-width: 700px) {
-        #mapWrap, #mapCanvas, #mapBack {
-            width: 309px;
-            height: 309px;
-        }
+    #note1, #note2 {
+        margin-top: 1em;
     }
 </style>
 <body>
@@ -234,6 +230,7 @@
                         </code>
                     </li>
                     <li>取得した区画形状データ（ポリゴンデータ）座標を500x500サイズのキャンバスに描画する
+                        <div id="note2" class="notes">画面サイズに合わせて縮小表示しないため、小さい画面で利用される場合はスクロールしてご確認ください</div>
                         <div id="normWrap">
                             <canvas id="normCanvas"></canvas>
                         </div>
@@ -260,6 +257,7 @@
                         </code>
                     </li>
                     <li>取得した区画形状データ（ポリゴンデータ）座標をdst_ptsに合わせたサイズのキャンバスに描画する
+                        <div id="note1" class="notes">画面サイズに合わせて縮小表示しないため、小さい画面で利用される場合はスクロールしてご確認ください</div>
                         <div id="mapWrap">
                             <div id="mapBack"></div>
                             <canvas id="mapCanvas"></canvas>
