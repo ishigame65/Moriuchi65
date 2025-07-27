@@ -96,7 +96,9 @@ img.w600m100p {
 	padding: 1px 5px;
 	white-space: nowrap
 }
-
+.important {
+	color: red;
+}
 @media (max-width: 670px) {
 	.scroll img {
 		width: 800px;
